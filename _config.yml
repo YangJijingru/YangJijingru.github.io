@@ -1,21 +1,21 @@
 # Site settings
-title: 夏敏的博客
-SEOTitle: 夏敏的博客 | Anderson's Blog
+title: Welcome to yjjr's blog!
+SEOTitle: Anderson's Blog
 header-img: img/post-bg-miui-ux.jpg
-email: jerey_jobs@qq.com
-description: "这里是夏敏的个人博客，希望能与你一同进步。"
-keyword: "夏敏, Android, Anderson, Jerey_Jobs, Anderson大码渣, 博客, 个人网站, 互联网"
-url: "https://jerey-jobs.github.io/"              # your host, for absolute URL
+email: 18056072060@qq.com
+description: "Hello,2018!"
+keyword: "OIER,AFSer,伪文青,五迷,航迷"
+url: "https://yangjijingru.github.io/"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
 
 
 # SNS settings
-RSS: false
-weibo_username:     3931239166
+RSS: true
+#weibo_username:     3931239166
 #zhihu_username:     Anderson
-github_username:    Jerey-Jobs
-jianshu_username:   016a5ba708a0
+github_username:    YangJijingru
+#jianshu_username:   016a5ba708a0
 #twitter_username:  huxpro
 #facebook_username:  huxpro
 # linkedin_username:  firstname-lastname-idxxxx
