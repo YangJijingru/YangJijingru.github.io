@@ -1,6 +1,6 @@
 ---
 layout: page
-title: archive
+title: Archive
 header-img: "img/post-bg-universe.jpg"
 ---
 
