@@ -1,7 +1,7 @@
 # Site settings
 title: yjjr's blog
 SEOTitle: yjjr's blog
-header-img: img/post-bg-miui-ux.jpg
+header-img: img/cnfeat.jpg
 email: 18056072060@qq.com
 description: "Hello,2018!"
 keyword: "OIER,AFSer,伪文青,五迷,航迷"
@@ -56,7 +56,7 @@ livere_comment: true
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "我们的征途是星辰大海"
-sidebar-avatar: /img/study-dog.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: /img/aboutme.png      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 

@@ -1,7 +1,8 @@
 ---
 layout: page
-title: Archive
-header-img: "img/post-bg-universe.jpg"
+title: "Archive"
+header-img: "img/twitter.jpg"
+description: "时光是一支开弓后的箭，只向前，不后退"
 ---
 
 ### Blogs
