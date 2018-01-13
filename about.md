@@ -1,12 +1,9 @@
 ---
 layout: page
 title: "About"
-description: "Hi，I'm Anderson."
+description: "OIER,AFSer,伪文青,五迷,航迷"
 header-img: "img/my_desk.jpg"
 ---
-
-<!-- butter-fly -->
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=4940920&auto=1&height=32"></iframe>
 
 # 正文
 
@@ -37,12 +34,6 @@ header-img: "img/my_desk.jpg"
 - [hzwer](http://hzwer.com)
 
 - [menci](https://oi.men.ci/)
-
-# picture
-
-![机房外景](http://img.blog.csdn.net/20171118231537283)
-
-![机房内景](http://img.blog.csdn.net/20171118231521214)
 
 <!-- //分享 -->
 <div class="bdsharebuttonbox">
