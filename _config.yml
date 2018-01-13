@@ -5,7 +5,7 @@ header-img: img/post-bg-miui-ux.jpg
 email: 18056072060@qq.com
 description: "Hello,2018!"
 keyword: "OIER,AFSer,伪文青,五迷,航迷"
-url: "https://www.yjjr.me"              # your host, for absolute URL
+url: "https://www.yangjijingru.com"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
 
@@ -59,22 +59,9 @@ netease_comment: false
 #来必利评论
 livere_comment: true
 
-
-
-# Analytics settings
-# Baidu Analytics
-ba_track_id: [ecb804bab8e4c19d23ce1dd11d5d36fb]
-
-# Google Analytics
-# ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
-ga_domain: auto
-
-
-
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "Android Application Developer <br> <br>
-                            诸葛四郎和魔鬼党, 到底谁抢到那支宝剑"
+sidebar-about-description: "我们的征途是星辰大海"
 sidebar-avatar: /img/study-dog.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
@@ -94,22 +81,22 @@ service-worker: true
 #Friends
 friends: [
     {
-        title: "战斗天地大毛子",
-        href: "http://www.jianshu.com/u/4a48fa798e34/"
+        title: "赵敏达",
+        href: "http://blog.csdn.net/dadatu_zhao"
     },{
-        title: "九九叔",
-        href: "http://www.jianshu.com/u/0279fa414ea4/"
+        title: "creatorlxd",
+        href: "https://creatorlxd.github.io/"
     },{
-        href: "http://codingsj.com/",
-        title: 施届
+        href: "https://www.cnblogs.com/acheing",
+        title: acheing
     },{
-        title: "Vic",
-        href: "https://github.com/JeAmoTu/"
+        title: "江锐翔",
+        href: "http://blog.csdn.net/qq_31640513/"
     },{
-        title: "PandaQ",
-        href: "http://www.jianshu.com/u/aa53f5d59037/"
+        title: "hzwer",
+        href: "http://www.hzwer.com"
     },{
-        title: "Java-Coffee",
-        href: "https://github.com/Java-Coffee/"
+        title: "PoPoQ",
+        href: "http://blog.csdn.net/popoqqq?viewmode=contents"
     }
 ]
