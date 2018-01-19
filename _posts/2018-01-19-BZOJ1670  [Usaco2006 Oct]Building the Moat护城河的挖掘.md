@@ -81,6 +81,10 @@ Source
 
 # 分析
 
+不会凸包的可以直接看这篇博文[http://blog.csdn.net/bone_ace/article/details/46239187](http://blog.csdn.net/bone_ace/article/details/46239187)
+
+一般都常用graham法
+
 凸包模板题
 
 # code
