@@ -12,12 +12,12 @@ baseurl: ""                             # for example, '/blog' if your blog host
 
 # SNS settings
 RSS: true
-#weibo_username:     3931239166
-zhihu_username:     杨季敬汝
-github_username:    yang-ji-jing-ru
+weibo_username:     5031650513
+zhihu_username:     yang-ji-jing-ru
+github_username:    YangJijingru
 #jianshu_username:   016a5ba708a0
 #twitter_username:  huxpro
-#facebook_username:  huxpro
+facebook_username:  jijingru.yang
 # linkedin_username:  firstname-lastname-idxxxx
 
 
