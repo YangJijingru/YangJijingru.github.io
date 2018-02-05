@@ -1,6 +1,6 @@
 ﻿---
 tags: 
- - splay
+ - 数据结构-splay
 grammar_cjkRuby: true
 catalog: true
 layout:  post

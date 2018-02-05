@@ -1,6 +1,6 @@
 ﻿---
 tags: 
- - 数论
+ - 数论-杂题
 grammar_cjkRuby: true
 catalog: true
 layout:  post

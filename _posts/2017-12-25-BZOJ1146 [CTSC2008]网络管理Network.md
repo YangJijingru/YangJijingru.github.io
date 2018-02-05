@@ -1,7 +1,7 @@
 ﻿---
 tags: 
- - 主席树
- - 树状数组
+ - 数据结构-主席树
+ - 数据结构-树状数组
 grammar_cjkRuby: true
 catalog: true
 layout:  post

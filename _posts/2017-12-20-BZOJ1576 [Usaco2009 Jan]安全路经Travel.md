@@ -1,8 +1,7 @@
 ﻿---
 tags: 
- - 最短路
- - dijkstra
- - 并查集
+ - 图论-dijkstra
+ - 数据结构-并查集
 grammar_cjkRuby: true
 catalog: true
 layout:  post
