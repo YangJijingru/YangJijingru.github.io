@@ -1,9 +1,9 @@
 ﻿---
 subtitle: "正经的决策单调性"
 tags: 
- - 单调队列
- - 二分
- - 决策单调性DP
+ - 数据结构-单调队列
+ - 基础算法-二分
+ - DP-决策单调性
 grammar_cjkRuby: true
 catalog: true
 layout:  post
