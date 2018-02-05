@@ -35,7 +35,15 @@ header-img: "img/facebook.jpg"
                     <li>行业观察、职位、公司优先使用中文</li>
                     <li>外国产品、术语优先使用英文</li>
             </blockquote>-->
-
+{% for category in site.categories %}
+<h2>{{ category | first }}</h2>
+</span>{{ category | last | size }}</span>
+<ul class="arc-list">
+    {% for post in category.last %}
+        <li>{{ post.date | date:"%d/%m/%Y"}}<a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+</ul>
+{% endfor %}
             <!-- 标签列表 -->
 			{% for tag in site.tags %}
 			<div class="one-tag-list">
