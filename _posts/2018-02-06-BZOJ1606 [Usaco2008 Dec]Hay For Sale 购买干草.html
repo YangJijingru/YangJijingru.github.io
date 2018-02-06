@@ -1,0 +1,144 @@
+---
+tags: 
+ - DP-背包
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P6.jpg"
+preview-img: "/img/preview/P46.jpg"
+---
+
+<p style="text-align:left" align="center">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:blue;"><strong>标签：背包</strong></span><span style="color:blue;"><strong>DP</strong></span></span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Description</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;&nbsp;&nbsp;&nbsp;约翰遭受了重大的损失：蟑螂吃掉了他所有的干草，留下一群饥饿的牛．他乘着容量为C(1≤C≤50000)个单位的马车，去顿因家买一些干草．&nbsp;&nbsp;顿因有H(1≤H≤5000)包干草，每一包都有它的体积Vi(l≤Vi≤C).约翰只能整包购买，</span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">他最多可以运回多少体积的干草呢？</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;&nbsp;&nbsp;&nbsp;第1行输入C和H，之后H行一行输入一个Vi．</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;&nbsp;&nbsp;&nbsp;最多的可买干草体积．</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">7 3&nbsp; //总体积为7,用3个物品来背包<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">6<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">5<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="background:rgb(141,184,255)"><span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="background:rgb(141,184,255)"><span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The wagon holds 7 volumetric units; threebales are offered for sale with<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">volumes of 2, 6, and 5 units, respectively.<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="background:rgb(141,184,255)"><span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+	<br />
+	</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">7&nbsp; //最大可以背出来的体积<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="background:rgb(141,184,255)"><span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+	<br />
+	</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">HINT</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Buying the two smaller bales fills the wagon.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define LL long long
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+using namespace std;
+inline LL read()
+{
+	LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const int maxn=5e4+6;
+int n,v,a[maxn],f[maxn];
+
+int main()
+{
+	v=read(),n=read();
+	rep(i,1,n)a[i]=read();
+	f[0]=1;
+	rep(i,1,n)
+	    dep(j,v,a[i])
+	        if(f[j-a[i]])f[j]=1;
+	dep(j,v,0)
+	    if(f[j]){cout&lt;&lt;j&lt;&lt;endl;return 0;} 
+}</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

@@ -1,0 +1,132 @@
+---
+tags: 
+ - 数论-欧拉函数
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P28.jpg"
+preview-img: "/img/preview/P68.jpg"
+---
+<p style="margin:0px">
+	<strong><span style="font-family:等线;font-size:16px;">标签：数学，数论，欧拉函数，线性筛</span></strong>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Description</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;">给定整数<span style="margin:0px" lang="EN-US">N</span>，求<span style="margin:0px" lang="EN-US">1&lt;=x,y&lt;=N</span>且<span style="margin:0px" lang="EN-US">Gcd(x,y)</span>为素数的<span style="margin:0px" lang="EN-US"><br />
+	</span>数对<span style="margin:0px" lang="EN-US">(x,y)</span>有多少对<span style="margin:0px" lang="EN-US">.</span></span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;">一个整数<span style="margin:0px" lang="EN-US">N</span></span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">如题</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">4</span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">4</span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">HINT</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;"><span style="margin:0px" lang="EN-US">hint<br />
+	</span>对于样例<span style="margin:0px" lang="EN-US">(2,2),(2,4),(3,3),(4,2)</span></span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">1&lt;=N&lt;=10^7</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">分析： <span style="margin:0px" lang="EN-US">gcd(a,b)=p</span>可以转化为<span style="margin:0px" lang="EN-US">gcd(a/p,b/p)=1</span>，这样我们就可以枚举所有的<span style="margin:0px" lang="EN-US">a,b</span>，不妨设<span style="margin:0px" lang="EN-US">a&gt;b</span>，那么给定的<span style="margin:0px" lang="EN-US">a,b</span>个数就是<span style="margin:0px" lang="EN-US">phi(a)</span>（表示小于<span style="margin:0px" lang="EN-US">a</span>的正整数中与<span style="margin:0px" lang="EN-US">a</span>互质的数目）</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;">因为是有序的（即<span style="margin:0px" lang="EN-US">(2,4)(4,2)</span>算两次），所以<span style="margin:0px" lang="EN-US">ans*2</span></span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">但漏算了<span style="margin:0px" lang="EN-US">(1,1)</span>，<span style="margin:0px" lang="EN-US">ans</span>补上就可以了</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;">对于<span style="margin:0px" lang="EN-US">phi</span>的<span style="margin:0px" lang="EN-US">O(n)</span>计算，记住这三条递推式就可以了（当然也要提前用筛法计算质数）<span style="margin:0px" lang="EN-US"><br />
+	1.</span>当<span style="margin:0px" lang="EN-US">x</span>为质数时，<span style="margin:0px" lang="EN-US">phi[x]=x-1</span></span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;"><span style="margin:0px" lang="EN-US">2.</span>当<span style="margin:0px" lang="EN-US">i mod x==0</span>时（<span style="margin:0px" lang="EN-US">x</span>为质数）<span style="margin:0px" lang="EN-US">phi[x*i]=phi[i]*j</span></span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;"><span style="margin:0px" lang="EN-US">3.</span>当i<span style="margin:0px" lang="EN-US"> mod x</span>≠<span style="margin:0px" lang="EN-US">0</span>时（<span style="margin:0px" lang="EN-US">x</span>为质数）<span style="margin:0px" lang="EN-US">phi[x*i]=phi[i]*(j-1)</span></span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Code</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"></span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+#define LL long long
+using namespace std;
+inline LL read()
+{
+	LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const LL maxn=1e7+6;
+LL n,prime[maxn],top,ans,phi[maxn];
+bool not_prime[maxn];
+void shaker()
+{
+	int j;phi[1]=1;
+	rep(i,2,n){
+		if(!not_prime[i]){prime[++top]=i;phi[i]=i-1;}
+		for(j=1;j&lt;=top&amp;&amp;i*prime[j]&lt;=n;j++){
+			not_prime[prime[j]*i]=1;
+			if(i%prime[j]==0){phi[prime[j]*i]=phi[i]*prime[j];break;}
+			phi[prime[j]*i]=phi[i]*(prime[j]-1);
+		}
+	}
+}
+int main()
+{
+	n=read();
+	shaker();
+	rep(i,1,n)phi[i]+=phi[i-1];
+	rep(i,1,top)ans+=phi[n/prime[i]];
+	cout&lt;&lt;ans*2-top&lt;&lt;endl;
+}
+</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>

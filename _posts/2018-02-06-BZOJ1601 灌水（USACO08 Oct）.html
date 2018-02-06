@@ -1,0 +1,109 @@
+---
+tags: 
+ - 图论-最小生成树
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P4.jpg"
+preview-img: "/img/preview/P44.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">标签：最小生成树，并查集</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Farmer John已经决定把水灌到他的n(1&lt;=n&lt;=300)块农田，农田被数字1到n标记。把一块土地进行灌水有两种方法，从其他农田饮水，或者这块土地建造水库。 建造一个水库需要花费wi(1&lt;=wi&lt;=100000),连接两块土地需要花费Pij(1&lt;=pij&lt;=100000,pij=pji,pii=0).计算FarmerJohn所需的最少代价。</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">*第一行：一个数n *第二行到第n+1行：第i+1行含有一个数wi *第n+2行到第2n+1行：第n+1+i行有n个被空格分开的数，第j个数代表pij。</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">*第一行：一个单独的数代表最小代价.</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">SampleInput</span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">4<br />
+	5<br />
+	4<br />
+	4<br />
+	3<br />
+	0 2 2 2<br />
+	2 0 3 3<br />
+	2 3 0 4<br />
+	2 3 4 0</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">SampleOutput</span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">9<br />
+	<br />
+	<br />
+	输出详解：<br />
+	<br />
+	Farmer John在第四块土地上建立水库，然后把其他的都连向那一个，这样就要花费3+2+2+2=9</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">模板题</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code<br />
+	</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+using namespace std;
+
+struct edge{
+	int u,v,w;
+}e[100010];
+int n,fa[310],ans,cnt=0,t,root1,root2;
+inline int cmp(edge x,edge y){return x.w&lt;y.w;}
+inline void ins(int x,int y,int w){
+	cnt++;e[cnt]=(edge){x,y,w};
+}
+inline int find(int x){
+	return x==fa[x]?x:fa[x]=find(fa[x]);}
+	
+int main()
+{
+	scanf(&quot;%d&quot;,&amp;n);
+	rep(i,1,n){
+		fa[i]=i;
+		scanf(&quot;%d&quot;,&amp;t);
+		ins(0,i,t);
+	}
+	rep(i,1,n) rep(j,1,n){
+		scanf(&quot;%d&quot;,&amp;t);
+		if(i!=j)ins(i,j,t);
+	}
+	sort(e+1,e+cnt+1,cmp);
+	rep(i,1,cnt){
+		root1=find(e[i].u),root2=find(e[i].v);
+		if(root1!=root2){
+			fa[root1]=root2;
+			ans+=e[i].w;
+		}
+	}
+	printf(&quot;%d\n&quot;,ans);
+	return 0;
+}
+	</pre>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+	</span>
+</p>

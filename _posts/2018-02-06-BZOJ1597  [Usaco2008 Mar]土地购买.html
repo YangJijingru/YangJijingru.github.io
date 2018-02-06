@@ -1,0 +1,171 @@
+---
+tags: 
+ - DP-斜率优化
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P3.jpg"
+preview-img: "/img/preview/P43.jpg"
+---
+<p style="text-align:left" align="center">
+	<span style="color:blue;font-weight:bold"><span style="font-family:Microsoft YaHei;font-size:16px;">标签：斜率优化</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Description</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">农夫John准备扩大他的农场,他正在考虑N (1 &lt;= N &lt;= 50,000) 块长方形的土地. 每块土地的长宽满足(1 &lt;= 宽 &lt;= 1,000,000; 1 &lt;= 长&lt;= 1,000,000). 每块土地的价格是它的面积,但FJ可以同时购买多快土地. 这些土地的价格是它们最大的长乘以它们最大的宽, 但是土地的长宽不能交换. 如果FJ买一块3x5的地和一块5x3的地,则他需要付5x5=25. FJ希望买下所有的土地,但是他发现分组来买这些土地可以节省经费. 他需要你帮助他找到最小的经费.</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">* 第1行: 一个数: N</span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">* 第2..N+1行: 第i+1行包含两个数,分别为第i块土地的长和宽</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">* 第一行: 最小的可行费用.</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">4<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">100 1<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">15 15<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">20 5<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 100<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="background:rgb(141,184,255)"><span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输入解释:<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="background:rgb(141,184,255)"><span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">共有4块土地.<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="background:rgb(141,184,255)"><span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+	<br />
+	</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">500<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="background:rgb(141,184,255)"><span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+	<br />
+	</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">HINT</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">FJ分3组买这些土地: 第一组:100x1, 第二组1x100, 第三组20x5 和 15x15 plot. 每组的价格分别为100,100,300,总共500.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">F[i]=min{f[j]+x[i]*y[j+1]}</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">为了方便斜率优化，我们可以将J错位一位</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">方程是（</span><span style="color:#333333;">f[j]-f[k]</span><span style="color:#333333;">）</span><span style="color:#333333;">/(y[k]-y[j])&lt;x[i]</span></span>
+</p>
+<p>
+	<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">维护一个下凸包就可以了</span></span>
+</p>
+<p>
+	<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp"> 
+#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define LL long long
+#define mem(x,num) memset(x,num,sizeof x)
+using namespace std;
+inline LL read()
+{
+    LL f=1,x=0;char ch=getchar();
+    while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+    while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+    return x*f;
+}
+const int maxn=5e4+6;
+struct node{LL x,y;}a[maxn];
+LL n,tot,x[maxn],y[maxn],f[maxn],q[maxn],head,tail;
+inline bool cmp(node a,node b){return a.x==b.x?a.y&lt;b.y:a.x&lt;b.x;}
+inline double slop(int a,int b){return (double)(f[b]-f[a])/(y[a+1]-y[b+1]);}
+ 
+int main()
+{
+    n=read();
+    rep(i,1,n)a[i].x=read(),a[i].y=read();
+    sort(a+1,a+1+n,cmp);
+    rep(i,1,n){
+        while(tot&amp;&amp;a[i].y&gt;=y[tot])tot--;
+        x[++tot]=a[i].x,y[tot]=a[i].y;
+    }
+    int head=tail=0;
+    rep(i,1,tot){
+        while(head&lt;tail&amp;&amp;slop(q[head],q[head+1])&lt;x[i])head++;
+        int t=q[head];
+        f[i]=f[t]+y[t+1]*x[i];
+        while(head&lt;tail&amp;&amp;slop(q[tail],i)&lt;slop(q[tail-1],q[tail]))tail--;
+        q[++tail]=i;
+    }
+    cout&lt;&lt;f[tot]&lt;&lt;endl;
+    return 0;
+}</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>
+<br />

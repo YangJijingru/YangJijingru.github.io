@@ -1,0 +1,120 @@
+---
+tags: 
+ - DP-状压
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P19.jpg"
+preview-img: "/img/preview/P59.jpg"
+---
+<p style="margin:0px">
+	<strong><span style="font-family:等线;"><span style="font-size:16px;">&nbsp;</span></span><span style="font-family:Microsoft YaHei;"><span style="font-size:16px;">标签：状压<span style="margin:0px" lang="EN-US">DP</span></span></span></strong>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Description</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">背景： 和久必分，分久必和。。。 题目描述： 中国历史上上分分和和次数非常多。。通读中国历史的<span style="margin:0px" lang="EN-US">WJMZBMR</span>表示毫无压力。 同时经常搞<span style="margin:0px" lang="EN-US">OI</span>的他把这个变成了一个数学模型。假设中国的国土总和是不变的。 每个国家都可以用他的国土面积代替， 又两种可能，一种是两个国家合并为<span style="margin:0px" lang="EN-US">1</span>个，那么新国家的面积为两者之和。一种是一个国家分裂为<span style="margin:0px" lang="EN-US">2</span>个，那么<span style="margin:0px" lang="EN-US">2</span>个新国家的面积之和为原国家的面积。<span style="margin:0px" lang="EN-US"> WJMZBMR</span>现在知道了很遥远的过去中国的状态，又知道了中国现在的状态，想知道至少要几次操作（分裂和合并各算一次操作），能让中国从当时状态到达现在的状态。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">第一行一个数<span style="margin:0px" lang="EN-US">n1</span>，表示当时的块数，接下来<span style="margin:0px" lang="EN-US">n1</span>个数分别表示各块的面积。 第二行一个数<span style="margin:0px" lang="EN-US">n2</span>，表示现在的块，接下来<span style="margin:0px" lang="EN-US">n2</span>个数分别表示各块的面积。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">一行一个数表示最小次数。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">1 6</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">3 1 2 3</span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">2</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">数据范围：</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;"><span style="font-size:16px;">对于<span style="margin:0px" lang="EN-US">100%</span>的数据，<span style="margin:0px" lang="EN-US">n1,n2&lt;=10</span>，每个数<span style="margin:0px" lang="EN-US">&lt;=50</span></span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">对于<span style="margin:0px" lang="EN-US">30%</span>的数据，<span style="margin:0px" lang="EN-US">n1,n2&lt;=6</span>，</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">HINT</span></span></strong>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Source</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><a target="_blank" href="http://www.lydsy.com/JudgeOnline/problemset.php?search=和谐社会模拟赛"><span style="margin:0px" lang="EN-US"><span style="margin:0px" lang="EN-US"><span style="color:#563c1;"><span style="font-family:Microsoft YaHei;font-size:16px;">和谐社会模拟赛</span></span></span></span></a></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">题意：给定<span style="margin:0px" lang="EN-US">N1</span>个数<span style="margin:0px" lang="EN-US">ai</span>和<span style="margin:0px" lang="EN-US">N2</span>个数<span style="margin:0px" lang="EN-US">bi</span>，求通过几次合并或者拆分操作能将<span style="margin:0px" lang="EN-US">a</span>数组转化为<span style="margin:0px" lang="EN-US">b</span>数组</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：无脑状压。如果正常合并或拆分，最多需要<span style="margin:0px" lang="EN-US">n1+n2-2</span>次操作，那么这时如果存在<span style="margin:0px" lang="EN-US">ai==bj</span>那么可以减少<span style="margin:0px" lang="EN-US">2</span>次操作，同理，<span style="margin:0px" lang="EN-US">ans=n1+n2-2*f[ed]</span>，<span style="margin:0px" lang="EN-US">ed</span>表示最终的状态</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;"><span style="font-size:16px;"><span style="margin:0px" lang="EN-US">Fi</span>表示状态为<span style="margin:0px" lang="EN-US">i</span>时最小操作次数</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Code</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"></span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;iomanip&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+#define LL long long
+using namespace std;
+inline LL read()
+{
+    LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+    while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const int maxn=2e6+6;
+LL n,m,f[maxn],sum[maxn],ed;
+
+int main()
+{
+    n=read();rep(i,1,n)sum[1&lt;&lt;(i-1)]=read();
+    m=read();rep(i,1,m)sum[1&lt;&lt;(n+i-1)]=-read();
+	ed=(1&lt;&lt;(n+m))-1;
+	rep(i,1,ed){
+		int t=i&amp;(-i);
+		sum[i]=sum[t]+sum[i-t];
+		rep(j,1,n+m) if(i&amp;(1&lt;&lt;(j-1)))f[i]=max(f[i],f[i-(1&lt;&lt;(j-1))]);
+		if(!sum[i])f[i]++;
+	}
+	printf(&quot;%lld\n&quot;,n+m-2*f[ed]);
+	return 0;
+}</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>
+<br />

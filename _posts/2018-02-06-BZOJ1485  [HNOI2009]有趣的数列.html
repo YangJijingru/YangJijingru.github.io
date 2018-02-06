@@ -1,0 +1,143 @@
+---
+tags: 
+ - 数论-组合数
+ - 数论-卡特兰数
+ - 数论-线性筛
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P1.jpg"
+preview-img: "/img/preview/P41.jpg"
+---
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">标签：数学，数论，卡特兰数，组合数，素数筛</span></strong>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">Description</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">&nbsp;我们称一个长度为2n的数列是有趣的，当且仅当该数列满足以下三个条件：</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">&nbsp;&nbsp;&nbsp; (1)它是从1到2n共2n个整数的一个排列</span><span style="font-size:16px;">{a</span><sub><span style="font-size:12px;">i</span></sub><span style="font-size:16px;">}</span><span style="font-size:16px;">；</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">&nbsp;&nbsp;&nbsp; (2)所有的奇数项满足</span><span style="font-size:16px;">a</span><sub><span style="font-size:12px;">1</span></sub><span style="font-size:16px;">&lt;a</span><sub><span style="font-size:12px;">3</span></sub><span style="font-size:16px;">&lt;…&lt;a</span><sub><span style="font-size:12px;">2n-1</span></sub><span style="font-size:16px;">，所有的偶数项满足</span><span style="font-size:16px;">a</span><sub><span style="font-size:12px;">2</span></sub><span style="font-size:16px;">&lt;a</span><sub><span style="font-size:12px;">4</span></sub><span style="font-size:16px;">&lt;…&lt;a</span><sub><span style="font-size:12px;">2n</span></sub><span style="font-family:等线;font-size:16px;">；</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">&nbsp;&nbsp;&nbsp; (3)任意相邻的两项</span><span style="font-size:16px;">a</span><sub><span style="font-size:12px;">2i-1</span></sub><span style="font-size:16px;">与</span><span style="font-size:16px;">a</span><sub><span style="font-size:12px;">2i</span></sub><span style="font-size:16px;">(1≤i≤n)</span><span style="font-size:16px;">满足奇数项小于偶数项，即：</span><span style="font-size:16px;">a</span><sub><span style="font-size:12px;">2i-1</span></sub><span style="font-size:16px;">&lt;a</span><sub><span style="font-size:12px;">2i</span></sub><span style="font-family:等线;font-size:16px;">。</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">&nbsp;&nbsp;&nbsp; 现在的任务是：对于给定的n，请求出有多少个不同的长度为2n的有趣的数列。因为最后的答案可能很大，所以只要求输出答案 mod P的值。</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">Input</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">输入文件只包含用空格隔开的两个整数n和P。输入数据保证，50%的数据满足n≤1000，100%的数据满足n≤1000000且P≤1000000000。</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">Output</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">仅含一个整数，表示不同的长度为2n的有趣的数列个数mod P的值。</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">Sample Input</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">&nbsp;&nbsp;&nbsp; 310&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">Sample Output</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">&nbsp; 5</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">&nbsp;&nbsp;&nbsp; 对应的5个有趣的数列分别为（1,2,3,4,5,6），（1,2,3,5,4,6），（1,3,2,4,5,6），（1,3,2,5,4,6），（1,4,2,5,3,6）。<br />
+	<br />
+	</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">大胆玄学猜想：答案就是卡特兰数！事实证明的确如此</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">具体证明：从左往右扫每个数，把放在奇数项看作入栈，放在偶数项看作出栈（妙不可言……）</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">然后需要O（n）求出卡特兰数</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">百度公式： F(n)=C(2n,n)/(n+1)</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">将C(2n,n)质因数分解，记录下每个质因数的个数，最后再相乘取模即可</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">Code</span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define LL long long
+#define mem(x,num) memset(x,num,sizeof x)
+using namespace std;
+inline LL read()
+{
+	LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const LL maxn=1e6+6;
+LL ans=1,n,p,cnt=0;
+LL prime[maxn],mn[maxn&lt;&lt;1],num[maxn&lt;&lt;1];
+bool not_prime[maxn&lt;&lt;1];
+
+void getpri()
+{
+	rep(i,2,2*n){
+		if(!not_prime[i])prime[++cnt]=i,mn[i]=cnt;
+		for(int j=1;prime[j]*i&lt;=2*n&amp;&amp;j&lt;=cnt;j++){
+			not_prime[prime[j]*i]=1;mn[prime[j]*i]=j;
+			if(i%prime[j]==0)break;
+		}
+	}
+}
+
+void add(int x,int f)
+{
+	while(x!=1){
+		num[mn[x]]+=f;
+		x/=prime[mn[x]];
+	}
+}
+
+int main()
+{
+	n=read(),p=read();
+	getpri();
+	dep(i,2*n,n+1)add(i,1);
+	rep(i,1,n)add(i,-1);
+	add(n+1,-1);
+	rep(i,1,cnt)
+	    while(num[i]--)ans=(ans*prime[i])%p;
+	printf(&quot;%lld\n&quot;,ans);
+	return 0;
+}</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>
+<br />

@@ -1,0 +1,108 @@
+---
+tags: 
+ - 数论-杂题
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P17.jpg"
+preview-img: "/img/preview/P57.jpg"
+---
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">标签：快速幂，快速乘，数学，数论</span></strong>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">Description</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">为了表彰小联为Samuel星球的探险所做出的贡献，小联被邀请参加Samuel星球近距离载人探险活动。 由于Samuel星球相当遥远，科学家们要在飞船中度过相当长的一段时间，小联提议用扑克牌打发长途旅行中的无聊时间。玩了几局之后，大家觉得单纯玩扑克牌对于像他们这样的高智商人才来说太简单了。有人提出了扑克牌的一种新的玩法。对于扑克牌的一次洗牌是这样定义的，将一叠N（N为偶数）张扑克牌平均分成上下两叠，取下面一叠的第一张作为新的一叠的第一张，然后取上面一叠的第一张作为新的一叠的第二张，再取下面一叠的第二张作为新的一叠的第三张……如此交替直到所有的牌取完。 如果对一叠6张的扑克牌1 2 3 4 5 6，进行一次洗牌的过程如下图所示： 从图中可以看出经过一次洗牌，序列1 2 3 4 5 6变为4 1 5 2 6 3。当然，再对得到的序列进行一次洗牌，又会变为2 4 6 1 3 5。 游戏是这样的，如果给定长度为N的一叠扑克牌，并且牌面大小从1开始连续增加到N（不考虑花色），对这样的一叠扑克牌，进行M次洗牌。最先说出经过洗牌后的扑克牌序列中第L张扑克牌的牌面大小是多少的科学家得胜。小联想赢取游戏的胜利，你能帮助他吗？</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">Input</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">有三个用空格间隔的整数，分别表示N，M，L （其中0＜ N ≤ 10 ^ 10 ，0 ≤ M ≤ 10^ 10，且N为偶数）。</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">Output</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">单行输出指定的扑克牌的牌面大小。 </span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">Sample Input</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">6 2 3<br />
+	</span><br />
+	
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">Sample Output</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">6</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">分析：</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">经过一次变换位置p[x]=x*2%(n+1)，所以经过m次变换x*(2^m)=l (MOD N+1)</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">逆元变化后x=(n/2+1)^m*l mod n+1，用快速幂解决，但是有可能乘爆，所有加快速乘</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">Code</span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cmath&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+#define LL long long
+#define mod (n+1)
+using namespace std;
+inline LL read()
+{
+    LL f=1,x=0;char ch=getchar();
+    while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+    while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+    return x*f;
+}
+LL n,m,l;
+LL qmul(LL x,LL y){
+    LL re=0;
+    while(y){
+        if(y&amp;1)re+=x,re%=mod;
+        x+=x,x%=mod;
+        y&gt;&gt;=1;
+    }
+    return re;
+}
+LL qpow(LL x,LL y){
+    LL re=1;
+    while(y){
+        if(y&amp;1)re=qmul(re,x);
+        x=qmul(x,x);y&gt;&gt;=1;
+    }
+    return re;
+}
+int main()
+{
+    n=read(),m=read(),l=read();
+    cout&lt;&lt;qmul(qpow(n/2+1,m),l)%mod&lt;&lt;endl;
+    return 0;
+}
+</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>

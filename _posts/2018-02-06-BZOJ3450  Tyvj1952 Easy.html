@@ -1,0 +1,123 @@
+---
+tags: 
+ - DP-杂题
+ - 数论-期望
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P35.jpg"
+preview-img: "/img/preview/P75.jpg"
+---
+<p>
+	<strong>标签：期望，数学，递推</strong>
+</p>
+<p>
+	<strong>Description</strong>
+</p>
+<p>
+	某一天WJMZBMR在打osu~~~但是他太弱逼了，有些地方完全靠运气:(<br />
+	我们来简化一下这个游戏的规则<br />
+	有n次点击要做，成功了就是o，失败了就是x，分数是按comb计算的，连续a个comb就有a*a分，comb就是极大的连续o。<br />
+	比如ooxxxxooooxxx，分数就是2*2+4*4=4+16=20。<br />
+	Sevenkplus闲的慌就看他打了一盘，有些地方跟运气无关要么是o要么是x，有些地方o或者x各有50%的可能性，用?号来表示。<br />
+	比如oo?xx就是一个可能的输入。<br />
+	那么WJMZBMR这场osu的期望得分是多少呢？<br />
+	比如oo?xx的话，?是o的话就是oooxx =&gt; 9，是x的话就是ooxxx =&gt; 4<br />
+	期望自然就是(4+9)/2 =6.5了
+</p>
+<p>
+	<strong>Input</strong>
+</p>
+<p>
+	<br />
+	第一行一个整数n，表示点击的个数<br />
+	接下来一个字符串，每个字符都是ox？中的一个
+</p>
+<p>
+	<strong>Output</strong>
+</p>
+<p>
+	一行一个浮点数表示答案<br />
+	四舍五入到小数点后4位<br />
+	如果害怕精度跪建议用long double或者extended
+</p>
+<p>
+	<strong>Sample Input</strong>
+</p>
+<p>
+	4<br />
+	????
+</p>
+<p>
+	<strong>Sample Output</strong>
+</p>
+<p>
+	4.1250<br />
+	<br />
+	<br />
+	n&lt;=300000<br />
+	osu很好玩的哦<br />
+	WJMZBMR技术还行(雾),x基本上很少呢
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	分析：
+</p>
+<p>
+	F[i]表示前i项的期望值，g[i]表示当前一段区间内连续一段‘o’的期望长度
+</p>
+<p>
+	然后对于每个字符更新f[i]和g[i]
+</p>
+<p>
+	Code
+</p>
+<pre name="code" class="cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define ll long long
+#define mem(x,num) memset(x,num,sizeof x)
+#ifdef WIN32
+#define LL &quot;%I64d&quot;
+#else
+#define LL &quot;%lld&quot;
+#endif
+using namespace std;
+inline ll read()
+{
+    ll f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const int maxn=3e5+6;
+int n;
+double g[maxn],f[maxn];
+char ch;
+int main()
+{
+	n=read();
+	rep(i,1,n){
+		ch=getchar();
+		if(ch=='o'){g[i]=g[i-1]+1;f[i]=f[i-1]+2*g[i-1]+1;}
+		if(ch=='x'){g[i]=0;f[i]=f[i-1];}
+		if(ch=='?'){g[i]=g[i-1]/2+0.5;f[i]=f[i-1]+g[i-1]+0.5;}
+	}
+	printf(&quot;%.4lf\n&quot;,f[n]);
+	return 0;
+}
+		</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

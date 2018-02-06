@@ -1,0 +1,148 @@
+---
+tags: 
+ - DP-状压
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P13.jpg"
+preview-img: "/img/preview/P53.jpg"
+---
+<p style="margin:0px">
+	<strong><span style="font-size:16px;"><span style="font-family:Microsoft YaHei;">标签：状压<span style="margin:0px" lang="EN-US">DP</span></span></span></strong>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Description</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-size:16px;"><span style="font-family:Microsoft YaHei;"><span style="margin:0px" lang="EN-US">Farmer John</span>新买了一块长方形的牧场，这块牧场被划分成<span style="margin:0px" lang="EN-US">M</span>列<span style="margin:0px" lang="EN-US">N</span>行<span style="margin:0px" lang="EN-US">(1&lt;=M&lt;=12;1&lt;=N&lt;=12)</span>，每一格都是一块正方形的土地。<span style="margin:0px" lang="EN-US">FJ</span>打算在牧场上的某几格土地里种上美味的草，供他的奶牛们享用。遗憾的是，有些土地相当的贫瘠，不能用来放牧。并且，奶牛们喜欢独占一块草地的感觉，于是<span style="margin:0px" lang="EN-US">FJ</span>不会选择两块相邻的土地，也就是说，没有哪两块草地有公共边。当然，<span style="margin:0px" lang="EN-US">FJ</span>还没有决定在哪些土地上种草。作为一个好奇的农场主，<span style="margin:0px" lang="EN-US">FJ</span>想知道，如果不考虑草地的总块数，那么，一共有多少种种植方案可供他选择。当然，把新的牧场荒废，不在任何土地上种草，也算一种方案。请你帮<span style="margin:0px" lang="EN-US">FJ</span>算一下这个总方案数。</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-size:16px;"><span style="font-family:Microsoft YaHei;"><span style="margin:0px" lang="EN-US">*</span>第<span style="margin:0px" lang="EN-US">1</span>行<span style="margin:0px" lang="EN-US">:</span>两个正整数<span style="margin:0px" lang="EN-US">M</span>和<span style="margin:0px" lang="EN-US">N</span>，用空格隔开</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-size:16px;"><span style="font-family:Microsoft YaHei;"><span style="margin:0px" lang="EN-US">*</span>第<span style="margin:0px" lang="EN-US">2..M+1</span>行<span style="margin:0px" lang="EN-US">:</span>每行包含<span style="margin:0px" lang="EN-US">N</span>个用空格隔开的整数，描述了每块土地的状态。输入的第<span style="margin:0px" lang="EN-US">i+1</span>行描述了第<span style="margin:0px" lang="EN-US">i</span>行的土地。所有整数均为<span style="margin:0px" lang="EN-US">0</span>或<span style="margin:0px" lang="EN-US">1</span>，是<span style="margin:0px" lang="EN-US">1</span>的话，表示这块土地足够肥沃，<span style="margin:0px" lang="EN-US">0</span>则表示这块地上不适合种草</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-size:16px;"><span style="font-family:Microsoft YaHei;"><span style="margin:0px" lang="EN-US">*</span>第<span style="margin:0px" lang="EN-US">1</span>行<span style="margin:0px" lang="EN-US">:</span>输出一个整数，即牧场分配总方案数除以<span style="margin:0px" lang="EN-US">100,000,000</span>的余数</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">2 3</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">1 1 1</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">0 1 0</span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">9</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-size:16px;"><span style="font-family:Microsoft YaHei;">输出说明<span style="margin:0px" lang="EN-US">:</span></span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">按下图把各块土地编号：</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">1 2 3</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-size:16px;"><span style="font-family:Microsoft YaHei;"><span style="margin:0px">&nbsp;</span>4</span></span></span>
+</p>
+<p style="margin:0px; text-indent:21pt">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">只开辟一块草地的话，有<span style="margin:0px" lang="EN-US">4</span>种方案：选<span style="margin:0px" lang="EN-US">1</span>、<span style="margin:0px" lang="EN-US">2</span>、<span style="margin:0px" lang="EN-US">3</span>、<span style="margin:0px" lang="EN-US">4</span>中的任一块。开辟两块草地的话，有<span style="margin:0px" lang="EN-US">3</span>种方案：<span style="margin:0px" lang="EN-US">13</span>、<span style="margin:0px" lang="EN-US">14</span>以及<span style="margin:0px" lang="EN-US">34</span>。选三块草地只有一种方案：<span style="margin:0px" lang="EN-US">134</span>。再加把牧场荒废的那一种，总方案数为<span style="margin:0px" lang="EN-US">4+3+1+1=9</span>种。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-size:16px;"><span style="font-family:Microsoft YaHei;">题意：给定<span style="margin:0px" lang="EN-US">N*M</span>的矩阵<span style="margin:0px" lang="EN-US">a</span>，定义合适的种植方案为<span style="margin:0px" lang="EN-US">a[i][j]==1</span>且<span style="margin:0px" lang="EN-US">a[i-1][j]</span>≠<span style="margin:0px" lang="EN-US">1&amp;&amp; a[i+1][j]</span>≠<span style="margin:0px" lang="EN-US">1&amp;&amp;a[i][j-1]</span>≠<span style="margin:0px" lang="EN-US">1&amp;&amp;a[i][j+1]</span>≠<span style="margin:0px" lang="EN-US">1</span></span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">求这个矩阵<span style="margin:0px" lang="EN-US">a</span>中有多少种合适的种植方案</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-size:16px;"><span style="font-family:Microsoft YaHei;">数据范围<span style="margin:0px" lang="EN-US">N</span>，<span style="margin:0px" lang="EN-US">M&lt;=12</span></span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">状压<span style="margin:0px" lang="EN-US">DP</span>入门裸题</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-size:16px;"><span style="font-family:Microsoft YaHei;"><span style="margin:0px" lang="EN-US">F[i][j]</span>表示前<span style="margin:0px" lang="EN-US">i</span>行状态为<span style="margin:0px" lang="EN-US">j</span>的方案数</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-size:14px"><span style="font-family:Microsoft YaHei;"><span style="margin:0px" lang="EN-US">F[i][j]=sum{f[i-1][k]}<span style="margin:0px">&nbsp;&nbsp;&nbsp;</span>k</span>与<span style="margin:0px" lang="EN-US">j</span>都符合要求</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Code</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"></span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;iomanip&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define LL long long
+#define mem(x,num) memset(x,num,sizeof x)
+using namespace std;
+inline LL read()
+{
+	LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const LL mod=1e9;
+LL m,n,ans,ed,t[16],mp[16],f[16][1&lt;&lt;12];
+void dp()
+{
+	rep(i,0,ed){
+		if((i&amp;(i&gt;&gt;1))==0&amp;&amp;(i|mp[1])==mp[1])f[1][i]=1;}//第一行状态初始化，i&amp;(i&gt;&gt;1)保证左右不会相邻，i|mp[1]初始化第一行的状态 
+	rep(i,2,m)
+		rep(j,0,ed)//枚举每一行的状态 
+		    if(f[i-1][j])
+			    rep(k,0,ed)
+			        if((j&amp;k)==0&amp;&amp;(k|mp[i])==mp[i]&amp;&amp;(k&amp;(k&gt;&gt;1))==0)//找到符合该行的特征值 
+						f[i][k]=(f[i][k]+f[i-1][j])%mod;
+	rep(i,0,ed)ans+=f[m][i],ans%=mod;
+}
+int main()
+{
+	rep(i,1,12)t[i]=1&lt;&lt;(i-1);
+	m=read(),n=read();
+	rep(i,1,m)
+	    rep(j,1,n){
+		    LL x=read();
+			mp[i]&lt;&lt;=1;mp[i]+=x;//用mp[i]记录该行特征值 
+		}
+	ed=(1&lt;&lt;n)-1;
+	dp();
+	printf(&quot;%lld\n&quot;,ans);
+	return 0;
+}</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>

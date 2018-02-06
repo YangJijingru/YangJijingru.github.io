@@ -1,0 +1,134 @@
+---
+tags: 
+ - 数论-线性筛
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P22.jpg"
+preview-img: "/img/preview/P62.jpg"
+---
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">标签：逆元，筛法，数学，数论</span></strong>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">Description</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">　　大富翁国因为通货膨胀，以及假钞泛滥，政府决定推出一项新的政策：现有钞票编号范围为1到N的阶乘，但是，政府只发行编号与M!互质的钞票。房地产第一大户沙拉公主决定预测一下大富翁国现在所有真钞票的数量。现在，请你帮助沙拉公主解决这个问题，由于可能张数非常大，你只需计算出对R取模后的答案即可。R是一个质数。</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">Input</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">第一行为两个整数T，R。R&lt;=10^9+10，T&lt;=10000，表示该组中测试数据数目，R为模后面T行，每行一对整数N，M，见题目描述 m&lt;=n</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">Output</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">共T行，对于每一对N，M，输出1至N！中与M！素质的数的数量对R取模后的值</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">Sample Input</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">1 11</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">4 2</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">Sample Output</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">1</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">数据范围：</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">对于100%的数据，1 &lt; =N , M&nbsp; &lt; = 10000000<br />
+	<br />
+	</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">题意：求1</span>à<span style="font-family:等线;">N！中与M！互质的个数</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">分析：我们要求的答案就是φ(m!)*(n!)/(m!)%p</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">有关答案的推导（<a target="_blank" href="http://blog.csdn.net/PoPoQQQ/article/details/39957117"><span style="color:#0563c1;">http://blog.csdn.net/PoPoQQQ/article/details/39957117</span></a>）</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">而φ(m!)=m!*(pi-1)/pi&nbsp; pi为m!的质因数</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">所以我们最后的结果就是n!*∏(pi-1)/pi</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">那么需要求1到1e7的素数和逆元</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">Code</span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define LL long long
+#define mem(x,num) memset(x,num,sizeof x)
+using namespace std;
+inline LL read()
+{
+	LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const int maxn=1e7+6;
+LL ans[maxn],fac[maxn],inv[maxn],n,m,T,cnt=0,mod;
+int prime[1000000];
+bool not_prime[maxn];
+void shaker()
+{
+	LL j;
+	rep(i,2,maxn){
+		if(!not_prime[i])prime[++cnt]=i;
+		for(j=1;j&lt;=cnt&amp;&amp;i*prime[j]&lt;=maxn;j++){
+			not_prime[prime[j]*i]=1;
+			if(i%prime[j]==0)break;
+		}
+	}
+	fac[1]=inv[1]=1;
+	rep(i,2,maxn)fac[i]=fac[i-1]*i%mod;
+	rep(i,2,maxn){
+		if(i==mod)break;
+		inv[i]=(mod-mod/i)*inv[mod%i]%mod;
+	}
+	ans[1]=1;
+	rep(i,2,maxn)
+		if(!not_prime[i])ans[i]=ans[i-1]*(i-1)%mod*inv[i%mod]%mod;
+		else ans[i]=ans[i-1];
+}
+int main()
+{
+	T=read(),mod=read();
+	shaker();
+	while(T--)
+	{
+		n=read(),m=read();
+		printf(&quot;%lld\n&quot;,fac[n]*ans[m]%mod);
+	}
+	return 0;
+}</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>

@@ -1,0 +1,131 @@
+---
+tags: 
+ - DP-杂题
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P10.jpg"
+preview-img: "/img/preview/P50.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>标签：动态规划</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>Description</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">最近，Farmer John的奶牛们越来越不满于牛棚里一塌糊涂的电话服务于是，她们要求FJ把那些老旧的电话线换成性能更好的新电话线。 新的电话线架设在已有的N(2 &lt;= N &lt;= 100,000)根电话线杆上， 第i根电话线杆的高度为height_i米(1 &lt;= height_i &lt;= 100)。电话线总是从一根电话线杆的顶端被引到相邻的那根的顶端 如果这两根电话线杆的高度不同，那么FJ就必须为此支付 C*电话线杆高度差(1 &lt;= C &lt;= 100)的费用。当然，你不能移动电话线杆，只能按原有的顺序在相邻杆间架设电话线。Farmer John认为 加高某些电话线杆能减少架设电话线的总花费，尽管这项工作也需要支出一定的费用。更准确地，如果他把一根电话线杆加高X米的话，他得为此付出X^2的费用。请你帮Farmer John计算一下，如果合理地进行这两种工作，他最少要在这个电话线改造工程上花多少钱。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>Input</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">* 第1行: 2个用空格隔开的整数：N和C</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">* 第2..N+1行: 第i+1行仅有一个整数：height_i</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>Output</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">* 第1行: 输出Farmer John完成电话线改造工程所需要的最小花费</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>Sample Input</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">5 2<br />
+	2<br />
+	3<br />
+	5<br />
+	1<br />
+	4<br />
+	输入说明:<br />
+	一共有5根电话线杆，在杆间拉电话线的费用是每米高度差$2。<br />
+	在改造之前，电话线杆的高度依次为2，3，5，1，4米。<br />
+	<br />
+	</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>Sample Output</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">15<br />
+	输出说明:<br />
+	最好的改造方法是：Farmer John把第一根电话线杆加高1米，把第四根加高2米，<br />
+	使得它们的高度依次为3，3，5，3，4米。这样花在加高电线杆上的钱是$5。<br />
+	此时，拉电话线的费用为$2*(0+2+2+1) = $10，总花费为$15。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">题意：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">给定：长度为N的正整数序列</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">求：min{sum{(change[i]-a[i])^2}+sum{change[i+1]-change[i]}*c}</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">满足：change[i]&gt;=a[i]</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">用h[i][j]表示前i个电线杆且第i个电线杆高度为j时的最小花费</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">H[i][j]=min{abs(k-j)+h[i-1][k]}+(j-wi)^2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">将这个式子化简，把min中的abs绝对值打开，分类讨论</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">可以发现是关于h[i-1][k]+k的后缀min与关于h[i-1][k]-k的前缀min，可以预处理，O（1）得出这个min值</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">时间复杂度为O（n*m）</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+#define LL long long
+using namespace std;
+const int inf=0x3f3f3f,maxh=106,maxn=3e5+6;
+int f[306],g[306],n,c,a[maxn],headsum[maxn],tailsum[maxn],ans=inf;
+
+int main()
+{
+	scanf(&quot;%d%d&quot;,&amp;n,&amp;c);
+	rep(i,1,n)scanf(&quot;%d&quot;,&amp;a[i]);
+	mem(f,inf);
+	rep(i,a[1],maxh)f[i]=(i-a[1])*(i-a[1]);
+	rep(i,2,n){
+		memcpy(g,f,sizeof f);
+		rep(j,0,maxh)f[j]=headsum[j]=tailsum[j]=inf;
+		headsum[0]=g[0];
+		rep(j,1,maxh)headsum[j]=min(headsum[j-1],g[j]-c*j);
+		tailsum[maxh]=g[maxh]+maxh*c;
+		dep(j,maxh-1,0)tailsum[j]=min(tailsum[j+1],g[j]+c*j);
+		rep(j,a[i],maxh)f[j]=min(tailsum[j]-c*j,headsum[j]+c*j)+(j-a[i])*(j-a[i]);
+	}
+	rep(i,a[n],maxh)ans=min(ans,f[i]);
+	cout&lt;&lt;ans&lt;&lt;endl;
+	return 0;
+}
+</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

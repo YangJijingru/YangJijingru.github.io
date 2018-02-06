@@ -1,0 +1,119 @@
+---
+tags: 
+ - DP-状压
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P20.jpg"
+preview-img: "/img/preview/P60.jpg"
+---
+<p style="margin:0px">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">标签：状压<span style="margin:0px" lang="EN-US">DP</span>，位运算</span></strong>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Description</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;"><span style="font-size:16px;">一只队伍在爬山时碰到了雪崩<span style="margin:0px" lang="EN-US">,</span>他们在逃跑时遇到了一座桥<span style="margin:0px" lang="EN-US">,</span>他们要尽快的过桥<span style="margin:0px" lang="EN-US">.</span>桥已经很旧了<span style="margin:0px" lang="EN-US">, </span>所以它不能承受太重的东西<span style="margin:0px" lang="EN-US">.</span>任何时候队伍在桥上的人都不能超过一定的限制<span style="margin:0px" lang="EN-US">. </span>所以这只队伍过桥时只能分批过<span style="margin:0px" lang="EN-US">,</span>当一组全部过去时<span style="margin:0px" lang="EN-US">,</span>下一组才能接着过<span style="margin:0px" lang="EN-US">.</span>队伍里每个人过桥都需要特定的时间<span style="margin:0px" lang="EN-US">,</span>当一批队员过桥时时间应该算走得最慢的那一个<span style="margin:0px" lang="EN-US">,</span>每个人也有特定的重量<span style="margin:0px" lang="EN-US">,</span>我们想知道如何分批过桥能使总时间最少<span style="margin:0px" lang="EN-US">.</span></span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;"><span style="font-size:16px;">第一行两个数<span style="margin:0px" lang="EN-US">: w –</span>桥能承受的最大重量<span style="margin:0px" lang="EN-US">(100 &lt;= w &lt;= 400) </span>和<span style="margin:0px" lang="EN-US"> n –</span>队员总数<span style="margin:0px" lang="EN-US">(1 &lt;= n &lt;= 16). </span>接下来<span style="margin:0px" lang="EN-US">n</span>行每行两个数分别表示<span style="margin:0px" lang="EN-US">: t – </span>该队员过桥所需时间<span style="margin:0px" lang="EN-US">(1 &lt;= t &lt;= 50)</span>和<span style="margin:0px" lang="EN-US"> w – </span>该队员的重量<span style="margin:0px" lang="EN-US">(10 &lt;= w &lt;= 100).</span></span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;"><span style="font-size:16px;">输出一个数表示最少的过桥时间<span style="margin:0px" lang="EN-US">.</span></span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">100 3</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">24 60</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">10 40</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">18 50</span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">42</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">题意：<span style="margin:0px" lang="EN-US">N</span>个物品，每个物品有重量<span style="margin:0px" lang="EN-US">Wi</span>和时间<span style="margin:0px" lang="EN-US">Ti</span>，可以选取一些物品组合购买，<span style="margin:0px" lang="EN-US">Wa+Wb+……&lt;=Wmax</span>，对于这些组合购买的物品，只计算其中最大的<span style="margin:0px" lang="EN-US">Ti</span>，使得购买所有物品<span style="margin:0px" lang="EN-US">Ti</span>的总和最小</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;"><span style="font-size:16px;"><span style="margin:0px" lang="EN-US">F[i]</span>表示<span style="margin:0px" lang="EN-US">i</span>状态下最优值，可以先预处理出<span style="margin:0px" lang="EN-US">t[i]</span>和<span style="margin:0px" lang="EN-US">w[i]</span>，之后枚举<span style="margin:0px" lang="EN-US">i</span>之前的状态<span style="margin:0px" lang="EN-US">j</span>，暴力状压，转移枚举子集，使用了一个小技巧加速，否则会<span style="margin:0px" lang="EN-US">TLE</span></span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Code</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"></span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;iomanip&gt;
+#include&lt;cstring&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+#define LL long long
+using namespace std;
+inline LL read()
+{
+	LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const LL inf=1844387848,ed=1&lt;&lt;18,maxn=20;
+LL W,n,a[maxn],b[maxn],f[ed],t[ed],w[ed];
+
+int main()
+{
+	W=read(),n=read();
+	rep(i,1,n)a[i]=read(),b[i]=read();
+	rep(i,1,(1&lt;&lt;n)-1)
+		for(int j=0;(1&lt;&lt;j)&lt;=i;j++)
+			if(1&lt;&lt;j&amp;i){
+				w[i]+=b[j+1];
+				t[i]=max(t[i],a[j+1]);
+			}//预处理w[i]与t[i]
+	f[0]=0;
+	rep(i,1,(1&lt;&lt;n)-1){
+		if(w[i]&lt;=W)f[i]=t[i];else f[i]=inf;//f[i]初始化
+		for(int j=(i-1)&amp;i;j;j=(j-1)&amp;i)//注意！！！这里j使用了小技巧加速，可以快速枚举子集
+			if(w[i^j]&lt;=W)f[i]=min(f[i],f[j]+t[i^j]);
+	}
+    printf(&quot;%lld\n&quot;,f[(1&lt;&lt;n)-1]);
+    return 0;
+}</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>

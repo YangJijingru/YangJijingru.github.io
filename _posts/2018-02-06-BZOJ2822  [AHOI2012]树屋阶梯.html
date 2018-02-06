@@ -1,0 +1,153 @@
+---
+tags: 
+ - 数论-卡特兰数
+ - 特殊-高精度
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P29.jpg"
+preview-img: "/img/preview/P69.jpg"
+---
+<p style="margin:0px">
+	<strong><span style="font-family:等线;font-size:16px;">标签：数学，卡特兰数，高精度</span></strong>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Description</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">暑假期间，小龙报名了一个模拟野外生存作战训练班来锻炼体魄，训练的第一个晚上，教官就给他们出了个难题。由于地上露营湿气重，必须选择在高处的树屋露营。小龙分配的树屋建立在一颗高度为<span style="margin:0px" lang="EN-US">N+1</span>尺（<span style="margin:0px" lang="EN-US">N</span>为正整数）的大树上，正当他发愁怎么爬上去的时候，发现旁边堆满了一些空心四方钢材（如图<span style="margin:0px" lang="EN-US">1.1</span>），经过观察和测量，这些钢材截面的宽和高大小不一，但都是<span style="margin:0px" lang="EN-US">1</span>尺的整数倍，教官命令队员们每人选取<span style="margin:0px" lang="EN-US">N</span>个空心钢材来搭建一个总高度为<span style="margin:0px" lang="EN-US">N</span>尺的阶梯来进入树屋，该阶梯每一步台阶的高度为<span style="margin:0px" lang="EN-US">1</span>尺，宽度也为<span style="margin:0px" lang="EN-US">1</span>尺。如果这些钢材有各种尺寸，且每种尺寸数量充足，那么小龙可以有多少种搭建方法？（注：为了避免夜里踏空，钢材空心的一面绝对不可以向上。）</span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:宋体;"><img src="http://xheditor.com/js/xheditor_skin/default/img/waiting.gif" remoteimg="0" alt="" /></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;"><span style="margin:0px" lang="EN-US">&nbsp;&nbsp;</span>以树屋高度为<span style="margin:0px" lang="EN-US">4</span>尺、阶梯高度<span style="margin:0px" lang="EN-US">N=3</span>尺为例，小龙一共有如图<span style="margin:0px" lang="EN-US">1.2</span>所示的<span style="margin:0px" lang="EN-US">5</span>种</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;"><span style="margin:0px" lang="EN-US">&nbsp;&nbsp;</span>搭 建方法：</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;"><span style="font-size:16px;">&nbsp; &nbsp;<img src="http://xheditor.com/js/xheditor_skin/default/img/waiting.gif" remoteimg="1" alt="" /></span></span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">一个正整数 <span style="margin:0px" lang="EN-US">N(1≤N≤500)</span>，表示阶梯的高度</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">一个正整数，表示搭建方法的个数。（注：搭建方法个数可能很大。）</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">3</span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">5</span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">HINT</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">1&nbsp; ≤N≤500</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">无脑卡特兰数<span style="margin:0px" lang="EN-US">+</span>高精度乘法</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">吐槽下<span style="margin:0px" lang="EN-US">AH</span>省选题竟然会出高精度！</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Code</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"></span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define LL long long
+#define mem(x,num) memset(x,num,sizeof x)
+using namespace std;
+inline LL read()
+{
+	LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const LL maxn=1e6+6;
+LL prime[maxn],mn[maxn],n,cnt=0,num[maxn],ans[maxn];
+bool not_prime[maxn];
+inline void getpri()
+{
+	rep(i,2,2*n){
+		if(!not_prime[i]){prime[++cnt]=i;mn[i]=cnt;}
+		for(int j=1;j&lt;=cnt&amp;&amp;i*prime[j]&lt;=2*n;j++){
+			not_prime[i*prime[j]]=1;mn[i*prime[j]]=j;
+			if(i%prime[j]==0)break;
+		}
+	}
+}
+void add(int x,int f)
+{
+	while(x!=1){
+		num[mn[x]]+=f;
+		x/=prime[mn[x]];
+	}
+}
+
+inline void Mul(int x)
+{
+	rep(i,1,ans[0])ans[i]*=x;
+	rep(i,1,ans[0]-1){
+		ans[i+1]+=ans[i]/10;
+		ans[i]%=10;
+	}
+	while(ans[ans[0]]&gt;9){
+		ans[ans[0]+1]=ans[ans[0]]/10;
+		ans[ans[0]]%=10;ans[0]++;
+	}
+}
+
+
+int main()
+{
+	n=read();
+	getpri();
+	dep(i,2*n,n+1)add(i,1);
+	rep(i,1,n)add(i,-1);
+	add(n+1,-1);
+	mem(ans,0);
+	ans[0]=1,ans[1]=1;
+	rep(i,1,cnt)
+	    while(num[i]--)Mul(prime[i]);//cout&lt;&lt;&quot;R\n&quot;;
+	dep(i,ans[0],1)printf(&quot;%lld&quot;,ans[i]);
+	return 0;
+}
+	</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>

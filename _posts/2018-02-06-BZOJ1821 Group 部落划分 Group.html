@@ -1,0 +1,148 @@
+---
+tags: 
+ - 图论-最小生成树
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P14.jpg"
+preview-img: "/img/preview/P54.jpg"
+---
+<h2>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">标签：并查集，最小生成树</span>
+</h2>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Description</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">聪聪研究发现，荒岛野人总是过着群居的生活，但是，并不是整个荒岛上的所有野人都属于同一个部落，野人们总是拉帮结派形成属于自己的部落，不同的部落之间则经常发生争斗。只是，这一切都成为谜团了——聪聪根本就不知道部落究竟是如何分布的。 不过好消息是，聪聪得到了一份荒岛的地图。地图上标注了N个野人居住的地点（可以看作是平面上的坐标）。我们知道，同一个部落的野人总是生活在附近。我们把两个部落的距离，定义为部落中距离最近的那两个居住点的距离。聪聪还获得了一个有意义的信息——这些野人总共被分为了K个部落！这真是个好消息。聪聪希望从这些信息里挖掘出所有部落的详细信息。他正在尝试这样一种算法： 对于任意一种部落划分的方法，都能够求出两个部落之间的距离，聪聪希望求出一种部落划分的方法，使靠得最近的两个部落尽可能远离。 例如，下面的左图表示了一个好的划分，而右图则不是。请你编程帮助聪聪解决这个难题。&nbsp;</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">第一行包含两个整数N和K(1&lt; = N &lt; = 1000,1&lt; K &lt; = N)，分别代表了野人居住点的数量和部落的数量。</span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">接下来N行，每行包含两个正整数x,y，描述了一个居住点的坐标(0 &lt; =x, y &lt;=10000)</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输出一行，为最优划分时，最近的两个部落的距离，精确到小数点后两位。</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">4 2<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0 0<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0 1<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 1<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 0&nbsp;<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<br />
+	
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="background:rgb(141,184,255)"><span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+	</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1.00<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="background:rgb(141,184,255)"><span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+	<br />
+	</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">HINT</span></span></strong>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Source</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<a target="_blank" href="http://www.lydsy.com/JudgeOnline/problemset.php?search=JSOI2010%E7%AC%AC%E4%BA%8C%E8%BD%AEContest1"><span style="font-family:Microsoft YaHei;font-size:16px;">JSOI2010第二轮Contest1</span></a>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：kruskal最小生成树，将n^2条边从小到大排序，找（n-k-1）条小的边加入并查集（两个端点原本未在同一个部落中）</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输出第（n-k）条边即可</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">当年的省选题那么简单QwQ</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code&nbsp;</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+using namespace std;
+const int maxn=1010,maxm=1000010;
+struct edge{int u,v;double w;}e[maxm];
+int cnt=0,fa[maxn],x[maxn],y[maxn];
+int n,k;
+inline int cmp(edge x,edge y){return x.w&lt;y.w;}
+inline void ins(int a,int b)
+{
+	double s=sqrt((x[a]-x[b])*(x[a]-x[b])+(y[a]-y[b])*(y[a]-y[b]));
+	cnt++;
+	e[cnt]=(edge){a,b,s};
+}
+inline int find(int x){
+	return x==fa[x]?x:fa[x]=find(fa[x]);
+}
+int main()
+{
+	scanf(&quot;%d%d&quot;,&amp;n,&amp;k);
+	rep(i,1,n)scanf(&quot;%d%d&quot;,&amp;x[i],&amp;y[i]);
+	rep(i,1,n)rep(j,i+1,n)ins(i,j);
+	sort(e+1,e+1+cnt,cmp);
+	rep(i,1,n)fa[i]=i;
+	rep(i,1,cnt){
+		int root1=find(e[i].u),root2=find(e[i].v);
+		if(root1!=root2){
+			if(n&gt;k){n--;fa[root1]=root2;}
+		else{printf(&quot;%.2lf\n&quot;,e[i].w);return 0;}}
+	}
+}</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

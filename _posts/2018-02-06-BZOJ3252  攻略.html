@@ -1,0 +1,198 @@
+---
+tags: 
+ - 基础算法-dfs
+ - 基础算法-贪心
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P33.jpg"
+preview-img: "/img/preview/P73.jpg"
+---
+<p>
+	标签：贪心，dfs
+</p>
+<p>
+	<strong>Description</strong>
+</p>
+<p>
+	题目简述：树版[k取方格数]
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	众所周知，桂木桂马是攻略之神，开启攻略之神模式后，他可以同时攻略k部游戏。
+</p>
+<p>
+	今天他得到了一款新游戏《XX半岛》，这款游戏有n个场景(scene)，某些场景可以通过不同的选择支到达其他场景。所有场景和选择支构成树状结构：开始游戏时在根节点（共通线），叶子节点为结局。每个场景有一个价值，现在桂马开启攻略之神模式，同时攻略k次该游戏，问他观赏到的场景的价值和最大是多少（同一场景观看多次是不能重复得到价值的）
+</p>
+<p>
+	“为什么你还没玩就知道每个场景的价值呢？”
+</p>
+<p>
+	“我已经看到结局了。”
+</p>
+<p>
+	<strong>Input</strong>
+</p>
+<p>
+	第一行两个正整数n,k
+</p>
+<p>
+	第二行n个正整数，表示每个场景的价值
+</p>
+<p>
+	以下n-1行,每行2个整数a,b，表示a场景有个选择支通向b场景（即a是b的父亲）
+</p>
+<p>
+	保证场景1为根节点
+</p>
+<p>
+	<strong>Output</strong>
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	输出一个整数表示答案
+</p>
+<p>
+	<strong>Sample Input</strong>
+</p>
+<p>
+	5 2
+</p>
+<p>
+	4 3 2 1 1
+</p>
+<p>
+	1 2
+</p>
+<p>
+	1 5
+</p>
+<p>
+	2 3
+</p>
+<p>
+	2 4<br />
+	<br />
+	
+</p>
+<p>
+	<strong>Sample Output</strong>
+</p>
+<p>
+	10
+</p>
+<p>
+	<strong>HINT</strong>
+</p>
+<p>
+	对于100%的数据，n&lt;=200000，1&lt;=场景价值&lt;=2^31-1
+</p>
+<p>
+	<strong>Source</strong>
+</p>
+<p>
+	<a target="_blank" href="http://www.lydsy.com/JudgeOnline/problemset.php?search=dfs%E5%BA%8F+%E7%BA%BF%E6%AE%B5%E6%A0%91">dfs序+线段树</a>
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	分析：这题是钟长者出的模拟题，但因为不明原因搞上了bzoj
+</p>
+<p>
+	很多人都是线段树+dfs序的做法
+</p>
+<p>
+	实际上并不需要
+</p>
+<p>
+	可以先dfs一遍，处理出w[x]表示以x为根节点的子树中取一条价值和最大的链
+</p>
+<p>
+	每次选择x中w[son]最大的一个转移：w[x]=max(w[son])+a[x]
+</p>
+<p>
+	然后将w排序，转化为c数组，取前k大
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	Code
+</p>
+<pre name="code" class="cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+#define rep(i,a,b) for(register int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(register int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+#define v e[i].to
+#define ll long long
+#ifdef WIN32
+#define LL &quot;%I64d&quot;
+#else 
+#define LL &quot;%lld&quot;
+#endif
+using namespace std;
+inline ll read()
+{
+    ll f=1,x=0;char ch=getchar(); 
+    while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+    while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+    return x*f;
+}
+const  ll maxn=2e5+6;
+ll head[maxn],a[maxn],n,k,w[maxn],cnt=0,c[maxn],tot=0;
+struct edge{ll to,next;}e[maxn&lt;&lt;1];
+#define v e[i].to
+#define reg(x) for(int i=head[x];i;i=e[i].next)
+inline bool cmp(ll x,ll y){return x&gt;y;}
+void dfs(int x,int fa)
+{
+    ll Max=0,mx;
+	reg(x)
+	{
+		if(v==fa)continue;
+		dfs(v,x);
+		if(w[v]&gt;Max)Max=w[v],mx=v;
+	}
+	w[x]=Max+a[x];
+	reg(x)
+	{
+		if(v==fa||v==mx)continue;
+		c[++tot]=w[v];
+	}
+}
+		
+int main()
+{
+	n=read(),k=read();
+	rep(i,1,n)a[i]=read();
+	rep(i,1,n-1){
+		int U=read(),V=read();
+		e[++cnt]=(edge){V,head[U]};head[U]=cnt;
+		e[++cnt]=(edge){U,head[V]};head[V]=cnt;
+	}
+	tot=0;dfs(1,1);
+	c[++tot]=w[1];
+	sort(c+1,c+1+tot,cmp);
+	ll ans=0;
+	k=min(k,tot);
+	rep(i,1,k)ans+=c[i];
+	cout&lt;&lt;ans&lt;&lt;endl;
+	return 0;
+}</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

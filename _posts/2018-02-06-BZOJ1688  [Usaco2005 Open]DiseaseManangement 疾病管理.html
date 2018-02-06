@@ -1,0 +1,131 @@
+---
+tags: 
+ - DP-状压
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P9.jpg"
+preview-img: "/img/preview/P49.jpg"
+---
+<p>
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">标签：状压DP</span></strong>
+</p>
+<p>
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Description</span></strong>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Alas! A set of D (1 &lt;= D &lt;= 15)diseases (numbered 1..D) is running through the farm. Farmer John would like tomilk as many of his N (1 &lt;= N &lt;= 1,000) cows as possible. If the milkedcows carry more than K (1 &lt;= K &lt;= D) different diseases among them, thenthe milk will be too contaminated and will have to be discarded in its entirety.Please help determine the largest number of cows FJ can milk without having todiscard the milk.</span>
+</p>
+<p>
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">* Line 1: Three space-separated integers:N, D, and K * Lines 2..N+1: Line i+1 describes the diseases of cow i with alist of 1 or more space-separated integers. The first integer, d_i, is thecount of cow i's diseases; the next d_i integers enumerate the actual diseases.Of course, the list is empty if d_i is 0. 有N头牛,它们可能患有D种病,现在从这些牛中选出若干头来,但选出来的牛患病的集合中不过超过K种病.</span>
+</p>
+<p>
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">* Line 1: M, the maximum number of cows whichcan be milked.</span>
+</p>
+<p>
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Input</span></strong>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">6 3 2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0---------第一头牛患0种病</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 1------第二头牛患一种病,为第一种病.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 3</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2 2 1</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2 2 1</span>
+</p>
+<p>
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Output</span></strong>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">5</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">OUTPUT DETAILS:</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">If FJ milks cows 1, 2, 3, 5, and 6, thenthe milk will have only two</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">diseases (#1 and #2), which is no greaterthan K (2).<br />
+	</span><br />
+	
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">无脑状压，以d种病作为状态，最后寻找小于K的最优ans值即可</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;iomanip&gt;
+#include&lt;cstring&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define LL long long
+#define mem(x,num) memset(x,num,sizeof x)
+using namespace std;
+inline LL read()
+{
+    LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const int maxn=20;
+LL bin[20],a[1006],f[1&lt;&lt;maxn];
+LL n,d,k,ed,ans;
+inline bool jud(int x)
+{
+	int tot=0;
+	rep(i,1,d)
+		if(bin[i-1]&amp;x){
+			tot++;
+			if(tot&gt;k)return 0;
+			}
+	return 1;
+}
+
+int main()
+{
+	bin[0]=1;
+	rep(i,1,maxn)bin[i]=bin[i-1]&lt;&lt;1;
+	n=read(),d=read(),k=read();ed=(1&lt;&lt;d)-1;
+	rep(i,1,n){
+		LL x=read();
+		rep(j,1,x){LL y=read();a[i]+=bin[y-1];}
+	}//a[i]记录状态
+    rep(i,1,n)
+		dep(j,ed,0)
+			f[j|a[i]]=max(f[j|a[i]],f[j]+1);//注意倒序转移
+	rep(i,0,ed)if(jud(i))ans=max(ans,f[i]);//在d种病的状态中更新最佳答案
+	printf(&quot;%lld\n&quot;,ans);
+	return 0;
+}</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>

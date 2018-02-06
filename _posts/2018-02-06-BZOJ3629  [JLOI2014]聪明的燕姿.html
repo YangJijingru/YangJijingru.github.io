@@ -1,0 +1,157 @@
+---
+tags: 
+ - 数论-线性筛
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P39.jpg"
+preview-img: "/img/preview/P79.jpg"
+---
+<p style="margin:0px">
+	<span style="font-weight:bold"><span style="font-family:等线;"><span style="font-size:16px;">标签：线性筛，<span style="margin:0px" lang="EN-US">dfs</span></span></span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Description</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">阴天傍晚车窗外</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">未来有一个人在等待</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">向左向右向前看</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">爱要拐几个弯才来</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">我遇见谁会有怎样的对白</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">我等的人他在多远的未来</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">我听见风来自地铁和人海</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">我排着队拿着爱的号码牌</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">城市中人们总是拿着号码牌，不停寻找，不断匹配，可是谁也不知道自己等的那个人是谁。可是燕姿不一样，燕姿知道自己等的人是谁，因为燕姿数学学得好！燕姿发现了一个神奇的算法：假设自己的号码牌上写着数字<span style="margin:0px" lang="EN-US">S</span>，那么自己等的人手上的号码牌数字的所有正约数之和必定等于<span style="margin:0px" lang="EN-US">S</span>。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">所以燕姿总是拿着号码牌在地铁和人海找数字（喂！这样真的靠谱吗）可是她忙着唱《绿光》，想拜托你写一个程序能够快速地找到所有自己等的人。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;">输入包含<span style="margin:0px" lang="EN-US">k</span>组数据（<span style="margin:0px" lang="EN-US">k&lt;=100</span>）对于每组数据，输入包含一个号码牌<span style="margin:0px" lang="EN-US">S</span></span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">对于每组数据，输出有两行，第一行包含一个整数<span style="margin:0px" lang="EN-US">m</span>，表示有<span style="margin:0px" lang="EN-US">m</span>个等的人，第二行包含相应的<span style="margin:0px" lang="EN-US">m</span>个数，表示所有等的人的号码牌。注意：你输出的号码牌必须按照升序排列。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">42</span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">3</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">20 26 41</span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">HINT</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;">对于<span style="margin:0px" lang="EN-US">100%</span>的数据，有<span style="margin:0px" lang="EN-US">S&lt;=2*10*9</span></span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">分析：</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">这题需要一些数学基础，知道约数和定理，不知道的出门右转百度百科</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">对于一个数<span style="margin:0px" lang="EN-US">n</span>，分为两种情况讨论</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;"><span style="margin:0px" lang="EN-US">1.n-1</span>为质数，那么<span style="margin:0px" lang="EN-US">n-1</span>存放答案的<span style="margin:0px" lang="EN-US">num</span>数组</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;"><span style="margin:0px" lang="EN-US">2.</span>对于每一个未被搜索过且平方小于当前数的质数，则枚举所有可能符合题意的情况进行递归搜索</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;">时间复杂度并不是很会分析<span style="margin:0px" lang="EN-US">……</span></span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Code</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"></span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+using namespace std;
+const int maxn=5e4;
+int prime[maxn],cnt=0,ans,num[maxn],n;
+bool not_prime[maxn];
+void getprime()
+{
+	rep(i,2,maxn){
+		if(!not_prime[i])prime[++cnt]=i;
+		for(int j=1;prime[j]*i&lt;=maxn&amp;&amp;j&lt;=cnt;j++){
+			not_prime[i*prime[j]]=1;
+			if(i%prime[j]==0)break;
+		}
+	}
+}
+bool isprime(int x)
+{
+	if(x==1)return false;
+	if(x&lt;=maxn)return !not_prime[x];
+	for(int i=1;prime[i]*prime[i]&lt;=x;i++)
+		if(x%prime[i]==0)return false;
+	return true;
+}
+void dfs(int last,int now,int tot)
+{
+	if(tot==1){num[++ans]=now;return;}
+	if(tot-1&gt;prime[last]&amp;&amp;isprime(tot-1))num[++ans]=now*(tot-1);
+	for(int i=last+1;prime[i]*prime[i]&lt;=tot;i++)
+		for(int tnum=prime[i]+1,t=prime[i];tnum&lt;=tot;t*=prime[i],tnum+=t)
+			if(tot%tnum==0)dfs(i,now*t,tot/tnum);
+}
+int main()
+{
+	getprime();
+	while(scanf(&quot;%d&quot;,&amp;n)!=EOF){
+		ans=0;dfs(0,1,n);
+		sort(num+1,num+1+ans);
+		printf(&quot;%d\n&quot;,ans);
+		rep(i,1,ans)printf(&quot;%d%c&quot;,num[i],i==ans?'\n':' ');
+	}
+	return 0;
+}</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>

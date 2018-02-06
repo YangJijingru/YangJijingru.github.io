@@ -1,0 +1,161 @@
+---
+tags: 
+ - 图论-拓扑排序
+ - 图论-tarjan
+ - 特殊-bitset
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P24.jpg"
+preview-img: "/img/preview/P64.jpg"
+---
+<p>
+	<strong>标签：tarjan，bitset，拓扑排序</strong>
+</p>
+<p>
+	<strong>Description</strong>
+</p>
+<p>
+	<strong><img src="http://xheditor.com/js/xheditor_skin/default/img/waiting.gif" remoteimg="0" alt="" /><br />
+	</strong>
+</p>
+<p>
+	<strong>Input</strong>
+</p>
+<p>
+	输入数据第一行是图顶点的数量，一个正整数N。 接下来N行，每行N个字符。第i行第j列的1表示顶点i到j有边，0则表示无边。
+</p>
+<p>
+	<strong>Output</strong>
+</p>
+<p>
+	输出一行一个整数，表示该图的连通数。
+</p>
+<p>
+	<strong>Sample Input</strong>
+</p>
+<p>
+	3 <br />
+	010 <br />
+	001 <br />
+	100 
+</p>
+<p>
+	<strong>Sample Output</strong>
+</p>
+<p>
+	9
+</p>
+<p>
+	<strong>HINT</strong>
+</p>
+<p>
+	对于100%的数据，N不超过2000。
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	分析：
+</p>
+<p>
+	Tarjan缩点重新构图
+</p>
+<p>
+	F[i][j]表示i和j点之间的联通情况，然后按照拓扑序从后往前整体取或，最后用每个联通块的大小来更新答案
+</p>
+<p>
+	Code
+</p>
+<pre name="code" class="cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define ll long long
+#define mem(x,num) memset(x,num,sizeof x)
+#ifdef WIN32
+#define LL &quot;%I64d&quot;
+#else
+#define LL &quot;%lld&quot;
+#endif
+using namespace std;
+inline ll read()
+{
+	ll f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const int maxn=2006;
+int n,cnt=0,scc,top=0,tim,lim,ans=0;
+int head[maxn],h[maxn],r[maxn],dfn[maxn],low[maxn],que[maxn],inque[maxn];
+int belong[maxn],hav[maxn],mark[maxn][maxn];
+char ch[maxn];
+struct edge{int to,next;}e[4000006],ed[4000006];
+#define reg(x) for(int i=head[x];i;i=e[i].next)
+#define v e[i].to
+#define newreg(x) for(int i=h[x];i;i=ed[i].next)
+#define newv ed[i].to
+void tarjan(int x)
+{
+	int now=0;
+	dfn[x]=low[x]=++tim;que[++top]=x;inque[x]=1;
+	reg(x)
+	    if(!dfn[v]){tarjan(v);low[x]=min(low[x],low[v]);}
+	    else if(inque[v])low[x]=min(low[x],dfn[v]);
+	if(low[x]==dfn[x]){
+	    scc++;
+		while(now!=x){
+		    now=que[top--];
+			inque[now]=0;belong[now]=scc;hav[scc]++;
+		}
+	}
+}
+
+void rebuild()
+{
+	cnt=0;
+	rep(k,1,n)
+	    reg(k)
+	        if(belong[k]!=belong[v])ed[++cnt]=(edge){belong[k],h[belong[v]]},h[belong[v]]=cnt,r[belong[k]]++;
+}
+int main()
+{
+	n=read();
+	lim=n/30+1;
+	rep(i,1,n){
+		scanf(&quot;%s&quot;,ch);
+		rep(j,1,n)
+		    if(ch[j-1]-'0')e[++cnt]=(edge){j,head[i]},head[i]=cnt;
+    }
+    rep(i,1,n)
+        if(!dfn[i])tarjan(i);
+    rebuild();
+    top=0;int now;
+    rep(i,1,n)mark[belong[i]][i/30+1]|=(1&lt;&lt;(i%30));
+    rep(i,1,scc)if(!r[i])que[++top]=i;
+    while(top){
+    	now=que[top--];
+    	newreg(now){
+    		rep(j,1,lim)mark[newv][j]|=mark[now][j];
+    	    r[newv]--;
+    	    if(!r[newv])que[++top]=newv;
+    	}
+    }
+    rep(i,1,scc)
+        rep(j,1,n)
+            if((mark[i][j/30+1])&amp;(1&lt;&lt;(j%30)))ans+=hav[i];
+    cout&lt;&lt;ans&lt;&lt;endl;
+    return 0;
+}</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

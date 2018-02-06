@@ -1,0 +1,101 @@
+---
+tags: 
+ - DP-杂题
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P8.jpg"
+preview-img: "/img/preview/P48.jpg"
+---
+<p style="margin:0px">
+	<span style="font-weight:bold"><span style="font-family:等线;"><span style="font-size:16px;">标签：<span style="margin:0px" lang="EN-US">LIS</span>，<span style="margin:0px" lang="EN-US">DP</span></span></span></span><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;"><br />
+	</span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Description</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;"><span style="margin:0px" lang="EN-US">Farmer John</span>养了<span style="margin:0px" lang="EN-US">N(1&lt;= N &lt;= 5,000)</span>头奶牛，每头牛都有一个不超过<span style="margin:0px" lang="EN-US">32</span>位二进制数的正整数编号。<span style="margin:0px" lang="EN-US">FJ</span>希望奶牛们在进食前，能按编号从小到大的顺序排好队，但奶牛们从不听他的话。为了让奶牛们养成这个习惯，每次开饭时，<span style="margin:0px" lang="EN-US">FJ</span>从奶牛中顺序地挑出一些，这些奶牛的编号必须按挑出的顺序递增。然后<span style="margin:0px" lang="EN-US">FJ</span>让被挑出的奶牛们吃饭<span style="margin:0px" lang="EN-US">——</span>其他奶牛就只能饿肚子了。 现在，你得到了这一次开饭前队伍中从前到后所有奶牛的编号。奶牛们想请你计算一下，按照<span style="margin:0px" lang="EN-US">FJ</span>的规定，最多有多少头奶牛能吃上饭？ 比如说，有<span style="margin:0px" lang="EN-US">11</span>头奶牛按以下顺序排好了队（数字代表奶牛的编号）<span style="margin:0px" lang="EN-US"> 2 5 18 3 4 7 10 9 11 8 15</span>对于这个队列，最多可以让<span style="margin:0px" lang="EN-US">7</span>头奶牛吃上饭，她们的编号分别为<span style="margin:0px" lang="EN-US">2,3,4,7,10,11,15</span>。队列<span style="margin:0px" lang="EN-US">2,5,3,10,15</span>是不合法的，因为第<span style="margin:0px" lang="EN-US">3</span>头奶牛的编号<span style="margin:0px" lang="EN-US">(3)</span>小于她前面一头奶牛的编号<span style="margin:0px" lang="EN-US">(5)</span>。</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;"><span style="margin:0px" lang="EN-US">*</span>第<span style="margin:0px" lang="EN-US">1</span>行<span style="margin:0px" lang="EN-US">:</span>一个整数，<span style="margin:0px" lang="EN-US">N * </span>第<span style="margin:0px" lang="EN-US">2..?</span>行<span style="margin:0px" lang="EN-US">:</span>除了最后一行，每一行都包含恰好<span style="margin:0px" lang="EN-US">20</span>个用空格隔开的整数，依次表 示队伍中从前到后的奶牛的编号。如果<span style="margin:0px" lang="EN-US">N</span>不能整除<span style="margin:0px" lang="EN-US">20</span>，那么最后一 行包含的数字不到<span style="margin:0px" lang="EN-US">20</span>个</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;"><span style="margin:0px" lang="EN-US">*</span>第<span style="margin:0px" lang="EN-US">1</span>行<span style="margin:0px" lang="EN-US">:</span>输出按照<span style="margin:0px" lang="EN-US">FJ</span>的规定，最多可以挑出的奶牛的数目 </span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">11</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">2 5 18 3 4 7 10 9 11 8 15</span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">7</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">最长上升子序列</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Code</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"></span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+#include&lt;vector&gt;
+#include&lt;queue&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+#define LL long long
+#define reg(x) for(int i=head[x];i;i=e[i].next)
+#define maxn 50006
+using namespace std;
+inline LL read()
+{
+	LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+
+LL a[maxn],f[maxn],n,ans=0;
+int main()
+{
+	n=read();
+	rep(i,1,n)a[i]=read();
+	rep(i,1,n){
+		f[i]=1;
+		rep(j,1,i-1)
+		    if(a[j]&lt;a[i])f[i]=max(f[i],f[j]+1);
+	}
+	rep(i,1,n)ans=max(ans,f[i]);
+	printf(&quot;%lld\n&quot;,ans);
+	return 0;
+}</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>

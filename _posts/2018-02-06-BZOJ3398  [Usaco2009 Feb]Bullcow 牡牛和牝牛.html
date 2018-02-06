@@ -1,0 +1,113 @@
+---
+tags: 
+ - DP-杂题
+ - 数论-组合数
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P34.jpg"
+preview-img: "/img/preview/P74.jpg"
+---
+<p style="margin:0px">
+	<strong><span style="font-family:等线;font-size:16px;">标签：<span style="margin:0px" lang="EN-US">DP</span>，组合数学</span><span style="margin:0px" lang="EN-US"></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Time Limit: 1 Sec&nbsp;&nbsp;Memory Limit: 128MB<br />
+	Submit: 335&nbsp;&nbsp;Solved: 235<br />
+	[<a target="_blank" href="http://www.lydsy.com/JudgeOnline/submitpage.php?id=3398"><span style="color:#0563c1;">Submit</span></a>][<a target="_blank" href="http://www.lydsy.com/JudgeOnline/problemstatus.php?id=3398"><span style="color:#0563c1;">Status</span></a>][<a target="_blank" href="http://www.lydsy.com/JudgeOnline/bbs.php?id=3398"><span style="color:#0563c1;">Discuss</span></a>]</span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Description</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;"><span style="margin:0px" lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;</span>约翰要带<span style="margin:0px" lang="EN-US">N(1≤N≤100000)</span>只牛去参加集会里的展示活动，这些牛可以是牡牛，也可以是牝牛．牛们要站成一排．但是牡牛是好斗的，为了避免牡牛闹出乱子，约翰决定任意两只牡牛之间至少要有<span style="margin:0px" lang="EN-US">K(O≤K&lt;N)</span>只牝牛．</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;"><span style="margin:0px" lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;</span>请计算一共有多少种排队的方法．所有牡牛可以看成是相同的，所有牝牛也一样．答案对<span style="margin:0px" lang="EN-US">5000011</span>取模</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;"><span style="margin:0px" lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;</span>一行，输入两个整数<span style="margin:0px" lang="EN-US">N</span>和<span style="margin:0px" lang="EN-US">K.</span></span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;"><span style="margin:0px" lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;</span>一个整数，表示排队的方法数．</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;"><span style="font-size:16px;"><span style="margin:0px">&nbsp;&nbsp;&nbsp;</span>4<span style="margin:0px">&nbsp; </span>2</span></span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;"><span style="font-size:16px;"><span style="margin:0px">&nbsp;&nbsp;&nbsp;</span>6</span></span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">样例说明</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线"><span style="font-size:16px;"><span style="margin:0px" lang="EN-US"><span style="margin:0px">&nbsp;&nbsp;&nbsp;</span>6</span>种方法分别是：牝牝牝牝，牡牝牝牝，牝牡牝牝，牝牝牡牝，牝牝牝牡，牡牝牝牡</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;"><span style="margin:0px" lang="EN-US">DP</span>裸题，一眼秒掉</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">F[i]=f[i-1]+f[i-k-1]</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">震惊！<span style="margin:0px" lang="EN-US">hzwer</span>竟然用奇奇怪怪的组合数学写</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Code</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"></span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+#define LL long long
+using namespace std;
+inline LL read()
+{
+	LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const int maxn=1e7+6,mod=5000011;
+int n,k,f[maxn];
+int main()
+{
+	n=read(),k=read();
+	f[1]=2;
+	k++;
+	rep(i,2,n)f[i]=(f[i-1]+(i&gt;k?f[i-k]:1))%mod;
+	cout&lt;&lt;f[n]&lt;&lt;endl;
+	return 0;
+}</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>

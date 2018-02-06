@@ -1,0 +1,117 @@
+---
+tags: 
+ - 数论-组合数
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P36.jpg"
+preview-img: "/img/preview/P76.jpg"
+---
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">标签：排列组合，数学</span></strong>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">Description</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">给定一个nxm的网格，请计算三点都在格点上的三角形共有多少个。下图为4x4的网格上的一个三角形。</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">注意三角形的三点不能共线。</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">Input</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">输入一行，包含两个空格分隔的正整数m和n。</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">Output</span></strong>
+</p>
+<p>
+	<span style="font-family:宋体;font-size:16px;"><br />
+	</span><span style="font-family:等线;">输出一个正整数，为所求三角形数量。</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">Sample Input</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">2 2</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">Sample Output</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">76</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">数据范围</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">1&lt;=m,n&lt;=1000<br style="line-break:" />
+	</span><br />
+	
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">我们可以利用补集的思想，用排列组合C（n*m,3）算出总方案数，之后减去一些不符合条件的方案</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">1.</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:等线;font-size:16px;">三点共一条水平直线</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">2.</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:等线;font-size:16px;">三点共一条竖直直线</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">3.</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:等线;font-size:16px;">三点共一条斜线（用gcd判断和计算）</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">Code</span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define LL long long
+#define mem(x,num) memset(x,num,sizeof x)
+using namespace std;
+inline LL read()
+{
+	LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+inline int gcd(int a,int b){return b==0?a:gcd(b,a%b);}
+const int maxn=1e6+6;
+LL c[maxn][4],n,m,ans,t;
+
+int main()
+{
+	n=read(),m=read();
+	n++,m++;
+	c[0][0]=1;
+	rep(i,1,n*m){
+		c[i][0]=1;
+		rep(j,1,3)c[i][j]=c[i-1][j-1]+c[i-1][j];
+	}
+	ans=c[n*m][3];
+	ans-=n*c[m][3];
+	ans-=m*c[n][3];
+	rep(i,1,n-1)
+	    rep(j,1,m-1){
+			t=gcd(i,j)+1;
+			if(t&gt;2)ans-=(t-2)*2*(n-i)*(m-j);
+		}
+	printf(&quot;%lld\n&quot;,ans);
+	return 0;
+}</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>

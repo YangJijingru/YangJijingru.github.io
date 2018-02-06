@@ -1,0 +1,122 @@
+---
+tags: 
+ - 数论-欧拉函数
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P23.jpg"
+preview-img: "/img/preview/P63.jpg"
+---
+<p style="margin:0px">
+	<strong><span style="font-family:等线;font-size:16px;">标签：数学，数论，欧拉函数</span></strong>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Description</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">　　作为体育委员，<span style="margin:0px" lang="EN-US">C</span>君负责这次运动会仪仗队的训练。仪仗队是由学生组成的<span style="margin:0px" lang="EN-US">N * N</span>的方阵，为了保证队伍在行进中整齐划一，<span style="margin:0px" lang="EN-US">C</span>君会跟在仪仗队的左后方，根据其视线所及的学生人数来判断队伍是否整齐<span style="margin:0px" lang="EN-US">(</span>如下图<span style="margin:0px" lang="EN-US">)</span>。 　　 </span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;"><img src="http://xheditor.com/js/xheditor_skin/default/img/waiting.gif" remoteimg="0" alt="" /></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">　　现在，<span style="margin:0px" lang="EN-US">C</span>君希望你告诉他队伍整齐时能看到的学生人数。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">　　共一个数<span style="margin:0px" lang="EN-US">N</span>。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">　　共一个数，即<span style="margin:0px" lang="EN-US">C</span>君应看到的学生人数。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;">　　<span style="margin:0px" lang="EN-US">4</span></span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;">　　<span style="margin:0px" lang="EN-US">9</span></span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">HINT</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;">【数据规模和约定】 　　对于<span style="margin:0px" lang="EN-US"> 100%</span>的数据，<span style="margin:0px" lang="EN-US">1 ≤ N ≤ 40000</span></span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">分析：这题思路好妙啊，能够被看到的点一定是<span style="margin:0px" lang="EN-US">gcd(x,y)=1</span>的，就是横纵坐标互质</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">那么就可以无脑转化成<span style="margin:0px" lang="EN-US">phi[i]</span>求出<span style="margin:0px" lang="EN-US">ans</span>了</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Code</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"></span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+#define LL long long
+using namespace std;
+inline LL read()
+{
+	LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const LL maxn=1e5;
+LL n,cnt,phi[maxn],prime[maxn],tot=0,ans=0;
+bool not_prime[maxn];
+void getphi()
+{
+	int j;
+	phi[1]=1;
+	rep(i,2,n){
+		if(!not_prime[i]){prime[++tot]=i;phi[i]=i-1;}
+		for(j=1;j&lt;=tot&amp;&amp;i*prime[j]&lt;=n;j++){
+			not_prime[prime[j]*i]=1;
+			if(i%prime[j]==0){phi[i*prime[j]]=phi[i]*prime[j];break;}
+			else phi[i*prime[j]]=phi[i]*(prime[j]-1);
+		}
+	}
+}
+
+int main()
+{
+	n=read();
+    getphi();
+	rep(i,1,n-1)ans+=phi[i];
+	cout&lt;&lt;2*ans+1&lt;&lt;endl;
+	return 0;
+}
+</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>

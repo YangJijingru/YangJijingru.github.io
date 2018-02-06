@@ -1,0 +1,167 @@
+---
+tags: 
+ - DP-树形
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P15.jpg"
+preview-img: "/img/preview/P55.jpg"
+---
+<p style="margin:0px">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">标签：树形<span style="margin:0px" lang="EN-US">DP</span>，<span style="margin:0px" lang="EN-US">dfs</span>，贪心</span></strong>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Description</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;"><span style="font-size:16px;"><span style="margin:0px" lang="EN-US">Bessie</span>正在计划一年一度的奶牛大集会，来自全国各地的奶牛将来参加这一次集会。当然，她会选择最方便的地点来举办这次集会。每个奶牛居住在<span style="margin:0px" lang="EN-US"> N(1&lt;=N&lt;=100,000)</span>个农场中的一个，这些农场由<span style="margin:0px" lang="EN-US">N-1</span>条道路连接，并且从任意一个农场都能够到达另外一个农场。道路<span style="margin:0px" lang="EN-US">i</span>连接农场<span style="margin:0px" lang="EN-US">A_i</span>和<span style="margin:0px" lang="EN-US">B_i(1 &lt;=A_i &lt;=N; 1 &lt;= B_i &lt;= N),</span>长度为<span style="margin:0px" lang="EN-US">L_i(1 &lt;= L_i&lt;= 1,000)</span>。集会可以在<span style="margin:0px" lang="EN-US">N</span>个农场中的任意一个举行。另外，每个牛棚中居住者<span style="margin:0px" lang="EN-US">C_i(0 &lt;= C_i &lt;= 1,000)</span>只奶牛。在选择集会的地点的时候，<span style="margin:0px" lang="EN-US">Bessie</span>希望最大化方便的程度<span style="margin:0px" lang="EN-US">(</span>也就是最小化不方便程度<span style="margin:0px" lang="EN-US">)</span>。比如选择第<span style="margin:0px" lang="EN-US">X</span>个农场作为集会地点，它的不方便程度是其它牛棚中每只奶牛去参加集会所走的路程之和，<span style="margin:0px" lang="EN-US">(</span>比如，农场<span style="margin:0px" lang="EN-US">i</span>到达农场<span style="margin:0px" lang="EN-US">X</span>的距离是<span style="margin:0px" lang="EN-US">20</span>，那么总路程就是<span style="margin:0px" lang="EN-US">C_i*20)</span>。帮助<span style="margin:0px" lang="EN-US">Bessie</span>找出最方便的地点来举行大集会。考虑一个由五个农场组成的国家，分别由长度各异的道路连接起来。在所有农场中，<span style="margin:0px" lang="EN-US">3</span>号和<span style="margin:0px" lang="EN-US">4</span>号没有奶牛居住。&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">第一行：一个整数<span style="margin:0px" lang="EN-US">N *</span>第二到<span style="margin:0px" lang="EN-US">N+1</span>行：第<span style="margin:0px" lang="EN-US">i+1</span>行有一个整数<span style="margin:0px" lang="EN-US">C_i *</span>第<span style="margin:0px" lang="EN-US">N+2</span>行到<span style="margin:0px" lang="EN-US">2*N</span>行，第<span style="margin:0px" lang="EN-US">i+N+1</span>行为<span style="margin:0px" lang="EN-US">3</span>个整数：<span style="margin:0px" lang="EN-US">A_i,B_i</span>和<span style="margin:0px" lang="EN-US">L_i</span>。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;"><span style="font-size:16px;"><span style="margin:0px" lang="EN-US">*</span>第一行：一个值，表示最小的不方便值。</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">5</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">1</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">1</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">0</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">0</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">2</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">1 3 1</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">2 3 2</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">3 4 3</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">4 5 3</span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">15</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;"><span style="font-size:16px;">题意：给出<span style="margin:0px" lang="EN-US">N</span>个含有点权的点，<span style="margin:0px" lang="EN-US">N-1</span>条边，求<span style="margin:0px" lang="EN-US">min{sum(dist[i][j]*c[j])}</span></span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">由于<span style="margin:0px" lang="EN-US">N-1</span>条边，那么肯定构成一个树</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;"><span style="font-size:16px;">可以找出根节点，初始计算以根节点为聚会地点的不方便值<span style="margin:0px" lang="EN-US">tot</span>与<span style="margin:0px" lang="EN-US">size[i]</span>（<span style="margin:0px" lang="EN-US">i</span>节点子树大小）之后<span style="margin:0px" lang="EN-US">dfs</span>向其儿子节点搜索，若把集会的地点从<span style="margin:0px" lang="EN-US">x</span>移动到它的儿子<span style="margin:0px" lang="EN-US">y</span>，设经过的边为<span style="margin:0px" lang="EN-US">i</span>，权为<span style="margin:0px" lang="EN-US">wi</span>，那么答案肯定会变化，推算出如果（<em><span style="margin:0px" lang="EN-US">tot</span></em><span style="margin:0px" lang="EN-US">–2</span><span style="margin:0px">∗</span><em><span style="margin:0px" lang="EN-US">size</span></em><span style="margin:0px" lang="EN-US">[<em>y</em>]</span>）<span style="margin:0px" lang="EN-US">&lt;0</span>那么更新答案，转化为贪心的思路</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;"><span style="font-size:16px;">简直妙不可言<span style="margin:0px" lang="EN-US">~</span></span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Code</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"></span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;iomanip&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+#include&lt;vector&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+#define LL long long
+using namespace std;
+inline LL read()
+{
+	LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const int maxn=1e5+6;
+
+LL n,ans,c[maxn],dis[maxn],size[maxn];
+vector&lt;int&gt; e[maxn],w[maxn];
+
+LL dfs(int x,int fa)
+{
+	LL ans=dis[x]*c[x];
+	size[x]=c[x];
+	rep(i,0,e[x].size()-1){
+		int y=e[x][i],v=w[x][i];
+		if(y==fa)continue;
+		dis[y]=dis[x]+v;
+		ans+=dfs(y,x);
+		size[x]+=size[y];
+	}
+	return ans;
+}
+void move(int x,int fa)
+{
+	rep(i,0,e[x].size()-1){
+		int y=e[x][i],v=w[x][i];
+		if(y==fa)continue;
+			if(size[1]-2*size[y]&lt;0){
+				ans+=(size[1]-2*size[y])*v;
+				move(y,x);
+			}
+	}
+}
+
+int main()
+{
+	n=read();
+	rep(i,1,n)c[i]=read();
+	rep(i,1,n-1){
+		int u=read(),v=read(),ww=read();
+		e[u].push_back(v);
+		e[v].push_back(u);
+		w[u].push_back(ww);
+		w[v].push_back(ww);
+	}
+	ans=dfs(1,0);
+	move(1,0);
+	printf(&quot;%lld\n&quot;,ans);
+	return 0;
+}</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>

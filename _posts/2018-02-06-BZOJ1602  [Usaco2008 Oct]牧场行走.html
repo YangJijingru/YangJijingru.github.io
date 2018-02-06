@@ -1,0 +1,170 @@
+---
+tags: 
+ - 树-LCA
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P5.jpg"
+preview-img: "/img/preview/P45.jpg"
+---
+<p style="text-align:left" align="center">
+	<span style="color:blue;"><strong>标签</strong></span><span style="color:blue;"><strong>:</strong></span><span style="color:blue;"><strong>树</strong></span><span style="color:blue;"><strong>,LCA</strong></span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;">Description</span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	N头牛（2&lt;=n&lt;=1000）别人被标记为1到n，在同样被标记1到n的n块土地上吃草，第i头牛在第i块牧场吃草。 这n块土地被n-1条边连接。 奶牛可以在边上行走，第i条边连接第Ai，Bi块牧场，第i条边的长度是Li（1&lt;=Li&lt;=10000）。 这些边被安排成任意两头奶牛都可以通过这些边到达的情况，所以说这是一棵树。 这些奶牛是非常喜欢交际的，经常会去互相访问,他们想让你去帮助他们计算Q(1&lt;=q&lt;=1000)对奶牛之间的距离。
+</p>
+<p align="left">
+	<strong><span style="color:blue;">Input</span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	*第一行：两个被空格隔开的整数：N和Q
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	&nbsp;*第二行到第n行：第i+1行有两个被空格隔开的整数：AI，BI，LI
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	*第n+1行到n+Q行：每一行有两个空格隔开的整数：P1，P2，表示两头奶牛的编号。
+</p>
+<p align="left">
+	<strong><span style="color:blue;">Output</span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	*第1行到第Q行：每行输出一个数，表示那两头奶牛之间的距离。
+</p>
+<p align="left">
+	<strong><span style="color:blue;">Sample Input</span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	4 2<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	2 1 2<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	4 3 2<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	1 4 3<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	1 2<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	3 2<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;">Sample Output</span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	2<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	7
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	模板水题
+</p>
+<p>
+	再一次珍惜刷水机会
+</p>
+<p>
+	Code
+</p>
+<pre name="code" class="cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define ll long long
+#define mem(x,num) memset(x,num,sizeof x)
+#ifdef WIN32
+#define LL &quot;%I64d\n&quot;
+#else
+#define LL &quot;%lld\n&quot;
+#endif
+using namespace std;
+inline ll read()
+{
+	ll f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const int maxn=1006;
+struct edge{int to,next,w;}e[maxn&lt;&lt;1];
+bool vis[maxn];
+ll n,q,deep[maxn],dis[maxn],fa[maxn][11],last[maxn],cnt=0;
+
+void dfs(int x)
+{
+	vis[x]=1;
+	rep(i,1,10){
+		if(deep[x]&lt;(1&lt;&lt;i))break;
+		fa[x][i]=fa[fa[x][i-1]][i-1];
+	}
+#define reg(x) for(int i=last[x];i;i=e[i].next)
+#define v e[i].to
+    reg(x){
+    	if(vis[v])continue;
+    	deep[v]=deep[x]+1;
+    	dis[v]=dis[x]+e[i].w;
+    	fa[v][0]=x;
+    	dfs(v);
+    }
+}
+int lca(int x,int y)
+{
+	if(deep[x]&lt;deep[y])swap(x,y);
+	int t=deep[x]-deep[y];
+	rep(i,0,10)
+	    if((1&lt;&lt;i)&amp;t)x=fa[x][i];
+	dep(i,10,0)
+	    if(fa[x][i]!=fa[y][i])x=fa[x][i],y=fa[y][i];
+	if(x==y)return x;
+	else return fa[x][0];
+}
+int main()
+{
+	n=read(),q=read();
+	rep(i,1,n-1){
+		int x=read(),y=read(),z=read();
+		e[++cnt]=(edge){y,last[x],z};last[x]=cnt;
+		e[++cnt]=(edge){x,last[y],z};last[y]=cnt;
+	}//cout&lt;&lt;&quot;R&quot;;
+	dfs(1);
+	rep(i,1,q){
+		int x=read(),y=read();
+		printf(LL,dis[x]+dis[y]-2*dis[lca(x,y)]);
+	}
+	return 0;
+}</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

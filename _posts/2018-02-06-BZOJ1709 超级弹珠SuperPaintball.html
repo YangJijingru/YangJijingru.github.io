@@ -1,0 +1,137 @@
+---
+tags: 
+ - 基础算法-模拟
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P12.jpg"
+preview-img: "/img/preview/P52.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">标签:模拟</span>
+</p>
+<div>
+	<h2>
+		<span style="font-family:Microsoft YaHei;font-size:16px;">Description</span>
+	</h2>
+</div>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">奶牛们最近从著名的奶牛玩具制造商</span><span style="color:#333333;">Tycow</span><span style="color:#333333;">那里，买了一套仿真版彩弹游戏设备（类乎于真人版</span><span style="color:#333333;">CS</span><span style="color:#333333;">）。</span><span style="color:#333333;"> Bessie</span><span style="color:#333333;">把她们玩游戏草坪划成了</span><span style="color:#333333;">N * N(1 &lt;= N&lt;= 100)</span><span style="color:#333333;">单位的矩阵，同时列出了她的</span><span style="color:#333333;"> K (1 &lt;= K &lt;=100,000)</span><span style="color:#333333;">个对手在草地上的位置。然后她拿着这张表来找你，希望你能帮她计算一个数据。</span><span style="color:#333333;">在这个游戏中，奶牛可以用一把弹珠枪向</span><span style="color:#333333;">8</span><span style="color:#333333;">个方向中的任意一个射出子弹。</span><span style="color:#333333;">8</span><span style="color:#333333;">个方向分别是：正北，正南，正东，正西，以及夹在这</span><span style="color:#333333;">4</span><span style="color:#333333;">个正方向之间的</span><span style="color:#333333;">45°</span><span style="color:#333333;">角</span><span style="color:#333333;">:</span><span style="color:#333333;">东北，东南，西北，西南方向。</span><span style="color:#333333;"> Bessie</span><span style="color:#333333;">望你告诉她，如果她想站在一个可以射到她的所有对手的格子上，那么她有多少种选择。当然，贝茜可以跟她的某一个对手站在同一个格子上，并且在这种情况下，你可以认为贝茜能射到跟她站在同一格子里的对手。</span></span>
+</p>
+<div>
+	<h2>
+		<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+	</h2>
+</div>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">*</span><span style="color:#333333;">第</span><span style="color:#333333;">1</span><span style="color:#333333;">行</span><span style="color:#333333;">: 2</span><span style="color:#333333;">个用空格隔开的整数：</span><span style="color:#333333;">N</span><span style="color:#333333;">和</span><span style="color:#333333;">K</span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">*</span><span style="color:#333333;">第</span><span style="color:#333333;">2..K+1</span><span style="color:#333333;">行</span><span style="color:#333333;">:</span><span style="color:#333333;">第</span><span style="color:#333333;">i+1</span><span style="color:#333333;">行用</span><span style="color:#333333;">2</span><span style="color:#333333;">个以空格隔开整数</span><span style="color:#333333;">R_i</span><span style="color:#333333;">和</span><span style="color:#333333;">C_i</span><span style="color:#333333;">，描述了第</span><span style="color:#333333;">i</span><span style="color:#333333;">头奶牛的位置，表示她站在第</span><span style="color:#333333;">R_i</span><span style="color:#333333;">行，第</span><span style="color:#333333;">C_i</span><span style="color:#333333;">列</span></span>
+</p>
+<div>
+	<h2>
+		<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+	</h2>
+</div>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">*</span><span style="color:#333333;">第</span><span style="color:#333333;">1</span><span style="color:#333333;">行</span><span style="color:#333333;">:</span><span style="color:#333333;">输出</span><span style="color:#333333;">1</span><span style="color:#333333;">个整数，表示如果</span><span style="color:#333333;">Bessie</span><span style="color:#333333;">可以选择的格子的数目。</span></span>
+</p>
+<div>
+	<h2>
+		<span style="font-family:Microsoft YaHei;font-size:16px;">Sample Input</span>
+	</h2>
+</div>
+<p>
+	<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">4 3<br />
+	2 1<br />
+	2 3<br />
+	4 1</span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">输入说明</span><span style="color:#333333;">:</span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">牧场被划分成了</span><span style="color:#333333;">4</span><span style="color:#333333;">行</span><span style="color:#333333;">4</span><span style="color:#333333;">列。</span><span style="color:#333333;">Bessie</span><span style="color:#333333;">的站位必须保证她能射到站在</span><span style="color:#333333;">(2,1)</span><span style="color:#333333;">，</span><span style="color:#333333;">(2,3)</span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">以及</span><span style="color:#333333;">(4,1)</span><span style="color:#333333;">的奶牛：</span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">. . . .<br />
+	C . C .<br />
+	. . . . &lt;— </span><span style="color:#333333;">奶牛们的位置</span><span style="color:#333333;"><br />
+	C . . .</span></span>
+</p>
+<div>
+	<h2>
+		<span style="font-family:Microsoft YaHei;font-size:16px;">Sample Output</span>
+	</h2>
+</div>
+<p>
+	<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">5</span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">输出说明</span><span style="color:#333333;">:</span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">Bessie</span><span style="color:#333333;">可以选择站在以下格子中的任意一个：</span><span style="color:#333333;">(2,1)</span><span style="color:#333333;">，</span><span style="color:#333333;">(2,3)</span><span style="color:#333333;">，</span><span style="color:#333333;">(3,2)</span><span style="color:#333333;">，</span><span style="color:#333333;">(4,1)</span><span style="color:#333333;">，</span><span style="color:#333333;"><br />
+	</span><span style="color:#333333;">以及</span><span style="color:#333333;">(4,3)</span><span style="color:#333333;">。下右图中，</span><span style="color:#333333;">Bessie</span><span style="color:#333333;">与其他牛共同占有的格子被标记为</span><span style="color:#333333;">’*’</span><span style="color:#333333;">：</span><span style="color:#333333;"><br />
+	. . . . . . . .<br />
+	B . B . —\ * . * .<br />
+	. B . . —/ . B . .<br />
+	B . B . * . B .</span></span>
+</p>
+<p>
+	<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">分析：将每个奶牛的的两条对角线与平行于边界的线打上标记，最后统计每个点的标记个数，如果和奶牛的数量相等，那么答案计数</span><span style="color:#333333;">++</span></span>
+</p>
+<p>
+	<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">Code</span></span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define LL long long
+using namespace std;
+inline int read()
+{
+	int f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const int maxn=100005,maxm=210;
+int s[maxm][maxm]={0},x[maxn],y[maxn],ans=0,n,k;
+inline void work(int t)
+{
+	rep(i,1,n)s[x[t]][i]++;
+	rep(i,1,n)s[i][y[t]]++;
+	rep(i,-n+1,n-1)if(x[t]+i&gt;=1&amp;&amp;x[t]+i&lt;=n&amp;&amp;y[t]+i&gt;=1&amp;&amp;y[t]+i&lt;=n)s[x[t]+i][y[t]+i]++; 
+	rep(i,-n+1,n-1)if(x[t]-i&gt;=1&amp;&amp;x[t]-i&lt;=n&amp;&amp;y[t]+i&gt;=1&amp;&amp;y[t]+i&lt;=n)s[x[t]-i][y[t]+i]++;
+	s[x[t]][y[t]]-=3;
+}
+
+int main()
+{
+    n=read(),k=read();
+    rep(i,1,k){x[i]=read(),y[i]=read();work(i);}
+    rep(i,1,n)
+    	rep(j,1,n)
+    	    if(s[i][j]==k)ans++;
+    /*rep(i,1,n){
+        rep(j,1,n)cout&lt;&lt;s[i][j]&lt;&lt;' ';
+        cout&lt;&lt;endl;
+    }*/
+    cout&lt;&lt;ans&lt;&lt;endl;
+	return 0;
+}</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

@@ -1,0 +1,119 @@
+---
+tags: 
+ - DP-背包
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P25.jpg"
+preview-img: "/img/preview/P65.jpg"
+---
+<p style="text-align:left" align="center">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:blue;"><strong>标签：背包</strong></span><span style="color:blue;"><strong>DP</strong></span></span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Description</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">ftiasch 有&nbsp;<em>N</em>&nbsp;个物品, 体积分别是&nbsp;<em>W<sub>1</sub></em>,&nbsp;<em>W<sub>2</sub></em>,...,&nbsp;<em>W<sub>N</sub></em>。 由于她的疏忽, 第&nbsp;<em>i</em>&nbsp;个物品丢失了。 “要使用剩下的&nbsp;<em>N</em>&nbsp;- 1 物品装满容积为&nbsp;<em>x</em>&nbsp;的背包，有几种方法呢？”-- 这是经典的问题了。她把答案记为&nbsp;<em>Count(i, x)</em>&nbsp;，想要得到所有1 &lt;= i &lt;= N, 1 &lt;= x &lt;= M的&nbsp;<em>Count(i, x)</em>&nbsp;表格。</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">第1行：两个整数&nbsp;<em>N</em>&nbsp;(1 ≤&nbsp;<em>N</em>&nbsp;≤ 2 × 10<sup>3</sup>) 和&nbsp;<em>M</em>&nbsp;(1 ≤&nbsp;<em>M</em>&nbsp;≤ 2 × 10<sup>3</sup>)，物品的数量和最大的容积。</span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">第2行：&nbsp;<em>N</em>&nbsp;个整数&nbsp;<em>W<sub>1</sub></em>,&nbsp;<em>W<sub>2</sub></em>,...,&nbsp;<em>W<sub>N</sub></em>, 物品的体积。</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">一个&nbsp;<em>N</em>&nbsp;×&nbsp;<em>M</em>&nbsp;的矩阵，&nbsp;<em>Count(i, x)</em>的末位数字。</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3 2<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 1 2<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">11<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">11<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">21<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">HINT</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">如果物品3丢失的话，只有一种方法装满容量是2的背包，即选择物品1和物品2。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define LL long long
+#define mem(x,num) memset(x,num,sizeof x)
+using namespace std;
+inline LL read()
+{
+	LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const int maxn=2006;
+LL n,m,a[maxn],f[maxn],s[maxn][maxn];
+
+int main()
+{
+    n=read(),m=read();
+    rep(i,1,n)a[i]=read();
+    f[0]=1;
+    rep(i,1,n)
+        dep(j,m,a[i])f[j]+=f[j-a[i]],f[j]%=10;
+    rep(i,1,n){
+    	s[i][0]=1;
+    	rep(j,1,m){
+    		if(j&gt;=a[i])s[i][j]=(f[j]-s[i][j-a[i]]+10)%10;
+    		else s[i][j]=f[j];
+    	}
+    }
+    rep(i,1,n){
+    	rep(j,1,m)printf(&quot;%d&quot;,s[i][j]);
+    	cout&lt;&lt;endl;
+    }
+    return 0;
+}</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

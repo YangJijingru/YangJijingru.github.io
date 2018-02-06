@@ -1,0 +1,153 @@
+---
+tags: 
+ - 图论-SPFA
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P18.jpg"
+preview-img: "/img/preview/P58.jpg"
+---
+<p>
+	<strong>标签：最短路，SPFA</strong>
+</p>
+<p>
+	<strong>Description</strong>
+</p>
+<p>
+	Farmer John有B头奶牛(1&lt;=B&lt;=25000)，有N(2*B&lt;=N&lt;=50000)个农场，编号1-N，有M(N-1&lt;=M&lt;=100000)条双向边，第i条边连接农场R_i和S_i(1&lt;=R_i&lt;=N;1&lt;=S_i&lt;=N)，该边的长度是L_i(1&lt;=L_i&lt;=2000)。居住在农场P_i的奶牛A(1&lt;=P_i&lt;=N)，它想送一份新年礼物给居住在农场Q_i(1&lt;=Q_i&lt;=N)的奶牛B，但是奶牛A必须先到FJ(居住在编号1的农场)那里取礼物，然后再送给奶牛B。你的任务是：奶牛A至少需要走多远的路程？
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	<strong>Input</strong>
+</p>
+<p>
+	　　第1行：三个整数：N,M,B。
+</p>
+<p>
+	&nbsp;&nbsp; 　第2..M+1行：每行三个整数：R_i,S_i和L_i，描述一条边的信息。
+</p>
+<p>
+	　　第M+2..M+B+1行：共B行，每行两个整数P_i和Q_i，表示住在P_i农场的奶牛送礼物给住在Q_i农场的奶牛。
+</p>
+<p>　　
+</p>
+<p>
+	<strong>Output</strong>
+</p>
+<p>
+	　　样例输出：
+</p>
+<p>
+	　　共B行，每行一个整数，表示住在P_i农场的奶牛送礼给住在Q_i农场的奶牛至少需要走的路程
+</p>
+<p>　
+</p>
+<p>
+	<strong>Sample Input</strong>
+</p>
+<p>
+	6 7 3<br />
+	1 2 3<br />
+	5 4 3<br />
+	3 1 1<br />
+	6 1 9<br />
+	3 4 2<br />
+	1 4 4<br />
+	3 2 2<br />
+	2 4<br />
+	5 1<br />
+	3 6<br />
+	<br />
+	
+</p>
+<p>
+	<strong>Sample Output</strong>
+</p>
+<p>
+	6
+</p>
+<p>
+	6
+</p>
+<p>
+	10
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	SPFA模板题
+</p>
+<p>
+	Code
+</p>
+<pre name="code" class="cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(register int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(register int i=a;i&gt;=b;i--)
+#define ll long long
+#define mem(x,num) memset(x,num,sizeof x)
+#ifdef WIN32
+#define LL &quot;%I64d\n&quot;
+#else
+#define LL &quot;%lld\n&quot;
+#endif
+using namespace std;
+inline ll read()
+{
+    ll f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const int maxm=1e5+6,inf=0x3f3f3f,maxn=5e4+6;
+int que[maxm],inq[maxn],dis[maxn],last[maxn],n,m,b,now,cnt=0;
+struct edge{int to,next,w;}e[maxm&lt;&lt;1];
+#define reg(x) for(int i=last[x];i;i=e[i].next)
+#define v e[i].to
+void spfa()
+{
+	int head=1,tail=1;
+	que[head]=1,inq[1]=1,dis[1]=0;
+	while(head&lt;=tail){
+		int now=que[head++];
+		reg(now)
+		    if(dis[now]+e[i].w&lt;dis[v]){
+		    	dis[v]=dis[now]+e[i].w;
+		    	if(!inq[v]){
+		    		inq[v]=1;
+		    		que[++tail]=v;
+		    	}
+		    }
+		inq[now]=0;
+	}
+}
+int main()
+{
+	n=read(),m=read(),b=read();
+	rep(i,1,m){
+		int x=read(),y=read(),w=read();
+		e[++cnt]=(edge){x,last[y],w};last[y]=cnt;
+		e[++cnt]=(edge){y,last[x],w};last[x]=cnt;
+	}
+    mem(dis,inf);
+    spfa();
+	rep(i,1,b){
+		int s=read(),t=read();
+		printf(&quot;%d\n&quot;,dis[s]+dis[t]);
+	}
+	return 0;
+}</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>
