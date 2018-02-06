@@ -1,0 +1,197 @@
+---
+tags: 
+ - 图论-SPFA
+ - 图论-tarjan
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P33.jpg"
+preview-img: "/img/preview/P33.jpg"
+---
+<p>
+	<strong>标签：SPFA，tarjan缩点</strong>
+</p>
+<p>
+	<strong>Description</strong>
+</p>
+<p>
+	<strong><img src="http://xheditor.com/js/xheditor_skin/default/img/waiting.gif" remoteimg="0" alt="" /><br />
+	</strong>
+</p>
+<p>
+	<strong>Input</strong>
+</p>
+<p>
+	第一行包含两个整数N、M。N表示路口的个数，M表示道路条数。接下来M行，每行两个整数，这两个整数都在1到N之间，第i+1行的两个整数表示第i条道路的起点和终点的路口编号。接下来N行，每行一个整数，按顺序表示每个路口处的ATM机中的钱数。接下来一行包含两个整数S、P，S表示市中心的编号，也就是出发的路口。P表示酒吧数目。接下来的一行中有P个整数，表示P个有酒吧的路口的编号
+</p>
+<p>
+	<strong>Output</strong>
+</p>
+<p>
+	输出一个整数，表示Banditji从市中心开始到某个酒吧结束所能抢劫的最多的现金总数。
+</p>
+<p>
+	<strong>Sample Input</strong>
+</p>
+<p>
+	6 7<br />
+	1 2<br />
+	2 3<br />
+	3 5<br />
+	2 4<br />
+	4 1<br />
+	2 6<br />
+	6 5<br />
+	10<br />
+	12<br />
+	8<br />
+	16<br />
+	1 5<br />
+	1 4<br />
+	4<br />
+	3<br />
+	5<br />
+	6
+</p>
+<p>
+	<strong>Sample Output</strong>
+</p>
+<p>
+	47
+</p>
+<p>
+	<strong>HINT</strong>
+</p>
+<p>
+	50%的输入保证N,M&lt;=3000。所有的输入保证N, M&lt;=500000。每个ATM机中可取的钱数为一个非负整数且不超过4000。输入数据保证你可以从市中心沿着Siruseri的单向的道路到达其中的至少一个酒吧。
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	算法很简单
+</p>
+<p>
+	Tarjan缩点重构图后跑一遍SPFA最长路就可以了
+</p>
+<p>
+	但是代码实现很复杂，很多细节，容易写挂题
+</p>
+<p>
+	SPFA中的初始点S，一定要赋值为belong[s]
+</p>
+<p>
+	剩下最短路中的，因为重构图，所以可以直接指向节点本身
+</p>
+<p>
+	Code
+</p>
+<pre name="code" class="cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(register int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(register int i=a;i&gt;=b;i--)
+#define ll long long
+#define mem(x,num) memset(x,num,sizeof x)
+#ifdef WIN32
+#define LL &quot;%I64d\n&quot;
+#else
+#define LL &quot;%lld\n&quot;
+#endif
+using namespace std;
+inline ll read()
+{
+    ll f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const int maxm=5e5+6,maxn=5e5+6;
+int inq[maxn],que[maxn&lt;&lt;1],dfn[maxn],c[maxn],low[maxn],dis[maxn],v[maxn],tim=0,cnt=0,tot=0,top=0;
+int last[maxn],rlast[maxn],belong[maxn];
+int n,m,s,p;
+struct edge{int to,next;}e[maxm&lt;&lt;1],re[maxm&lt;&lt;1];
+#define reg(x) for(int i=last[x];i;i=e[i].next)
+#define ov e[i].to
+#define newreg(x) for(int i=rlast[x];i;i=re[i].next)
+#define rv re[i].to
+
+void tarjan(int x)
+{
+	int now=0;
+	dfn[x]=low[x]=++tim;
+	que[++top]=x;inq[x]=1;
+	reg(x)
+	    if(!dfn[ov]){tarjan(ov);low[x]=min(low[x],low[ov]);}
+	    else if(inq[ov])low[x]=min(low[x],dfn[ov]);
+	if(low[x]==dfn[x]){
+		tot++;
+		while(now!=x){
+			now=que[top--];
+			belong[now]=tot;
+			v[tot]+=c[now];
+			inq[now]=0;
+		}
+	}
+}
+void rebuild()
+{
+	cnt=0;
+	rep(k,1,n)
+	    reg(k)
+	        if(belong[k]!=belong[ov]){
+			    re[++cnt]=(edge){belong[k],rlast[belong[ov]]};rlast[belong[ov]]=cnt;
+				//re[++cnt]=(edge){belong[ov],rlast[belong[k]]};rlast[belong[k]]=cnt;
+			}
+}
+
+void spfa()
+{
+	int head=1,tail=1;
+	que[head]=belong[s];inq[belong[s]]=1;dis[belong[s]]=v[belong[s]];
+	while(head&lt;=tail){
+		int now=que[head++];
+		newreg(now)
+			if(dis[now]+v[rv]&gt;dis[rv]){
+				dis[rv]=dis[now]+v[rv];
+				if(!inq[rv]){
+					inq[rv]=1;
+					que[++tail]=rv;
+				}
+			}
+		inq[now]=0;
+	}
+}
+	
+			
+int main()
+{
+	n=read(),m=read();
+	rep(i,1,m){
+		int x=read(),y=read();
+		e[++cnt]=(edge){x,last[y]};last[y]=cnt;
+		//e[++cnt]=(edge){y,last[x]};last[x]=cnt;
+	}
+	rep(i,1,n)c[i]=read();
+	rep(i,1,n)if(!dfn[i])tarjan(i);
+	s=read(),p=read();
+	rebuild();
+	spfa();
+	int ans=0;
+	rep(i,1,p){
+		int x=read();
+		ans=max(ans,dis[belong[x]]);
+	}
+	cout&lt;&lt;ans&lt;&lt;endl;
+	return 0;
+}</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

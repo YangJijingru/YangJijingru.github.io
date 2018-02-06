@@ -1,0 +1,153 @@
+---
+tags: 
+ - DP-杂题
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P26.jpg"
+preview-img: "/img/preview/P26.jpg"
+---
+<p style="margin:0px">
+	<span style="font-weight:bold"><span style="font-family:等线;"><span style="font-size:16px;">标签：<span style="margin:0px" lang="EN-US">DP</span></span></span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Description</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">　　这里有一个<span style="margin:0px" lang="EN-US">n*m</span>的矩阵，请你选出其中<span style="margin:0px" lang="EN-US">k</span>个子矩阵，使得这个<span style="margin:0px" lang="EN-US">k</span>个子矩阵分值之和最大。注意：选出的<span style="margin:0px" lang="EN-US">k</span>个子矩阵<span style="margin:0px" lang="EN-US"><br />
+	</span>不能相互重叠。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">　　第一行为<span style="margin:0px" lang="EN-US">n,m,k</span>（<span style="margin:0px" lang="EN-US">1≤n≤100,1≤m≤2,1≤k≤10</span>），接下来<span style="margin:0px" lang="EN-US">n</span>行描述矩阵每行中的每个元素的分值<span style="margin:0px" lang="EN-US">(</span>每个元素的<span style="margin:0px" lang="EN-US"><br />
+	</span>分值的绝对值不超过<span style="margin:0px" lang="EN-US">32767)</span>。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">　　只有一行为<span style="margin:0px" lang="EN-US">k</span>个子矩阵分值之和最大为多少。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">3 2 2</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">1 -3</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">2 3</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">-2 3</span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">9</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">注意：<span style="margin:0px" lang="EN-US">m&lt;=2</span>，可以从这个条件入手</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">如果<span style="margin:0px" lang="EN-US">m==1</span>，那么转化为求一个线性数列的<span style="margin:0px" lang="EN-US">k</span>个子串最大和</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;"><span style="margin:0px" lang="EN-US">F[i][p]</span>表示前<span style="margin:0px" lang="EN-US">i</span>个数中已经选取<span style="margin:0px" lang="EN-US">p</span>个子串的最大和</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">如果<span style="margin:0px" lang="EN-US">m==2</span>，那么通过动态规划求解</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px; text-indent:21pt">
+	<span style="font-family:等线;"><span style="font-size:16px;"><span style="margin:0px" lang="EN-US">F[i][j][p]</span>表示第一列前<span style="margin:0px" lang="EN-US">i</span>行和第二列前<span style="margin:0px" lang="EN-US">j</span>行中选取了<span style="margin:0px" lang="EN-US">p</span>个矩阵的最大和</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px; text-indent:21pt">
+	<span style="font-family:等线"><span style="font-size:16px;">转移：<span style="margin:0px" lang="EN-US">f[i][j][p]=max{f[l][j][p-1]+s1[i]-s1[l]}<span style="margin:0px">&nbsp;</span>l&lt;i</span></span></span>
+</p>
+<p style="margin:0px; text-indent:21pt">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;"><span style="font-size:16px;"><span style="margin:0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>F[i][j][p]=max{f[i][l][p-1]+s2[j]-s2[l]}<span style="margin:0px">&nbsp; </span>l&lt;j</span></span></span>
+</p>
+<p style="margin:0px; text-indent:21pt">
+	<span style="font-family:等线"><span style="font-size:16px;"><span style="margin:0px" lang="EN-US"><span style="margin:0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>F[i][j][p]=max{f[i][i][p-1]+s1[i]-s1[l]+s2[i]-s1[l]}<span style="margin:0px">&nbsp;</span>l&lt;j </span>且<span style="margin:0px" lang="EN-US">i==j</span></span></span>
+</p>
+<p style="margin:0px; text-indent:21pt">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Code</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"></span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#include&lt;vector&gt;
+#include&lt;queue&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define LL long long
+#define mem(x,num) memset(x,num,sizeof x)
+using namespace std;
+inline LL read()
+{
+	LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const int maxn=106;
+LL F[maxn][16],f[maxn][maxn][16];
+LL n,m,k,sum[maxn],s1[maxn],s2[maxn];
+
+int main()
+{
+	n=read(),m=read(),k=read();
+	if(m==1){
+		rep(i,1,n){int x=read();sum[i]=sum[i-1]+x;}
+		rep(i,1,n)
+		    rep(j,1,k){
+				F[i][j]=F[i-1][j];
+				rep(p,0,i-1)
+				    F[i][j]=max(F[i][j],F[p][j-1]+sum[i]-sum[p]);
+			}
+			printf(&quot;%lld\n&quot;,F[n][k]);
+	}
+	else{
+		rep(i,1,n){
+			int x=read(),y=read();
+			s1[i]=s1[i-1]+x,s2[i]=s2[i-1]+y;
+		}
+		rep(p,1,k)
+		    rep(i,1,n)
+		        rep(j,1,n){
+					f[i][j][p]=max(f[i-1][j][p],f[i][j-1][p]);
+					rep(l,0,i-1)f[i][j][p]=max(f[i][j][p],f[l][j][p-1]+s1[i]-s1[l]);
+					rep(l,0,j-1)f[i][j][p]=max(f[i][j][p],f[i][l][p-1]+s2[j]-s2[l]);
+					if(i==j)
+						rep(l,0,i-1)f[i][j][p]=max(f[i][j][p],f[l][l][p-1]+s1[i]-s1[l]+s2[i]-s2[l]);
+				}
+		printf(&quot;%lld\n&quot;,f[n][n][k]);
+	}
+	return 0;
+}</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>

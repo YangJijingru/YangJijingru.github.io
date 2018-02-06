@@ -1,0 +1,123 @@
+---
+tags: 
+ - DP-状压
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P27.jpg"
+preview-img: "/img/preview/P27.jpg"
+---
+<p style="text-align:left" align="center">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:blue;"><strong>标签</strong></span><span style="color:blue;"><strong>:</strong></span><span style="color:blue;"><strong>状压</strong></span><span style="color:blue;"><strong>DP</strong></span></span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Description</span></span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　在N×N的棋盘里面放K个国王，使他们互不攻击，共有多少种摆放方案。国王能攻击到它上下左右，以及左上<br />
+	左下右上右下八个方向上附近的各一个格子，共8个格子。</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　只有一行，包含两个数N，K （ 1 &lt;=N &lt;=9, 0 &lt;= K &lt;= N * N）</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　方案数。</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3 2</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">16</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析:设f[i][j][x]表示前i行放置了j的国王，且当前行状态（用二进制表示）为x时的方案数</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">判断状态是否符合要求可以枚举上一行状态，进行判断：如果当前行状态x和上一行状态y，符合下列任意条件，那么就是不符合要求的</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">X&amp;(y&lt;&lt;1)</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">(x&lt;&lt;1)&amp;y</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">X&amp;y</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">预处理Num[x]，为状态为x时，该行放置国王的数量</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+#define LL long long
+using namespace std;
+inline LL read()
+{
+    LL f=1,x=0;char ch=getchar();
+    while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+    while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+    return x*f;
+}
+const int maxm=1006;
+LL n,k,ans=0,f[16][maxm][maxm],num[maxm];
+bool flag[maxm];
+int main()
+{
+    n=read(),k=read();
+    rep(i,0,(1&lt;&lt;n)-1)
+        if(!(i&amp;(i&lt;&lt;1))){
+            flag[i]=true;
+            int t=i;
+            while(t){
+                num[i]+=(t&amp;1);
+                t&gt;&gt;=1;
+            }
+            f[1][num[i]][i]=1;
+        }
+    rep(i,2,n)
+        rep(j,0,k)
+            rep(x,0,(1&lt;&lt;n)-1){
+                if(!flag[x])continue;
+                if(num[x]&gt;j)continue;
+                rep(y,0,(1&lt;&lt;n)-1){
+                    if(!flag[y])continue;
+                    if(x&amp;y||x&amp;(y&lt;&lt;1)||(x&lt;&lt;1)&amp;y)continue;
+                    f[i][j][x]+=f[i-1][j-num[x]][y];
+                }
+            }
+    rep(i,0,(1&lt;&lt;n)-1)ans+=f[n][k][i];
+    cout&lt;&lt;ans&lt;&lt;endl;
+    return 0;
+}   
+
+</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

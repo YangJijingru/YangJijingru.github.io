@@ -1,0 +1,219 @@
+---
+tags: 
+ - DP-状压
+ - 图论-SPFA
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P31.jpg"
+preview-img: "/img/preview/P31.jpg"
+---
+<p style="margin:0px">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">标签：状压<span style="margin:0px" lang="EN-US">DP</span>，最短路</span></strong>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Description</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　<span style="margin:0px" lang="EN-US">FGD</span>想从成都去上海旅游。在旅途中他希望经过一些城市并在那里欣赏风景，品尝风味小吃或者做其他的有趣的事情。经过这些城市的顺序不是完全随意的，比如说<span style="margin:0px" lang="EN-US">FGD</span>不希望在刚吃过一顿大餐之后立刻去下一个城市登山，而是希望去另外什么地方喝下午茶。幸运的是<span style="margin:0px" lang="EN-US">,FGD</span>的旅程不是既定的，他可以在某些旅行方案之间进行选择。由于<span style="margin:0px" lang="EN-US">FGD</span>非常讨厌乘车的颠簸，他希望在满足他的要求的情况下，旅行的距离尽量短，这样他就有足够的精力来欣赏风景或者是泡<span style="margin:0px" lang="EN-US">MM</span>了<span style="margin:0px" lang="EN-US">^_^.</span>整个城市交通网络包含<span style="margin:0px" lang="EN-US">N</span>个城市以及城市与城市之间的双向道路<span style="margin:0px" lang="EN-US">M</span>条。城市自<span style="margin:0px" lang="EN-US">1</span>至<span style="margin:0px" lang="EN-US">N</span>依次编号，道路亦然。没有从某个城市直接到它自己的道路，两个城市之间最多只有一条道路直接相连，但可以有多条连接两个城市的路径。任意两条道路如果相遇，则相遇点也必然是这<span style="margin:0px" lang="EN-US">N</span>个城市之一，在中途，由于修建了立交桥和下穿隧道，道路是不会相交的。每条道路都有一个固定长度。在中途，<span style="margin:0px" lang="EN-US">FGD</span>想要经过<span style="margin:0px" lang="EN-US">K(K&lt;=N-2)</span>个城市。成都编号为<span style="margin:0px" lang="EN-US">1</span>，上海编号为<span style="margin:0px" lang="EN-US">N,</span>而<span style="margin:0px" lang="EN-US">FGD</span>想要经过的<span style="margin:0px" lang="EN-US">N</span>个城市编号依次为<span style="margin:0px" lang="EN-US">2,3,…,K+1.</span>举例来说，假设交通网络如下图。<span style="margin:0px" lang="EN-US">FGD</span>想要经过城市<span style="margin:0px" lang="EN-US">2,3,4,5</span>，并且在<span style="margin:0px" lang="EN-US">2</span>停留的时候在<span style="margin:0px" lang="EN-US">3</span>之前，而在<span style="margin:0px" lang="EN-US">4,5</span>停留的时候在<span style="margin:0px" lang="EN-US">3</span>之后。那么最短的旅行方案是<span style="margin:0px" lang="EN-US">1-2-4-3-4-5-8,</span>总长度为<span style="margin:0px" lang="EN-US">19</span>。注意<span style="margin:0px" lang="EN-US">FGD</span>为了从城市<span style="margin:0px" lang="EN-US">2</span>到城市<span style="margin:0px" lang="EN-US">4</span>可以路过城市<span style="margin:0px" lang="EN-US">3,</span>但不在城市<span style="margin:0px" lang="EN-US">3</span>停留。这样就不违反<span style="margin:0px" lang="EN-US">FGD</span>的要求了。并且由于<span style="margin:0px" lang="EN-US">FGD</span>想要走最短的路径，因此这个方案正是<span style="margin:0px" lang="EN-US">FGD</span>需要的。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　第一行包含<span style="margin:0px" lang="EN-US">3</span>个整数<span style="margin:0px" lang="EN-US">N(2&lt;=N&lt;=20000),M(1&lt;=M&lt;=200000),K(0&lt;=K&lt;=20),</span>意义如上所述。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　只包含一行，包含一个整数，表示最短的旅行距离。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">8 15 4</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">1 2 3</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">1 3 4</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">1 4 4</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">1 6 2</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">1 7 3</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">2 3 6</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">2 4 2</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">2 5 2</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">3 4 3</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">3 6 3</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">3 8 6</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">4 5 2</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">4 8 6</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">5 7 4</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">5 8 6</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">3</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">2 3</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">3 4</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">3 5</span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">19</span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">HINT</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-size:16px;"><span style="font-family:Microsoft YaHei;"><span style="margin:0px" lang="EN-US"><img alt="http://www.lydsy.com/JudgeOnline/images/1097.jpg" src="file:///C:/Users/Yang/AppData/Local/Temp/msohtmlclip1/01/clip_image001.gif" width="371" border="0" height="261" /></span>上面对应于题目中给出的例子。</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-size:14px"><span style="font-family:Microsoft YaHei;">题意：求<span style="margin:0px" lang="EN-US">1</span><span style="margin:0px" lang="EN-US"><span style="margin:0px">à</span></span><span style="margin:0px" lang="EN-US">n</span>的最短路，这条最短路要按给定的顺序经过<span style="margin:0px" lang="EN-US">K</span>个点</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-size:16px;"><span style="font-family:Microsoft YaHei;"><span style="margin:0px" lang="EN-US">SPFA</span>预处理出<span style="margin:0px" lang="EN-US">k+1</span>个点到其余点的最小距离</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-size:16px;"><span style="font-family:Microsoft YaHei;"><span style="margin:0px" lang="EN-US">F[i][j]</span>表示当前位于<span style="margin:0px" lang="EN-US">j</span>点，状态为<span style="margin:0px" lang="EN-US">i</span>（访问过的点的集合）</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">无脑转移</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Code</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"></span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;iomanip&gt;
+#include&lt;cstring&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+#define LL long long
+using namespace std;
+
+const int inf=1000000000,maxn=20006;
+int n,m,k,cnt=0,ed,ans=inf;
+int bin[23],a[23],dis[23][23],d[maxn],head[maxn],f[2000006][23];
+bool visit[maxn];
+struct edge{int to,next,w;}e[500006];
+
+inline LL read()
+{
+	LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+
+void spfa(int x)
+{
+	int dist[maxn];
+	queue&lt;LL&gt;q;
+	mem(visit,0);
+	rep(i,1,n)dist[i]=inf;
+	q.push(x),visit[x]=1,dist[x]=0;
+	while(!q.empty()){
+		int now=q.front();q.pop();visit[now]=0;
+		#define reg(x) for(int i=head[x];i;i=e[i].next)
+		reg(now)
+		    if(dist[e[i].to]&gt;dist[now]+e[i].w){
+				dist[e[i].to]=dist[now]+e[i].w;
+				if(!visit[e[i].to])
+					q.push(e[i].to),visit[e[i].to]=1;
+			}
+	}
+	rep(i,1,k+1)dis[x][i]=dist[i];
+	dis[x][0]=dist[n];
+}
+
+void dp()
+{
+	rep(now,0,ed)
+	    rep(x,1,k+1)
+			if(f[now][x]!=-1)
+				rep(i,2,k+1){
+					int v=(now|bin[i-2]);
+					if((now&amp;a[i])==a[i])
+						if(f[v][i]&gt;f[now][x]+dis[x][i]||f[v][i]==-1)
+							f[v][i]=f[now][x]+dis[x][i];
+				}
+}
+int main()
+{
+	bin[0]=1;rep(i,1,22)bin[i]=bin[i-1]&lt;&lt;1;
+	n=read(),m=read(),k=read();ed=bin[k]-1;
+	rep(i,1,m){
+		int u=read(),v=read(),w=read();
+		e[++cnt]=(edge){v,head[u],w};head[u]=cnt;
+		e[++cnt]=(edge){u,head[v],w};head[v]=cnt;
+	}
+	rep(i,1,k+1)spfa(i);
+	int x=read();
+	rep(i,1,x){
+		int u=read(),v=read();
+		a[v]+=bin[u-2];
+	}
+	mem(f,-1);
+	f[0][1]=0;
+	dp();
+	rep(i,1,k+1)
+		if(f[ed][i]!=-1)ans=min(ans,f[ed][i]+dis[i][0]);
+	printf(&quot;%d\n&quot;,ans);
+	return 0;
+}</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>

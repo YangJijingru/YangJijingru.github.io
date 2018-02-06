@@ -1,0 +1,138 @@
+---
+tags: 
+ - 数论-扩展欧几里得
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P40.jpg"
+preview-img: "/img/preview/P40.jpg"
+---
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">标签：数学，数论，扩展欧几里得</span></strong>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">Description</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">两只青蛙在网上相识了，它们聊得很开心，于是觉得很有必要见一面。它们很高兴地发现它们住在同一条纬度线上，于是它们约定各自朝西跳，直到碰面为止。可是它们出发之前忘记了一件很重要的事情，既没有问清楚对方的特征，也没有约定见面的具体位置。不过青蛙们都是很乐观的，它们觉得只要一直朝着某个方向跳下去，总能碰到对方的。但是除非这两只青蛙在同一时间跳到同一点上，不然是永远都不可能碰面的。为了帮助这两只乐观的青蛙，你被要求写一个程序来判断这两只青蛙是否能够碰面，会在什么时候碰面。我们把这两只青蛙分别叫做青蛙A和青蛙B，并且规定纬度线上东经0度处为原点，由东往西为正方向，单位长度1米，这样我们就得到了一条首尾相接的数轴。设青蛙A的出发点坐标是x，青蛙B的出发点坐标是y。青蛙A一次能跳m米，青蛙B一次能跳n米，两只青蛙跳一次所花费的时间相同。纬度线总长L米。现在要你求出它们跳了几次以后才会碰面。</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">Input</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">输入只包括一行5个整数x，y，m，n，L，其中x≠y &lt; 2000000000，0 &lt; m、n &lt; 2000000000，0 &lt; L &lt; 2100000000。</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">Output</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">输出碰面所需要的跳跃次数，如果永远不可能碰面则输出一行&quot;Impossible&quot;</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">Sample Input</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">1 2 3 4 5<br style="line-break:" />
+	</span><br />
+	
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">Sample Output</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">4<br />
+	</span><br />
+	
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">分析：通过题意可以推出来一个显而易见的式子</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">(x+time*n)-(y+time*m)=L*k</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">Time表示跳跃次数，k为一个常数</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">将time提出来，变形得</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">(n-m)*time+L*k=x-y</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">就变成了扩欧裸题</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">设a=n-m，b=l，c=x-y</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">A*time+b*k=c&nbsp;&nbsp; ①式</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">求time</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">1.考虑无解的情况&nbsp;&nbsp; c%gcd(a,b)!=0</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">2.有解&nbsp;&nbsp; &nbsp;可以将①式两边同时除以gcd(a,b)，会得到新的不定方程 A‘*time+b’*k=c’&nbsp; ②式</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此时gcd(a’,b’)=1&nbsp;&nbsp;可以用扩展欧几里得求出A‘*time+b’*k=1的一组正整数解</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将正整数解*c’就是②式的一组整数解</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">Code</span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define LL long long
+#define mem(x,num) memset(x,num,sizeof x)
+using namespace std;
+inline LL read()
+{
+	LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+LL x,y,m,n,l,a,b,c,t;
+LL gcd(LL a,LL b){return b==0?a:gcd(b,a%b);}
+void exgcd(LL a,LL b,LL &amp;x,LL &amp;y){
+	if(b==0){x=1,y=0;return;}
+	exgcd(b,a%b,x,y);
+	LL temp=x;
+	x=y,y=temp-a/b*y;
+}
+
+int main()
+{
+	x=read(),y=read(),m=read(),n=read(),l=read();
+	a=n-m,b=l,c=x-y;
+	t=gcd(a,b);
+	if(c%t!=0){printf(&quot;Impossible\n&quot;);return 0;}//判断是否有解
+	a/=t,b/=t,c/=t;
+	exgcd(a,b,x,y);//扩欧
+	x=((c*x)%b+b)%b;//计算整数解
+    cout&lt;&lt;x&lt;&lt;endl;
+	return 0;
+}</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>

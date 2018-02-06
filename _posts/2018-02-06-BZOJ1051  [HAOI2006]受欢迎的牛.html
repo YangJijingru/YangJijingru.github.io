@@ -1,0 +1,167 @@
+---
+tags: 
+ - 图论-tarjan
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P21.jpg"
+preview-img: "/img/preview/P21.jpg"
+---
+<p style="text-align:left" align="center">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:blue;"><strong>标签：</strong></span><span style="color:blue;"><strong>tarjan</strong></span></span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Description</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　每一头牛的愿望就是变成一头最受欢迎的牛。现在有N头牛，给你M对整数(A,B)，表示牛A认为牛B受欢迎。 这</span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">种关系是具有传递性的，如果A认为B受欢迎，B认为C受欢迎，那么牛A也认为牛C受欢迎。你的任务是求出有多少头</span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">牛被所有的牛认为是受欢迎的。</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　第一行两个数N,M。 接下来M行，每行两个数A,B，意思是A认为B是受欢迎的（给出的信息有可能重复，即有可</span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">能出现多个A,B）</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　一个数，即有多少头牛被所有的牛认为是受欢迎的。</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3 3<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 2<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2 1<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2 3</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">HINT</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">100%的数据N&lt;=10000,M&lt;=50000</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析:tarjan缩点之后，如果出度为0的点只有一个，那么输出其代表的强连通分量中节点个数，否则无解</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define LL long long
+#define mem(x,num) memset(x,num,sizeof x)
+#define reg(x) for(int p=head[x];p;p=e[p].next)
+using namespace std;
+inline int read()
+{
+    int f=1,x=0;char ch=getchar();
+    while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+    while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+    return x*f;
+}
+const int maxn=5e4+6;
+struct edge{int to,next;}e[maxn],d[maxn];
+int head[maxn],n,m,cnt,top,ans,dfn[maxn],low[maxn],q[maxn],scc,h[maxn],belong[maxn],hav[maxn];
+bool vis[maxn],inq[maxn];
+void dfs(int a)
+{
+    int now;
+    vis[a]=inq[a]=1;
+    low[a]=dfn[a]=++cnt;
+    q[++top]=a;
+    reg(a){
+        if(!vis[e[p].to]){
+            dfs(e[p].to);
+            low[a]=min(low[a],low[e[p].to]);
+        }
+        else if(inq[e[p].to])low[a]=min(low[a],dfn[e[p].to]);
+    }
+    if(low[a]==dfn[a]){
+        scc++;
+        while(now!=a){
+            now=q[top--];
+            inq[now]=0;
+            belong[now]=scc;
+            ++hav[scc];
+        }
+    }
+}
+void work()
+{
+    rep(i,1,scc)
+        if(!h[i]){
+            if(ans){ans=0;return;}
+            else ans=hav[i];
+        }
+}
+void rebuild()
+{
+    cnt=0;
+    rep(i,1,n)
+        reg(i)
+            if(belong[i]!=belong[e[p].to]){
+                d[++cnt]=(edge){belong[e[p].to],h[belong[i]]};
+                h[belong[i]]=cnt;
+            }
+}
+void tarjan()
+{
+    rep(i,1,n)
+        if(!vis[i])dfs(i);
+    rebuild();
+}
+int main()
+{
+    n=read(),m=read();
+    rep(i,1,m){
+        int x=read(),y=read();
+        e[i]=(edge){y,head[x]};
+        head[x]=i;
+    }
+    tarjan();
+    work();
+    printf(&quot;%d\n&quot;,ans);
+    return 0;
+}
+</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

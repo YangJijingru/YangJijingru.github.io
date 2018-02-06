@@ -1,0 +1,183 @@
+---
+tags: 
+ - 图论-tarjan
+ - DP-杂题
+ - 图论-拓扑排序
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P29.jpg"
+preview-img: "/img/preview/P29.jpg"
+---
+<p style="margin:0px">
+	<strong><span style="font-family:等线;font-size:16px;">标签：<span style="margin:0px" lang="EN-US">tarjan</span>缩点，<span style="margin:0px" lang="EN-US">DP</span>，拓扑排序</span></strong>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Description</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">　　一个有向图<span style="margin:0px" lang="EN-US">G=(V,E)</span>称为半连通的<span style="margin:0px" lang="EN-US">(Semi-Connected)</span>，如果满足：<span style="margin:0px" lang="EN-US">?u,v∈V</span>，满足<span style="margin:0px" lang="EN-US">u→v</span>或<span style="margin:0px" lang="EN-US">v→u</span>，即对于图中任意<span style="margin:0px" lang="EN-US"><br />
+	</span>两点<span style="margin:0px" lang="EN-US">u</span>，<span style="margin:0px" lang="EN-US">v,</span>存在一条<span style="margin:0px" lang="EN-US">u</span>到<span style="margin:0px" lang="EN-US">v</span>的有向路径或者从<span style="margin:0px" lang="EN-US">v</span>到<span style="margin:0px" lang="EN-US">u</span>的有向路径。若<span style="margin:0px" lang="EN-US">G'=(V',E')</span>满足<span style="margin:0px" lang="EN-US">V'?V</span>，<span style="margin:0px" lang="EN-US">E'</span>是<span style="margin:0px" lang="EN-US">E</span>中所有跟<span style="margin:0px" lang="EN-US">V'</span>有关的边，<span style="margin:0px" lang="EN-US"><br />
+	</span>则称<span style="margin:0px" lang="EN-US">G'</span>是<span style="margin:0px" lang="EN-US">G</span>的一个导出子图。若<span style="margin:0px" lang="EN-US">G'</span>是<span style="margin:0px" lang="EN-US">G</span>的导出子图，且<span style="margin:0px" lang="EN-US">G'</span>半连通，则称<span style="margin:0px" lang="EN-US">G'</span>为<span style="margin:0px" lang="EN-US">G</span>的半连通子图。若<span style="margin:0px" lang="EN-US">G'</span>是<span style="margin:0px" lang="EN-US">G</span>所有半连通子图<span style="margin:0px" lang="EN-US"><br />
+	</span>中包含节点数最多的，则称<span style="margin:0px" lang="EN-US">G'</span>是<span style="margin:0px" lang="EN-US">G</span>的最大半连通子图。给定一个有向图<span style="margin:0px" lang="EN-US">G</span>，请求出<span style="margin:0px" lang="EN-US">G</span>的最大半连通子图拥有的节点数<span style="margin:0px" lang="EN-US">K<br />
+	</span>，以及不同的最大半连通子图的数目<span style="margin:0px" lang="EN-US">C</span>。由于<span style="margin:0px" lang="EN-US">C</span>可能比较大，仅要求输出<span style="margin:0px" lang="EN-US">C</span>对<span style="margin:0px" lang="EN-US">X</span>的余数。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;">　　第一行包含两个整数<span style="margin:0px" lang="EN-US">N</span>，<span style="margin:0px" lang="EN-US">M</span>，<span style="margin:0px" lang="EN-US">X</span>。<span style="margin:0px" lang="EN-US">N</span>，<span style="margin:0px" lang="EN-US">M</span>分别表示图<span style="margin:0px" lang="EN-US">G</span>的点数与边数，<span style="margin:0px" lang="EN-US">X</span>的意义如上文所述接下来<span style="margin:0px" lang="EN-US">M</span>行，每行两个正整<span style="margin:0px" lang="EN-US"><br />
+	</span>数<span style="margin:0px" lang="EN-US">a, b</span>，表示一条有向边<span style="margin:0px" lang="EN-US">(a, b)</span>。图中的每个点将编号为<span style="margin:0px" lang="EN-US">1,2,3…N</span>，保证输入中同一个<span style="margin:0px" lang="EN-US">(a,b)</span>不会出现两次。<span style="margin:0px" lang="EN-US">N ≤1<br />
+	00000, M ≤1000000</span>；对于<span style="margin:0px" lang="EN-US">100%</span>的数据，<span style="margin:0px" lang="EN-US"> X≤10^8</span></span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;">　　应包含两行，第一行包含一个整数<span style="margin:0px" lang="EN-US">K</span>。第二行包含整数<span style="margin:0px" lang="EN-US">C Mod X.</span></span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">6 6 20070603</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">1 2</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">2 1</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">1 3</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">2 4</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">5 6</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">6 4</span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">3</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">3</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">分析：先<span style="margin:0px" lang="EN-US">tarjan</span>缩点，之后重建一个图，然后<span style="margin:0px" lang="EN-US">DP</span>和拓扑排序跑最长链</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Code</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"></span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define LL long long
+#define mem(x,num) memset(x,num,sizeof x)
+using namespace std;
+inline LL read()
+{
+	LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const int maxn=1e5+6,maxm=2e6+6;
+int mx,ans,ind,cnt,scc,top,m,n,mod;
+int head[maxn],head2[maxn],dfn[maxn],low[maxn],hav[maxn],belong[maxn];
+int r[maxn],f[maxn],g[maxn],vis[maxn],q[maxn];
+bool inq[maxn];
+struct edge{int to,next;}e[maxm],ed[maxm];
+void tarjan(int x)
+{
+	dfn[x]=low[x]=++ind;
+	q[++top]=x;inq[x]=1;
+#define reg(x) for(int i=head[x];i;i=e[i].next)
+#define v e[i].to
+	reg(x)
+	    if(!dfn[v])tarjan(v),low[x]=min(low[x],low[v]);
+		else if(inq[v])low[x]=min(low[x],dfn[v]);
+	int now=0;
+	if(low[x]==dfn[x]){
+		scc++;
+		while(now!=x){
+			now=q[top];top--;
+			inq[now]=0;
+			hav[scc]++;
+			belong[now]=scc;
+		}
+	}
+}
+void rebuild()
+{
+	cnt=0;
+	rep(x,1,n)
+	    reg(x)
+			if(belong[x]!=belong[v])ed[++cnt]=(edge){belong[v],head2[belong[x]]},head2[belong[x]]=cnt,r[belong[v]]++;
+}
+void dp()
+{
+	int head=0,tail=0;
+	rep(i,1,scc){
+		if(!r[i])q[tail++]=i;
+		f[i]=hav[i];g[i]=1;
+	}
+	while(head&lt;tail){
+		int now=q[head++];
+#define reg2(x) for(int i=head2[x];i;i=ed[i].next)
+#define v2 ed[i].to
+		reg2(now){
+			r[v2]--;
+			if(!r[v2])q[tail++]=v2;
+			if(vis[v2]==now)continue;
+			if(f[now]+hav[v2]&gt;f[v2]){
+				f[v2]=f[now]+hav[v2];
+				g[v2]=g[now];
+			}
+			else if(f[now]+hav[v2]==f[v2])g[v2]=(g[v2]+g[now])%mod;
+			vis[v2]=now;
+		}
+	}
+}
+int main()
+{
+	n=read(),m=read(),mod=read();
+	rep(i,1,m){
+		int u=read(),V=read();
+		e[++cnt]=(edge){V,head[u]};head[u]=cnt;
+	}
+	rep(i,1,n)
+	    if(!dfn[i])tarjan(i);
+	rebuild();
+	dp();
+	rep(i,1,scc){
+		if(f[i]&gt;mx)mx=f[i],ans=g[i];
+		else if(f[i]==mx)ans=(ans+g[i])%mod;
+	}
+	cout&lt;&lt;mx&lt;&lt;endl&lt;&lt;ans&lt;&lt;endl;
+	return 0;
+}
+</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>

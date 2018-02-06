@@ -1,0 +1,130 @@
+---
+tags: 
+ - 数论-欧几里得定理
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P39.jpg"
+preview-img: "/img/preview/P39.jpg"
+---
+<p style="margin:0px">
+	<strong><span style="font-family:等线;font-size:16px;">标签：欧几里得，数学</span></strong>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Description</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">除法表达式有如下的形式<span style="margin:0px" lang="EN-US">: X1/X2/X3.../Xk</span>其中<span style="margin:0px" lang="EN-US">Xi</span>是正整数且<span style="margin:0px" lang="EN-US">Xi&lt;=1000000000(1&lt;=i&lt;=k,K&lt;=10000)</span>除法表达式应当按照从左到右的顺序求，例如表达式<span style="margin:0px" lang="EN-US">1/2/1/2</span>的值为<span style="margin:0px" lang="EN-US">1/4.</span>但可以在表达式中国入括号来改变计算顺序，例如<span style="margin:0px" lang="EN-US">(1/2)/(1/2)</span>的值为<span style="margin:0px" lang="EN-US">1.</span>现给出一个除法表达式<span style="margin:0px" lang="EN-US">E</span>，求是告诉是否可以通过增加括号来使其为<span style="margin:0px" lang="EN-US">E',E'</span>为整数</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">先给出一个数字<span style="margin:0px" lang="EN-US">D</span>，代表有<span style="margin:0px" lang="EN-US">D</span>组数据<span style="margin:0px" lang="EN-US">.</span>每组数据先给出一个数字<span style="margin:0px" lang="EN-US">N</span>，代表这组数据将有<span style="margin:0px" lang="EN-US">N</span>个数。 接下来有<span style="margin:0px" lang="EN-US">N</span>个数</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;">如果能使得表达式的值为一个整数，则输出<span style="margin:0px" lang="EN-US">YES.</span>否则为<span style="margin:0px" lang="EN-US">NO</span></span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">2</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">4</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">1</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">2</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">1</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">2</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">3</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">1</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">2</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">3</span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">YES</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">NO</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">分析：<span style="margin:0px" lang="EN-US">x2</span>一定为分母（即除数）</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">如果奇数项数的因数可以将<span style="margin:0px" lang="EN-US">x2</span>的除数全部分解，那么就可以变成一个整数</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Code</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"></span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+#define LL long long
+using namespace std;
+inline LL read()
+{
+	LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+inline int gcd(int a,int b){return b==0?a:gcd(b,a%b);}
+int T,t,n,a[1000006];
+int main()
+{
+	T=read();
+	while(T--)
+	{
+		n=read();
+		a[1]=read();
+		t=read();
+		rep(i,1,n-2)a[i+1]=read();
+		rep(i,1,n-1){
+			t/=gcd(t,a[i]);
+			if(t==1){printf(&quot;YES\n&quot;);break;}
+		}
+		if(t!=1)printf(&quot;NO\n&quot;);
+	}
+	return 0;
+}</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>

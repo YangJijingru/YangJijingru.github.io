@@ -1,0 +1,167 @@
+---
+tags: 
+ - DP-区间
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P37.jpg"
+preview-img: "/img/preview/P37.jpg"
+---
+<br />
+
+<p style="text-align:left" align="center">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:blue;"><strong>标签：区间</strong></span><span style="color:blue;"><strong>DP</strong></span></span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Description</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">假设你有一条长度为5的木版，初始时没有涂过任何颜色。你希望把它的5个单位长度分别涂上红、绿、蓝、绿、红色，用一个长度为5的字符串表示这个目标：RGBGR。 每次你可以把一段连续的木版涂成一个给定的颜色，后涂的颜色覆盖先涂的颜色。例如第一次把木版涂成RRRRR，第二次涂成RGGGR，第三次涂成RGBGR，达到目标。 用尽量少的涂色次数达到目标。</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输入仅一行，包含一个长度为n的字符串，即涂色目标。字符串中的每个字符都是一个大写字母，不同的字母代表不同颜色，相同的字母代表相同颜色。</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">仅一行，包含一个数，即最少的涂色次数。</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">【样例输入1】<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">AAAAA<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="background:rgb(141,184,255)"><span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">【样例输入1】<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">RGBGR<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="background:rgb(141,184,255)"><span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">【样例输出1】<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="background:rgb(141,184,255)"><span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">【样例输出1】<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="background:rgb(141,184,255)"><span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="background:rgb(141,184,255)"><span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+	<br />
+	</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">HINT</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">40%的数据满足：1&lt;=n&lt;=10<br />
+	100%的数据满足：1&lt;=n&lt;=50</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">经典的区间DP题目，f[l][r]表示从làr最少需要染色几次，</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">F[l][r]=min(f[l+1][r],f[l][r-1],f[l+1][r-1]+1)&nbsp; (f[l]=f[r])</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">F[l][r]=min{f[l][i]+f[i+1][r]}&nbsp; l&lt;=i&lt;r</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define LL long long
+#define mem(x,num) memset(x,num,sizeof x)
+using namespace std;
+inline int read()
+{
+    int f=1,x=0;char ch=getchar();
+    while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+    while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+    return x*f;
+}
+const int inf=0x3f3f3f;
+int f[600][600],n;
+char s[600];
+int main()
+{
+    mem(f,inf);
+    scanf(&quot;%s&quot;,s+1);
+    n=strlen(s+1);
+    rep(i,1,n)f[i][i]=1;
+    rep(l,1,n-1)
+        rep(i,1,n){
+            int j=i+l;
+            if(j&gt;n)break;
+            if(s[i]==s[j]){
+                if(l==1)f[i][j]=1;
+                else f[i][j]=min(min(f[i+1][j],f[i][j-1]),f[i+1][j-1]+1);
+            }
+            else rep(k,i,j-1) f[i][j]=min(f[i][k]+f[k+1][j],f[i][j]);
+        }
+    printf(&quot;%d\n&quot;,f[1][n]);
+    return 0;
+}</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

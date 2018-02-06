@@ -1,0 +1,158 @@
+---
+tags: 
+ - 图论-匈牙利算法
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P23.jpg"
+preview-img: "/img/preview/P23.jpg"
+---
+<p>
+	<strong>标签：二分图匹配</strong>
+</p>
+<p>
+	<strong>Description</strong>
+</p>
+<p>
+	　　小Q是一个非常聪明的孩子，除了国际象棋，他还很喜欢玩一个电脑益智游戏——矩阵游戏。矩阵游戏在一个N
+</p>
+<p>
+	*N黑白方阵进行（如同国际象棋一般，只是颜色是随意的）。每次可以对该矩阵进行两种操作：行交换操作：选择
+</p>
+<p>
+	矩阵的任意两行，交换这两行（即交换对应格子的颜色）列交换操作：选择矩阵的任意行列，交换这两列（即交换
+</p>
+<p>
+	对应格子的颜色）游戏的目标，即通过若干次操作，使得方阵的主对角线(左上角到右下角的连线)上的格子均为黑
+</p>
+<p>
+	色。对于某些关卡，小Q百思不得其解，以致他开始怀疑这些关卡是不是根本就是无解的！！于是小Q决定写一个程
+</p>
+<p>
+	序来判断这些关卡是否有解。
+</p>
+<p>
+	<strong>Input</strong>
+</p>
+<p>
+	　　第一行包含一个整数T，表示数据的组数。接下来包含T组数据，每组数据第一行为一个整数N，表示方阵的大
+</p>
+<p>
+	小；接下来N行为一个N*N的01矩阵（0表示白色，1表示黑色）。
+</p>
+<p>
+	<strong>Output</strong>
+</p>
+<p>
+	　　输出文件应包含T行。对于每一组数据，如果该关卡有解，输出一行Yes；否则输出一行No。
+</p>
+<p>
+	<strong>Sample Input</strong>
+</p>
+<p>
+	2<br />
+	2<br />
+	0 0<br />
+	0 1<br />
+	3<br />
+	0 0 1<br />
+	0 1 0<br />
+	1 0 0
+</p>
+<p>
+	<strong>Sample Output</strong>
+</p>
+<p>
+	No<br />
+	Yes<br />
+	【数据规模】<br />
+	对于100%的数据，N ≤ 200
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	分析：
+</p>
+<p>
+	显而易见的结论：同行同列中黑色棋子的数量都是固定的，不会随着操作而变化
+</p>
+<p>
+	问题转化：询问是否存在n个互相不同行不同列的黑色棋子
+</p>
+<p>
+	对于每个黑色棋子，按照行列关系建边
+</p>
+<p>
+	然后匈牙利算法二分图匹配
+</p>
+<p>
+	Code
+</p>
+<pre name="code" class="cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define ll long long
+#define mem(x,num) memset(x,num,sizeof x)
+#ifdef WIN32
+#define LL &quot;%I64d&quot;
+#else
+#define LL &quot;%lld&quot;
+#endif
+using namespace std;
+inline ll read()
+{
+    ll f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const int maxn=206;
+int result[maxn],Map[maxn][maxn],n,x,T,cnt;
+bool use[maxn];
+bool dfs(int now)
+{
+	rep(i,1,n)
+		if(!use[i]&amp;&amp;Map[now][i]){
+			use[i]=1;
+			if(!result[i]||dfs(result[i])){
+				result[i]=now;
+				return true;
+			}
+		}
+	return false;
+}
+int main()
+{
+	T=read();
+	while(T--)
+	{
+		n=read();cnt=0;
+		mem(result,0);mem(Map,0);
+		rep(i,1,n){
+			rep(j,1,n){
+			    x=read();
+			    if(x)Map[i][j]=1;
+			}
+		}
+		rep(i,1,n){
+		    mem(use,0);
+		    if(dfs(i))cnt++;
+		}
+		if(cnt==n)printf(&quot;Yes\n&quot;);
+		else printf(&quot;No\n&quot;);
+	}
+	return 0;
+}</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>
