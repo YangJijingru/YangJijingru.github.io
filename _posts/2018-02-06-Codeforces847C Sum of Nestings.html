@@ -1,0 +1,141 @@
+---
+tags: 
+ - 基础算法-dfs
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P12.jpg"
+preview-img: "/img/preview/P12.jpg"
+---
+
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#373a3c;">标签：</span><span style="color:#373a3c;">dfs</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Recallthat the bracket sequence is considered regular if it is possible to insertsymbols '+' and '1' into it so that the result is a correctarithmetic expression. For example, a sequence &quot;(()())&quot; is regular, because we can get correct arithmeticexpression insering symbols '+' and '1': &quot;((1+1)+(1+1))&quot;. Also the following sequences are regular: &quot;()()()&quot;, &quot;(())&quot; and &quot;()&quot;. The following sequences are not regular bracket sequences: &quot;)(&quot;, &quot;(()&quot; and &quot;())(()&quot;.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In thisproblem you are given two integers&nbsp;<em>n</em>&nbsp;and&nbsp;<em>k</em>. Your task is to construct a regularbracket sequence consisting of round brackets with length&nbsp;2·<em>n</em>&nbsp;with total sum ofnesting of all opening brackets equals to exactly&nbsp;<em>k</em>. The nesting of a single opening bracket equals to thenumber of pairs of brackets in which current opening bracket is embedded.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Forexample, in the sequence &quot;()(())&quot; thenesting of first opening bracket equals to0, the nesting of the second opening bracket equals to&nbsp;0&nbsp;and the nesting of the third openingbracket equal to&nbsp;1. So the total sum ofnestings equals to&nbsp;1.</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The firstline contains two integers&nbsp;<em>n</em>&nbsp;and&nbsp;<em>k</em>&nbsp;(1 ≤ <em>n</em> ≤ 3·10<sup>5</sup>,&nbsp;0 ≤ <em>k</em> ≤ 10<sup>18</sup>)&nbsp;—the number of opening brackets and needed total nesting.</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Print therequired regular bracket sequence consisting of round brackets.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">If thereis no solution print &quot;Impossible&quot;(without quotes).</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Example</span></strong>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3 1</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">()(())</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">4 6</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">(((())))</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2 5</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Impossible</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Note</span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The firstexample is examined in the statement.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In thesecond example the answer is &quot;(((())))&quot;.The nesting of the first opening bracket is&nbsp;0, the nesting of the second is&nbsp;1, the nesting of the third is&nbsp;2, the nesting of fourth is&nbsp;3. So the total sum of nestings equals to&nbsp;0 + 1 + 2 + 3 = 6.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In thethird it is impossible to construct a regular bracket sequence, because themaximum possible total sum of nestings for two opening brackets equals to&nbsp;1. This total sum of nestings is obtained forthe sequence &quot;(())&quot;.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">直接递归搜索即可，注意要先搜索是否可行，如果不行的话输出impossible，最后再输出</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define LL long long
+using namespace std;
+
+long long n,k;
+int cnt[500005];
+
+void f(int x,int y)
+{
+	if(x==y+1)return;
+	printf(&quot;(&quot;);
+	f(x+1,y);
+	printf(&quot;)&quot;);
+	while(cnt[x]--)printf(&quot;()&quot;);
+}
+int main()
+{
+	long long base=0;
+    cin&gt;&gt;n&gt;&gt;k;
+    rep(i,0,n-1){
+    	base+=i;
+    	if(base&lt;=k&amp;&amp;k&lt;=base+(n-i-1)*i){
+    		k-=base;
+    		n-=i+1;
+    		dep(x,i,0)
+    			while(n&amp;&amp;k-x&gt;=0){
+    				cnt[x]++;
+    				k-=x;
+    				n--;
+    			}	
+    	f(0,i);
+    	return 0;
+        }
+    }
+    printf(&quot;Impossible\n&quot;);
+    return 0;
+}</pre>
+<br />
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

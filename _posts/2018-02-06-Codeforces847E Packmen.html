@@ -1,0 +1,126 @@
+---
+tags: 
+ - 基础算法-二分
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P14.jpg"
+preview-img: "/img/preview/P14.jpg"
+---
+<p>
+	<span style="color:#373a3c;"><span style="font-family:Microsoft YaHei;font-size:16px;">标签：二分</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">A gamefield is a strip of&nbsp;1 × <em>n</em>&nbsp;squarecells. In some cells there are Packmen, in some cells&nbsp;— asterisks, othercells are empty.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Packmancan move to neighboring cell in&nbsp;1&nbsp;time unit.If there is an asterisk in the target cell then Packman eats it. Packmandoesn't spend any time to eat an asterisk.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In theinitial moment of time all Packmen begin to move. Each Packman can changedirection of its move unlimited number of times, but it is not allowed to gobeyond the boundaries of the game field. Packmen do not interfere with themovement of other packmen; in one cell there can be any number of packmenmoving in any directions.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Your taskis to determine minimum possible time after which Packmen can eat all theasterisks.</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The firstline contains a single integer&nbsp;<em>n</em>&nbsp;(2 ≤ <em>n</em> ≤ 10<sup>5</sup>) — the length of thegame field.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The secondline contains the description of the game field consisting of&nbsp;<em>n</em>&nbsp;symbols. If there issymbol '.' in position&nbsp;<em>i</em>&nbsp;— the cell&nbsp;<em>i</em>&nbsp;is empty. If there issymbol '*' in position&nbsp;<em>i</em>&nbsp;— in the cell&nbsp;<em>i</em>&nbsp;contains an asterisk.If there is symbol 'P' in position&nbsp;<em>i</em>&nbsp;— Packman is in thecell&nbsp;<em>i</em>.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">It isguaranteed that on the game field there is at least one Packman and at leastone asterisk.</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Printminimum possible time after which Packmen can eat all asterisks.</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Example</span></strong>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">7<br />
+	*..P*P*</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">10<br />
+	.**PP.*P.*</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Note</span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In thefirst example Packman in position&nbsp;4&nbsp;will moveto the left and will eat asterisk in position&nbsp;1. He will spend&nbsp;3&nbsp;time unitson it. During the same&nbsp;3&nbsp;time unitsPackman in position&nbsp;6&nbsp;will eat both ofneighboring with it asterisks. For example, it can move to the left and eatasterisk in position&nbsp;5&nbsp;(in&nbsp;1&nbsp;time unit) and then move from theposition&nbsp;5&nbsp;to the right and eatasterisk in the position&nbsp;7&nbsp;(in&nbsp;2time units). So in&nbsp;3&nbsp;time units Packmen will eat all asterisks on the gamefield.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In thesecond example Packman in the position&nbsp;4&nbsp;will moveto the left and after&nbsp;2time unitswill eat asterisks in positions&nbsp;3&nbsp;and&nbsp;2. Packmen in positions&nbsp;5&nbsp;and&nbsp;8will move to the right and in&nbsp;2&nbsp;time units will eat asterisks in positions&nbsp;7&nbsp;and&nbsp;10, respectively. So&nbsp;2&nbsp;time units is enough for Packmen to eat all asterisks onthe game field.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<p>
+	<br />
+	
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=100005;
+char s[maxn];
+vector&lt;int&gt;a,b;
+ 
+ 
+inline int cal(int l,int x,int r)
+{
+       inta=x-l,b=r-x;
+       return2*min(a,b)+max(a,b);
+}
+int main()
+{
+       intn,i,j,l,r,mid,ans,ll,rr;
+       scanf(&quot;%d%s&quot;,&amp;n,s);
+       for(i=0;i&lt;n;i++){
+              if(s[i]=='P')a.push_back(i);
+              if(s[i]=='*')b.push_back(i);
+       }
+       for(l=0,r=2*n;l&lt;=r;){
+              mid=l+r&gt;&gt;1;
+              for(i=j=0;i&lt;a.size();i++)
+                  for(ll=rr=a[i];j&lt;b.size();j++)
+                     if(cal(min(ll,b[j]),a[i],max(rr,b[j]))&gt;mid)break;
+                      else ll=min(ll,b[j]),rr=max(rr,b[j]);
+              if(j&lt;b.size())l=mid+1;
+              elser=mid-1,ans=mid;
+       }
+       printf(&quot;%d&quot;,ans);
+       return0;
+}</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

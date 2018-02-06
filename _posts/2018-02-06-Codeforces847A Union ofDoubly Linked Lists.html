@@ -1,0 +1,146 @@
+---
+tags: 
+ - 数据结构-链表
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P10.jpg"
+preview-img: "/img/preview/P10.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">标签：模拟，链表</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Doublylinked list is one of the fundamental data structures. A doubly linked list isa sequence of elements, each containing information about the previous and thenext elements of the list. In this problem all lists have linear structure.I.e. each element except the first has exactly one previous element, eachelement except the last has exactly one next element. The list is not closed ina cycle.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In thisproblem you are given&nbsp;<em>n</em>&nbsp;memorycells forming one or more doubly linked lists. Each cell contains informationabout element from some list. Memory cells are numbered from&nbsp;1&nbsp;to&nbsp;<em>n</em>.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">For eachcell&nbsp;<em>i</em>&nbsp;you are given twovalues:</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">·&nbsp;&nbsp;<em>l<sub>i</sub></em>&nbsp;— cell containing previous element for theelement in the cell&nbsp;<em>i</em>;</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">·&nbsp;&nbsp;<em>r<sub>i</sub></em>&nbsp;— cell containing next element for theelement in the cell&nbsp;<em>i</em>.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">If cell&nbsp;<em>i</em>&nbsp;contains informationabout the element which has no previous element then<em>l<sub>i</sub></em> = 0.Similarly, if cell&nbsp;<em>i</em>&nbsp;containsinformation about the element which has no next element then&nbsp;<em>r<sub>i</sub></em> = 0.</span>
+</p>
+<p align="left">
+	<img src="http://xheditor.com/js/xheditor_skin/default/img/waiting.gif" remoteimg="0" alt="" /><br />
+	
+</p>
+<p align="left">
+	<span lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;Three lists are shown on the picture.</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Forexample, for the picture above the values of&nbsp;<em>l</em>&nbsp;and&nbsp;<em>r</em>&nbsp;are thefollowing:&nbsp;<em>l</em><sub>1</sub> = 4,<em>r</em><sub>1</sub> = 7;&nbsp;<em>l</em><sub>2</sub> = 5,&nbsp;<em>r</em><sub>2</sub> = 0;&nbsp;<em>l</em><sub>3</sub> = 0,&nbsp;<em>r</em><sub>3</sub> = 0;&nbsp;<em>l</em><sub>4</sub> = 6,&nbsp;<em>r</em><sub>4</sub> = 1;&nbsp;<em>l</em><sub>5</sub> = 0,&nbsp;<em>r</em><sub>5</sub> = 2;&nbsp;<em>l</em><sub>6</sub> = 0,&nbsp;<em>r</em><sub>6</sub> = 4;&nbsp;<em>l</em><sub>7</sub> = 1,&nbsp;<em>r</em><sub>7</sub> = 0.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Your taskis to unite all given lists in a single list, joining them to each other in anyorder. In particular, if the input data already contains a single list, thenthere is no need to perform any actions. Print the resulting list in the formof values&nbsp;<em>l<sub>i</sub></em>,&nbsp;<em>r<sub>i</sub></em>.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Any otheraction, other than joining the beginning of one list to the end of another, cannot be performed.</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The firstline contains a single integer&nbsp;<em>n</em>&nbsp;(1 ≤ <em>n</em> ≤ 100) — the number ofmemory cells where the doubly linked lists are located.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Each ofthe following&nbsp;<em>n</em>&nbsp;linescontains two integers&nbsp;<em>l<sub>i</sub></em>,&nbsp;<em>r<sub>i</sub></em>&nbsp;(0 ≤ <em>l<sub>i</sub></em>, <em>r<sub>i</sub></em> ≤ <em>n</em>) — thecells of the previous and the next element of list for cell&nbsp;<em>i</em>. Value&nbsp;<em>l<sub>i</sub></em> = 0&nbsp;if element in cell&nbsp;<em>i</em>&nbsp;has no previouselement in its list. Value&nbsp;<em>r<sub>i</sub></em> = 0&nbsp;if elementin cell&nbsp;<em>i</em>&nbsp;has no next elementin its list.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">It isguaranteed that the input contains the correct description of a single or moredoubly linked lists. All lists have linear structure: each element of listexcept the first has exactly one previous element; each element of list exceptthe last has exactly one next element. Each memory cell contains informationabout one element from some list, each element of each list written in one of&nbsp;<em>n</em>&nbsp;given cells.</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Print&nbsp;<em>n</em>&nbsp;lines, the&nbsp;<em>i</em>-th line must contain two integers&nbsp;<em>l<sub>i</sub></em>&nbsp;and&nbsp;<em>r<sub>i</sub></em>&nbsp;— the cells of theprevious and the next element of list for cell&nbsp;<em>i</em>&nbsp;after all lists from the input are united ina single list. If there are many solutions print any of them.</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Example</span></strong>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">7<br />
+	4 7<br />
+	5 0<br />
+	0 0<br />
+	6 1<br />
+	0 2<br />
+	0 4<br />
+	1 0</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">4 7<br />
+	5 6<br />
+	0 5<br />
+	6 1<br />
+	3 2<br />
+	2 4<br />
+	1 0</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">题意：给出若干个链表，你需要合并他们，使其成为一个链表的整体</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：直接模拟就好了，注意合并的时候需要判断这两个链表是否已经连接过了，以免出现首尾相接形成环的错误现象</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+using namespace std;
+ 
+int n,l[505],r[505],cnt=0;
+ 
+inline bool checkl(int x,int y)
+{
+       if(l[x]==0)return1;
+       elseif(l[x]==y)return 0;
+       returncheckl(l[x],y);
+}
+      
+inline bool checkr(int x,int y)
+{
+       if(r[x]==0)return1;
+       elseif(r[x]==y)return 0;
+       returncheckr(r[x],y);
+}
+ 
+int main()
+{
+   scanf(&quot;%d&quot;,&amp;n);
+       rep(i,1,n){scanf(&quot;%d%d&quot;,&amp;l[i],&amp;r[i]);if(l[i]==0)cnt++;}
+       rep(i,1,n){
+       //     cout&lt;&lt;cnt&lt;&lt;endl;
+              if(l[i]==0&amp;&amp;cnt&gt;1)
+                  rep(j,1,n)if(r[j]==0&amp;&amp;i!=j&amp;&amp;checkr(i,j)){r[j]=i;l[i]=j;cnt--;break;}
+              if(r[i]==0&amp;&amp;cnt&gt;1)
+                 rep(j,1,n)if(l[j]==0&amp;&amp;i!=j&amp;&amp;checkl(i,j)&amp;&amp;checkr(i,j)){l[j]=i;r[i]=j;cnt--;break;}
+              }
+       rep(i,1,n)printf(&quot;%d%d\n&quot;,l[i],r[i]);
+       return0;
+}</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

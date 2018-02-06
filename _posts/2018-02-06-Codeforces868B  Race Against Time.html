@@ -1,0 +1,143 @@
+---
+tags: 
+ - 基础算法-模拟
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P25.jpg"
+preview-img: "/img/preview/P25.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">标签：模拟，平面几何</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Have you ever tried to explain to thecoordinator, why it is eight hours to the contest and not a single problem hasbeen prepared yet? Misha had. And this time he has a really strong excuse: hefaced a space-time paradox! Space and time replaced each other.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The entire universe turned into an enormousclock face with three hands&nbsp;— hour, minute, and second. Time froze, andclocks now show the time<em>h</em> hours, <em>m</em> minutes, <em>s</em> seconds.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Last time Misha talked with the coordinatorat<em>t</em><sub>1</sub> o'clock, so now he stands on the number <em>t</em><sub>1</sub>on the clock face. The contest should be ready by<em>t</em><sub>2</sub> o'clock.In the terms of paradox it means that Misha has to go to number<em>t</em><sub>2</sub>somehow. Note that he doesn't have to move forward only: in these circumstancestime has no direction.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Clock hands are very long, and Misha cannotget round them. He also cannot step over as it leads to the collapse ofspace-time. That is, if hour clock points 12 and Misha stands at 11 then hecannot move to 1 along the top arc. He has to follow all the way round theclock center (of course, if there are no other hands on his way).</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Given the hands' positions,<em>t</em><sub>1</sub>,and <em>t</em><sub>2</sub>, find if Misha can prepare the contest on time (orshould we say on space?). That is, find if he can move from<em>t</em><sub>1</sub>to <em>t</em><sub>2</sub> by the clock face.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Five integers <em>h</em>,<em>m</em>, <em>s</em>,<em>t</em><sub>1</sub>, <em>t</em><sub>2</sub> (1 ≤ <em>h</em> ≤ 12, 0 ≤ <em>m</em>, <em>s</em> ≤ 59, 1 ≤ <em>t</em><sub>1</sub>, <em>t</em><sub>2</sub> ≤ 12,<em>t</em><sub>1</sub> ≠ <em>t</em><sub>2</sub>).</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Misha's position and the target time do notcoincide with the position of any hand.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Print &quot;YES&quot; (quotes for clarity),if Misha can prepare the contest on time, and &quot;NO&quot; otherwise.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">You can print each character either upper-or lowercase (&quot;YeS&quot; and &quot;yes&quot; are valid when the answer is&quot;YES&quot;).</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Examples</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">12 30 45 3 11</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">NO</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">12 0 1 12 1</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">YES</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3 47 0 4 9</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">YES</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Note</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The three examples are shown on thepictures below from left to right. The starting position of Misha is shown withgreen, the ending position is shown with pink. Note that the positions of thehands on the pictures are not exact, but are close to the exact and the answeris the same.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">题意：给定一个时刻，将其视为钟面，指针将其划分为许多区域，再读入两个时刻，问这两个时刻是否在同一个区域内</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">直接模拟就好了，注意下精度的问题</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+using namespace std;
+double h,m,s,t1,t2;
+bool first,second;
+int main()
+{
+	first=second=true;
+	cin&gt;&gt;h&gt;&gt;m&gt;&gt;s&gt;&gt;t1&gt;&gt;t2;
+	if(h==12)h=0;
+	if(t1==12)t1=0;
+	if(t2==12)t2=0;
+	h=h*30+m/60+s/3600;
+	m=(m+s/60)*6;
+	s=s*6;
+	t1*=30,t2*=30;
+	//cout&lt;&lt;h&lt;&lt;endl&lt;&lt;m&lt;&lt;endl&lt;&lt;s&lt;&lt;endl&lt;&lt;t1&lt;&lt;endl&lt;&lt;t2&lt;&lt;endl;
+	if(t1&gt;t2)swap(t1,t2); 
+	if(h&gt;t1&amp;&amp;h&lt;t2)first=false;
+	if(m&gt;t1&amp;&amp;m&lt;t2)first=false;
+	if(s&gt;t1&amp;&amp;s&lt;t2)first=false;
+	if(h&gt;t2&amp;&amp;h&lt;=360)second=false;
+	if(m&gt;t2&amp;&amp;m&lt;=360)second=false;
+	if(s&gt;t2&amp;&amp;s&lt;=360)second=false;
+	if(h&lt;t1&amp;&amp;h&gt;=0)second=false;
+	if(m&lt;t1&amp;&amp;m&gt;=0)second=false;
+	if(s&lt;t1&amp;&amp;m&gt;=0)second=false;
+	if(first||second)cout&lt;&lt;&quot;YES\n&quot;;
+	else cout&lt;&lt;&quot;NO\n&quot;;
+	return 0;
+}</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>
+<br />

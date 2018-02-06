@@ -1,0 +1,153 @@
+---
+tags: 
+ - 基础算法-贪心
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P18.jpg"
+preview-img: "/img/preview/P18.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#373a3c;">标签：贪心，</span><span style="color:#373a3c;">hash</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In theevening Polycarp decided to analyze his today's travel expenses on publictransport.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The bussystem in the capital of Berland is arranged in such a way that each bus runsalong the route between two stops. Each bus has no intermediate stops. So eachof the buses continuously runs along the route from one stop to the other andback. There is at most one bus running between a pair of stops.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Polycarpmade&nbsp;<em>n</em>&nbsp;trips on buses. Abouteach trip the stop where he started the trip and the the stop where he finishedare known. The trips follow in the chronological order in Polycarp's notes.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">It isknown that one trip on any bus costs&nbsp;<em>a</em>&nbsp;burles. Incase when passenger makes a transshipment the cost of trip decreases to&nbsp;<em>b</em>&nbsp;burles (<em>b</em> &lt; <em>a</em>). Apassenger makes a transshipment if the stop on which he boards the buscoincides with the stop where he left the previous bus. Obviously, the firsttrip can not be made with transshipment.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Forexample, if Polycarp made three consecutive trips: &quot;BerBank&quot;&nbsp;&nbsp;&quot;University&quot;,&quot;University&quot;&nbsp;&nbsp;&quot;BerMall&quot;, &quot;University&quot;&nbsp;&nbsp;&quot;BerBank&quot;, then he payed&nbsp;<em>a</em> + <em>b</em> + <em>a</em> = 2<em>a</em> + <em>b</em>burles.From the BerBank he arrived to the University, where he made transshipment tothe other bus and departed to the BerMall. Then he walked to the University andreturned to the BerBank by bus.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">AlsoPolycarp can buy no more than&nbsp;<em>k</em>&nbsp;travelcards. Each travel card costs&nbsp;<em>f</em>&nbsp;burles.The travel card for a single bus route makes free of charge any trip by thisroute (in both directions). Once purchased, a travel card can be used anynumber of times in any direction.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">What isthe smallest amount of money Polycarp could have spent today if he can buy nomore than&nbsp;<em>k</em>&nbsp;travelcards?</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The firstline contains five integers&nbsp;<em>n</em>, <em>a</em>, <em>b</em>, <em>k</em>, <em>f</em>&nbsp;(1 ≤ <em>n</em> ≤ 300,&nbsp;1 ≤ <em>b</em> &lt; <em>a</em> ≤ 100,&nbsp;0 ≤ <em>k</em> ≤ 300,&nbsp;1 ≤ <em>f</em> ≤ 1000) where:</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">·&nbsp;&nbsp;<em>n</em>&nbsp;— the number of Polycarp trips,</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">·&nbsp;&nbsp;<em>a</em>&nbsp;— the cost of a regualar single trip,</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">·&nbsp;&nbsp;<em>b</em>&nbsp;— the cost of a trip after a transshipment,</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">·&nbsp;&nbsp;<em>k</em>&nbsp;— the maximum number of travel cards Polycarpcan buy,</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">·&nbsp;&nbsp;<em>f</em>&nbsp;— the cost of a single travel card.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Thefollowing&nbsp;<em>n</em>&nbsp;linesdescribe the trips in the chronological order. Each line contains exactly twodifferent words separated by a single space — the name of the start stop andthe name of the finish stop of the trip. All names consist of uppercase andlowercase English letters and have lengths between&nbsp;1&nbsp;to&nbsp;20&nbsp;lettersinclusive. Uppercase and lowercase letters should be considered different.</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Print thesmallest amount of money Polycarp could have spent today, if he can purchase nomore than&nbsp;<em>k</em>&nbsp;travelcards.</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Example</span></strong>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3 5 3 1 8<br />
+	BerBank University<br />
+	University BerMall<br />
+	University BerBank</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">11</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">4 2 1 300 1000<br />
+	a A<br />
+	A aa<br />
+	aa AA<br />
+	AA a</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">5</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Note</span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In thefirst example Polycarp can buy travel card for the route &quot;BerBank&nbsp;University&quot; and spend&nbsp;8&nbsp;burles. Note that his second trip&quot;University&quot;&nbsp;&nbsp;&quot;BerMall&quot; was made aftertransshipment, so for this trip Polycarp payed&nbsp;3&nbsp;burles. So the minimum total sum equals to&nbsp;8 + 3 = 11&nbsp;burles.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In thesecond example it doesn't make sense to buy travel cards. Note that each ofPolycarp trip (except the first) was made with transshipment. So the minimumtotal sum equals to&nbsp;2 + 1 + 1 + 1 = 5&nbsp;burles.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：找使用次数*价值最大的前k个替换成通票，如果不值得换为通票，那么就不换</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Hash可以用模板，也可以用C++自带的map,最近真的经常碰到hash题</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define P(x,y) make_pair(min(x,y),max(x,y))
+using namespace std;
+const int maxn=305;
+ 
+map&lt;pair&lt;int,int&gt;,int&gt; s;
+map&lt;string,int&gt;Map;
+int n,x,y,tx,ty,k,f,cnt=0,last=-1,ans=0,c[maxn],num=0;
+string a,b;
+ 
+int main()
+{
+         cin&gt;&gt;n&gt;&gt;x&gt;&gt;y&gt;&gt;k&gt;&gt;f;
+         rep(i,1,n){
+                 cin&gt;&gt;a&gt;&gt;b;
+                 if(!Map[a])Map[a]=++cnt;
+                 if(!Map[b])Map[b]=++cnt;
+                 int tx=Map[a],ty=Map[b],cost=(tx==last)?y:x;
+                 ans+=cost;s[P(tx,ty)]+=cost;last=ty;
+         }
+         for(map&lt;pair&lt;int,int&gt;,int&gt;::iterator it=s.begin();it!=s.end();it++)
+             c[++num]=it-&gt;second;
+         sort(c+1,c+num+1,greater&lt;int&gt;());
+         rep(i,1,k)
+             if(c[i]&lt;=f)break;
+                 else ans-=c[i]-f;
+         cout&lt;&lt;ans&lt;&lt;endl;
+         return 0;
+}
+ </pre>
+<br />
+<br />
+
+<div>
+	<pre style="background:white"></pre>
+</div>

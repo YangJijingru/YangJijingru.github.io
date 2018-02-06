@@ -1,0 +1,127 @@
+---
+tags: 
+ - 基础算法-模拟
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P35.jpg"
+preview-img: "/img/preview/P35.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">标签：模拟</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">题目描述</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">幻方是一种很神奇的N*N矩阵：它由数字1,2,3,……,N*N构成，且每行、每列及两条对角线上的数字之和都相同。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">当N为奇数时，我们可以通过以下方法构建一个幻方：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">首先将1写在第一行的中间。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">之后，按如下方式从小到大依次填写每个数K(K=2,3,…,N*N)：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1.若(K−1)在第一行但不在最后一列，则将K填在最后一行，(K−1)所在列的右一列；</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2.若(K−1)在最后一列但不在第一行，则将K填在第一列，(K−1)所在行的上一行；</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3.若(K−1)在第一行最后一列，则将K填在(K−1)的正下方；</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">4.若(K−1)既不在第一行，也不在最后一列，如果(K−1)的右上方还未填数，则将K填在(K−1)的右上方，否则将K填在(K−1)的正下方。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">现给定N请按上述方法构造N*N的幻方。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输入输出格式</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输入格式：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输入文件只有一行，包含一个整数N即幻方的大小。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输出格式：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输出文件包含N行，每行N个整数，即按上述方法构造出的N*N的幻方。相邻两个整数之间用单个空格隔开。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入样例#1：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输出样例#1：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">8 1 6</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3 5 7</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">4 9 2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>说明</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">对于100%的数据，1&lt;=N&lt;=39且N为奇数。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">NOIp2015 提高组 d1t1</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">模拟题，近年来最水的一题</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">参考代码</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+
+int Map[2000][2000]={0};
+int x[2000],y[2000];
+int n,i,j;
+int main()
+{
+    cin&gt;&gt;n;
+    Map[1][n/2+1]=1;
+    x[1]=1;y[1]=n/2+1;
+    for(i=2;i&lt;=n*n;i++)
+    {
+        if(x[i-1]==1&amp;&amp;y[i-1]!=n){Map[n][y[i-1]+1]=i;x[i]=n;y[i]=y[i-1]+1;continue;}
+        if(x[i-1]!=1&amp;&amp;y[i-1]==n){Map[x[i-1]-1][1]=i;x[i]=x[i-1]-1;y[i]=1;continue;}
+        if(x[i-1]==1&amp;&amp;y[i-1]==n){Map[2][n]=i;x[i]=2;y[i]=n;continue;}
+        if(x[i-1]!=1&amp;&amp;y[i-1]!=n&amp;&amp;Map[x[i-1]-1][y[i-1]+1]==0){Map[x[i-1]-1][y[i-1]+1]=i;x[i]=x[i-1]-1;y[i]=y[i-1]+1;continue;}
+        if(x[i-1]!=1&amp;&amp;y[i-1]!=n){Map[x[i-1]+1][y[i-1]]=i;x[i]=x[i-1]+1;y[i]=y[i-1];continue;}
+    }
+    for(i=1;i&lt;=n;i++)
+    {
+       for(j=1;j&lt;=n;j++)printf(&quot;%d &quot;,Map[i][j]);
+       printf(&quot;\n&quot;);
+    }
+    return 0;
+}
+</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

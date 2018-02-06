@@ -1,0 +1,145 @@
+---
+tags: 
+ - 特殊-位运算
+ - DP-记忆化搜索
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P27.jpg"
+preview-img: "/img/preview/P27.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">标签：记忆化搜索，模拟，位运算</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">You are given <em>n</em> strings<em>s</em><sub>1</sub>, <em>s</em><sub>2</sub>, ..., <em>s<sub>n</sub></em> consisting of characters 0 and 1.<em>m</em> operations areperformed, on each of them you concatenate two existing strings into a new one.On the<em>i</em>-th operation the concatenation<em>s<sub>ai</sub>s<sub>bi</sub></em>is saved into a new string<em>s<sub>n</sub></em><sub> +</sub><sub> <em>i</em></sub>(the operations are numbered starting from 1). After each operation you need tofind the maximum positive integer<em>k</em> such that all possible stringsconsisting of 0 and 1 of length<em>k</em> (there are 2<em><sup>k</sup></em> suchstrings) are substrings of the new string. If there is no such<em>k</em>, print 0.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The first line contains single integer<em>n</em>(1 ≤ <em>n</em> ≤ 100)&nbsp;— thenumber of strings. The next<em>n</em> lines contain strings<em>s</em><sub>1</sub>, <em>s</em><sub>2</sub>, ..., <em>s<sub>n</sub></em> (1 ≤ |<em>s<sub>i</sub></em>| ≤ 100), one per line. The total length of strings is not greater than 100.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The next line contains single integer<em>m</em>(1 ≤ <em>m</em> ≤ 100)&nbsp;— thenumber of operations.<em>m</em> lines follow, each of them contains two integers<em>a<sub>i</sub></em> abd<em>b<sub>i</sub></em> (1 ≤ <em>a<sub>i</sub></em>, <em>b<sub>i</sub></em> ≤ <em>n</em> + <em>i</em> - 1)&nbsp;— the number of strings that areconcatenated to form<em>s<sub>n</sub></em><sub> +</sub><sub> <em>i</em></sub>.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Print <em>m</em> lines, each should containone integer&nbsp;— the answer to the question after the correspondingoperation.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Example</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">5<br />
+	01<br />
+	10<br />
+	101<br />
+	11111<br />
+	0<br />
+	3<br />
+	1 2<br />
+	6 5<br />
+	4 4</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1<br />
+	2<br />
+	0</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Note</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">On the first operation, a new string &quot;0110&quot;is created. For<em>k</em> = 1 the two possiblebinary strings of length<em>k</em> are &quot;0&quot; and &quot;1&quot;, they aresubstrings of the new string. For<em>k</em> = 2 and greater there exist strings of length<em>k</em> that do notappear in this string (for<em>k</em> = 2 such string is &quot;00&quot;). So the answer is 1.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">On the second operation the string &quot;01100&quot;is created. Now all strings of length<em>k</em> = 2 are present.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">On the third operation the string &quot;1111111111&quot;is created. There is no zero, so the answer is 0.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">题意：给定n个01字符串，进行m次操作，每次将Sa,Sb，两个字符串合并成为新串Sn+i</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">求：对于每个新和成的字符串，存在数字k，满足长度为k的01字符全排列都存在于新和成的字符串的子串中，询问k的最大值</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">直接模拟就好了，注意求出的每个ans，一定要存储下来，记忆化使用，01字符全排列可以使用位运算加速，不会TLE</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">代码中取头尾各500，防止MLE</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">我们合并两个字符串的时候，对答案产生贡献的部分就是两者中间衔接部分</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">所以我们可以只记录每个字符串的头和尾作为特征来更新答案<br />
+	</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">对于这种做法答案的正确性，可以有递推式ans[n+i]=max(max(ans[l],ans[r]),work(n+i))保证，满足答案递增</span><span style="font-family:Microsoft YaHei;font-size:16px;">（是部分递增，不是全局递增），貌似可以有严谨（xuan xue）的数学证明但是本蒟蒻不会啊，大家有数据也可以hack。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+	</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+using namespace std;
+const int maxn=206;
+int ans[maxn],n,m,l,r;
+string s[maxn];
+
+int work(int x){
+	rep(i,1,10)
+	    rep(j,0,(1&lt;&lt;i)-1){
+	    	string t;
+	    	rep(k,0,i-1){
+	    		if(j&amp;(1&lt;&lt;k))t+='1';
+	    		else t+='0';
+	    	}
+	    	if(s[x].find(t)==-1)return i-1;
+	    }
+}
+int main()
+{
+	scanf(&quot;%d&quot;,&amp;n);
+	rep(i,1,n)cin&gt;&gt;s[i];
+	scanf(&quot;%d&quot;,&amp;m);
+	rep(i,1,m){
+		scanf(&quot;%d%d&quot;,&amp;l,&amp;r);
+		s[n+i]=s[l]+s[r];
+		if(s[n+i].length()&gt;1000)s[n+i]=s[n+i].substr(0,500)+s[n+i].substr(s[n+i].length()-500,500);
+		ans[n+i]=max(max(ans[l],ans[r]),work(n+i));
+		cout&lt;&lt;ans[n+i]&lt;&lt;endl;
+	}
+	return 0;
+}</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

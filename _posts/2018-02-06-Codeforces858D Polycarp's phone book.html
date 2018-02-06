@@ -1,0 +1,166 @@
+---
+tags: 
+ - 基础算法-模拟
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P23.jpg"
+preview-img: "/img/preview/P23.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#222222;">标签：模拟，</span><span style="color:#222222;">hash</span></span>
+</p>
+<p>
+	<span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+	</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#222222;">There are</span><span style="color:#222222;">&nbsp;</span><em><span style="color:#222222;">n</span></em><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">phone numbers in Polycarp's contacts on his phone. Eachnumber is a 9-digit integer, starting with a digit different from</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">0</span><span style="color:#222222;">. All the numbers aredistinct.</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#222222;">There is the latest version of Berdroid OS installed onPolycarp's phone. If some number is entered, is shows up all the numbers in thecontacts for which there is a substring equal to the entered sequence ofdigits. For example, is there are three phone numbers in Polycarp's contacts:</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">123456789</span><span style="color:#222222;">,</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">100000000</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">and</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">100123456</span><span style="color:#222222;">, then:</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#222222;">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#222222;">if he enters</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">00</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">two numbers will show up:</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">100000000</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">and</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">100123456</span><span style="color:#222222;">,</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#222222;">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#222222;">if he enters</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">123</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">two numbers will show up</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">123456789</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">and</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">100123456</span><span style="color:#222222;">,</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#222222;">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#222222;">if he enters</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">01</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">there will be only one number</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">100123456</span><span style="color:#222222;">.</span></span>
+</p>
+<p align="left">
+	<span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">For each of the phone numbers in Polycarp's contacts,find the minimum in length sequence of digits such that if Polycarp enters thissequence, Berdroid shows this only phone number.</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#222222;">The first line contains single integer</span><span style="color:#222222;">&nbsp;</span><em><span style="color:#222222;">n</span></em><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">(</span><span style="color:#222222;">1 ≤ <em>n</em> ≤ 70000</span><span style="color:#222222;">) — the total number of phone contacts in Polycarp'scontacts.</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#222222;">The phone numbers follow, one in each line. Each numberis a positive 9-digit integer starting with a digit from</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">1</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">to</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">9</span><span style="color:#222222;">. All the numbers are distinct.</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#222222;">Print exactly</span><span style="color:#222222;">&nbsp;</span><em><span style="color:#222222;">n</span></em><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">lines: the</span><span style="color:#222222;">&nbsp;</span><em><span style="color:#222222;">i</span></em><span style="color:#222222;">-th of themshould contain the shortest non-empty sequence of digits, such that if Polycarpenters it, the Berdroid OS shows up only the</span><span style="color:#222222;">&nbsp;</span><em><span style="color:#222222;">i</span></em><span style="color:#222222;">-th numberfrom the contacts. If there are several such sequences, print any of them.</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">Examples</span></span></strong>
+</p>
+<p align="left">
+	<strong><span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">input</span></span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="color:#880000;"><span style="font-family:Microsoft YaHei;font-size:16px;">3<br />
+	123456789<br />
+	100000000<br />
+	100123456</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">output</span></span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="color:#880000;"><span style="font-family:Microsoft YaHei;font-size:16px;">9<br />
+	000<br />
+	01</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">input</span></span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="color:#880000;"><span style="font-family:Microsoft YaHei;font-size:16px;">4<br />
+	123456789<br />
+	193456789<br />
+	134567819<br />
+	934567891</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">output</span></span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="color:#880000;"><span style="font-family:Microsoft YaHei;font-size:16px;">2<br />
+	193<br />
+	81<br />
+	91</span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">题意：截取每个字符串中具有代表性的最短非空子串</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：昨晚打CF的时候，看到这题就一直往KMP，trie树那些高级字符串算法想去了</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">然而今早补题的时候，才发现用hash就完全可以，或者可以直接模拟</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+using namespace std;
+const int maxn=70005,maxm=1000005;
+int t[maxm][12],tt=0,c[maxm],v[maxm];
+char s[maxn][12];
+
+void ins(char *s,int q)
+{
+	int p=0;
+	for(;*s;s++){
+		if(t[p][*s-'0']==0)t[p][*s-'0']=++tt;
+		p=t[p][*s-'0'];
+		if(v[p]!=q){c[p]++;v[p]=q;}//更新计数数组c和最新的记录位置数组v 
+	}
+	return;
+}
+
+int find(char *s)
+{
+	int p=0,l=0;
+	for(;*s;s++){
+		l++;
+		p=t[p][*s-'0'];
+		if(c[p]==1)return l;//返回最小长度 
+	}
+	return 10;
+}
+int main()
+{
+	int n;
+	scanf(&quot;%d&quot;,&amp;n);
+	memset(v,-1,sizeof v); 
+	rep(i,0,n-1){
+		scanf(&quot;%s&quot;,s[i]);
+		rep(j,0,8){ins(s[i]+j,i);}//建立查询的数组 
+	}
+	rep(i,0,n-1){
+		int start=0,len=9;
+		rep(j,0,8){
+			int u=find(s[i]+j);//查询长度，如果小于答案，更换答案 
+			if(u&lt;len){
+				start=j;
+				len=u;
+			}
+		}
+		s[i][start+len]=0;
+		printf(&quot;%s\n&quot;,s[i]+start);
+	}
+	return 0;
+}
+</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

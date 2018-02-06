@@ -1,0 +1,224 @@
+---
+tags: 
+ - 图论-欧拉回路
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P2.jpg"
+preview-img: "/img/preview/P2.jpg"
+---
+<p style="margin:0px">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">标签：欧拉图，并查集</span></strong>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Description</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">给一张无向图，边有黑白两种颜色，现在你有一堆反色刷，可以从任意点开始刷，经过若干条边后回到起点。<span style="margin:0px" lang="EN-US"><br />
+	</span>现在要询问至少需要多少个反色刷可以使这张图所有边都变成白色。<span style="margin:0px" lang="EN-US"><br />
+	</span>因为某种原因，边的颜色是会改变的，于是。。<span style="margin:0px" lang="EN-US"><br />
+	</span>需要支持以下操作：<span style="margin:0px" lang="EN-US"><br />
+	1 x&nbsp; </span>把第<span style="margin:0px" lang="EN-US">x</span>条边反色（编号从<span style="margin:0px" lang="EN-US">0~m-1</span>）<span style="margin:0px" lang="EN-US"><br />
+	2&nbsp;&nbsp; </span>询问当前图中最少需要多少个反色刷</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">第一行两个整数<span style="margin:0px" lang="EN-US">n m</span>表示这张图有<span style="margin:0px" lang="EN-US">n</span>个点<span style="margin:0px" lang="EN-US">m</span>条边<span style="margin:0px" lang="EN-US"><br />
+	</span>接下来<span style="margin:0px" lang="EN-US">m</span>行 每行<span style="margin:0px" lang="EN-US">3</span>个整数<span style="margin:0px" lang="EN-US"> u v c</span>表示一条无向边和这条边的颜色<span style="margin:0px" lang="EN-US">(0</span>为白色<span style="margin:0px" lang="EN-US"> 1</span>为黑色<span style="margin:0px" lang="EN-US">)<br />
+	</span>接下来一个整数<span style="margin:0px" lang="EN-US">q </span>表示有<span style="margin:0px" lang="EN-US">q</span>个操作<span style="margin:0px" lang="EN-US"><br />
+	</span>接下来<span style="margin:0px" lang="EN-US">q</span>行为操作 描述如上</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-size:16px;"><span style="font-family:Microsoft YaHei;">对于每个询问 输出一行一个整数<span style="margin:0px" lang="EN-US"><br />
+	</span>表示最少需要的反色刷个数 如果没有合法方案输出<span style="margin:0px" lang="EN-US">-1</span></span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">6 6</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">1 2 1</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">2 3 1</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">1 3 1</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">4 5 1</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-size:16px;"><span style="font-family:Microsoft YaHei;"><span style="margin:0px" lang="EN-US">5 6 1</span></span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">4 6 1</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">14</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">2</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">1 0</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">2</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">1 1</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">1 2</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">2</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">1 3</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">1 4</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">1 5</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">2</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">1 3</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">1 4</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">1 5</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">2</span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">2</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">-1</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">1</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">0</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">1</span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">HINT</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-size:16px;"><span style="font-family:Microsoft YaHei;"><span style="margin:0px" lang="EN-US">100%&nbsp; n,m,q &lt;= 1000000, c &lt; 2</span>，没有重边自环</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-size:16px;"><span style="font-family:Microsoft YaHei;">分析：如果存在一点黑边度数为奇数，那么肯定无解，输出<span style="margin:0px" lang="EN-US">-1</span>，如果有解的话，统计下有多少个含有黑边的联通子块就可以了，用并查集维护，否则可能会<span style="margin:0px" lang="EN-US">TLE</span></span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Code</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"></span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+#define LL long long
+#define reg(x) for(int i=head[x];i;i=e[i].next)
+using namespace std;
+inline LL read()
+{
+	LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const int maxn=1e6+6;
+LL n,m,q,ans,cnt=0,r1,r2,x,y;
+LL fa[maxn],u[maxn],v[maxn],c[maxn],d[maxn],sum[maxn];
+inline LL find(int x){return x==fa[x]?x:fa[x]=find(fa[x]);}
+int main()
+{
+	n=read(),m=read();
+	rep(i,1,n)fa[i]=i;
+	rep(i,1,m){
+		u[i]=read(),v[i]=read(),c[i]=read();
+		r1=find(u[i]),r2=find(v[i]);
+		if(r1!=r2){
+			fa[r1]=r2;
+			if(sum[r2]&amp;&amp;sum[r1])ans--;
+			sum[r2]+=sum[r1];
+		}
+		if(c[i]){
+			sum[r2]++;
+			if(sum[r2]==1)ans++;
+			d[u[i]]++,d[v[i]]++;
+			if(d[u[i]]&amp;1)cnt++;else cnt--;
+			if(d[v[i]]&amp;1)cnt++;else cnt--;
+		}
+		else if(r1!=r2&amp;&amp;sum[r1]&amp;&amp;sum[r2])ans--;
+	}
+	q=read();
+	rep(i,1,q){
+		x=read();
+		if(x==1){
+			y=read();y++;
+			c[y]^=1;r1=find(u[y]);
+			if(c[y]){
+				sum[r1]++;
+				if(sum[r1]==1)ans++;
+				d[u[y]]++,d[v[y]]++;
+				if(d[u[y]]&amp;1)cnt++;else cnt--;
+				if(d[v[y]]&amp;1)cnt++;else cnt--;
+			}
+			else{
+				sum[r1]--;if(sum[r1]==0)ans--;
+				d[u[y]]--,d[v[y]]--;
+				if(d[u[y]]&amp;1)cnt++;else cnt--;
+				if(d[v[y]]&amp;1)cnt++;else cnt--;
+			}
+		}
+		else{
+			if(cnt)cout&lt;&lt;&quot;-1\n&quot;;
+			else printf(&quot;%lld\n&quot;,ans);
+		}
+	}
+	return 0;
+}</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>

@@ -1,0 +1,119 @@
+---
+tags: 
+ - 基础算法-模拟
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P30.jpg"
+preview-img: "/img/preview/P30.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">标签：模拟，数学</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Even if the world is full of counterfeits,I still regard it as wonderful.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Pile up herbs and incense, and arise againfrom the flames and ashes of its predecessor&nbsp;— as is known to many, thephoenix does it like this.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The phoenix has a rather long lifespan, andreincarnates itself once every<em>a</em>! years. Here <em>a</em>! denotes thefactorial of integer <em>a</em>, that is,<em>a</em>! = 1 × 2 × ... × <em>a</em>. Specifically, 0! = 1.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Koyomi doesn't care much about this, butbefore he gets into another mess with oddities, he is interested in the numberof times the phoenix will reincarnate in a timespan of<em>b</em>! years, thatis, . Note that when <em>b</em> ≥ <em>a</em> this value is always integer.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">As the answer can be quite large, it wouldbe enough for Koyomi just to know the last digit of the answer in decimalrepresentation. And you're here to provide Koyomi with this knowledge.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The first and only line of input containstwo space-separated integers<em>a</em> and <em>b</em> (0 ≤ <em>a</em> ≤ <em>b</em> ≤ 10<sup>18</sup>).</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output one line containing a single decimaldigit&nbsp;— the last digit of the value that interests Koyomi.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Examples</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2 4</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0 10</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">107 109</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Note</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In the first example, the last digit of is 2;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In the second example, the last digit of is 0;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In the third example, the last digit of is 2.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：直接模拟a+1-&gt;b的乘积即可，注意如果ans已经等于0，那么直接跳出循环输出0</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(long long i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(long long i=a;i&gt;=b;i--)
+#define LL unsigned long long
+using namespace std;
+LL a,b,ans=1;
+ 
+int main()
+{
+	cin&gt;&gt;a&gt;&gt;b;
+	rep(i,a+1,b){ans=(ans*i)%10;if(ans==0)break;}
+	cout&lt;&lt;ans&lt;&lt;endl;
+	return 0;
+} 
+
+</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

@@ -1,0 +1,137 @@
+---
+tags: 
+ - 基础算法-模拟
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P24.jpg"
+preview-img: "/img/preview/P24.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">标签：模拟</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">As technologies develop, manufacturers aremaking the process of unlocking a phone as user-friendly as possible. To unlockits new phone, Arkady's pet dog Mu-mu has to bark the password once. The phonerepresents a password as a string of two lowercase English letters.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Mu-mu's enemy Kashtanka wants to unlockMu-mu's phone to steal some sensible information, but it can only bark<em>n</em>distinct words, each of which can be represented as a string of two lowercaseEnglish letters. Kashtanka wants to bark several words (not necessarilydistinct) one after another to pronounce a string containing the password as asubstring. Tell if it's possible to unlock the phone in this way, or not.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The first line contains two lowercaseEnglish letters&nbsp;— the password on the phone.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The second line contains single integer<em>n</em>(1 ≤ <em>n</em> ≤ 100)&nbsp;— thenumber of words Kashtanka knows.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The next <em>n</em> lines contain twolowercase English letters each, representing the words Kashtanka knows. Thewords are guaranteed to be distinct.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Print &quot;YES&quot; if Kashtanka can barkseveral words in a line forming a string containing the password, and &quot;NO&quot;otherwise.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">You can print each letter in arbitrary case(upper or lower).</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Examples</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">ya<br />
+	4<br />
+	ah<br />
+	oy<br />
+	to<br />
+	ha</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">YES</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">hp<br />
+	2<br />
+	ht<br />
+	tp</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">NO</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">ah<br />
+	1<br />
+	ha</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">YES</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Note</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In the first example the password is &quot;ya&quot;,and Kashtanka can bark &quot;oy&quot; and then &quot;ah&quot;, and then &quot;ha&quot;to form the string &quot;oyahha&quot; which contains the password. So, theanswer is &quot;YES&quot;.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In the second example Kashtanka can'tproduce a string containing password as a substring. Note that it can bark&quot;ht&quot; and then &quot;tp&quot; producing &quot;http&quot;, but itdoesn't contain the password &quot;hp&quot; as a substring.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In the third example the string &quot;hahahaha&quot;contains &quot;ah&quot; as a substring.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">模拟大水题</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+using namespace std;
+
+int n;
+char s[500],t[500];
+char head[500],tail[500];
+
+int main()
+{
+    cin&gt;&gt;s&gt;&gt;n;
+	rep(i,1,n){
+	    cin&gt;&gt;t;
+		if((t[0]==s[0])&amp;&amp;(t[1]==s[1])){cout&lt;&lt;&quot;YES\n&quot;;return 0;}
+	    tail[t[0]]=true;
+	    head[t[1]]=true;
+	}
+	if(head[s[0]]&amp;&amp;tail[s[1]]){cout&lt;&lt;&quot;YES\n&quot;;return 0;}
+	cout&lt;&lt;&quot;NO\n&quot;;
+	return 0;
+}
+</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

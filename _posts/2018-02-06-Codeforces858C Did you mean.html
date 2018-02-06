@@ -1,0 +1,136 @@
+---
+tags: 
+ - 基础算法-贪心
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P22.jpg"
+preview-img: "/img/preview/P22.jpg"
+---
+<p>
+	<span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">标签：贪心</span></span>
+</p>
+<p align="left">
+	<span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">Beroffice text editor has a wide range offeatures that help working with text. One of the features is an automaticsearch for typos and suggestions of how to fix them.</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#222222;">Beroffice works only with small English letters (i.e.with 26 letters from</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">a</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">to</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">z</span><span style="color:#222222;">). Berofficethinks that a word is typed with a typo if there are three or more consonantsin a row in the word. The only exception is that if the block of consonants hasall letters the same, then this block (even if its length is greater thanthree) is not considered a typo. Formally, a word is typed with a typo if thereis a block of not less that three consonants in a row, and there are at leasttwo different letters in this block.</span></span>
+</p>
+<p align="left">
+	<span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">For example:</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#222222;">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#222222;">the following wordshave typos: &quot;</span><span style="color:#222222;">hellno</span><span style="color:#222222;">&quot;, &quot;</span><span style="color:#222222;">hackcerrs</span><span style="color:#222222;">&quot; and&quot;</span><span style="color:#222222;">backtothefutttture</span><span style="color:#222222;">&quot;;</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#222222;">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#222222;">the following wordsdon't have typos: &quot;</span><span style="color:#222222;">helllllooooo</span><span style="color:#222222;">&quot;, &quot;</span><span style="color:#222222;">tobeornottobe</span><span style="color:#222222;">&quot; and &quot;</span><span style="color:#222222;">oooooo</span><span style="color:#222222;">&quot;.</span></span>
+</p>
+<p align="left">
+	<span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">When Beroffice editor finds a word with a typo, itinserts as little as possible number of spaces in this word (dividing it intoseveral words) in such a way that each of the resulting words is typed withoutany typos.</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#222222;">Implement this feature of Beroffice editor. Consider thefollowing letters as the only vowels: '</span><span style="color:#222222;">a</span><span style="color:#222222;">', '</span><span style="color:#222222;">e</span><span style="color:#222222;">', '</span><span style="color:#222222;">i</span><span style="color:#222222;">', '</span><span style="color:#222222;">o</span><span style="color:#222222;">' and '</span><span style="color:#222222;">u</span><span style="color:#222222;">'. All theother letters are consonants in this problem.</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#222222;">The only line contains a non-empty word consisting ofsmall English letters. The length of the word is between</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">1</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">and</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">3000</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">letters.</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></span></strong>
+</p>
+<p align="left">
+	<span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">Print the given word without any changes if there are notypos.</span></span>
+</p>
+<p align="left">
+	<span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">If there is at least one typo in the word, insert theminimum number of spaces into the word so that each of the resulting wordsdoesn't have any typos. If there are multiple solutions, print any of them.</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">Examples</span></span></strong>
+</p>
+<p align="left">
+	<strong><span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">input</span></span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="color:#880000;"><span style="font-family:Microsoft YaHei;font-size:16px;">hellno</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">output</span></span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="color:#880000;"><span style="font-family:Microsoft YaHei;font-size:16px;">hell no</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">input</span></span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="color:#880000;"><span style="font-family:Microsoft YaHei;font-size:16px;">abacaba</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">output</span></span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="color:#880000;"><span style="font-family:Microsoft YaHei;font-size:16px;">abacaba</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">input</span></span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="color:#880000;"><span style="font-family:Microsoft YaHei;font-size:16px;">asdfasdf</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">output</span></span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="color:#880000;"><span style="font-family:Microsoft YaHei;font-size:16px;">asd fasd f</span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">题意：给你一个小写字母组成的字符串，如果其合法，那么直接输出，否则将其改为一个合法的串，从题面中再次体会到俄式英语的可怕</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">从前往后贪心就可以了</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define LL long long 
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+using namespace std;
+const int maxn=3005;
+char c[]=&quot;aeiou&quot;;
+char s[maxn];
+
+inline bool check(char ch)
+{
+	rep(i,0,4)if(ch==c[i])return 0;
+	return 1;
+}
+int main()
+{
+	scanf(&quot;%s&quot;,s);
+	int n=strlen(s),lst=-1;
+	rep(i,0,n-1){
+		putchar(s[i]);
+		if(i!=n-1&amp;&amp;lst&lt;=i-2&amp;&amp;check(s[i])&amp;&amp;check(s[i-1])&amp;&amp;check(s[i+1])&amp;&amp;(s[i]!=s[i-1]||s[i]!=s[i+1]||s[i-1]!=s[i+1]))
+		{
+			putchar(' ');
+			lst=i;
+		}
+	}
+	cout&lt;&lt;&quot; &quot;;
+	return 0;
+}
+</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

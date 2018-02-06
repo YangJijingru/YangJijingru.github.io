@@ -1,0 +1,103 @@
+---
+tags: 
+ - 基础算法-模拟
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P15.jpg"
+preview-img: "/img/preview/P15.jpg"
+---
+<h2>
+	<span style="color:#373a3c;"><span style="font-family:Microsoft YaHei;font-size:16px;">标签：模拟</span></span>
+</h2>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#373a3c;">&nbsp;</span>There are&nbsp;<em>n</em>&nbsp;student groups at the university.During the study day, each group can take no more than&nbsp;7&nbsp;classes. Seven time slots numberedfrom&nbsp;1&nbsp;to&nbsp;7&nbsp;are allocated for the classes.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Theschedule on Monday is known for each group, i. e. time slots when group willhave classes are known.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Your taskis to determine the minimum number of rooms needed to hold classes for allgroups on Monday. Note that one room can hold at most one group class in asingle time slot.</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The firstline contains a single integer&nbsp;<em>n</em>&nbsp;(1 ≤ <em>n</em> ≤ 1000) — the number ofgroups.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Each ofthe following&nbsp;<em>n</em>&nbsp;linescontains a sequence consisting of&nbsp;7&nbsp;zeroes andones — the schedule of classes on Monday for a group. If the symbol in aposition equals to1&nbsp;then the group hasclass in the corresponding time slot. In the other case, the group has no classin the corresponding time slot.</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Printminimum number of rooms needed to hold all groups classes on Monday.</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Example</span></strong>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2<br />
+	0101010<br />
+	1010101</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3<br />
+	0101011<br />
+	0011001<br />
+	0110111</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Note</span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In thefirst example one room is enough. It will be occupied in each of the seven timeslot by the first group or by the second group.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In thesecond example three rooms is enough, because in the seventh time slot allthree groups have classes.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+using namespace std;
+ 
+int n,ans=0,s[20];
+char ch;
+int main()
+{
+   scanf(&quot;%d&quot;,&amp;n);
+   rep(i,1,n)
+           rep(j,1,7){cin&gt;&gt;ch;s[j]+=ch-'0';}
+   rep(i,1,7)ans=max(ans,s[i]);
+   cout&lt;&lt;ans&lt;&lt;endl;
+   return 0;
+}</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

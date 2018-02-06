@@ -1,0 +1,138 @@
+---
+tags: 
+ - 基础算法-贪心
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P13.jpg"
+preview-img: "/img/preview/P13.jpg"
+---
+<p>
+	<span style="color:#373a3c;"><span style="font-family:Microsoft YaHei;font-size:16px;">标签：贪心，模拟</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">A new dogshow on TV is starting next week. On the show dogs are required to demonstratebottomless stomach, strategic thinking and self-preservation instinct. You andyour dog are invited to compete with other participants and naturally you wantto win!</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">On theshow a dog needs to eat as many bowls of dog food as possible (bottomlessstomach helps here). Dogs compete separately of each other and the rules are asfollows:</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">At thestart of the show the dog and the bowls are located on a line. The dog startsat position&nbsp;<em>x</em> = 0&nbsp;and&nbsp;<em>n</em>&nbsp;bowls are located atpositions&nbsp;<em>x</em> = 1, <em>x</em> = 2, ..., <em>x</em> = <em>n</em>. Thebowls are numbered from&nbsp;1&nbsp;to&nbsp;<em>n</em>&nbsp;from left to right.After the show starts the dog immediately begins to run to the right to thefirst bowl.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The foodinside bowls is not ready for eating at the start because it is too hot (dog'sself-preservation instinct prevents eating). More formally, the dog can eatfrom the&nbsp;<em>i</em>-th bowl after&nbsp;<em>t<sub>i</sub></em>&nbsp;seconds from thestart of the show or later.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">It takesdog 1 second to move from the position&nbsp;<em>x</em>&nbsp;to theposition&nbsp;<em>x</em> + 1. The dogis not allowed to move to the left, the dog runs only to the right with theconstant speed 1 distance unit per second. When the dog reaches a bowl (say,the bowl&nbsp;<em>i</em>), the followingcases are possible:</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">·&nbsp;&nbsp;the food had cooled down (i.e. it passed atleast&nbsp;<em>t<sub>i</sub></em>&nbsp;secondsfrom the show start): the dog immediately eats the food and runs to the rightwithout any stop,</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">·&nbsp;&nbsp;the food is hot (i.e. it passed less than&nbsp;<em>t<sub>i</sub></em>&nbsp;seconds from the showstart): the dog has two options: to wait for the&nbsp;<em>i</em>-th bowl, eat the food and continue to run at the moment&nbsp;<em>t<sub>i</sub></em>&nbsp;or to skip the&nbsp;<em>i</em>-th bowl and continue to run to theright without any stop.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">After&nbsp;<em>T</em>&nbsp;seconds from thestart the show ends. If the dog reaches a bowl of food at moment&nbsp;<em>T</em>&nbsp;the dog can not eatit. The show stops before&nbsp;<em>T</em>&nbsp;seconds ifthe dog had run to the right of the last bowl.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">You needto help your dog create a strategy with which the maximum possible number ofbowls of food will be eaten in&nbsp;<em>T</em>&nbsp;seconds.</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Twointeger numbers are given in the first line -&nbsp;<em>n</em>&nbsp;and&nbsp;<em>T</em>&nbsp;(1 ≤ <em>n</em> ≤ 200 000,&nbsp;1 ≤ <em>T</em> ≤ 2·10<sup>9</sup>) — thenumber of bowls of food and the time when the dog is stopped.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">On thenext line numbers&nbsp;<em>t</em><sub>1</sub>, <em>t</em><sub>2</sub>, ..., <em>t<sub>n</sub></em>&nbsp;(1 ≤ <em>t<sub>i</sub></em> ≤ 10<sup>9</sup>) aregiven, where&nbsp;<em>t<sub>i</sub></em>&nbsp;is themoment of time when the&nbsp;<em>i</em>-th bowlof food is ready for eating.</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output asingle integer — the maximum number of bowls of food the dog will be able toeat in&nbsp;<em>T</em>&nbsp;seconds.</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Example</span></strong>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3 5<br />
+	1 5 3</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 2<br />
+	1</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 1<br />
+	1</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Note</span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In thefirst example the dog should skip the second bowl to eat from the two bowls(the first and the third).</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">code</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+using namespace std;
+const int maxn=200005;
+int a[maxn],t[maxn];
+int n,m;
+int main()
+{
+       scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+    rep(i,0,n-1)scanf(&quot;%d&quot;,&amp;t[i]);
+   int ans=0,cur=0;
+   for(int last=0;last&lt;n&amp;&amp;last&lt;m-1;last++){
+           if(t[last]&lt;=m-1){
+                  cur++;
+                  int pos=last+(m-t[last]);
+                  if(pos&lt;n)a[pos]++;
+           }
+           cur-=a[last];
+           ans=max(ans,cur);
+    }
+   printf(&quot;%d\n&quot;,ans);
+   return 0;
+}</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>

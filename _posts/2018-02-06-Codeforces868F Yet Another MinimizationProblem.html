@@ -1,0 +1,154 @@
+---
+tags: 
+ - 基础算法-二分
+ - DP-杂题
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P28.jpg"
+preview-img: "/img/preview/P28.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">标签：二分，DP</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">You are given an array of<em>n</em> integers<em>a</em><sub>1</sub>... <em>a<sub>n</sub></em>. The cost of a subsegment is thenumber of unordered pairs of distinct indices within the subsegment thatcontain equal elements. Split the given array into<em>k</em> non-intersectingnon-empty subsegments so that the sum of their costs is minimum possible. Eachelement should be present in exactly one subsegment.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The first line contains two integers<em>n</em>and <em>k</em> (2 ≤ <em>n</em> ≤ 10<sup>5</sup>, 2 ≤ <em>k</em> ≤ <em>min</em> (<em>n</em>, 20)) &nbsp;— the length of the array and the number of segments youneed to split the array into.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The next line contains<em>n</em> integers <em>a</em><sub>1</sub>, <em>a</em><sub>2</sub>, ..., <em>a<sub>n</sub></em> (1 ≤ <em>a<sub>i</sub></em> ≤ <em>n</em>)&nbsp;— the elements of the array.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Print single integer: the minimum possibletotal cost of resulting subsegments.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Examples</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">7 3<br />
+	1 1 3 3 3 2 1</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">10 2<br />
+	1 2 1 2 1 2 1 2 1 2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">8</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">13 3<br />
+	1 2 2 2 1 2 1 1 1 2 2 1 1</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">9</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Note</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In the first example it's optimal to splitthe sequence into the following three subsegments: [1], [1, 3], [3, 3, 2, 1]. The costs are 0, 0 and 1, thus the answer is 1.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In the second example it's optimal to splitthe sequence in two equal halves. The cost for each half is 4.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In the third example it's optimal to splitthe sequence in the following way: [1, 2, 2, 2, 1], [2, 1, 1, 1, 2], [2, 1, 1]. The costs are 4,4, 1.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">题意：给定：长度为N的序列a[1..N]，使其分成k个连续子序列</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">求：分割的最小代价，代价的定义为sum{每个连续子序列中出现的重复数对个数}</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">二分+动态规划</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">F数组记录答案，g数组记录二分时的状态</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+#define LL unsigned long long
+using namespace std;
+const int maxn=100006,inf=0x3f3f3f;
+int n,k,a[maxn],t[maxn],p,q;
+LL f[maxn],g[maxn],now;//防止答案过大，用long long存储 
+
+void solve(int l1,int r1,int l2,int r2){
+	//以l1,r1为标准范围进行二分 
+	if(l1&gt;r1)return;
+	int mid=(l1+r1)/2,temp=min(r2,mid);
+	LL mv=1e19;
+	while(q&lt;mid)now+=t[a[++q]]++;
+	while(p&gt;temp+1)now+=t[a[--p]]++;
+	while(q&gt;mid)now-=--t[a[q--]];
+	while(p&lt;temp+1)now-=--t[a[p++]];//使p,q不断接近now和temp+1 
+	dep(i,temp,l2){
+		int x=a[i];
+		now+=t[a[--p]]++;
+		if(now+f[i-1]&lt;mv)mv=now+f[i-1],temp=i;//选取最小的now+f[i-1]替换mv 
+	}
+	g[mid]=mv;
+	solve(l1,mid-1,l2,temp);
+	solve(mid+1,r1,temp,r2);
+}
+int main()
+{
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;k);
+	rep(i,1,n)scanf(&quot;%d&quot;,&amp;a[i]);
+	mem(f,inf);
+	f[0]=0;
+	rep(i,1,k){
+		p=1,q=now=0;
+		mem(t,0);
+		solve(i,n,i,n);
+		memcpy(f,g,sizeof f);
+	}
+	printf(&quot;%I64d\n&quot;,f[n]);
+	return 0;
+}</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>
+<br />

@@ -1,0 +1,120 @@
+---
+tags: 
+ - 基础算法-模拟
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P20.jpg"
+preview-img: "/img/preview/P20.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">标签：模拟</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#222222;">For a given positive integer</span><span style="color:#222222;">&nbsp;</span><em><span style="color:#222222;">n</span></em><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">denote its</span><span style="color:#222222;">&nbsp;</span><em><span style="color:#222222;">k</span></em><span style="color:#222222;">-rounding as the minimum positiveinteger</span><span style="color:#222222;">&nbsp;</span><em><span style="color:#222222;">x</span></em><span style="color:#222222;">, such that</span><span style="color:#222222;">&nbsp;</span><em><span style="color:#222222;">x</span></em><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">ends with</span><span style="color:#222222;">&nbsp;</span><em><span style="color:#222222;">k</span></em><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">or more zeros in base</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">10</span><span style="color:#222222;">and is divisible by</span><span style="color:#222222;">&nbsp;</span><em><span style="color:#222222;">n</span></em><span style="color:#222222;">.</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#222222;">For example,</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">4</span><span style="color:#222222;">-rounding of</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">375</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">is</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">375·80 = 30000</span><span style="color:#222222;">.</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">30000</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">is the minimum integer such that it ends with</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">4</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">or more zeros and is divisible by</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">375</span><span style="color:#222222;">.</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#222222;">Write a program that will perform the</span><span style="color:#222222;">&nbsp;</span><em><span style="color:#222222;">k</span></em><span style="color:#222222;">-rounding of</span><span style="color:#222222;">&nbsp;</span><em><span style="color:#222222;">n</span></em><span style="color:#222222;">.</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#222222;">The only line contains two integers</span><span style="color:#222222;">&nbsp;</span><em><span style="color:#222222;">n</span></em><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">and</span><span style="color:#222222;">&nbsp;</span><em><span style="color:#222222;">k</span></em><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">(</span><span style="color:#222222;">1 ≤ <em>n</em> ≤ 10</span><sup><span style="color:#222222;">9</span></sup><span style="color:#222222;">,</span><span style="color:#222222;">&nbsp;</span><span style="color:#222222;">0 ≤ <em>k</em> ≤ 8</span><span style="color:#222222;">).</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#222222;">Print the</span><span style="color:#222222;">&nbsp;</span><em><span style="color:#222222;">k</span></em><span style="color:#222222;">-rounding of</span><span style="color:#222222;">&nbsp;</span><em><span style="color:#222222;">n</span></em><span style="color:#222222;">.</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">Examples</span></span></strong>
+</p>
+<p align="left">
+	<strong><span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">input</span></span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="color:#880000;"><span style="font-family:Microsoft YaHei;font-size:16px;">375 4</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">output</span></span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="color:#880000;"><span style="font-family:Microsoft YaHei;font-size:16px;">30000</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">input</span></span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="color:#880000;"><span style="font-family:Microsoft YaHei;font-size:16px;">10000 1</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">output</span></span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="color:#880000;"><span style="font-family:Microsoft YaHei;font-size:16px;">10000</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">input</span></span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="color:#880000;"><span style="font-family:Microsoft YaHei;font-size:16px;">38101 0</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">output</span></span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="color:#880000;"><span style="font-family:Microsoft YaHei;font-size:16px;">38101</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">input</span></span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="color:#880000;"><span style="font-family:Microsoft YaHei;font-size:16px;">123456789 8</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:#222222;"><span style="font-family:Microsoft YaHei;font-size:16px;">output</span></span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="color:#880000;"><span style="font-family:Microsoft YaHei;font-size:16px;">12345678900000000</span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">题意：找到一个最小的数，满足下列条件：末尾至少有k个零且能够被n整除</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">模拟水题</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define LL long long
+using namespace std;
+
+LL n,k,cnt5=0,cnt2=0;
+int main()
+{
+    cin&gt;&gt;n&gt;&gt;k;
+	while(n%5==0&amp;&amp;cnt5&lt;k){n/=5;cnt5++;}
+	while(n%2==0&amp;&amp;cnt2&lt;k){n/=2;cnt2++;}
+	rep(i,1,k)n*=10;
+	cout&lt;&lt;n&lt;&lt;endl;
+	return 0;
+}
+</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

@@ -1,0 +1,187 @@
+---
+tags: 
+ - 特殊-位运算
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P26.jpg"
+preview-img: "/img/preview/P26.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">标签：位运算<br />
+	</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Snark and Philip are preparing theproblemset for the upcoming pre-qualification round for semi-quarter-finals.They have a bank of<em>n</em> problems, and they want to select any non-emptysubset of it as a problemset.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><em>k</em>experienced teams are participating in the contest. Some of these teams alreadyknow some of the problems. To make the contest interesting for them, each ofthe teams should know at most half of the selected problems.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Determine if Snark and Philip can make aninteresting problemset!</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The first line contains two integers<em>n</em>,<em>k</em> (1 ≤ <em>n</em> ≤ 10<sup>5</sup>, 1 ≤ <em>k</em> ≤ 4)&nbsp;— the number of problems and the number of experiencedteams.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Each of the next <em>n</em> lines contains <em>k</em>integers, each equal to 0 or 1. The <em>j</em>-th number in the<em>i</em>-th lineis 1 if <em>j</em>-th team knows <em>i</em>-th problem and 0 otherwise.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Print &quot;YES&quot; (quotes for clarity),if it is possible to make an interesting problemset, and &quot;NO&quot;otherwise.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">You can print each character either upper-or lowercase (&quot;YeS&quot; and &quot;yes&quot; are valid when the answer is&quot;YES&quot;).</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Examples</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">5 3<br />
+	1 0 1<br />
+	1 1 0<br />
+	1 0 0<br />
+	1 0 0<br />
+	1 0 0</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">NO</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3 2<br />
+	1 0<br />
+	1 1<br />
+	0 1</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">YES</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Note</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In the first example you can't make anyinteresting problemset, because the first team knows all problems.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In the second example you can choose thefirst and the third problems.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">题意：给定N行k列的矩阵，</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">求：能否从中挑选出若干行，使其组成的集合中不存在任何一列的和&gt;=挑选的行数的一半</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Step1首先当然想到的是贪心辣，显而易见，如果这个矩阵中存在一个肯定的答案，那么这个答案肯定可以为2行（如果全都是0的话也可以是一行）</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">可以按照每行的和从小到大排序，然后选定第一行，从前往后枚举第二行，如果存在一个正确得第二行，那么就输出yes</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">然而这种贪心的策略被卡了WA on test 129</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">这题竟然有那么多测试点，吃鲸</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Step2 既然贪心不行，那就双重循环加判断来做呗，TLE on test 54……</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">心理崩溃qwq，这题数据那么毒瘤啊</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Step3 前几天洪老师才讲的位运算唉，这题那么多0和1好像和位运算有些关系（这场CF洪老师也参加了，太劲辣%%%）</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">推式子，发现k&lt;=4，这个范围很方便搞事情啊，于是二进制模拟，记录下每种01状态的数量，存在cnt数组内，然后如果这两种状态and=0，并且cnt数组都大于零（即存在这两种状态），那么就输出yes!</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code（正解）</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+using namespace std;
+int n,k,t,cnt[106],x;
+int main()
+{
+	cin&gt;&gt;n&gt;&gt;k;
+	rep(i,1,n){
+		t=0;
+	    rep(j,1,k){
+	    	scanf(&quot;%d&quot;,&amp;x);
+	    	t=t*2+x;
+	    }
+	    cnt[t]++;
+	}
+	rep(i,0,(1&lt;&lt;k))
+	    rep(j,0,(1&lt;&lt;k))
+	        if(cnt[i]&amp;&amp;cnt[j]&amp;&amp;((i&amp;j)==0)){cout&lt;&lt;&quot;YES\n&quot;;return 0;}
+	cout&lt;&lt;&quot;NO\n&quot;;
+	return 0;
+}</pre>
+<br />
+code（模拟）
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define LL long long
+#define mem(x,num) memset(x,num,sizeof x)
+using namespace std;
+const int maxn=100005;
+
+struct node{int a,b,c,d,sum;}a[maxn];
+int n,k,s[5];
+
+inline int cmp(node x,node y){return x.sum&lt;y.sum;}
+inline bool check(int x,int y){
+	if((a[y].a+a[x].a&lt;=1)&amp;&amp;(a[y].b+a[x].b&lt;=1)&amp;&amp;(a[y].c+a[x].c&lt;=1)&amp;&amp;(a[y].d+a[x].d&lt;=1))return true;
+	else return false;
+}
+
+int main()
+{
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;k);
+	rep(i,1,n){
+		if(k==1)scanf(&quot;%d&quot;,&amp;a[i].a),a[i].sum=a[i].a,s[1]+=a[i].a;
+		if(k==2)scanf(&quot;%d%d&quot;,&amp;a[i].a,&amp;a[i].b),a[i].sum=a[i].a+a[i].b,s[1]+=a[i].a,s[2]+=a[i].b;
+		if(k==3)scanf(&quot;%d%d%d&quot;,&amp;a[i].a,&amp;a[i].b,&amp;a[i].c),a[i].sum=a[i].a+a[i].b+a[i].c,s[1]+=a[i].a,s[2]+=a[i].b,s[3]+=a[i].c;
+		if(k==4)scanf(&quot;%d%d%d%d&quot;,&amp;a[i].a,&amp;a[i].b,&amp;a[i].c,&amp;a[i].d),a[i].sum=a[i].a+a[i].b+a[i].c+a[i].d,s[1]+=a[i].a,s[2]+=a[i].b,s[3]+=a[i].c,s[4]+=a[i].d;
+	}
+	if(s[1]==n||s[2]==n||s[3]==n||s[4]==n){cout&lt;&lt;&quot;NO\n&quot;;return 0;}
+    sort(a+1,a+1+n,cmp);
+    int temp=a[1].sum,j=1;
+	while(a[j].sum==temp){ 
+	    rep(i,1,n)
+	        if(check(i,j)){cout&lt;&lt;&quot;YES\n&quot;;return 0;}
+	    j++;
+    }
+	cout&lt;&lt;&quot;NO\n&quot;;
+	return 0;
+}</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>
+<br />

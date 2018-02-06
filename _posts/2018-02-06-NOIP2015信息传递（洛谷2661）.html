@@ -1,0 +1,133 @@
+---
+tags: 
+ - 基础算法-dfs
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P39.jpg"
+preview-img: "/img/preview/P39.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">标签：dfs,模拟</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>题目描述</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">有n个同学（编号为1到n）正在玩一个信息传递的游戏。在游戏里每人都有一个固定的信息传递对象，其中，编号为i的同学的信息传递对象是编号为Ti同学。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">游戏开始时，每人都只知道自己的生日。之后每一轮中，所有人会同时将自己当前所知的生日信息告诉各自的信息传递对象（注意：可能有人可以从若干人那里获取信息，但是每人只会把信息告诉一个人，即自己的信息传递对象）。当有人从别人口中得知自己的生日时，游戏结束。请问该游戏一共可以进行几轮？</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入输出格式</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入格式：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输入共2行。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">第1行包含1个正整数n表示n个人。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">第2行包含n个用空格隔开的正整数T1,T2,……,Tn其中第i个整数Ti示编号为i</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">的同学的信息传递对象是编号为Ti的同学，Ti≤n且Ti≠i</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">数据保证游戏一定会结束。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输出格式：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输出共 1 行，包含 1 个整数，表示游戏一共可以进行多少轮。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入输出样例</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入样例#1：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">5</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2 4 2 3 1</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输出样例#1：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>说明</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">样例1解释</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">游戏的流程如图所示。当进行完第 3 轮游戏后， 4 号玩家会听到 2 号玩家告诉他自</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">己的生日，所以答案为 3。当然，第 3轮游戏后， 2 号玩家、 3 号玩家都能从自己的消息</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">来源得知自己的生日，同样符合游戏结束的条件。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">对于 30%的数据， n ≤ 200；</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">对于 60%的数据， n ≤ 2500；</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">对于 100%的数据， n ≤200000。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：直接模拟时间戳找最小环即可，暴力+搜索，不需要剪枝和其它复杂操作</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">参考代码</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=1000005;
+int next[maxn],dist[maxn],dfn,ans=1e9,n;
+
+void work(int x)
+{
+    int last=dfn;
+    while(true)
+    {
+        if(dist[x])
+        {
+            if(dist[x]&gt;last)ans=min(ans,dfn-dist[x]+1);
+            return;
+        }
+        dfn++;dist[x]=dfn;x=next[x];
+    }
+}
+int main()
+{
+    cin&gt;&gt;n;
+    for(int i=1;i&lt;=n;i++)scanf(&quot;%d&quot;,&amp;next[i]);
+    for(int i=1;i&lt;=n;i++)work(i);
+    cout&lt;&lt;ans&lt;&lt;endl; 
+    return 0;
+}
+</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

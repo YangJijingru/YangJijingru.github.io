@@ -1,0 +1,122 @@
+---
+tags: 
+ - 基础算法-模拟
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P29.jpg"
+preview-img: "/img/preview/P29.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">标签：模拟</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Rock... Paper!</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">After Karen have found the deterministicwinning (losing?) strategy for rock-paper-scissors, her brother, Koyomi, comesup with a new game as a substitute. The game works as follows.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">A positive integer <em>n</em> is decided first.Both Koyomi and Karen independently choose <em>n</em> distinct positive integers,denoted by<em>x</em><sub>1</sub>, <em>x</em><sub>2</sub>, ..., <em>x<sub>n</sub></em> and <em>y</em><sub>1</sub>, <em>y</em><sub>2</sub>, ..., <em>y<sub>n</sub></em> respectively. They reveal their sequences, and repeat until all of 2<em>n</em>integers become distinct, which is the only final state to be kept andconsidered.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Then they count the number of ordered pairs(<em>i</em>, <em>j</em>) (1 ≤ <em>i</em>, <em>j</em> ≤ <em>n</em>) such that the value<em>x<sub>i</sub></em>xor <em>y<sub>j</sub></em> equals to one of the 2<em>n</em> integers. Here xormeans the<a target="_blank" href="https://en.wikipedia.org/wiki/Bitwise_operation#XOR">bitwiseexclusive or</a> operation on two integers, and is denoted by operators ^and/or xor in most programming languages.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Karen claims a win if the number of suchpairs is even, and Koyomi does otherwise. And you're here to help determine thewinner of their latest game.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The first line of input contains a positiveinteger<em>n</em> (1 ≤ <em>n</em> ≤ 2 000) — the length of both sequences.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The second line contains<em>n</em>space-separated integers <em>x</em><sub>1</sub>, <em>x</em><sub>2</sub>, ..., <em>x<sub>n</sub></em> (1 ≤ <em>x<sub>i</sub></em> ≤ 2·10<sup>6</sup>) —the integers finally chosen by Koyomi.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The third line contains<em>n</em>space-separated integers <em>y</em><sub>1</sub>, <em>y</em><sub>2</sub>, ..., <em>y<sub>n</sub></em> (1 ≤ <em>y<sub>i</sub></em> ≤ 2·10<sup>6</sup>) —the integers finally chosen by Karen.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input guarantees that the given 2<em>n</em>integers are pairwise distinct, that is, no pair (<em>i</em>, <em>j</em>) (1 ≤ <em>i</em>, <em>j</em> ≤ <em>n</em>) exists such that one of the following holds: <em>x<sub>i</sub></em> = <em>y<sub>j</sub></em>; <em>i</em> ≠ <em>j</em> and<em>x<sub>i</sub></em> = <em>x<sub>j</sub></em>; <em>i</em> ≠ <em>j</em> and <em>y<sub>i</sub></em> = <em>y<sub>j</sub></em>.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output one line — the name of the winner,that is, &quot;Koyomi&quot; or &quot;Karen&quot; (without quotes). Please beaware of the capitalization.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Examples</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3<br />
+	1 2 3<br />
+	4 5 6</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Karen</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">5<br />
+	2 4 6 8 10<br />
+	9 7 5 3 1</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Karen</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Note</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In the first example, there are 6 pairssatisfying the constraint: (1, 1), (1, 2), (2, 1), (2, 3), (3, 2) and (3, 3). Thus, Karen wins since 6 is an evennumber.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In the second example, there are 16 suchpairs, and Karen wins again.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define LL long long
+using namespace std;
+const int maxn=2006,maxm=2000006;
+int a[maxn],b[maxn];
+bool num[maxm];
+int n,cnt=0;
+int main()
+{
+	scanf(&quot;%d&quot;,&amp;n);
+	rep(i,1,n)scanf(&quot;%d&quot;,&amp;a[i]),num[a[i]]=true;
+	rep(i,1,n)scanf(&quot;%d&quot;,&amp;b[i]),num[b[i]]=true;
+	rep(i,1,n)
+	    rep(j,1,n){
+	    	if((a[i]^b[j])&gt;=maxm)continue;
+	        if(num[a[i]^b[j]])cnt++;
+	    }
+	if(cnt%2==0)cout&lt;&lt;&quot;Karen\n&quot;;
+	else cout&lt;&lt;&quot;Koyomi\n&quot;;
+	return 0;
+}
+</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

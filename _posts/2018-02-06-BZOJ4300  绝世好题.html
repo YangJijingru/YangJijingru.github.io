@@ -1,0 +1,129 @@
+---
+tags: 
+ - DP-杂题
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P7.jpg"
+preview-img: "/img/preview/P7.jpg"
+---
+<p style="margin:0px">
+	<strong><span style="font-family:等线;font-size:16px;">标签：<span style="margin:0px" lang="EN-US">DP</span>，递推</span></strong>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Description</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">给定一个长度为<span style="margin:0px" lang="EN-US">n</span>的数列<span style="margin:0px" lang="EN-US">ai</span>，求<span style="margin:0px" lang="EN-US">ai</span>的子序列<span style="margin:0px" lang="EN-US">bi</span>的最长长度，满足<span style="margin:0px" lang="EN-US">bi&amp;bi-1!=0(2&lt;=i&lt;=len)</span>。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">输入文件共<span style="margin:0px" lang="EN-US">2</span>行。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">第一行包括一个整数<span style="margin:0px" lang="EN-US">n</span>。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">第二行包括<span style="margin:0px" lang="EN-US">n</span>个整数，第<span style="margin:0px" lang="EN-US">i</span>个整数表示<span style="margin:0px" lang="EN-US">ai</span>。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">输出文件共一行。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">包括一个整数，表示子序列<span style="margin:0px" lang="EN-US">bi</span>的最长长度。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">3</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">1 2 3</span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">2</span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">HINT</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">n&lt;=100000,ai&lt;=2*10^9</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;">分析：真是绝世好题<span style="margin:0px" lang="EN-US">……</span></span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">第一眼看题秒出<span style="margin:0px" lang="EN-US">O(n^2)</span>的算法，然后一直想着如何去优化成<span style="margin:0px" lang="EN-US">O(n log n)</span>（模仿<span style="margin:0px" lang="EN-US">LIS</span>优化那种）</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">乱七八糟想了一会儿，发现这是位运算，每个位之间是相互独立的</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;">于是可以按位<span style="margin:0px" lang="EN-US">DP</span></span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;"><span style="margin:0px" lang="EN-US">F[i]</span>表示第<span style="margin:0px" lang="EN-US">i</span>位是<span style="margin:0px" lang="EN-US">1</span>的子序列最长长度</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线"><span style="font-size:16px;">转移：<span style="margin:0px" lang="EN-US">f[j]=max(f[k]+1)<span style="margin:0px">&nbsp;</span>(1&lt;&lt;j)&amp;x!=0 </span>且（<span style="margin:0px" lang="EN-US">1&lt;&lt;k</span>）<span style="margin:0px" lang="EN-US">&amp;x!=0</span></span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Code</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"></span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cstdio&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+#define LL long long
+using namespace std;
+inline LL read()
+{
+	LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+LL n,mx,x,ans=0,f[35];
+int main()
+{
+	n=read();
+	rep(i,1,n){
+		x=read();
+		mx=0;
+		rep(j,0,30)
+		    if((1&lt;&lt;j)&amp;x)mx=max(mx,f[j]);
+		rep(j,0,30)
+			if((1&lt;&lt;j)&amp;x)f[j]=max(f[j],mx+1);
+	}
+	rep(i,0,30)ans=max(ans,f[i]);
+	cout&lt;&lt;ans&lt;&lt;endl;
+	return 0;
+}</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>

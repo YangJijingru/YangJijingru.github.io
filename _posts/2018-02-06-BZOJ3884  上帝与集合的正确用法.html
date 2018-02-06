@@ -1,0 +1,206 @@
+---
+tags: 
+ - 数论-欧拉函数
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P3.jpg"
+preview-img: "/img/preview/P3.jpg"
+---
+<p style="margin:0px">
+	<strong><span style="font-family:等线;font-size:16px;">标签：欧拉函数，数学，数论，快速幂</span></strong>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Description</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">根据一些书上的记载，上帝的一次失败的创世经历是这样的：</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">第一天，<span style="margin:0px" lang="EN-US"><span style="margin:0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>上帝创造了一个世界的基本元素，称做<span style="margin:0px" lang="EN-US">“</span>元<span style="margin:0px" lang="EN-US">”</span>。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">第二天，<span style="margin:0px" lang="EN-US"><span style="margin:0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>上帝创造了一个新的元素，称作<span style="margin:0px" lang="EN-US">“α”</span>。<span style="margin:0px" lang="EN-US">“α”</span>被定义为<span style="margin:0px" lang="EN-US">“</span>元<span style="margin:0px" lang="EN-US">”</span>构成的集合。容易发现，一共有两种不同的<span style="margin:0px" lang="EN-US">“α”</span>。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">第三天，<span style="margin:0px" lang="EN-US"><span style="margin:0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>上帝又创造了一个新的元素，称作<span style="margin:0px" lang="EN-US">“β”</span>。<span style="margin:0px" lang="EN-US">“β”</span>被定义为<span style="margin:0px" lang="EN-US">“α”</span>构成的集合。容易发现，一共有四种不同的<span style="margin:0px" lang="EN-US">“β”</span>。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">第四天，<span style="margin:0px" lang="EN-US"><span style="margin:0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>上帝创造了新的元素<span style="margin:0px" lang="EN-US">“γ”</span>，<span style="margin:0px" lang="EN-US">“γ”</span>被定义为<span style="margin:0px" lang="EN-US">“β”</span>的集合。显然，一共会有<span style="margin:0px" lang="EN-US">16</span>种不同的<span style="margin:0px" lang="EN-US">“γ”</span>。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">如果按照这样下去，上帝创造的第四种元素将会有<span style="margin:0px" lang="EN-US">65536</span>种，第五种元素将会有<span style="margin:0px" lang="EN-US">2^65536</span>种。这将会是一个天文数字。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;">然而，上帝并没有预料到元素种类数的增长是如此的迅速。他想要让世界的元素丰富起来，因此，日复一日，年复一年，他重复地创造着新的元素<span style="margin:0px" lang="EN-US">……</span></span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">然而不久，当上帝创造出最后一种元素<span style="margin:0px" lang="EN-US">“θ”</span>时，他发现这世界的元素实在是太多了，以致于世界的容量不足，无法承受。因此在这一天，上帝毁灭了世界。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">至今，上帝仍记得那次失败的创世经历，现在他想问问你，他最后一次创造的元素<span style="margin:0px" lang="EN-US">“θ”</span>一共有多少种？</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">上帝觉得这个数字可能过于巨大而无法表示出来，因此你只需要回答这个数对<span style="margin:0px" lang="EN-US">p</span>取模后的值即可。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">你可以认为上帝从<span style="margin:0px" lang="EN-US">“α”</span>到<span style="margin:0px" lang="EN-US">“θ”</span>一共创造了<span style="margin:0px" lang="EN-US">10^9</span>次元素，或<span style="margin:0px" lang="EN-US">10^18</span>次，或者干脆<span style="margin:0px" lang="EN-US">∞</span>次。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">一句话题意：</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:宋体;"><img src="http://xheditor.com/js/xheditor_skin/default/img/waiting.gif" remoteimg="0" alt="" /></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;font-size:16px;">接下来<span style="margin:0px" lang="EN-US">T</span>行，每行一个正整数<span style="margin:0px" lang="EN-US">p</span>，代表你需要取模的值</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;"><span style="margin:0px" lang="EN-US">T</span>行，每行一个正整数，为答案对<span style="margin:0px" lang="EN-US">p</span>取模后的值</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">3</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">2</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">3</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">6</span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">0</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">1</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">4</span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">HINT</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:等线;"><span style="font-size:16px;">对于<span style="margin:0px" lang="EN-US">100%</span>的数据，<span style="margin:0px" lang="EN-US">T&lt;=1000,p&lt;=10^7</span></span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">Source</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><a target="_blank" href="http://www.lydsy.com/JudgeOnline/problemset.php?search=By%20PoPoQQQ"><span style="font-family:等线;font-size:16px;color:#0563c1;">ByPoPoQQQ</span></a></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:等线;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-size:16px;"><span style="font-family:等线;">题意：<span style="color:black;margin:0px;">求</span></span><span lang="EN-US" style="font-family:'Arial',sans-serif;color:black;margin:0px;">2^(2^(2^(2^(2^...)))) mod p</span><span style="color:black;margin:0px;"><span style="font-family:等线;">的值</span></span></span>
+</p>
+<p style="margin:0px">
+	<span lang="EN-US" style="font-family:'Arial',sans-serif;color:black;margin:0px;"><span style="font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-size:16px;"><span style="color:black;margin:0px;"><span style="font-family:等线;">分析：第一眼看题，</span></span><span lang="EN-US" style="font-family:'Arial',sans-serif;color:black;margin:0px;">woc</span><span style="color:black;margin:0px;"><span style="font-family:等线;">这个出题人有毒吧</span></span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-size:16px;"><span style="color:black;margin:0px;"><span style="font-family:等线;">实际上把</span></span><span lang="EN-US" style="font-family:'Arial',sans-serif;color:black;margin:0px;">p</span><span style="color:black;margin:0px;"><span style="font-family:等线;">看成</span></span><span lang="EN-US" style="font-family:'Arial',sans-serif;color:black;margin:0px;">2^k*q</span></span>
+</p>
+<p style="margin:0px">
+	<span style="color:black;margin:0px;"><span style="font-family:等线;font-size:16px;">可以套用欧拉定理</span></span>
+</p>
+<p style="margin:0px">
+	<span style="color:black;margin:0px;"><span style="font-family:等线;font-size:16px;">递归计算模数，最后再用快速幂就可以了</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-size:16px;"><span style="color:black;margin:0px;"><span style="font-family:等线;">求</span></span><span lang="EN-US" style="font-family:'Arial',sans-serif;color:black;margin:0px;">phi</span><span style="color:black;margin:0px;"><span style="font-family:等线;">的时候可以用</span></span><span lang="EN-US" style="font-family:'Arial',sans-serif;color:black;margin:0px;">O</span><span style="color:black;margin:0px;"><span style="font-family:等线;">（</span></span><span lang="EN-US" style="font-family:'Arial',sans-serif;color:black;margin:0px;">n</span><span style="color:black;margin:0px;"><span style="font-family:等线;">），实测不会</span></span><span lang="EN-US" style="font-family:'Arial',sans-serif;color:black;margin:0px;">TLE</span></span>
+</p>
+<p style="margin:0px">
+	<span lang="EN-US" style="font-family:'Arial',sans-serif;color:black;margin:0px;"><span style="font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span lang="EN-US" style="font-family:'Arial',sans-serif;color:black;margin:0px;"><span style="font-size:16px;">Code</span></span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+#define LL long long
+using namespace std;
+inline LL read()
+{
+	LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const int maxn=1e7+6;
+int t,p,phi[maxn],prime[1000006],tot=0;
+bool not_prime[maxn];
+void getphi()
+{
+	int j;
+	phi[1]=1;
+	for(int i=2;i&lt;=10000000;i++){
+		if(!not_prime[i]){prime[++tot]=i;phi[i]=i-1;}
+		for(j=1;j&lt;=tot&amp;&amp;i*prime[j]&lt;=10000000;j++){
+			not_prime[prime[j]*i]=1;
+			if(i%prime[j]==0){phi[i*prime[j]]=phi[i]*prime[j];break;}
+			else phi[i*prime[j]]=phi[i]*(prime[j]-1);
+		}
+	}
+}//O(n)计算phi
+
+int pow(LL a,LL b,int p)
+{
+	LL ans=1;a%=p;
+	for(LL i=b;i;i&gt;&gt;=1,a=a*a%p)
+		if(i&amp;1)ans=ans*a%p;
+	return ans;
+}
+
+int solve(int p)
+{
+	if(p==1)return 0;
+	int k=0;
+	while(~p&amp;1)p&gt;&gt;=1,k++;
+	int pp=phi[p],res=solve(pp);//递归计算solve的值
+	res=(res+pp-k%pp)%pp;
+	res=pow(2,res,p)%p;//快速幂
+	return res&lt;&lt;k;
+}
+
+int main()
+{
+	getphi();
+	t=read();
+	while(t--){
+		p=read();
+		printf(&quot;%d\n&quot;,solve(p));
+	}
+	return 0;
+}
+</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>

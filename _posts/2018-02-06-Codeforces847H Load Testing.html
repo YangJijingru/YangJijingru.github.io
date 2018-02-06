@@ -1,0 +1,141 @@
+---
+tags: 
+ - DP-杂题
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P16.jpg"
+preview-img: "/img/preview/P16.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#373a3c;">标签：</span><span style="color:#373a3c;">DP</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Polycarpplans to conduct a load testing of its new project Fakebook. He already agreedwith his friends that at certain points in time they will send requests toFakebook. The load testing will last&nbsp;<em>n</em>&nbsp;minutesand in the&nbsp;<em>i</em>-th minute friendswill send&nbsp;<em>a<sub>i</sub></em>&nbsp;requests.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Polycarpplans to test Fakebook under a special kind of load. In case the informationabout Fakebook gets into the mass media, Polycarp hopes for a monotone increaseof the load, followed by a monotone decrease of the interest to the service.Polycarp wants to test this form of load.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Your taskis to determine how many requests Polycarp must add so that before some momentthe load on the server strictly increases and after that moment strictlydecreases. Both the increasing part and the decreasing part can be empty (i. e.absent). The decrease should immediately follow the increase. In particular,the load with two equal neigbouring values is unacceptable.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Forexample, if the load is described with one of the arrays&nbsp;[1, 2, 8, 4, 3],&nbsp;[1, 3, 5]&nbsp;or&nbsp;[10], then such load satisfies Polycarp (in eachof the cases there is an increasing part, immediately followed with adecreasing part). If the load is described with one of the arrays&nbsp;[1, 2, 2, 1],&nbsp;[2, 1, 2]&nbsp;or&nbsp;[10, 10], then such load does not satisfyPolycarp.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">HelpPolycarp to make the minimum number of additional requests, so that theresulting load satisfies Polycarp. He can make any number of additionalrequests at any minute from&nbsp;1&nbsp;to&nbsp;<em>n</em>.</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The firstline contains a single integer&nbsp;<em>n</em>&nbsp;(1 ≤ <em>n</em> ≤ 100 000) — the duration ofthe load testing.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The secondline contains&nbsp;<em>n</em>&nbsp;integers&nbsp;<em>a</em><sub>1</sub>, <em>a</em><sub>2</sub>, ..., <em>a<sub>n</sub></em>&nbsp;(1 ≤ <em>a<sub>i</sub></em> ≤ 10<sup>9</sup>), where&nbsp;<em>a<sub>i</sub></em>&nbsp;is the number ofrequests from friends in the&nbsp;<em>i</em>-th minuteof the load testing.</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Print theminimum number of additional requests from Polycarp that would make the loadstrictly increasing in the beginning and then strictly decreasing afterwards.</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Example</span></strong>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">5<br />
+	1 4 3 2 5</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">6</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">5<br />
+	1 2 2 2 1</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">7<br />
+	10 20 40 50 70 90 30</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Note</span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In thefirst example Polycarp must make two additional requests in the third minuteand four additional requests in the fourth minute. So the resulting load willlook like:&nbsp;[1, 4, 5, 6, 5]. Intotal, Polycarp will make&nbsp;6&nbsp;additionalrequests.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In thesecond example it is enough to make one additional request in the third minute,so the answer is&nbsp;1.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In thethird example the load already satisfies all conditions described in thestatement, so the answer is&nbsp;0.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：在反复阅读题面后，你可以很轻松的发现<del>（这句高逼格的话是机房里的实习老师教我的233）</del>，暴力O（n^2）很容易写出，就和之前的一道普及组题目合唱队列一样，外层循环波峰的位置，内层循环左右两边至波谷的最小增加量，so easy</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">再次观察后发现，可以优化掉内层的一重循环，用f[i]表示从第一个元素到第i个元素需要修改的最小增加量，g[i]表示从最后一个元素到第i个元素需要修改的最小增加量</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">最后O（n）枚举波峰的位置，更新答案</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<p>
+	&nbsp;
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+using namespace std;
+ 
+long long n,a[1000005],f[1000005],g[1000005],b[1000005],ans=1e18,s=0;
+int main()
+{
+         scanf(&quot;%d&quot;,&amp;n);
+         rep(i,1,n){scanf(&quot;%d&quot;,&amp;a[i]);b[i]=a[i];}
+         rep(i,1,n)
+             if(a[i]&lt;=a[i-1]){f[i]=f[i-1]+a[i-1]+1-a[i];a[i]=a[i-1]+1;}else f[i]=f[i-1];
+         dep(i,n,1)
+             if(b[i]&lt;=b[i+1]){g[i]=g[i+1]+b[i+1]+1-b[i];b[i]=b[i+1]+1;}else g[i]=g[i+1];
+         rep(k,0,n){
+                 s=f[k]+g[k+1];
+             if(a[k]==b[k+1])s++;
+             if(s&lt;ans)ans=s;
+         }
+         cout&lt;&lt;ans&lt;&lt;endl;
+         return 0;
+}</pre>
+<br />
+
+<div>
+	<pre style="background:white"></pre>
+</div>

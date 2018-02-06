@@ -1,0 +1,191 @@
+---
+tags: 
+ - DP-树形
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P33.jpg"
+preview-img: "/img/preview/P33.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">小</span><span style="color:#333333;">A</span><span style="color:#333333;">从仓库里找出了一棵</span><span style="color:#333333;">n</span><span style="color:#333333;">个点的有根树，</span><span style="color:#333333;">1</span><span style="color:#333333;">号节点为这棵树的根，树上每个节点的权值为</span><span style="color:#333333;">wi</span><span style="color:#333333;">,</span><span style="color:#333333;">大小为</span><span style="color:#333333;">ai</span><span style="color:#333333;">。</span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">现在他心中产生了</span><span style="color:#333333;">Q</span><span style="color:#333333;">个疑问，每个疑问形如在</span><span style="color:#333333;">x</span><span style="color:#333333;">的子树里，选出一些大小和不超过</span><span style="color:#333333;">s</span><span style="color:#333333;">的节点</span><span style="color:#333333;">(</span><span style="color:#333333;">不可以重复选一个节点</span><span style="color:#333333;">)</span><span style="color:#333333;">，最大权值和可以为多少。</span></span>
+</p>
+<h3>
+	<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">输入格式</span></span>
+</h3>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">一行一个整数</span><span style="color:#333333;">n</span><span style="color:#333333;">。</span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">n−1</span><span style="color:#333333;">行两个整数</span><span style="color:#333333;">u</span><span style="color:#333333;">i</span><span style="color:#333333;">,&nbsp;</span>vi<span style="color:#333333;">表示一条边。</span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">N</span><span style="color:#333333;">每行两个整数</span><span style="color:#333333;">wi</span><span style="color:#333333;">,&nbsp;</span>ai<span style="color:#333333;">表示这个点的权值和大小。</span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">一行一个整数</span><span style="color:#333333;">Q</span><span style="color:#333333;">。</span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">每行两个整数</span><span style="color:#333333;">x</span><span style="color:#333333;">,&nbsp;</span>s<span style="color:#333333;">，表示一个询问。</span></span>
+</p>
+<h3>
+	<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">输出格式</span></span>
+</h3>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">Q</span><span style="color:#333333;">行每行一个整数表示答案</span></span>
+</p>
+<h3>
+	<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">样例输入</span></span>
+</h3>
+<h3>
+	<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">样例一</span></span>
+</h3>
+<h4>
+	<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">input</span></span>
+</h4>
+<div style="background:whitesmoke">
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">5</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">1 3</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">2 4</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">5 3</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">4 3</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">2 3</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">3 2</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">1 4</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">5 4</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">3 1</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">7</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">1 5</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">2 1 </span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">2 2</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">2 3</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">4 4</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">3 3</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">3 5</span></span></pre>
+</div>
+<h4>
+	<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">output</span></span>
+</h4>
+<div style="background:whitesmoke">
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">8</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">0</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">3</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">3</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">5</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">6</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">8</span></span></pre>
+</div>
+<h3>
+	<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">限制与约定</span></span>
+</h3>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">10</span><span style="color:#333333;">%</span><span style="color:#333333;">的数据满足</span><span style="color:#333333;">n</span><span style="color:#333333;">≤</span><span style="color:#333333;">10</span><span style="color:#333333;">,</span><span style="color:#333333;">s</span><span style="color:#333333;">,</span><span style="color:#333333;">a</span><span style="color:#333333;">i</span><span style="color:#333333;">≤</span><span style="color:#333333;">10</span><span style="color:#333333;">,</span><span style="color:#333333;">w</span><span style="color:#333333;">i</span><span style="color:#333333;">≤</span><span style="color:#333333;">10</span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">100</span><span style="color:#333333;">%</span><span style="color:#333333;">的数据满足</span><span style="color:#333333;">n</span><span style="color:#333333;">,</span><span style="color:#333333;">s</span><span style="color:#333333;">,</span><span style="color:#333333;">a</span><span style="color:#333333;">i</span><span style="color:#333333;">≤</span><span style="color:#333333;">5000</span><span style="color:#333333;">,</span><span style="color:#333333;">w</span><span style="color:#333333;">i</span><span style="color:#333333;">≤</span><span style="color:#333333;">10^6,q&lt;=10^5</span></span>
+</p>
+<p>
+	<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">1s, 512MB</span></span>
+</p>
+<p>
+	<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">10分----对每个询问暴力背包DP即可</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">30分----设f[x][s]表示以x为根节点的子树中取大小和不超过x的节点，最大权值和是多少</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F[x][s]=f[c][s’]+f[x][s-s’]&nbsp;&nbsp; （c为子树的节点，合并时的状态转移方程）</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间复杂度为O（ns^2）</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">100分----之前算法的瓶颈在于合并时的复杂度较高，可以使用启发式合并，每次合并的时候暴力DFS物品较少的子树，直接把一个物品最多的孩子DP数组拷贝到父亲节点的DP 数组上，对于其他孩子暴力DFS，一个一个加进来，复杂度为O（n s log n）</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+	</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define reg(i,a) for(int i=u[a];i;i=e[i].pre)
+#define v e[i].to
+#define LL long long 
+using namespace std;
+const int maxn=5010;
+
+struct edge
+{
+	int to,pre;
+}e[maxn&lt;&lt;1];
+int u[maxn],cnt=0;
+int n,son[maxn],sz[maxn],w[maxn],l[maxn];
+LL f[maxn][maxn];
+
+inline void ins(int a,int b)
+{
+    e[++cnt]=(edge){b,u[a]};
+    u[a]=cnt;
+}
+
+inline int read()
+{
+	int f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+inline LL maxLL(LL a,LL b){return a&gt;b?a:b;} 
+
+void dfs(int x,int f)
+{
+	sz[x]=1,son[x]=0;
+	reg(i,x) if(v!=f)dfs(v,x),sz[x]+=sz[v],son[x]=(sz[v]&gt;sz[son[x]]?v:son[x]);//son[x]表示物品最多的子节点编号
+}
+
+void add(int x,int fa,LL f[])
+{
+	dep(i,maxn-10,l[x]) f[i]=maxLL(f[i],f[i-l[x]]+w[x]);
+	reg(i,x) if(v!=fa) add(v,x,f);
+}
+
+void dp(int x,int fa)
+{
+	reg(i,x) if(v!=fa)dp(v,x);
+	memcpy(f[x],f[son[x]],sizeof(f[x]));//直接拷贝最大的儿子DP数组给父亲节点
+	reg(i,x) if(v!=fa&amp;&amp;v!=son[x]) add(v,x,f[x]);//dfs加上其他子节点的物品
+	dep(j,maxn-10,l[x]) f[x][j]=maxLL(f[x][j],f[x][j-l[x]]+w[x]);
+}
+
+int main()
+{
+	n=read();
+	rep(i,1,n-1){int a=read(),b=read();ins(a,b);ins(b,a);}
+	rep(i,1,n){w[i]=read(),l[i]=read();}
+	dfs(1,0);
+	dp(1,0);//离线做法
+	int q=read();
+	rep(i,1,q){int x=read(),s=read();cout&lt;&lt;f[x][s]&lt;&lt;endl;}
+	return 0;
+}
+</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

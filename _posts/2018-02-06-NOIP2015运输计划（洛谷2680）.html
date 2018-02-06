@@ -1,0 +1,328 @@
+---
+tags: 
+ - 基础算法-二分
+ - 数据结构-树链剖分
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P40.jpg"
+preview-img: "/img/preview/P40.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">标签：树链剖分，二分</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>题目背景</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">公元 2044 年,人类进入了宇宙纪元。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>题目描述</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">L 国有 n 个星球,还有 n-1 条双向航道,每条航道建立在两个星球之间,这 n-1 条航道连通了 L 国的所有星球。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">小 P 掌管一家物流公司,该公司有很多个运输计划,每个运输计划形如:有一艘物</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">流飞船需要从 ui 号星球沿最快的宇航路径飞行到 vi 号星球去。显然,飞船驶过一条航道 是需要时间的,对于航道 j,任意飞船驶过它所花费的时间为 tj,并且任意两艘飞船之 间不会产生任何干扰。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">为了鼓励科技创新,L 国国王同意小 P的物流公司参与 L 国的航道建设,即允许小 P 把某一条航道改造成虫洞,飞船驶过虫洞不消耗时间。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">在虫洞的建设完成前小 P 的物流公司就预接了 m 个运输计划。在虫洞建设完成后, 这m 个运输计划会同时开始,所有飞船一起出发。当这 m 个运输计划都完成时,小 P 的 物流公司的阶段性工作就完成了。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">如果小 P 可以自由选择将哪一条航道改造成虫洞,试求出小 P 的物流公司完成阶段 性工作所需要的最短时间是多少?</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入输出格式</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入格式：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输入文件名为 transport.in。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">第一行包括两个正整数 n、m,表示 L 国中星球的数量及小 P 公司预接的运输计划的数量,星球从 1 到 n 编号。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">接下来 n-1 行描述航道的建设情况,其中第 i 行包含三个整数 ai, bi 和ti,表示第</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">i 条双向航道修建在 ai 与 bi 两个星球之间,任意飞船驶过它所花费的时间为 ti。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">接下来 m 行描述运输计划的情况,其中第 j 行包含两个正整数 uj 和 vj,表示第 j个 运输计划是从 uj 号星球飞往vj 号星球。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输出格式：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输出 共1行,包含1个整数,表示小P的物流公司完成阶段性工作所需要的最短时间。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入输出样例</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入样例#1：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">6 3 </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 2 3 </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 6 4 </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3 1 7 </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">4 3 6 </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3 5 5 </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3 6 </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2 5 </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">4 5</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输出样例#1：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">11</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>说明</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">所有测试数据的范围和特点如下表所示</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">请注意常数因子带来的程序效率上的影响。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">题意：给出⼀颗有边权的树，给定⼀些旅⾏路线的起点和终点。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;现在可以将树上的某⼀条边边权改为 0。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">求问这些旅⾏路线中最长的那⼀条，最小可以为多少。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;n≤300000,w≤1000</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">方法一：（下面的代码就是这种）</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">O（n^2）的暴力就可以混到前50分了，再加一个特判，总共60分</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">剩下的40分显然是二分答案</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">有一种叫做看数据范围猜算法，十万级别的也就想到了二分，而且要求最远的最短</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">可以使用线段树解决线段覆盖的问题，但这题最好使用差分</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">树链剖分（logn）*二分（logn）*枚举边（n）=O（n log n log n）</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">但是需要加一些优化，读入优化，记忆化，位运算</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">否则可能会被卡掉</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">方法二：（听武爷爷whx上课时候讲的玄学算法）</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">• 先 tarjan 并查集 O(n)求 lca，然后找到最长的⼀个路径。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">• 然后对于最长的路径这条链拉出来，和它没有交的路径直接算掉，剩下的路径预处理⼀下。<br />
+	</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">• 然后把所有路径按照路径长度从⼤到小排序，求出每个前缀的交，再反着算出交里的最⼤权值。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;•picks 其实应该⼀步到位 n≤10^6</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Node</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+const int maxn=600005;
+struct node0
+{
+    int x,y,len;
+}d[maxn];
+
+int root,n,m,x,y,v,tot,next[maxn],last[maxn],e[maxn];
+int dep[maxn],fa[maxn],size[maxn],son[maxn],top[maxn];
+int pos[maxn],pos2[maxn],val[maxn],cost[maxn],MAX[maxn],dist[maxn],s[maxn],node,ans,q[maxn];
+
+inline int read()
+{
+    int x=0,f=1;char ch=getchar();
+    while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+    while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+    return x*f;
+}
+
+bool cmp(node0 x,node0 y)
+{
+    return x.len&gt;y.len;
+}
+
+void add(int x,int y,int v)
+{
+    next[++tot]=last[x];
+    last[x]=tot;
+    val[tot]=v;
+    e[tot]=y;
+}
+
+void dfs1(int x)
+{
+    dep[x]=dep[fa[x]]+1;
+    size[x]=1;
+    for (int i=last[x];i;i=next[i])
+    {
+        int v=e[i];
+        if (v==fa[x])continue;
+        fa[v]=x;
+        dist[v]=dist[x]+val[i];
+        cost[v]=val[i];
+        dfs1(v);
+        size[x]+=size[v];
+        if(size[v]&gt;size[son[x]])son[x]=v;
+    }
+}
+
+void dfs2(int x,int tp)
+{
+    top[x]=tp;
+	pos[x]=++node;
+	pos2[node]=cost[x];
+    if(son[x]==0)return;
+    dfs2(son[x],tp);
+    for(int i=last[x];i;i=next[i])
+    {
+        int v=e[i];
+        if (v==fa[x]||v==son[x])continue;
+        dfs2(v,v);
+    }
+}//树链剖分 
+
+int query(int x,int y)
+{
+    int a=x,b=y;
+    while (top[a]!=top[b])
+    {
+        if (dep[top[a]]&lt;dep[top[b]])std::swap(a,b);
+        a=fa[top[a]];
+    }
+    if (dep[a]&lt;dep[b])return a;
+	else return b;
+} 
+
+void work(int x,int y)
+{
+    int a=x,b=y;
+    while(top[a]!=top[b])
+    {
+        if(dep[top[a]]&lt;dep[top[b]])std::swap(a,b);
+        s[pos[top[a]]]+=1;
+		s[pos[a]+1]-=1;
+        a=fa[top[a]];
+    }
+    if(a==b)return;
+    if(dep[a]&gt;dep[b])std::swap(a,b);
+    s[pos[a]+1]+=1;
+	s[pos[b]+1]-=1;;
+} 
+
+int check(int mid)
+{
+    int sz=0,Maxx=0,tott=0;
+    while (d[sz+1].len&gt;mid)sz++;
+    if (q[sz]!=0)return q[sz];
+    std::memset(s,0,sizeof(s));
+    for(int i=1;i&lt;=sz;i++)work(d[i].x,d[i].y);
+    for(int i=1;i&lt;=n;i++)
+	{
+	    tott+=s[i];
+		if (tott==(sz))Maxx=std::max(Maxx,pos2[i]);
+	}
+    q[sz]=Maxx;
+    return Maxx;
+}
+
+int main()
+{
+    n=read();m=read();
+    for (int i=1;i&lt;n;i++)
+    {
+        x=read();y=read();v=read();
+        add(y,x,v),add(x,y,v);
+    }
+    dfs1(1);dfs2(1,1);
+    for (int i=1;i&lt;=m;i++)
+    {
+        d[i].x=read(),d[i].y=read();
+        d[i].len=dist[d[i].x]+dist[d[i].y]-2*dist[query(d[i].x,d[i].y)];//求路径距离 
+    }
+    std::sort(d+1,d+1+m,cmp);
+    int l=0,r=d[1].len;
+    while (l&lt;=r)
+    {
+        int mid=(l+r)&gt;&gt;1;
+        if (d[1].len-check(mid)&gt;mid)l=mid+1;
+		else r=mid-1,ans=mid;
+    }
+    printf(&quot;%d\n&quot;,ans);
+    return 0;    
+}</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

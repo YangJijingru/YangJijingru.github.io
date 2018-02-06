@@ -1,0 +1,140 @@
+---
+tags: 
+ - 计算几何-直线
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P19.jpg"
+preview-img: "/img/preview/P19.jpg"
+---
+<p>
+	<span style="color:#373a3c;"><span style="font-family:Microsoft YaHei;font-size:16px;">标签：模拟，计算几何</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Vasya cameup with his own weather forecasting method. He knows the information about theaverage air temperature for each of the last&nbsp;<em>n</em>&nbsp;days. Assume that the average air temperaturefor each day is integral.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Vasyabelieves that if the average temperatures over the last&nbsp;<em>n</em>&nbsp;days form an arithmetic progression, wherethe first term equals to the average temperature on the first day, the secondterm equals to the average temperature on the second day and so on, then theaverage temperature of the next&nbsp;(<em>n</em> + 1)-th daywill be equal to the next term of the arithmetic progression. Otherwise,according to Vasya's method, the temperature of the&nbsp;(<em>n</em> + 1)-th day will be equal to the temperature ofthe&nbsp;<em>n</em>-th day.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Your taskis to help Vasya predict the average temperature for tomorrow, i. e. for the&nbsp;(<em>n</em> + 1)-th day.</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The firstline contains a single integer&nbsp;<em>n</em>&nbsp;(2 ≤ <em>n</em> ≤ 100) — the number ofdays for which the average air temperature is known.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The secondline contains a sequence of integers&nbsp;<em>t</em><sub>1</sub>, <em>t</em><sub>2</sub>, ..., <em>t<sub>n</sub></em>&nbsp;( - 1000 ≤ <em>t<sub>i</sub></em> ≤ 1000)&nbsp;—where&nbsp;<em>t<sub>i</sub></em>&nbsp;is theaverage temperature in the&nbsp;<em>i</em>-th day.</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Print theaverage air temperature in the&nbsp;(<em>n</em> + 1)-th day,which Vasya predicts according to his method. Note that the absolute value ofthe predicted temperature can exceed&nbsp;1000.</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Example</span></strong>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">5<br />
+	10 5 0 -5 -10</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">-15</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">4<br />
+	1 1 1 1</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3<br />
+	5 1 -5</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">-5</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2<br />
+	900 1000</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></strong>
+</p>
+<p style="background:rgb(239,239,239)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1100</span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Note</span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In thefirst example the sequence of the average temperatures is an arithmeticprogression where the first term is&nbsp;10&nbsp;and eachfollowing terms decreases by&nbsp;5. So thepredicted average temperature for the sixth day is&nbsp; - 10 - 5 =  - 15.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In thesecond example the sequence of the average temperatures is an arithmeticprogression where the first term is&nbsp;1&nbsp;and eachfollowing terms equals to the previous one. So the predicted averagetemperature in the fifth day is&nbsp;1.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In thethird example the average temperatures do not form an arithmetic progression,so the average temperature of the fourth day equals to the temperature of thethird day and equals to&nbsp; - 5.</span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In thefourth example the sequence of the average temperatures is an arithmeticprogression where the first term is&nbsp;900&nbsp;and eachthe following terms increase by100. Sopredicted average temperature in the third day is&nbsp;1000 + 100 = 1100.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">计算几何的入门题，初二数学的难度，判断这些点是否在同一条直线上</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+using namespace std;
+ 
+int n,d,flag,a[305];
+ 
+int main()
+{
+    cin&gt;&gt;n;
+         rep(i,1,n)scanf(&quot;%d&quot;,&amp;a[i]);
+         d=a[2]-a[1];
+         rep(i,2,n-1)
+             if(a[i+1]-a[i]!=d)flag=1;
+         if(flag==0)cout&lt;&lt;a[n]+d;
+         else cout&lt;&lt;a[n];
+         return 0;
+}</pre>
+<br />
+<br />
+
+<div>
+	<pre style="background:white"></pre>
+</div>
+
