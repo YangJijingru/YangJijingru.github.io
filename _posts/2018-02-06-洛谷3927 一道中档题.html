@@ -1,0 +1,154 @@
+---
+tags: 
+ - 数论-杂题
+ - 基础算法-模拟
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P30.jpg"
+preview-img: "/img/preview/P70.jpg"
+---
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">标签：数学，模拟</span></strong>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">题目描述</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">SOL君很喜欢阶乘。而SOL菌很喜欢研究进制。</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">这一天，SOL君跟SOL菌炫技，随口算出了n的阶乘。</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">SOL菌表示不服，立刻就要算这个数在k进制表示下末尾0的个数。</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">但是SOL菌太菜了于是请你帮忙。</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">输入输出格式</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;"><strong>输入格式：</strong><br style="line-break:" />
+	<br />
+	</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">每组输入仅包含一行：两个整数n，k。</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;"><strong>输出格式：</strong><br style="line-break:" />
+	<br />
+	</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">输出一个整数：n!在k进制下后缀0的个数。</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">输入输出样例</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;"><strong>输入样例#1：</strong> 复制 </span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">10 40</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;"><strong>输出样例#1：</strong> 复制 </span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">2</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">说明</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">对于20%的数据，n &lt;=1000000， k = 10</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">对于另外20%的数据，n &lt;=20， k &lt;= 36</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">对于100%的数据，n &lt;=10^12，k &lt;= 10^12</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">update</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">1.一组数据</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">2.K不会==1</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">3.现在std没有爆long long</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">4.对数据有问题联系icy （建议大家不要面向数据编程）</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">分析：小学奥数应该都学过短除法……，这题N！%k的余数就是N！在k进制下表示的数</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">所以转化为判断N！能够整除几次k</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">可以将k质因数分解，然后再比对N！分解该质因数的个数，选择比值最小的一个作为ans</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">Code</span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define LL long long
+#define mem(x,num) memset(x,num,sizeof x)
+using namespace std;
+inline LL read()
+{
+    LL f=1,x=0;char ch=getchar();
+    while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+    while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+    return x*f;
+}
+LL n,k,ans=1e19;
+void prime(LL x,LL k){
+    LL tmp=0;
+    for(LL i=x;i&lt;=n;i*=x)tmp+=n/i;
+    ans=min(ans,tmp/k);
+}
+void work(LL x){
+    rep(i,2,sqrt(x))
+        if(x%i==0){
+            LL q=0;
+            while(x%i==0){
+                q++;
+                x/=i;
+            }
+            prime(i,q);
+        }
+    if(x!=1)prime(x,1);
+}
+int main()
+{
+    n=read(),k=read();
+    work(k);
+    cout&lt;&lt;ans&lt;&lt;endl;
+    return 0;
+}
+</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>

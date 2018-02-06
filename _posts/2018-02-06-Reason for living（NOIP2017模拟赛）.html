@@ -1,0 +1,161 @@
+---
+tags: 
+ - 图论-最小生成树
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P12.jpg"
+preview-img: "/img/preview/P52.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">标签：最小生成树，并查集</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">小</span><span style="color:#333333;">B</span><span style="color:#333333;">准备设计施工方案。</span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">设计图是一个</span><span style="color:#333333;">n</span><span style="color:#333333;">个点</span><span style="color:#333333;">m</span><span style="color:#333333;">条边的图，小</span><span style="color:#333333;">B</span><span style="color:#333333;">每次施工可以取图中一个还没有完工的生成森林把它完工。</span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">为了加快施工效率，每次取的时候小</span><span style="color:#333333;">B</span><span style="color:#333333;">都会最大化当前这个生成森林的边数。请你帮他找出一个符合要求的施工方案。</span></span>
+</p>
+<p>
+	<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">如果有多个方案，输出任意一种即可。</span></span>
+</p>
+<h3>
+	<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">输入格式</span></span>
+</h3>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">第一行两个整数</span><span style="color:#333333;">n</span><span style="color:#333333;">,&nbsp;</span>m<span style="color:#333333;">。</span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">后面</span><span style="color:#333333;">m</span><span style="color:#333333;">行，每行两个数</span><span style="color:#333333;">a</span><span style="color:#333333;">i</span><span style="color:#333333;">,</span><span style="color:#333333;">b</span><span style="color:#333333;">i</span><span style="color:#333333;">表示一条边，保证没有自环。</span></span>
+</p>
+<h3>
+	<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">输出格式</span></span>
+</h3>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">m</span><span style="color:#333333;">行，每行一个整数，表示这条边属于第几次。如果有多个方案，输出任意一种即可。</span></span>
+</p>
+<h3>
+	<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">样例一</span></span>
+</h3>
+<h4>
+	<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">input</span></span>
+</h4>
+<div style="background:whitesmoke">
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">5 7</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">1 2</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">2 3</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">3 4</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">4 5</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">1 2</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">2 3</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">1 2</span></span></pre>
+</div>
+<h4>
+	<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">output</span></span>
+</h4>
+<div style="background:whitesmoke">
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">1</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">1</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">1</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">1</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">3</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">2</span></span></pre>
+	<pre style="background:whitesmoke"><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">2</span></span></pre>
+</div>
+<h3>
+	<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">限制与约定</span></span>
+</h3>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><img src="http://xheditor.com/js/xheditor_skin/default/img/waiting.gif" remoteimg="0" alt="" /></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+	</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><img src="http://xheditor.com/js/xheditor_skin/default/img/waiting.gif" remoteimg="1" alt="" /><br />
+	</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">每条边加入图中，维护若干个森林，每条边都加入到第一个两个端点不连通的森林中</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">每一个生成森林都用并查集来维护，二分出第一个两端点不连通的并查集</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">时间复杂度为O（m log m*a(n)）</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define reg(i,a) for(int i=u[a];i;i=e[i].pre)
+#define v e[i].to
+#define LL long long 
+using namespace std;
+const int maxn=1e6+10;
+inline int read()
+{
+	int f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+struct edge{int to,pre;}e[maxn&lt;&lt;1];
+int u[maxn],l=1;
+inline void ins(int a,int b){e[++l]=(edge){b,u[a]},u[a]=l;}
+int id[maxn],n,m;
+int pre[maxn*2],nxt[maxn*2],mx=0,r[maxn];
+bool vis[maxn];
+int del(int x){
+	nxt[pre[x]]=nxt[x];
+	pre[nxt[x]]=pre[x];
+}
+void insert(int x,int r){
+	pre[x]=maxn+r,nxt[x]=nxt[maxn+r];
+	pre[nxt[x]]=nxt[pre[x]]=x;
+}
+void add(int x) {
+	del(x);
+	r[x]++; mx = max(mx, r[x]);
+	insert(x, r[x]);
+}
+void Forest(){
+	rep(i,1,n)insert(i,0);
+	rep(i,1,n){
+		while(!nxt[maxn+mx])mx--;
+		int x=nxt[maxn+mx];del(x);vis[x]=true;
+		reg(i,x) if(!vis[v]) id[i&gt;&gt;1]=r[v]+1,add(v);
+	}
+}
+
+int main()
+{
+	n=read(),m=read();
+	rep(i,1,m){
+		int a=read(),b=read();
+		ins(a,b),ins(b,a);
+	}
+	Forest();
+	rep(i,1,m) printf(&quot;%d\n&quot;,id[i]);
+	return 0;
+}
+</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

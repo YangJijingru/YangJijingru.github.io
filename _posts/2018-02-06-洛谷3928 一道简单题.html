@@ -1,0 +1,201 @@
+---
+tags: 
+ - 数据结构-线段树
+ - DP-杂题
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P31.jpg"
+preview-img: "/img/preview/P71.jpg"
+---
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">标签：DP，线段树，数据结构</span></strong>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">清晰版题目描述</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">小强拿到一个3×n的数组，要在每一列选一个数（或者不选），满足以下条件：</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">1.如果在第一行选，那它必须大于等于上一个数</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">2.如果在第二行选，那么必须小于等于上一个数</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">3.如果在第三行选，对于连续的一段在第三行选的数，必须满足方向相同（都小于等于上一个数或者都大于等于上一个数）</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">输入输出格式</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;"><strong>输入格式：</strong><br style="line-break:" />
+	<br />
+	</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">输入包含4行。</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">第一行一个数n，表示数列长度。</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">第2、3、4行，每行n个整数，分别表示三个数列。</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;"><strong>输出格式：</strong><br style="line-break:" />
+	<br />
+	</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">输出仅包含一个整数，即最长波动数列的长度。</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">输入输出样例</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;"><strong>输入样例#1：</strong> 复制 </span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">6</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">1 2 3 6 5 4</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">5 4 3 7 8 9</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">1 2 3 6 5 4</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;"><strong>输出样例#1：</strong> 复制 </span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">6</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">说明</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">对于20%的数据，n &lt;= 10， m &lt;= 1000</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">对于60%的数据，n &lt;=1000, m &lt;= 1000</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">对于100%的数据， n &lt;=100000， m &lt;= 1000000000</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">其中m = max|a[i]|</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">样例解释：</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">取第三行1 2 3（增），然后取第1行6（增），然后取第三行5 4（减），长度为6。</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">分析：DP裸题，设f[i][1/2/3/4]分别表示取前i列数中以第1/2/3/4行结尾的最长波动数列长度</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">F[i][1]=max(f[j][1/2/3/4]+1)&nbsp; j&lt;i 且a[j][1/2/3/4]&lt;=a[i][1]</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">剩下三行的转移同理，这种做法时间复杂度为O（n^2）</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">满分的做法可以直接用线段树维护</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">Code</span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+#define LL long long
+using namespace std;
+inline LL read()
+{
+	LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const int maxn=1e5+6;
+int n,cnt=0,ans=0;
+int a[maxn],b[maxn],c[maxn],num[maxn&lt;&lt;4],f[maxn][5],tree[maxn&lt;&lt;4][5];
+void insert(int id,int rt,int l,int r,int pos,int v){
+	if(l==r){tree[rt][id]=max(tree[rt][id],v);return;}
+	int mid=(l+r)&gt;&gt;1;
+	if(pos&lt;=mid)insert(id,rt&lt;&lt;1,l,mid,pos,v);
+	else insert(id,rt&lt;&lt;1|1,mid+1,r,pos,v);
+	tree[rt][id]=max(tree[rt&lt;&lt;1][id],tree[rt&lt;&lt;1|1][id]);
+}
+int query(int id,int rt,int l,int r,int L,int R){
+	if(L&lt;=l&amp;&amp;r&lt;=R)return tree[rt][id];
+	int mid=(l+r)&gt;&gt;1,ans=0;
+	if(L&lt;=mid)ans=max(ans,query(id,rt&lt;&lt;1,l,mid,L,R));
+	if(mid+1&lt;=R)ans=max(ans,query(id,rt&lt;&lt;1|1,mid+1,r,L,R));
+	return ans;
+}
+
+int main()
+{
+	n=read();
+	rep(i,1,n)a[i]=read(),num[++cnt]=a[i];
+	rep(i,1,n)b[i]=read(),num[++cnt]=b[i];
+	rep(i,1,n)c[i]=read(),num[++cnt]=c[i];
+	sort(num+1,num+1+cnt);
+	cnt=unique(num+1,num+cnt+1)-num-1;
+	rep(i,1,n)a[i]=lower_bound(num+1,num+cnt+1,a[i])-num;
+	rep(i,1,n)b[i]=lower_bound(num+1,num+cnt+1,b[i])-num;
+	rep(i,1,n)c[i]=lower_bound(num+1,num+cnt+1,c[i])-num;
+	rep(i,1,n){
+		f[i][1]=max(f[i][1],query(1,1,1,cnt,1,a[i]));
+		f[i][1]=max(f[i][1],query(2,1,1,cnt,1,a[i]));
+		f[i][1]=max(f[i][1],query(3,1,1,cnt,1,a[i]));
+		f[i][1]=max(f[i][1],query(4,1,1,cnt,1,a[i]));
+		f[i][1]++;
+		f[i][2]=max(f[i][2],query(1,1,1,cnt,b[i],cnt));
+		f[i][2]=max(f[i][2],query(2,1,1,cnt,b[i],cnt));
+		f[i][2]=max(f[i][2],query(3,1,1,cnt,b[i],cnt));
+		f[i][2]=max(f[i][2],query(4,1,1,cnt,b[i],cnt));
+		f[i][2]++;
+		f[i][3]=max(f[i][3],query(1,1,1,cnt,1,c[i]));
+	    f[i][3]=max(f[i][3],query(2,1,1,cnt,1,c[i]));
+		f[i][3]=max(f[i][3],query(3,1,1,cnt,1,c[i]));
+		f[i][3]++;
+		f[i][4]=max(f[i][4],query(1,1,1,cnt,c[i],cnt));
+		f[i][4]=max(f[i][4],query(2,1,1,cnt,c[i],cnt));
+		f[i][4]=max(f[i][4],query(4,1,1,cnt,c[i],cnt));
+		f[i][4]++;
+		insert(1,1,1,cnt,a[i],f[i][1]);
+		insert(2,1,1,cnt,b[i],f[i][2]);
+		insert(3,1,1,cnt,c[i],f[i][3]);
+		insert(4,1,1,cnt,c[i],f[i][4]);
+	}
+	rep(i,1,n)
+	    rep(j,1,4)ans=max(ans,f[i][j]);
+	printf(&quot;%d\n&quot;,ans);
+	return 0;
+}</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>

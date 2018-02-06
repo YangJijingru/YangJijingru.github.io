@@ -1,0 +1,430 @@
+---
+tags: 
+ - 数论-DP
+ - DP-杂题
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P18.jpg"
+preview-img: "/img/preview/P58.jpg"
+---
+<p>
+	<span style="font-weight:bold">标签：数学期望，DP</span>
+</p>
+<p>
+	<strong>题目描述</strong>
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 虽然不知道为什么，但是你一直想用一种神奇的方式完成一幅画作。
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 你把n张画纸铺成一排，并将它们从<strong>1到n</strong>编号。你一共有c种颜色可用，这些颜色可以用<strong>0到c-1</strong>来编号。初始时，所有画纸的颜色都为<strong>1</strong>。你一共想进行k次作画，第i次作画时，你会等概率随机地选闭区间[L<sub>i</sub>,R<sub>i</sub>]内的画纸的一个子集（可以为空），再随机挑一种颜色b<sub>i</sub>，并把挑出来的画纸都涂上该颜色。原有颜色a的画纸在涂上颜色b后，颜色会变成(a*b) mod c，这是这个世界的规律。
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 因为你将颜色用数字来命名了，因此你可以求出在k次作画结束后，每张画纸上的颜色对应的数字相加之和的期望。现在请你编程求一下这个值。
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 以防万一你不知道什么是期望：如果一个量X，它有p<sub>1</sub>的概率值为v<sub>1</sub>，有p<sub>2</sub>的概率值为v<sub>2</sub>……p<sub>n</sub>的概率值为v<sub>n</sub>，则X的期望值等于。
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	<strong>输入格式</strong>
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 第一行包含3个正整数n, c, k，意义如题所述。
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 接下来k行，每行包含两个数L<sub>i</sub>, R<sub>i</sub>，表示你每次操作会从哪个区间内随机地选画纸。
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	<strong>输出格式</strong>
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 一行，一个小数，表示答案，四舍五入精确到小数点后3位。
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	<strong>样例输入1</strong>
+</p>
+<p>
+	2 3 1
+</p>
+<p>
+	1 2
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	<strong>样例输出1</strong>
+</p>
+<p>
+	2.000
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	<strong>样例解释</strong>
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 一共有4种选择子集的可能，每种的概率都是。
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 选空集：画纸不会发生改变，颜色和是1+1=2；
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 选{1}：画纸2不会发生改变。选颜色有3种可能，使得画纸1最终分别变成颜色0、1、2，概率都是，颜色和的期望是；
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 选{2}：与选1对称，颜色和的期望也是2；
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 选{1,2}：选颜色有3种可能，使得两张画纸最终都变成颜色0、1、2，概率都是，颜色和的期望是；
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 综上，4种选择子集的方案的颜色和的期望为。
+</p>
+<p>
+	<strong>&nbsp;</strong>
+</p>
+<p>
+	<strong>样例输入2</strong>
+</p>
+<p>
+	3 3 3
+</p>
+<p>
+	1 2
+</p>
+<p>
+	2 3
+</p>
+<p>
+	1 3
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	<strong>样例输出2</strong>
+</p>
+<p>
+	2.639
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	<strong>数据范围</strong>
+</p>
+<table cellspacing="0" cellpadding="0" border="1">
+	<tbody>
+		<tr>
+			<td>
+				<p>
+					测试点编号
+				</p>
+			</td>
+			<td>
+				<p>
+					n
+				</p>
+			</td>
+			<td>
+				<p>
+					k
+				</p>
+			</td>
+			<td>
+				<p>
+					c
+				</p>
+			</td>
+			<td>
+				<p>
+					其它
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>
+					1
+				</p>
+			</td>
+			<td rowspan="2">
+				<p>
+					≤10
+				</p>
+			</td>
+			<td rowspan="4">
+				<p>
+					=1
+				</p>
+			</td>
+			<td rowspan="2">
+				<p>
+					≤10
+				</p>
+			</td>
+			<td>
+				<p>
+					&nbsp;
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>
+					2
+				</p>
+			</td>
+			<td>
+				<p>
+					&nbsp;
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>
+					3
+				</p>
+			</td>
+			<td rowspan="2">
+				<p>
+					≤100
+				</p>
+			</td>
+			<td rowspan="8">
+				<p>
+					≤100
+				</p>
+			</td>
+			<td>
+				<p>
+					&nbsp;
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>
+					4
+				</p>
+			</td>
+			<td>
+				<p>
+					&nbsp;
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>
+					5
+				</p>
+			</td>
+			<td>
+				<p>
+					=1
+				</p>
+			</td>
+			<td rowspan="6">
+				<p>
+					≤100
+				</p>
+			</td>
+			<td rowspan="2">
+				<p>
+					L<sub>i</sub>=R<sub>i</sub>
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>
+					6
+				</p>
+			</td>
+			<td rowspan="5">
+				<p>
+					≤100
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>
+					7
+				</p>
+			</td>
+			<td>
+				<p>
+					&nbsp;
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>
+					8
+				</p>
+			</td>
+			<td>
+				<p>
+					&nbsp;
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>
+					9
+				</p>
+			</td>
+			<td>
+				<p>
+					&nbsp;
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>
+					10
+				</p>
+			</td>
+			<td>
+				<p>
+					&nbsp;
+				</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p>
+	对所有数据，1≤L<sub>i</sub>≤R<sub>i</sub> ≤n。
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	分析：
+</p>
+<p>
+	第一眼看到题，样例2手玩不出来gg
+</p>
+<p>
+	貌似只会打20分的暴力，毕竟没怎么做过期望题
+</p>
+<p>
+	其实是很简单的一个有关期望的性质
+</p>
+<p>
+	和的期望=期望的和&nbsp;&nbsp; 就是期望的可加性啦
+</p>
+<p>
+	正解做法和50分部份分做法类似
+</p>
+<p>
+	DP
+</p>
+<p>
+	F[i][j]表示涂i次后显示颜色j的概率
+</p>
+<p>
+	转移：f[i+1][j*t%c]+=f[i][j]/c
+</p>
+<p>
+	G[i][j]表示i次被包含在区间里，j次被选中的概率（就是C(i，j)/2<sup>i</sup>）
+</p>
+<p>
+	G[i][j]=(g[i-1][j]+g[i-1][j-1])/2
+</p>
+<p>
+	Ans=
+</p>
+<p>
+	对于满分的做法，我们用Cnt数组记录下每个画纸被覆盖的次数
+</p>
+<p>
+	用和之前一样的做法去计算
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	Code
+</p>
+<pre name="code" class="cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define  ll long long
+#define mem(x,num) memset(x,num,sizeof x)
+#define eps 1e-7
+using namespace std;
+inline ll read()
+{
+	ll f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const int maxn=106;
+int k,n,cnt[maxn],mx,c;
+double ans,g[maxn][maxn],f[maxn][maxn];
+int main()
+{
+	freopen(&quot;paint.in&quot;,&quot;r&quot;,stdin);
+	freopen(&quot;paint.out&quot;,&quot;w&quot;,stdout);
+	g[0][0]=1;
+	rep(i,0,100)
+	    rep(j,0,i){g[i+1][j]+=g[i][j]/2.0;g[i+1][j+1]+=g[i][j]/2.0;}
+	n=read(),c=read(),k=read();
+	mem(cnt,0);mx=0;
+	rep(i,1,k){
+		int x=read(),y=read();
+		rep(j,x,y){
+			cnt[j]++;
+			mx=max(mx,cnt[j]);
+		}
+	}
+	mem(f,0);
+	f[0][1]=1;
+	rep(i,0,mx-1)
+	    rep(j,0,c-1)
+	        if(f[i][j]&gt;eps)
+				rep(r,0,c-1)f[i+1][j*r%c]+=f[i][j]/c;
+	ans=0;
+	rep(i,1,n)
+		rep(j,0,cnt[i])
+			rep(r,0,c-1)ans+=g[cnt[i]][j]*f[j][r]*r;
+	printf(&quot;%.3lf\n&quot;,ans);
+	return 0;
+}
+
+</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

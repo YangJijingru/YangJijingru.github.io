@@ -1,0 +1,135 @@
+---
+tags: 
+ - 基础算法-贪心
+ - 数据结构-单调队列
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P4.jpg"
+preview-img: "/img/preview/P44.jpg"
+---
+<span style="font-family:Microsoft YaHei;font-size:16px;">标签：队列，模拟</span>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">【题目描述】 <br />
+	本题中，我们将用符号[c]表示对c向下取整，例如：[3.0」= [3.1」= [3.9」=3。 <br />
+	蛐蛐国最近蚯蚓成灾了！隔壁跳蚤国的跳蚤也拿蚯蚓们没办法，蛐蛐国王只好去请神刀手来帮他们消灭蚯蚓。 <br />
+	蛐蛐国里现在共有n只蚯蚓（n为正整数)。每只蚯蚓拥有长度，我们设第i只蚯蚓的长度为a_i(i=1,2,…,n)，并保证所有的长度都是非负整数（即:可能存在长度为0的蚯蚓）。<br />
+	每一秒，神刀手会在所有的蚯蚓中，准确地找到最长的那一只（如有多个则任选一个）将其切成两半。神刀手切开蚯蚓的位置由常数p(是满足0&lt; p&lt;1的有理数)决定，设这只蚯蚓长度为x，神刀手会将其切成两只长度分别为[px]和x-[px]的蚯蚓。特殊地，如果这两个数的其中一个等于0，则这个长度为0的蚯蚓也会被保留。此外，除了刚刚产生的两只新蚯蚓，其余蚯蚓的长度都会增加q(是一个非负整常数)。<br />
+	蛐蛐国王知道这样不是长久之计，因为蚯蚓不仅会越来越多，还会越来越长。蛐蛐国王决定求助于一位有着洪荒之力的神秘人物，但是救兵还需要m秒才能到来…… <br />
+	(m为非负整数） <br />
+	蛐蛐国王希望知道这m秒内的战况。具体来说，他希望知道： <br />
+	•m秒内，每一秒被切断的蚯蚓被切断前的长度（有m个数） <br />
+	•m秒后，所有蚯蚓的长度（有n+m个数)。 <br />
+	蛐蛐国王当然知道怎么做啦！但是他想考考你…… <br />
+	【输入格式】 <br />
+	第一行包含六个整数n,m,q,u,v,t，其中：n,m,q的意义见【题目描述】；u,v,t均为正整数；你需要自己计算p=u/v(保证0&lt; u&lt; v)t是输出参数，其含义将会在【输出格式】中解释。<br />
+	第二行包含n个非负整数，为ai,a2,…,an，即初始时n只蚯蚓的长度。 <br />
+	同一行中相邻的两个数之间，恰好用一个空格隔开。 <br />
+	保证1&lt;=n&lt;=10^5，0&lt;m&lt;7*10^6，0&lt; u&lt; v&lt;10^9，0&lt;=q&lt;=200，1&lt; t&lt;71，0&lt; ai&lt;10^8。 <br />
+	【输出格式】 <br />
+	第一行输出[m/t]个整数，按时间顺序，依次输出第t秒，第2t秒，第3t秒……被切断蚯蚓（在被切断前）的长度。 <br />
+	第二行输出[(n+m)/t]个整数，输出m秒后蚯蚓的长度；需要按从大到小的顺序，依次输出排名第t，第2t，第3t……的长度。 <br />
+	同一行中相邻的两个数之间，恰好用一个空格隔开。即使某一行没有任何数需要 输出，你也应输出一个空行。 <br />
+	请阅读样例来更好地理解这个格式。 <br />
+	【样例输入】 <br />
+	3 7 1 1 3 1 <br />
+	3 3 2 <br />
+	【样例输出】 <br />
+	3 4 4 4 5 5 6 <br />
+	6 6 6 5 5 4 4 3 2 2 <br />
+	【数据范围】 <br />
+	</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：我们发现蚯蚓的切割具有单调性，在某一时刻切割的蚯蚓，一定会比在它之后切割的蚯蚓要长</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">考虑记录三个队列，分别存储未切割过的蚯蚓和切割成的两只蚯蚓，每次将蚯蚓插入对应的队尾。根据我们上面推论得出的单调性，每次取出三个队头的最大值即可，蚯蚓长度的增加和上述堆做法的处理方式相同，这样的总复杂为O(n+m)</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">维护三个单调队列即可，转化为模拟的问题了</span>
+</p>
+<p>
+	<br />
+	
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">参考代码</span>
+</p>
+<pre name="code" class="cpp">include&lt;bits/stdc++.h&gt;
+using namespace std;
+inline int read()
+{
+    int f=1,x=0;char ch=getchar();
+    while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+    while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+    return x*f;
+}
+const int maxn=100005,inf=1e9;
+int q,d1[maxn],f1=1,d2[maxn*105],f2=1,l2=0,d3[maxn*105],f3=1,l3=0,flag;
+int n,m,u,v,t,kk,temp;
+double p;
+int cmp(int x,int y)
+{
+    return x&gt;y;
+}
+
+int choose(int x,int y,int z)
+{    
+    if(f1&gt;n)x=-inf;
+    if(f2&gt;l2)y=-inf;
+    if(f3&gt;l3)z=-inf;
+    if(x&lt;y)
+    {
+        x=y;
+        flag=2;
+    }
+    if(x&lt;z)
+    { 
+        x=z;
+        flag=3;
+    }
+    if(flag==1)f1++;        
+    else if(flag==2)f2++;    
+    else f3++;
+    return x;
+}
+
+int main()
+{
+    n=read(),m=read(),q=read(),u=read(),v=read(),t=read();
+    kk=t;
+    p=double(u)/double(v);
+    for(int i=1;i&lt;=n;i++)d1[i]=read();
+    sort(d1+1,d1+1+n,cmp);
+//    for(int i=1;i&lt;=n;i++)cout&lt;&lt;d1[i]&lt;&lt;' ';
+    int s=0;
+    while(s&lt;m)
+    {
+        flag=1;
+        s++;
+        int temp=choose(d1[f1]+(s-1)*q,d2[f2]+(s-f2)*q,d3[f3]+(s-f3)*q);
+        if(s==kk){kk+=t;cout&lt;&lt;temp&lt;&lt;' ';}
+        d2[++l2]=double(temp*p)-q; d3[++l3]=temp-d2[l2]-2*q;
+    }
+    cout&lt;&lt;endl;
+    s=0;
+    kk=t;
+    while(s&lt;n+m)
+    {
+        ++s;
+        flag=1;
+        int temp=choose(d1[f1]+m*q,d2[f2]+(m-f2+1)*q,d3[f3]+(m-f3+1)*q);
+        if(s==kk){kk+=t;cout&lt;&lt;temp&lt;&lt;' ';}
+    }
+    return 0;
+}
+
+</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

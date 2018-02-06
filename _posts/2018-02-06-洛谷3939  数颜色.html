@@ -1,0 +1,217 @@
+---
+tags: 
+ - 基础算法-二分
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P33.jpg"
+preview-img: "/img/preview/P73.jpg"
+---
+<p>
+	<strong>标签：二分</strong>
+</p>
+<p>
+	<strong><a target="_blank" href="http://www.yjjr.org/nd.jsp?id=15#_np=2_327">http://www.yjjr.org/nd.jsp?id=15#_np=2_327</a><br />
+	</strong>
+</p>
+<p>
+	<strong>题目背景</strong>
+</p>
+<p>
+	大样例下发链接：<a target="_blank" href="http://pan.baidu.com/s/1c0LbQ2">http://pan.baidu.com/s/1c0LbQ2</a> 密码：jigg
+</p>
+<p>
+	<strong>题目描述</strong>
+</p>
+<p>
+	小 C 的兔子不是雪白的，而是五彩缤纷的。每只兔子都有一种颜色，不同的兔子可能有相同的颜色。小 C 把她标号从 1 到 nnn 的 nnn 只兔子排成长长的一排，来给他们喂胡萝卜吃。 排列完成后，第iii 只兔子的颜色是 aia_iai​。
+</p>
+<p>
+	俗话说得好，“萝卜青菜，各有所爱”。小 C 发现，不同颜色的兔子可能有对胡萝卜的 不同偏好。比如，银色的兔子最喜欢吃金色的胡萝卜，金色的兔子更喜欢吃胡萝卜叶子，而绿色的兔子却喜欢吃酸一点的胡萝卜……为了满足兔子们的要求，小 C 十分苦恼。所以，为了使得胡萝卜喂得更加准确，小 C 想知道在区间 [lj,rj][l_j,r_j][lj​,rj​] 里有多少只颜色为 cjc_jcj​ 的兔子。
+</p>
+<p>
+	不过，因为小 C 的兔子们都十分地活跃，它们不是很愿意待在一个固定的位置；与此同时，小 C 也在根据她知道的信息来给兔子们调整位置。所以，有时编号为 xjx_jxj​ 和 xj+1x_j+1xj​+1 的两 只兔子会交换位置。 小C 被这一系列麻烦事给难住了。你能帮帮她吗？
+</p>
+<p>
+	<strong>输入输出格式</strong>
+</p>
+<p>
+	<strong>输入格式：</strong>
+</p>
+<p>
+	从标准输入中读入数据。 输入第 1 行两个正整数 nnn,mmm。
+</p>
+<p>
+	输入第 2 行 nnn 个正整数，第iii 个数表示第 iii 只兔子的颜色 aia_iai​。
+</p>
+<p>
+	输入接下来 mmm 行，每行为以下两种中的一种：
+</p>
+<ul type="disc">
+	<li>
+		“1&nbsp;lj&nbsp;rj&nbsp;cj1\ l_j\ r_j\ c_j1&nbsp;lj​&nbsp;rj​&nbsp;cj​” ：询问在区间 [lj,rj][l_j,r_j][lj​,rj​] 里有多少只颜色为 cjc_jcj​ 的兔子；
+	</li>
+	<li>
+		“2&nbsp;xj2\ x_j2&nbsp;xj​”： xjx_jxj​ 和 xj+1x_j+1xj​+1 两只兔子交换了位置。
+	</li>
+</ul>
+<p>
+	<strong>输出格式：</strong>
+</p>
+<p>
+	输出到标准输出中。
+</p>
+<p>
+	对于每个 1 操作，输出一行一个正整数，表示你对于这个询问的答案。
+</p>
+<p>
+	<strong>输入输出样例</strong>
+</p>
+<p>
+	<strong>输入样例#1：</strong> 复制 
+</p>
+<p>
+	6 5 
+</p>
+<p>
+	1 2 3 2 3 3&nbsp;
+</p>
+<p>
+	1 1 3 2 
+</p>
+<p>
+	1 4 6 3&nbsp;
+</p>
+<p>
+	2 3 
+</p>
+<p>
+	1 1 3 2&nbsp;
+</p>
+<p>
+	1 4 6 3
+</p>
+<p>
+	<strong>输出样例#1：</strong> 复制 
+</p>
+<p>
+	1 
+</p>
+<p>
+	2 
+</p>
+<p>
+	2 
+</p>
+<p>
+	3 
+</p>
+<p>
+	<strong>说明</strong>
+</p>
+<p>
+	【样例 1 说明】
+</p>
+<p>
+	前两个 1 操作和后两个 1 操作对应相同；在第三次的 2 操作后，3 号兔子和 4 号兔子
+</p>
+<p>
+	交换了位置，序列变为 1 2 2 3 3 3。
+</p>
+<p>
+	【数据范围与约定】
+</p>
+<p>
+	子任务会给出部分测试数据的特点。如果你在解决题目中遇到了困难，可以尝试只解 决一部分测试数据。 对于所有测试点，有 1≤lj&lt;rj≤n,1≤xj&lt;n1 \le l_j &lt; r_j \le n,1 \le x_j &lt; n1≤lj​&lt;rj​≤n,1≤xj​&lt;n。每个测试点的数据规模及特点如下表：
+</p>
+<p>
+	<img src="http://xheditor.com/js/xheditor_skin/default/img/waiting.gif" remoteimg="0" alt="" /><br />
+	
+</p>
+<p>
+	特殊性质 1：保证对于所有操作 1，有∣rj−lj∣≤20|r_j - l_j| \le 20∣rj​−lj​∣≤20 或 ∣rj−lj∣≤n−20|r_j - l_j| \le n - 20∣rj​−lj​∣≤n−20。
+</p>
+<p>
+	特殊性质 2：保证不会有两只相同颜色的兔子。
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	这题适合那些学高级数据结构学傻的那些人，一堆人用主席树，可持久化线段树……，很适合给那些人练练题
+</p>
+<p>
+	还有一点不明白为什么我的暴力可以写到55分qwq
+</p>
+<p>
+	然而这是一场NOIP模拟赛，正解是二分查找
+</p>
+<p>
+	可以将每个颜色和其位置用结构体封装，然后按照这两个域大小排序
+</p>
+<p>
+	接着询问的时候二分查找，修改的时候只需要将两个兔子位置的域调换即可
+</p>
+<p>
+	Code
+</p>
+<pre name="code" class="cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+#include&lt;vector&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define ll long long
+#define mem(x,num) memset(x,num,sizeof x)
+#ifdef WIN32
+#define LL &quot;%I64d\n&quot;
+#else
+#define LL &quot;%lld\n&quot;
+#endif
+using namespace std;
+inline ll read()
+{
+    ll f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const int maxn=4e5+6; 
+int a[maxn],n,m;
+vector&lt;int&gt;b[maxn];
+int main()
+{
+	n=read(),m=read();
+    rep(i,1,n){
+    	a[i]=read();
+    	b[a[i]].push_back(i);
+    }
+    rep(i,1,n)sort(b[i].begin(),b[i].end());
+    rep(i,1,m){
+    	int opt=read();
+    	if(opt==1){
+    		int l=read(),r=read(),c=read();
+    		printf(&quot;%d\n&quot;,(int)(upper_bound(b[c].begin(),b[c].end(),r)-lower_bound(b[c].begin(),b[c].end(),l)));
+    	}
+    	else{
+    		int x=read();
+    		if(a[x]!=a[x+1]){
+    			(*lower_bound(b[a[x]].begin(),b[a[x]].end(),x))++;
+    			(*lower_bound(b[a[x+1]].begin(),b[a[x+1]].end(),x+1))--;
+    			swap(a[x],a[x+1]);
+    		}
+    	}
+    }
+    return 0;
+}
+    </pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

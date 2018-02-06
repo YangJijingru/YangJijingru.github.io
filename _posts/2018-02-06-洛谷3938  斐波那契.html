@@ -1,0 +1,194 @@
+---
+tags: 
+ - 树-LCA
+ - 数论-杂题
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P32.jpg"
+preview-img: "/img/preview/P72.jpg"
+---
+<p>
+	<strong>标签：数论，LCA，树</strong>
+</p>
+<p>
+	<strong><a target="_blank" href="http://www.yjjr.org/nd.jsp?id=14#_np=2_327">http://www.yjjr.org/nd.jsp?id=14#_np=2_327</a><br />
+	</strong>
+</p>
+<p>
+	<strong>题目背景</strong>
+</p>
+<p>
+	大样例下发链接：<a target="_blank" href="http://pan.baidu.com/s/1c0LbQ2">http://pan.baidu.com/s/1c0LbQ2</a> 密码：jigg
+</p>
+<p>
+	<strong>题目描述</strong>
+</p>
+<p>
+	小 C 养了一些很可爱的兔子。 有一天，小 C 突然发现兔子们都是严格按照伟大的数学家斐波那契提出的模型来进行 繁衍：一对兔子从出生后第二个月起，每个月刚开始的时候都会产下一对小兔子。我们假定，在整个过程中兔子不会出现任何意外。
+</p>
+<p>
+	小 C 把兔子按出生顺序，把兔子们从1 开始标号，并且小 C 的兔子都是 1 号兔子和 1 号兔子的后代。如果某两对兔子是同时出生的，那么小 C 会将父母标号更小的一对优先标号。
+</p>
+<p>
+	如果我们把这种关系用图画下来，前六个月大概就是这样的：
+</p>
+<p>
+	<img src="http://xheditor.com/js/xheditor_skin/default/img/waiting.gif" remoteimg="0" alt="" /><br />
+	
+</p>
+<p>
+	其中，一个箭头 A → B 表示 A 是 B 的祖先，相同的颜色表示同一个月出生的兔子。
+</p>
+<p>
+	为了更细致地了解兔子们是如何繁衍的，小 C 找来了一些兔子，并且向你提出了 m 个 问题：她想知道关于每两对兔子 aia_iai​ 和 bib_ibi​ ，他们的最近公共祖先是谁。你能帮帮小 C 吗？
+</p>
+<p>
+	一对兔子的祖先是这对兔子以及他们父母（如果有的话）的祖先，而最近公共祖先是指 两对兔子所共有的祖先中，离他们的距离之和最近的一对兔子。比如，5 和 7 的最近公共祖 先是 2，1 和 2 的最近公共祖先是 1，6 和 6 的最近公共祖先是 6。
+</p>
+<p>
+	<strong>输入输出格式</strong>
+</p>
+<p>
+	<strong>输入格式：</strong>
+</p>
+<p>
+	从标准输入读入数据。 输入第一行，包含一个正整数 m。 输入接下来 m 行，每行包含 2 个正整数，表示 aia_iai​ 和 bib_ibi​ 。
+</p>
+<p>
+	<strong>输出格式：</strong>
+</p>
+<p>
+	输出到标准输出中。 输入一共 m 行，每行一个正整数，依次表示你对问题的答案。
+</p>
+<p>
+	<strong>输入输出样例</strong>
+</p>
+<p>
+	<strong>输入样例#1：</strong> 复制 
+</p>
+<p>
+	5 
+</p>
+<p>
+	1 1 
+</p>
+<p>
+	2 3 
+</p>
+<p>
+	5 7 
+</p>
+<p>
+	7 13 
+</p>
+<p>
+	4 12
+</p>
+<p>
+	<strong>输出样例#1：</strong> 复制 
+</p>
+<p>
+	1 
+</p>
+<p>
+	1 
+</p>
+<p>
+	2 
+</p>
+<p>
+	2 
+</p>
+<p>
+	4 
+</p>
+<p>
+	<strong>说明</strong>
+</p>
+<p>
+	【数据范围与约定】 子任务会给出部分测试数据的特点。如果你在解决题目中遇到了困难，可以尝试只解 决一部分测试数据。 每个测试点的数据规模及特点如下表：
+</p>
+<p>
+	<img src="http://xheditor.com/js/xheditor_skin/default/img/waiting.gif" remoteimg="1" alt="" /><br />
+	
+</p>
+<p>
+	特殊性质 1：保证 aia_iai​, bib_ibi​ 均为某一个月出生的兔子中标号最大的一对兔子。例如，对 于前六个月，标号最大的兔子分别是 1, 2, 3, 5, 8, 13。
+</p>
+<p>
+	特殊性质 2：保证 ∣ai−bi∣≤1|a_i-b_i|\le1∣ai​−bi​∣≤1。
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	这题应该略大于D2T1难度，结论题：儿子节点的序号=父亲节点的序号+小于该儿子节点的斐波那契数
+</p>
+<p>
+	所以父亲节点的序号=儿子节点的序号-小于该儿子节点的斐波那契数
+</p>
+<p>
+	这个结论我推了一个小时，真是zz啊
+</p>
+<p>
+	然后可以根据这个结论做LCA，两者同时往上跳找到相同的祖先节点
+</p>
+<p>
+	Code
+</p>
+<pre name="code" class="cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define ll long long
+#define mem(x,num) memset(x,num,sizeof x)
+#ifdef WIN32
+#define LL &quot;%I64d\n&quot;
+#else
+#define LL &quot;%lld\n&quot;
+#endif
+using namespace std;
+inline ll read()
+{
+    ll f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+
+const int maxx=95;
+ll f[maxx],m,now;
+int main()
+{
+	f[1]=f[2]=1;
+	rep(i,3,maxx)f[i]=f[i-1]+f[i-2];
+	//rep(i,1,maxx)cout&lt;&lt;f[i]&lt;&lt;' ';
+//	cout&lt;&lt;endl;
+	m=read();
+	rep(i,1,m){
+		ll x=read(),y=read();
+		while(x!=y){
+			if(x&gt;y)swap(x,y);
+			now=lower_bound(f+1,f+1+maxx,y)-f;
+			now--;
+			if(f[now]==y)now--;
+			y-=f[now];//cout&lt;&lt;now&lt;&lt;' '&lt;&lt;f[now]&lt;&lt;' '&lt;&lt;x&lt;&lt;' '&lt;&lt;y&lt;&lt;endl;
+		}
+		printf(LL,x);
+    }
+    return 0;
+}
+			
+			</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

@@ -1,0 +1,205 @@
+---
+tags: 
+ - DP-杂题
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P1.jpg"
+preview-img: "/img/preview/P41.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>标签：DP</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>题目描述</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">有两个仅包含小写英文字母的字符串 A 和 B。现在要从字符串 A 中取出 k 个互不重叠的非空子串,然后把这 k 个子串按照其在字符串 A中出现的顺序依次连接起来得到一 个新的字符串,请问有多少种方案可以使得这个新串与字符串 B 相等?注意:子串取出的位置不同也认为是不同的方案。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入输出格式</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入格式：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输入文件名为 substring.in。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">第一行是三个正整数 n,m,k,分别表示字符串 A 的长度,字符串 B 的长度,以及问</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">题描述中所提到的 k,每两个整数之间用一个空格隔开。 第二行包含一个长度为 n 的字符串,表示字符串 A。第三行包含一个长度为 m 的字符串,表示字符串 B。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输出格式：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输出文件名为 substring.out。 输出共一行,包含一个整数,表示所求方案数。由于答案可能很大,所以这里要求[b]输出答案对1,000,000,007 取模的结果。[/b]</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入输出样例</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入样例#1：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">6 3 1 </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">aabaab </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">aab</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输出样例#1：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入样例#2：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">6 3 2 </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">aabaab </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">aab</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输出样例#2：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">7</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入样例#3：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">6 3 3 </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">aabaab </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">aab</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输出样例#3：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">7</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>说明</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">对于第 1 组数据:1≤n≤500,1≤m≤50,k=1;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">对于第 2 组至第 3 组数据:1≤n≤500,1≤m≤50,k=2; 对于第 4 组至第 5 组数据:1≤n≤500,1≤m≤50,k=m; 对于第 1 组至第 7 组数据:1≤n≤500,1≤m≤50,1≤k≤m;对于第 1 组至第 9 组数据:1≤n≤1000,1≤m≤100,1≤k≤m; 对于所有 10 组数据:1≤n≤1000,1≤m≤200,1≤k≤m。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">题意：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">给出两个字符串，长度为 n 的 A 和长度为 m 的 B，现在要 在 A 串中取出 k 串互不重叠的⼦串，使得这 k 个⼦串连接 起来之后和 B 串相同，问有多少种⽅案。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">方法一：（如下代码）</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">这种数据范围也就只有DP可行了</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">记忆数组f[i][j][k][x]字符串a的前i个字符和字符串b的前j个字符用了k个子串</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">当x=0时表示字符串a的第i个字符必须被选中</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">当x=1时表示字符串a的第i个字符不能被选中</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">F[i][j][k][0]=f[i-1][j][k][0]+f[i-1][j][k][1];</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">F[i][j][k][1]=f[i-1][j-1][k][1]+f[i-1][j-1][k-1][0]+f[i-1][j-1][k-1][1];</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Ans=f[n][m][k][0]+f[n][m][k][1]</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">空间问题可能会爆，可以使用滚动数组</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">方法二：dp计数</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">F[i][j][k]表示a[1..i]分成j段与b[1..k]相等的方案数</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">转移同样借助辅助数组g[i][j][k]表示当前这段还未分完的</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">这种方法是听武爷爷讲的，然而并不会写代码【无奈】</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">参考代码</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=1005,maxm=205;
+const long long Mod=1e9+7;
+int n,m,kk;
+long long f[2][maxm][maxm][2];
+char a[maxn],b[maxn];
+int main()
+{
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;kk;
+    scanf(&quot;%s&quot;,a+1);scanf(&quot;%s&quot;,b+1);
+    f[0][0][0][0]=1;
+    for(int i=1;i&lt;=n;i++)
+    {
+        int op=i&amp;1;
+        f[op][0][0][0]=1;
+        for(int j=1;j&lt;=min(i,m);j++)
+            for(int k=1;k&lt;=min(j,kk);k++)
+            {
+                f[op][j][k][0]=f[op][j][k][1]=0;
+                f[op][j][k][0]=(f[op^1][j][k][0]+f[op^1][j][k][1])%Mod;
+                if(a[i]==b[j])
+                    f[op][j][k][1]=((f[op^1][j-1][k][1]+f[op^1][j-1][k-1][0])%Mod+f[op^1][j-1][k-1][1])%Mod;
+            }
+    }
+    cout&lt;&lt;(f[n&amp;1][m][kk][0]+f[n&amp;1][m][kk][1])%Mod&lt;&lt;endl;
+    return 0;
+}                    
+
+</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

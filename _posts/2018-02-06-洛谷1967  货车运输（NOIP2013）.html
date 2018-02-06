@@ -1,0 +1,230 @@
+---
+tags: 
+ - 树-LCA
+ - 树-树上倍增
+ - 图论-最大生成树
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P24.jpg"
+preview-img: "/img/preview/P64.jpg"
+---
+<p>
+	<span style="font-weight:bold">标签：LCA，最大生成树，树上倍增</span>
+</p>
+<p>
+	<strong>题目描述</strong>
+</p>
+<p>
+	A 国有 n 座城市，编号从 1 到 n，城市之间有 m 条双向道路。每一条道路对车辆都有重量限制，简称限重。现在有 q 辆货车在运输货物， 司机们想知道每辆车在不超过车辆限重的情况下，最多能运多重的货物。
+</p>
+<p>
+	<strong>输入输出格式</strong>
+</p>
+<p>
+	<strong>输入格式：</strong><br />
+	<br />
+	
+</p>
+<p>
+	输入文件名为 truck.in。
+</p>
+<p>
+	输入文件第一行有两个用一个空格隔开的整数 n，m，表示 A 国有 n 座城市和 m 条道
+</p>
+<p>
+	路。 接下来 m 行每行 3 个整数 x、 y、 z，每两个整数之间用一个空格隔开，表示从 x 号城市到 y 号城市有一条限重为z 的道路。注意：&nbsp;<strong>x 不等于y，两座城市之间可能有多条道路&nbsp;</strong>。
+</p>
+<p>
+	接下来一行有一个整数 q，表示有 q 辆货车需要运货。
+</p>
+<p>
+	接下来 q 行，每行两个整数 x、y，之间用一个空格隔开，表示一辆货车需要从 x 城市运输货物到 y 城市，注意：&nbsp;<strong>x 不等于 y&nbsp;</strong>。
+</p>
+<p>
+	<strong>输出格式：</strong><br />
+	<br />
+	
+</p>
+<p>
+	输出文件名为 truck.out。
+</p>
+<p>
+	输出共有 q 行，每行一个整数，表示对于每一辆货车，它的最大载重是多少。如果货
+</p>
+<p>
+	车不能到达目的地，输出-1。
+</p>
+<p>
+	<strong>输入输出样例</strong>
+</p>
+<p>
+	<strong>输入样例#1：</strong>&nbsp;复制
+</p>
+<p>
+	4 3
+</p>
+<p>
+	1 2 4
+</p>
+<p>
+	2 3 3
+</p>
+<p>
+	3 1 1
+</p>
+<p>
+	3
+</p>
+<p>
+	1 3
+</p>
+<p>
+	1 4
+</p>
+<p>
+	1 3
+</p>
+<p>
+	<strong>输出样例#1：</strong>&nbsp;复制
+</p>
+<p>
+	3
+</p>
+<p>
+	-1
+</p>
+<p>
+	3
+</p>
+<p>
+	<strong>说明</strong>
+</p>
+<p>
+	对于 30%的数据，0 &lt; n&lt; 1,000，0 &lt; m &lt; 10,000，0 &lt; q&lt; 1,000；
+</p>
+<p>
+	对于 60%的数据，0 &lt; n&lt; 1,000，0 &lt; m &lt; 50,000，0 &lt; q&lt; 1,000；
+</p>
+<p>
+	对于 100%的数据，0 &lt; n&lt; 10,000，0 &lt; m &lt; 50,000，0 &lt; q&lt; 30,000，0 ≤ z ≤ 100,000。
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	这题是在济南时晚上和zmd拼手速AC的，刺激啊，30分钟拼手速&amp;&amp;RP去A题
+</p>
+<p>
+	分析：先最大生成树重构树，然后对于每个询问s-&gt;t，分别查询s-&gt;LCA(s,t) 和t-&gt;LCA(s,t)路径上的最小边权。可以用树上倍增的做法记录最小边权，类似于ST表吧
+</p>
+<p>
+	话说最近模拟赛写了不少最大生成树的题，日渐变成套路。。。
+</p>
+<p>
+	Code
+</p>
+<pre name="code" class="cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(register int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(register int i=a;i&gt;=b;i--)
+#define ll long long
+#define mem(x,num) memset(x,num,sizeof x)
+#ifdef WIN32
+#define LL &quot;%I64d&quot;
+#else
+#define LL &quot;%lld&quot;
+#endif
+using namespace std;
+inline ll read()
+{
+    ll f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const int maxm=5e5+6,maxn=1e5+6,inf=0x3f3f3f;
+struct edge{ll u,v,w;}e[maxm];
+struct redge{ll to,next,w;}re[maxm];
+int head[maxn],n,m,q,fastart[maxn],depth[maxn],fa[maxn][18],d[maxn][18],cnt=0;
+bool vis[maxm]; 
+inline bool cmp(edge x,edge y){return x.w&gt;y.w;}
+inline int find(int x){return x==fastart[x]?fastart[x]:fastart[x]=find(fastart[x]);}
+
+void dfs(int x)
+{
+	vis[x]=1;
+	rep(i,1,16){
+	    if(depth[x]&lt;(1&lt;&lt;i))break;
+	    fa[x][i]=fa[fa[x][i-1]][i-1];
+	    d[x][i]=min(d[x][i-1],d[fa[x][i-1]][i-1]);
+	}
+#define reg(x) for(int i=head[x];i;i=re[i].next)
+	reg(x){
+		if(vis[re[i].to])continue;
+		fa[re[i].to][0]=x;
+		d[re[i].to][0]=re[i].w;
+		depth[re[i].to]=depth[x]+1;
+		dfs(re[i].to);
+	}
+}
+
+inline int lca(int x,int y)
+{
+	if(depth[x]&lt;depth[y])swap(x,y);
+	int t=depth[x]-depth[y];
+	rep(i,0,16)if((1&lt;&lt;i)&amp;t)x=fa[x][i];
+	dep(i,16,0)
+		if(fa[x][i]!=fa[y][i]){x=fa[x][i];y=fa[y][i];}
+	if(x==y)return x;
+	return fa[x][0];
+}
+
+int ask(int x,int father)
+{
+	int re=inf,t=depth[x]-depth[father];
+	rep(i,0,16)
+		if((1&lt;&lt;i)&amp;t){
+			re=min(re,d[x][i]);
+			x=fa[x][i];
+		}
+	return re;
+}
+int main()
+{
+	mem(d,inf);
+    n=read(),m=read();
+    rep(i,1,m)e[i].u=read(),e[i].v=read(),e[i].w=read();
+    sort(e+1,e+1+m,cmp);
+    rep(i,1,n)fastart[i]=i;
+    rep(i,1,m){
+    	int r1=find(e[i].u),r2=find(e[i].v);
+    	if(r1!=r2){
+		    fastart[r1]=r2; 
+		    re[++cnt]=(redge){e[i].v,head[e[i].u],e[i].w};head[e[i].u]=cnt;
+		    re[++cnt]=(redge){e[i].u,head[e[i].v],e[i].w};head[e[i].v]=cnt;
+		}
+		if(cnt==2*(n-1))break; 
+	}
+	rep(i,1,n)if(!vis[i])dfs(i);
+	q=read();
+	rep(i,1,q){
+		int s=read(),t=read();
+		int r1=find(s),r2=find(t);
+		if(r1!=r2){printf(&quot;-1\n&quot;);continue;}
+		else {int k=lca(s,t);printf(&quot;%lld\n&quot;,min(ask(s,k),ask(t,k)));}
+	}
+	return 0;
+}
+	</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

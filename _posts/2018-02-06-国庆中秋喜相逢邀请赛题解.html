@@ -1,0 +1,91 @@
+---
+tags: 
+ - 解题报告
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P16.jpg"
+preview-img: "/img/preview/P56.jpg"
+---
+<p>
+	<a target="_blank" href="http://106.14.168.81/contest/8"><span style="font-family:Microsoft YaHei;font-size:16px;">传送门：http://106.14.168.81/contest/8</span></a>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;预估气温</strong></span>
+</p>
+<p align="left">
+	<span style="font-weight:bold"><span style="font-family:Microsoft YaHei;font-size:16px;">（weather.pas/c/cpp）</span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">O(n)模拟每两天中温差即可，最后特判下不符合一次函数的情况，水题</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;完美的波形图</strong></span>
+</p>
+<p>
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">（waveform.pas/c/cpp）</span></strong>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">60分做法——普通DP，O(n^2)</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">第一重循环枚举波峰的位置，第二重循环计算要修改值，找到最小的即可</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">100分做法——优化，O(n)</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">通过算法60分的做法,我们发现可以优化掉内层的循环，先用f[i]记录从头到第i个音阶的修改值,g[i]表示从尾到第i个音阶的修改值，最后再O(n)枚举波峰位置，O(1)计算修改值比大小，套路性极强的DP。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;布置会场</strong></span>
+</p>
+<p>
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">（hall.pas/c/cpp）</span></strong>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">60分暴力的做法应该很好想到</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">100分的正解——在每两个座位之间建边，距离记为边的权值，做kruskal最小生成树，将n^2条边从小到大排序，找（n-k-1）条小的边加入并查集（两个端点原本未在同一个部落中）输出第（n-k）条边即可。这题应该是整套题中思维复杂度最高的，正解比较难想到，但部分分很好拿，而且时间给了2s，没有卡时卡常数。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">出题idea的来源：noip2010关押罪犯</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;噪音问题</strong></span>
+</p>
+<p>
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">（noise.pas/c/cpp）</span></strong>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">50分——dfs深搜</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">100分——bfs广搜+队列，模板题。考验选手的代码能力，注意对‘A’—&gt;‘Z’大写字母的处理。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">T4的数据完全随机构造，不存在极限数据。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">关于极限数据的解释：当噪声源（大写字母）数量超过100*100个，由于常数过大，需要3s以上时间，所以本题数据中不含极限数据。</span>
+</p>
+<p align="center">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">总结：</span></strong>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp; &nbsp; &nbsp; T1 水题</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; T2 DP+优化</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; T3 最小生成树</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; T4 bfs</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">第一次出题呐，感觉T4出的太垃圾，还是自己太弱233...暴力的分都很好拿，如果都写满的话，差不多&gt;=250，第二题第四题都是套路题，第三题难度应该是较大的，总体难度略高于noip2016普及组<a target="_blank" name="_GoBack" class=" "></a></span>
+</p>
+<br />

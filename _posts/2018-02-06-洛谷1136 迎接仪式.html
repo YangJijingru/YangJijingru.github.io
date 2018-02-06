@@ -1,0 +1,208 @@
+---
+tags: 
+ - DP-区间
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P21.jpg"
+preview-img: "/img/preview/P61.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">标签：区间DP</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">题目描述</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">LHX教主要来X市指导OI学习工作了。为了迎接教主，在一条道路旁，一群Orz教主er穿着文化衫站在道路两旁迎接教主，每件文化衫上都印着大字。一旁的Orzer依次摆出“欢迎欢迎欢迎欢迎……”的大字，但是领队突然发现，另一旁穿着“教”和“主”字文化衫的Orzer却不太和谐</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">为了简单描述这个不和谐的队列，我们用“j”替代“教”，“z”替代“主”。而一个“j”与“z”组成的序列则可以描述当前的队列。为了让教主看得尽量舒服，你必须调整队列，使得“jz”子串尽量多。每次调整你可以交换任意位置上的两个人，也就是序列中任意位置上的两个字母。而因为教主马上就来了，时间仅够最多作K次调整（当然可以调整不满K次），所以这个问题交给了你。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输入输出格式</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输入格式：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输入文件welcome.in的第1行包含2个正整数N与K，表示了序列长度与最多交换次数。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">第2行包含了一个长度为N的字符串，字符串仅由字母“j”与字母“z”组成，描述了这个序列。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输出格式：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输出文件welcome.out仅包括一个非负整数，为调整最多K次后最后最多能出现多少个“jz”子串。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输入输出样例</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输入样例#1：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">5 2 </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">zzzjj</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输出样例#1：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">说明</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">【样例说明】</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">第1次交换位置1上的z和位置4上的j，变为jzzzj；</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">第2次交换位置4上的z和位置5上的j，变为jzzjz。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">最后的串有2个“jz”子串。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">【数据规模与约定】</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">对于10%的数据，有N≤10；</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">对于30%的数据，有K≤10；</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">对于40%的数据，有N≤50；</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">对于100%的数据，有N≤500，K≤100。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">给定：长度为N的字符串</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">求：max{num”jz”}（字符串中“jz”这个子串最多个数）</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">满足：交换任意两个字符的次数&lt;=k</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+	</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">贪心：从前往后找到第一个未形成“jz”的z，将第一个“z”换成当前第一个未形成”jz“的“j”</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Eg.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Zzzjj</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">P=2,q=4;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">jzzzj</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">P=4 q=5</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">符合样例，但是只有20分</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">显然这种n&lt;=500的数据范围是不可能贪心的，反例如下</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">7 1</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Jjjzzzj</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+	</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">正解：DP</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">F[i][j1][j2]表示前i个字符，改变了j1个‘j’和j2个’z’后的’jz’个数</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">状态转移方程</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">F[i][j1][j2]=max(f[i-1][j1][j2],&nbsp; //未做任何变动</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F[i-2][j1-1][j2]+1&nbsp; //s[i]=j,s[i-1]=j的情况（就是“jj”）</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F[i-2][j1][j2-1]+1&nbsp; //s[i]=z,s[i-1]=z（两个z的情况）</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F[i-2][j1-1][j2-1]+1&nbsp; ）//s[i]=j,s[i-1]=z (“zj”的情况)</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Ans=max(f[i][j1][j2]) （满足j1=j2）</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+#define LL long long
+using namespace std;
+const int maxn=506,maxk=106,inf=0x3f3f3f;
+char s[maxn];
+int f[maxn][maxk][maxk],n,k,ans=0;
+
+int main()
+{
+	scanf(&quot;%d%d&quot;,&amp;n,&amp;k);
+	scanf(&quot;%s&quot;,s+1);
+	mem(f,-inf);
+	f[0][0][0]=f[1][0][0]=0;
+	if(s[1]=='j')f[1][1][0]=0;
+	else f[1][0][1]=0;
+	rep(i,2,n)
+	    rep(j1,0,k)
+	        rep(j2,0,k){
+	        	f[i][j1][j2]=f[i-1][j1][j2];
+	        	if(s[i]=='z'&amp;&amp;s[i-1]=='j')f[i][j1][j2]=max(f[i][j1][j2],f[i-2][j1][j2]+1);
+	        	if(s[i]=='z'&amp;&amp;s[i-1]=='z'&amp;&amp;j2)f[i][j1][j2]=max(f[i][j1][j2],f[i-2][j1][j2-1]+1);
+	        	if(s[i]=='j'&amp;&amp;s[i-1]=='j'&amp;&amp;j1)f[i][j1][j2]=max(f[i][j1][j2],f[i-2][j1-1][j2]+1);
+	        	if(s[i]=='j'&amp;&amp;s[i-1]=='z'&amp;&amp;j1&amp;&amp;j2)f[i][j1][j2]=max(f[i][j1][j2],f[i-2][j1-1][j2-1]+1);
+	        	if(j1==j2)ans=max(ans,f[i][j1][j2]);
+	        }
+	printf(&quot;%d\n&quot;,ans);
+	return 0;
+}</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

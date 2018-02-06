@@ -1,0 +1,61 @@
+---
+tags: 
+ - 知识学习
+ - 图论-最小生成树
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P28.jpg"
+preview-img: "/img/preview/P68.jpg"
+---
+<pre name="code" class="cpp">#include&lt;cstdio&gt;
+#include&lt;iostream&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define ll long long
+#define mem(x,num) memset(x,num,sizeof x)
+#define maxn 500006
+#ifdef WIN32
+#define LL &quot;%I64d&quot;
+#else
+#define LL &quot;%lld&quot;
+#endif
+using namespace std;
+inline ll read()
+{
+    ll f=1,x=0;char ch=getchar();
+    while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+    while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+    return x*f;
+}
+int fa[maxn],n,m,cnt=0,tot=0;
+ll ans=0;
+struct edge{int u,v,w;}e[maxn&lt;&lt;1];
+inline int find(int x){return x==fa[x]?fa[x]:fa[x]=find(fa[x]);}
+inline bool cmp(edge a,edge b){return a.w&lt;b.w;}
+
+int main()
+{
+    n=read(),m=read();
+    rep(i,1,m){
+        int x=read(),y=read(),z=read();
+        e[++cnt]=(edge){x,y,z};e[++cnt]=(edge){y,x,z};
+    }
+    rep(i,1,n)fa[i]=i;
+    sort(e+1,e+1+cnt,cmp);
+    rep(i,1,cnt){
+        int r1=find(e[i].u),r2=find(e[i].v);
+        if(r1!=r2){
+            if(i&amp;1)fa[r1]=r2;
+            else fa[r2]=r1;
+            ans+=e[i].w;tot++;
+        }
+        if(tot==n-1)break;
+    }
+    printf(LL,ans);
+}</pre>
+<br />

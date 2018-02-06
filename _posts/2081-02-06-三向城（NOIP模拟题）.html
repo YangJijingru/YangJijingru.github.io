@@ -1,0 +1,180 @@
+---
+tags: 
+ - 树-LCA
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P37.jpg"
+preview-img: "/img/preview/P77.jpg"
+---
+<p>
+	<span style="font-weight:bold">标签：树，LCA</span>
+</p>
+<p>
+	<strong>题目描述</strong>
+</p>
+<p>
+	三向城是一个巨大的城市，之所以叫这个名字，是因为城市中遍布着数不尽的三岔路口。（来自取名力为0的出题人）
+</p>
+<p>
+	具体来说，城中有无穷多个路口，每个路口有唯一的一个正整数标号。除了1号路口外，每个路口都连出正好3条道路通向另外3个路口：编号为x（x&gt;1）的路口连出3条道路通向编号为x*2，x*2+1和x/2（向下取整）的3个路口。1号路口只连出两条道路，分别连向2号和3号路口。
+</p>
+<p>
+	所有道路都是可以双向通行的，并且长度都为1。现在，有n个问题：从路口x到路口y的最短路长度是多少？
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	<strong>输入格式</strong>
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 第一行包含一个整数n，表示询问数量；
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 接下来n行，每行包含两个正整数x, y，表示询问从路口x到路口y的最短路长度。
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	<strong>输出格式</strong>
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 输出n行，每行包含一个整数，表示对每次询问的回答。如果对于某个询问不存在从x到y的路径，则输出-1。
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</p>
+<p>
+	<strong>样例输入</strong>
+</p>
+<p>
+	3
+</p>
+<p>
+	5 7
+</p>
+<p>
+	2 4
+</p>
+<p>
+	1 1
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	<strong>样例输出</strong>
+</p>
+<p>
+	4
+</p>
+<p>
+	1
+</p>
+<p>
+	0
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	<strong>样例解释</strong>
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5号路口到7号路口的路径为：5-&gt;2-&gt;1-&gt;3-&gt;7，长度为4；
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2号路口到4号路口的路径为：2-&gt;4，长度为1；
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1号路口到本身的路径长度为0；
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	<strong>数据范围</strong>
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对30%的数据，x,y≤20；
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对60%的数据，x,y≤10<sup>5</sup>，n≤10；
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对100%的数据，x,y≤10<sup>9</sup>，n≤10<sup>4</sup>。
+</p>
+<p>
+	&nbsp;<br clear="all" />
+	
+</p>
+<p>
+	先吐槽下出题人yy题目的语言功底……
+</p>
+<p>
+	T1难度，用LCA思想直接做
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	Code
+</p>
+<pre name="code" class="cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define ll long long
+#define mem(x,num) memset(x,num,sizeof x)
+#ifdef WIN32
+#define LL &quot;%I64d&quot;
+#else 
+#define LL &quot;%lld&quot;
+#endif
+using namespace std;
+inline ll read()
+{
+	ll f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const int maxx=31;
+int n,depx,depy,ans=0;
+ll x,y;
+
+int Deep(ll x)
+{
+	rep(k,1,maxx)
+	    if((ll)(1&lt;&lt;k)&gt;x)return k;
+}
+int main()
+{
+	freopen(&quot;city.in&quot;,&quot;r&quot;,stdin);
+	freopen(&quot;city.out&quot;,&quot;w&quot;,stdout);
+	n=read();
+	rep(i,1,n){
+		ans=0;
+		x=read(),y=read();
+		depx=Deep(x),depy=Deep(y);
+		if(depx&lt;depy){swap(x,y);swap(depx,depy);}
+		dep(j,depx,depy+1){x/=2;ans++;}//cout&lt;&lt;ans&lt;&lt;&quot;R\n&quot;;cout&lt;&lt;x&lt;&lt;' '&lt;&lt;depx&lt;&lt;endl;cout&lt;&lt;y&lt;&lt;' '&lt;&lt;depy&lt;&lt;endl;
+		dep(j,depy,0){if(x==y)break;x/=2,y/=2;ans+=2;}
+		printf(&quot;%d\n&quot;,ans);
+	}
+	return 0;
+}
+		</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

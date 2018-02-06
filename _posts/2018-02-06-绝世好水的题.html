@@ -1,0 +1,125 @@
+---
+tags: 
+ - 基础算法-模拟
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P17.jpg"
+preview-img: "/img/preview/P57.jpg"
+---
+<h3 style="background:whitesmoke">
+	<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">标签：模拟</span></span>
+</h3>
+<h3 style="background:whitesmoke">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">题目描述</span><span style="color:#333333;">Description</span></span>
+</h3>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">卡卡西的班主任鸣人老师在教学管理方面有自己的一套独特的方法。就比如，同样是安排座位，他们班级的做法就非常与众不同。具体做法是这样的：班级的</span><span style="color:#333333;">n</span><span style="color:#333333;">个同学按照序号依次将自己期望的同桌序号写在纸上，统一交由鸣人老师。鸣人老师进行统计，按照得票数从高到低的顺序，先安排得票高的同学的同桌，如果该同桌未被安排，则安排给对应同学，如果已经被安排了，则按照序号从头挑选没有安排同桌的同学。</span></span>
+</p>
+<h3 style="background:whitesmoke">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">输入描述</span><span style="color:#333333;">Input Description</span></span>
+</h3>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">2</span><span style="color:#333333;">行，第一行班级人数</span><span style="color:#333333;">n</span><span style="color:#333333;">，第二行按照序号依次给出每一个同学期望的同桌的序号。</span></span>
+</p>
+<h3 style="background:whitesmoke">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">输出描述</span><span style="color:#333333;">Output Description</span></span>
+</h3>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">n</span><span style="color:#333333;">行，每行两个数字，中间用空格隔开，第一个数是序号，第二个数是该序号同学同桌的序号。</span></span>
+</p>
+<h3 style="background:whitesmoke">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">样例输入</span><span style="color:#333333;">Sample Input</span></span>
+</h3>
+<div style="background:whitesmoke">
+	<p>
+		<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">8<br />
+		3 3 4 6 6 8 2 3</span></span>
+	</p>
+</div>
+<h3 style="background:whitesmoke">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">样例输出</span><span style="color:#333333;">Sample Output</span></span>
+</h3>
+<div style="background:whitesmoke">
+	<p>
+		<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">1 2<br />
+		2 1<br />
+		3 4<br />
+		4 3<br />
+		5 7<br />
+		6 8<br />
+		7 5<br />
+		8 6</span></span>
+	</p>
+</div>
+<h3 style="background:whitesmoke">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">数据范围及提示</span><span style="color:#333333;">Data Size &amp; Hint</span></span>
+</h3>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">样例解释：</span><span style="color:#333333;"><br />
+	</span><span style="color:#333333;">有</span><span style="color:#333333;">3</span><span style="color:#333333;">个人想跟</span><span style="color:#333333;">3</span><span style="color:#333333;">号坐，</span><span style="color:#333333;">3</span><span style="color:#333333;">号第一个选择，选择</span><span style="color:#333333;">4</span><span style="color:#333333;">号；有</span><span style="color:#333333;">2</span><span style="color:#333333;">个人想跟</span><span style="color:#333333;">6</span><span style="color:#333333;">号坐，</span><span style="color:#333333;">6</span><span style="color:#333333;">号第二个选择，选择</span><span style="color:#333333;">8</span><span style="color:#333333;">号；有</span><span style="color:#333333;">1</span><span style="color:#333333;">个人想跟</span><span style="color:#333333;">2</span><span style="color:#333333;">号坐，</span><span style="color:#333333;">2</span><span style="color:#333333;">号第三个选择，因为</span><span style="color:#333333;">3</span><span style="color:#333333;">号已经被选择，所以</span><span style="color:#333333;">2</span><span style="color:#333333;">号只能选择</span><span style="color:#333333;">1</span><span style="color:#333333;">号；余下</span><span style="color:#333333;">5</span><span style="color:#333333;">号和</span><span style="color:#333333;">7</span><span style="color:#333333;">号正好同桌。</span><span style="color:#333333;"><br />
+	</span><span style="color:#333333;">数据范围：</span><span style="color:#333333;"><br />
+	n</span><span style="color:#333333;">是偶数，且</span><span style="color:#333333;">4&lt;=n&lt;=50</span><span style="color:#333333;">。</span><span style="color:#333333;"><br />
+	</span><span style="color:#333333;">说明：</span><span style="color:#333333;"><br />
+	</span><span style="color:#333333;">如果两人得票数一样，序号小的人先选。</span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;"><br />
+	</span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">分析：绝世好水的题，娱乐大众23333，<del>教练竟然怀疑是二分图匹配（笑）</del></span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;"><del>实际上是小学组题目</del></span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;color:#333333;">code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+struct node{int want,rate,id,ans;}x[56];//want表示期望和某人坐同桌，rate表示受欢迎程度，id表示读入时的序号，ans表示最终答案和谁坐同桌 
+int n;
+bool cmp1(node a,node b){return a.rate==b.rate?a.id&lt;b.id:a.rate&gt;b.rate;}
+bool cmp2(node a,node b){return a.id&lt;b.id;}
+ 
+int main()
+{
+	cin&gt;&gt;n;
+	for(int i=1;i&lt;=n;i++){
+	    cin&gt;&gt;x[i].want;
+		x[x[i].want].rate++;
+		x[i].id=i;
+	}
+	sort(x+1,x+1+n,cmp1);//按受欢迎程度排序 
+	for(int i=1;i&lt;=n;i++){
+		if(x[i].ans&gt;0)continue;//如果这个人已经有同桌了，就跳过 
+		int flag=0;
+		for(int j=1;j&lt;=n;j++)
+			if(x[j].id==x[i].want){//寻找期望中的同桌 
+				if(x[j].ans==0){//如果期望中的同桌还未匹配，那么就与其匹配 
+					x[j].ans=x[i].id;
+					x[i].ans=x[i].want;
+					break;
+				}
+				flag=1;//如果期望中的同桌被其他人匹配过了，那么打上标记 
+			}
+		if(flag==1)//期望中的同桌被其他人匹配过了，重新找为匹配的同桌 
+			for(int j=i+1;j&lt;=n;j++)//前i-1个人肯定都已匹配完毕，从第i+1个人开始找 
+                if(x[j].ans==0){
+                    x[j].ans=x[i].id;
+                    x[i].ans=x[j].id; 
+                    break;
+                }  
+	}
+	sort(x+1,x+1+n,cmp2);//按读入的id值重新排序输出 
+	for(int i=1;i&lt;=n;i++)cout&lt;&lt;x[i].id&lt;&lt;' '&lt;&lt;x[i].ans&lt;&lt;endl;
+	return 0;
+}</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

@@ -1,0 +1,66 @@
+---
+tags: 
+ - 知识学习
+ - 树-树上差分
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P36.jpg"
+preview-img: "/img/preview/P76.jpg"
+---
+<h2 id="已知路径求被所有路径覆盖的边" style="">
+	<span style="font-size:16px;"><span style="font-family:Microsoft YaHei;"><span style="font-family:Arial;color:#003000;">转自<a target="_blank" href="http://blog.csdn.net/Fine_rose/article/details/77991839">http://blog.csdn.net/Fine_rose/article/details/77991839</a></span></span></span>
+</h2>
+<h2 style="">
+	<span style="font-size:16px;"><span style="font-family:Microsoft YaHei;"><span style="font-family:Arial;color:#003000;"><br />
+	</span></span></span>
+</h2>
+<h2 id="已知路径求被所有路径覆盖的边" style="">
+	<a target="_blank" name="t1" style="background-color:transparent; color:rgb(79,161,219); font-weight:400; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; outline-color:invert; outline-style:none; outline-width:0px; padding-bottom:0px; padding-left:0px; padding-right:0px; padding-top:0px; text-decoration:none" class=" "></a>已知路径求被所有路径覆盖的边
+</h2>
+<span style=""></span>
+<ul style="">
+	<li style="display:list-item; font-weight:400; list-style-position:outside; list-style-type:disc; margin-bottom:0px; margin-left:40px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:0px; padding-right:0px; padding-top:0px">
+		首先对已知的这 n 条路径的 <span style="font-weight:700">起点a</span> 和 <span style="font-weight:700">终点b</span> 的权值 <span style="font-weight:700">+1</span> ，并对 <span style="font-weight:700">lca(a, b)</span> 的权值 <span style="font-weight:700">-2</span> 。
+	</li>
+	<li style="display:list-item; font-weight:400; list-style-position:outside; list-style-type:disc; margin-bottom:0px; margin-left:40px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:0px; padding-right:0px; padding-top:0px">
+		从根节点开始深搜，回溯时将其本身的权值加上所有子节点的权值。
+	</li>
+	<li style="display:list-item; font-weight:400; list-style-position:outside; list-style-type:disc; margin-bottom:0px; margin-left:40px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:0px; padding-right:0px; padding-top:0px">
+		那么满足要求的边就是 <span style="font-weight:700">权值等于n的节点</span> 与其 <span style="font-weight:700">父节点</span> 所连的边
+	</li>
+</ul>
+<span style=""></span>
+<p style="">
+	dfs代码(使用前向星存图):
+</p>
+<span style=""></span>
+<pre class="prettyprint" style=""><code class="hljs cs has-numbering" style=""><span class="hljs-keyword" style="color:#0088;font-weight:400; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:0px; padding-right:0px; padding-top:0px">void</span> dfs(<span class="hljs-keyword" style="color:#0088;font-weight:400; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:0px; padding-right:0px; padding-top:0px">int</span> x, <span class="hljs-keyword" style="color:#0088;font-weight:400; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:0px; padding-right:0px; padding-top:0px">int</span> father) { <span class="hljs-comment" style="color:#8800;font-weight:400; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:0px; padding-right:0px; padding-top:0px">// x 为深搜的节点, father 为 x 节点的父节点</span>
+    <span class="hljs-keyword" style="color:#0088;font-weight:400; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:0px; padding-right:0px; padding-top:0px">int</span> to;
+    <span class="hljs-keyword" style="color:#0088;font-weight:400; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:0px; padding-right:0px; padding-top:0px">for</span> (<span class="hljs-keyword" style="color:#0088;font-weight:400; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:0px; padding-right:0px; padding-top:0px">int</span> i = head[x]; i; i = edges[i].next) {
+        to = edges[i].to; <span class="hljs-comment" style="color:#8800;font-weight:400; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:0px; padding-right:0px; padding-top:0px">// 枚举由 x 节点能够到达的所有的节点</span>
+
+        <span class="hljs-keyword" style="color:#0088;font-weight:400; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:0px; padding-right:0px; padding-top:0px">if</span> (to != father) { <span class="hljs-comment" style="color:#8800;font-weight:400; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:0px; padding-right:0px; padding-top:0px">// 筛掉 x 节点的父节点</span>
+            dfs(to, x); <span class="hljs-comment" style="color:#8800;font-weight:400; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:0px; padding-right:0px; padding-top:0px">// 深搜 to 节点， 并设置其父节点为x</span>
+            <span class="hljs-keyword" style="color:#0088;font-weight:400; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:0px; padding-right:0px; padding-top:0px">value</span>[x] += <span class="hljs-keyword" style="color:#0088;font-weight:400; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:0px; padding-right:0px; padding-top:0px">value</span>[to]; <span class="hljs-comment" style="color:#8800;font-weight:400; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:0px; padding-right:0px; padding-top:0px">// 累加权值和</span>
+        }
+    }
+}</code><ul class="pre-numbering" style="background-color:rgb(238,238,238); border-right-color:rgb(221,221,221); border-right-style:solid; border-right-width:1px; font-weight:400; left:0px; list-style-position:outside; list-style-type:none; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; padding-bottom:40px; padding-left:0px; padding-right:0px; padding-top:6px; position:absolute; text-align:right; top:0px; width:50px"><li style="color:rgb(153,153,153); display:list-item; font-weight:400; list-style-position:outside; list-style-type:none; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:5px; padding-right:5px; padding-top:0px">1</li><li style="color:rgb(153,153,153); display:list-item; font-weight:400; list-style-position:outside; list-style-type:none; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:5px; padding-right:5px; padding-top:0px">2</li><li style="color:rgb(153,153,153); display:list-item; font-weight:400; list-style-position:outside; list-style-type:none; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:5px; padding-right:5px; padding-top:0px">3</li><li style="color:rgb(153,153,153); display:list-item; font-weight:400; list-style-position:outside; list-style-type:none; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:5px; padding-right:5px; padding-top:0px">4</li><li style="color:rgb(153,153,153); display:list-item; font-weight:400; list-style-position:outside; list-style-type:none; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:5px; padding-right:5px; padding-top:0px">5</li><li style="color:rgb(153,153,153); display:list-item; font-weight:400; list-style-position:outside; list-style-type:none; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:5px; padding-right:5px; padding-top:0px">6</li><li style="color:rgb(153,153,153); display:list-item; font-weight:400; list-style-position:outside; list-style-type:none; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:5px; padding-right:5px; padding-top:0px">7</li><li style="color:rgb(153,153,153); display:list-item; font-weight:400; list-style-position:outside; list-style-type:none; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:5px; padding-right:5px; padding-top:0px">8</li><li style="color:rgb(153,153,153); display:list-item; font-weight:400; list-style-position:outside; list-style-type:none; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:5px; padding-right:5px; padding-top:0px">9</li><li style="color:rgb(153,153,153); display:list-item; font-weight:400; list-style-position:outside; list-style-type:none; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:5px; padding-right:5px; padding-top:0px">10</li><li style="color:rgb(153,153,153); display:list-item; font-weight:400; list-style-position:outside; list-style-type:none; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:5px; padding-right:5px; padding-top:0px">11</li></ul></pre>
+<span style=""></span>
+<hr style="" />
+<span style=""></span>
+<h2 id="已知路径求树上所有节点被路径覆盖次数" style="">
+	<a target="_blank" name="t2" style="background-color:transparent; color:rgb(79,161,219); font-weight:400; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; outline-color:invert; outline-style:none; outline-width:0px; padding-bottom:0px; padding-left:0px; padding-right:0px; padding-top:0px; text-decoration:none" class=" "></a>已知路径求树上所有节点被路径覆盖次数
+</h2>
+<span style=""></span>
+<ul style="">
+	<li style="display:list-item; font-weight:400; list-style-position:outside; list-style-type:disc; margin-bottom:0px; margin-left:40px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:0px; padding-right:0px; padding-top:0px">
+		对每条路径的 <span style="font-weight:700">起点a和终点b</span> 的权值 <span style="font-weight:700">+1</span> , 对 <span style="font-weight:700">lca(a, b)</span> 的权值 <span style="font-weight:700">-1</span> , 对 <span style="font-weight:700">lca(a, b)的父节点</span> 权值 <span style="font-weight:700">-1</span>
+	</li>
+	<li style="display:list-item; font-weight:400; list-style-position:outside; list-style-type:disc; margin-bottom:0px; margin-left:40px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:0px; padding-right:0px; padding-top:0px">
+		从根节点开始深搜，回溯时将其本身的权值加上所有子节点的权值
+	</li>
+	<li style="display:list-item; font-weight:400; list-style-position:outside; list-style-type:disc; margin-bottom:0px; margin-left:40px; margin-right:0px; margin-top:0px; padding-bottom:0px; padding-left:0px; padding-right:0px; padding-top:0px">
+		每个节点的权值既是其被路径覆盖的次数
+	</li>
+</ul>

@@ -1,0 +1,122 @@
+---
+tags: 
+ - 数论-扩展欧几里得
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P20.jpg"
+preview-img: "/img/preview/P60.jpg"
+---
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">标签：数论，扩展欧几里得</span></strong>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">题目描述</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">求关于 x 的同余方程 ax ≡ 1(mod b)的最小正整数解。</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">输入输出格式</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;"><strong>输入格式：</strong><br style="line-break:" />
+	<br />
+	</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">输入只有一行，包含两个正整数 a, b，用一个空格隔开。</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;"><strong>输出格式：</strong><br style="line-break:" />
+	<br />
+	</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">输出只有一行，包含一个正整数 x0，即最小正整数解。输入数据保证一定有解。</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">输入输出样例</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;"><strong>输入样例#1：</strong> 复制 </span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">3 10</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;"><strong>输出样例#1：</strong> 复制 </span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">7</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">说明</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">【数据范围】</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">对于 40%的数据，2 ≤b≤1,000；</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">对于 60%的数据，2 ≤b≤50,000,000；</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">对于 100%的数据，2 ≤a, b≤2,000,000,000。</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">NOIP 2012 提高组 第二天 第一题</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">扩欧裸题</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">关于扩欧的证明<a target="_blank" href="https://www.zybuluo.com/samzhang/note/541890"><span style="color:#0563c1;">https://www.zybuluo.com/samzhang/note/541890</span></a></span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">Code</span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+#define LL long long
+using namespace std;
+inline LL read()
+{
+	LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+LL a,b;
+void exgcd(int a,int b,LL &amp;x,LL &amp;y){
+	if(b==0){x=1,y=0;return;}
+	exgcd(b,a%b,x,y);
+	LL t=x;
+	x=y,y=t-a/b*y;
+}
+
+int main()
+{
+	a=read(),b=read();
+	LL x,y;
+	exgcd(a,b,x,y);
+	cout&lt;&lt;(x+b)%b&lt;&lt;endl;
+	return 0;
+}</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>

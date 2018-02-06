@@ -1,0 +1,101 @@
+---
+tags: 
+ - 数论-组合数
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P7.jpg"
+preview-img: "/img/preview/P47.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">标签：数论</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">【题目描述】 <br />
+	组合数表示的是从n个物品中选出m个物品的方案数。举个例子，从（1,2,3) 三个物品中选择两个物品可以有（1,2),(1,3),(2,3)这三种选择方法。根据组合数的定义，我们可以给出计算组合数的一般公式：<br />
+	<br />
+	其中n! = 1×2×···×n <br />
+	小葱想知道如果给定n,m和k，对于所有的0&lt;=i&lt;= n，0&lt;=j&lt;= min(i,m)有多少对 (i,j)满足是k的倍数。 <br />
+	【输入格式】 <br />
+	第一行有两个整数t,k，其中t代表该测试点总共有多少组测试数据，k的意义见【问题描述】。 <br />
+	接下来t行每行两个整数n,m，其中n,m的意义见【问题描述】。 <br />
+	【输出格式】 <br />
+	t行，每行一个整数代表答案。 <br />
+	【样例输入1】 <br />
+	1 2 <br />
+	3 3 <br />
+	【样例输出1】 <br />
+	1 <br />
+	【样例输入2】 <br />
+	2 5 <br />
+	4 5 <br />
+	6 7 <br />
+	【样例输出2】 <br />
+	0 <br />
+	7 <br />
+	【数据范围】 <br />
+	</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：首先我们要知道一个关于组合数的递推公式：C(i,j)=C(i-1,j)+C(i-1,j-1)，其实就是杨辉三角</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">然而这题并不需要我们求每一个组合数C（i,j）的值，只要知道C(i,j)对于k的余数即可</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">先预处理每一个C (i，j)对于k的余数，存在f数组内，之后将f数组转化为num数组，表示当前i,j项中C（i,j）被k整除的个数</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">在线读入每组测试数据n,m，直接加上每个num[i][n]值，输出即可</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">参考代码</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+inline int read()
+{
+    int f=1,x=0;char ch=getchar();
+    while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+    while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+    return x*f;
+}
+int f[2006][2006],sum[2006][2006];
+
+int main()
+{
+    int t=read(),k=read();
+    for(int i=0;i&lt;=2005;i++)
+    {
+        f[i][1]=i%k;
+        f[i][i]=1;
+    }
+    for(int i=2;i&lt;=2005;i++)
+        for(int j=2;j&lt;i;j++)
+            f[i][j]=(f[i-1][j]+f[i-1][j-1])%k;
+    for(int i=1;i&lt;=2005;i++)
+        for(int j=1;j&lt;=i;j++)
+            if(f[i][j]==0)sum[i][j]=sum[i][j-1]+1;
+            else sum[i][j]=sum[i][j-1];
+    for(int i=1;i&lt;=t;i++)
+    {
+        int x=read(),y=read(),ans=0;
+        for(int j=1;j&lt;=x;j++)
+            if(j&gt;y)ans+=sum[j][y];
+            else ans+=sum[j][j];
+        cout&lt;&lt;ans&lt;&lt;endl;
+    }
+    return 0;
+}
+
+</pre>
+<br />
+<br />
+<br />
+
+<p>
+	&nbsp;
+</p>

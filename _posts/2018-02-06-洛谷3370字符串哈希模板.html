@@ -1,0 +1,160 @@
+---
+tags: 
+ - 知识学习
+ - 字符串-hash
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P29.jpg"
+preview-img: "/img/preview/P69.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">标签：hash</span>
+</p>
+<p align="left">
+	<strong><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">题目描述</span></span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">如题，给定</span><span style="color:#333333;">N</span><span style="color:#333333;">个字符串（第</span><span style="color:#333333;">i</span><span style="color:#333333;">个字符串长度为</span><span style="color:#333333;">Mi</span><span style="color:#333333;">，字符串内包含数字、大小写字母，大小写敏感），请求出</span><span style="color:#333333;">N</span><span style="color:#333333;">个字符串中共有多少个不同的字符串。</span></span>
+</p>
+<p align="left">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">友情提醒：如果真的想好好练习哈希的话，请自觉，否则请右转</span><span style="color:#333333;">PJ</span><span style="color:#333333;">试炼场</span><span style="color:#333333;">:)</span></span></strong>
+</p>
+<p align="left">
+	<strong><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">输入输出</span></span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong><span style="color:#515151;">输入格式：</span></strong><span style="color:#333333;"><br />
+	<br />
+	</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">第一行包含一个整数</span><span style="color:#333333;">N</span><span style="color:#333333;">，为字符串的个数。</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">接下来</span><span style="color:#333333;">N</span><span style="color:#333333;">行每行包含一个字符串，为所提供的字符串。</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong><span style="color:#515151;">输出格式：</span></strong><span style="color:#333333;"><br />
+	<br />
+	</span></span>
+</p>
+<p align="left">
+	<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">输出包含一行，包含一个整数，为不同的字符串个数。</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">输入输出样例</span></span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong><span style="color:#515151;">输入样例</span><span style="color:#515151;">#1</span><span style="color:#515151;">：</span></strong><span style="color:#333333;"><br />
+	<br />
+	</span></span>
+</p>
+<div style="background:#F8F8F8">
+	<p align="left">
+		<span style="color:#555555;"><span style="font-family:Microsoft YaHei;font-size:16px;">5</span></span>
+	</p>
+	<p align="left">
+		<span style="color:#555555;"><span style="font-family:Microsoft YaHei;font-size:16px;">abc</span></span>
+	</p>
+	<p align="left">
+		<span style="color:#555555;"><span style="font-family:Microsoft YaHei;font-size:16px;">aaaa</span></span>
+	</p>
+	<p align="left">
+		<span style="color:#555555;"><span style="font-family:Microsoft YaHei;font-size:16px;">abc</span></span>
+	</p>
+	<p align="left">
+		<span style="color:#555555;"><span style="font-family:Microsoft YaHei;font-size:16px;">abcc</span></span>
+	</p>
+	<p align="left">
+		<span style="color:#555555;"><span style="font-family:Microsoft YaHei;font-size:16px;">12345</span></span>
+	</p>
+</div>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong><span style="color:#515151;">输出样例</span><span style="color:#515151;">#1</span><span style="color:#515151;">：</span></strong><span style="color:#333333;"><br />
+	<br />
+	</span></span>
+</p>
+<div style="background:#F8F8F8">
+	<p align="left">
+		<span style="color:#555555;"><span style="font-family:Microsoft YaHei;font-size:16px;">4</span></span>
+	</p>
+</div>
+<p align="left">
+	<strong><span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">说明</span></span></strong>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">时空限制：</span><span style="color:#333333;">1000ms,128M</span></span>
+</p>
+<p align="left">
+	<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">数据规模：</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">对于</span><span style="color:#333333;">30%</span><span style="color:#333333;">的数据：</span><span style="color:#333333;">N&lt;=10</span><span style="color:#333333;">，</span><span style="color:#333333;">Mi≈6</span><span style="color:#333333;">，</span><span style="color:#333333;">Mmax&lt;=15;</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">对于</span><span style="color:#333333;">70%</span><span style="color:#333333;">的数据：</span><span style="color:#333333;">N&lt;=1000</span><span style="color:#333333;">，</span><span style="color:#333333;">Mi≈100</span><span style="color:#333333;">，</span><span style="color:#333333;">Mmax&lt;=150</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">对于</span><span style="color:#333333;">100%</span><span style="color:#333333;">的数据：</span><span style="color:#333333;">N&lt;=10000</span><span style="color:#333333;">，</span><span style="color:#333333;">Mi≈1000</span><span style="color:#333333;">，</span><span style="color:#333333;">Mmax&lt;=1500</span></span>
+</p>
+<p align="left">
+	<span style="color:#333333;"><span style="font-family:Microsoft YaHei;font-size:16px;">样例说明：</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">样例中第一个字符串</span><span style="color:#333333;">(abc)</span><span style="color:#333333;">和第三个字符串</span><span style="color:#333333;">(abc)</span><span style="color:#333333;">是一样的，所以所提供字符串的集合为</span><span style="color:#333333;">{aaaa,abc,abcc,12345}</span><span style="color:#333333;">，故共计</span><span style="color:#333333;">4</span><span style="color:#333333;">个不同的字符串。</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">Tip</span><span style="color:#333333;">：</span><span style="color:#333333;">感兴趣的话，你们可以先看一看以下三题：</span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">BZOJ3097</span><span style="color:#333333;">：</span><span style="color:#333333;"><a target="_blank" href="http://www.lydsy.com/JudgeOnline/problem.php?id=3097"><span style="color:#0E90D2;">http://www.lydsy.com/JudgeOnline/problem.php?id=3097</span></a></span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">BZOJ3098</span><span style="color:#333333;">：</span><span style="color:#333333;"><a target="_blank" href="http://www.lydsy.com/JudgeOnline/problem.php?id=3098"><span style="color:#0E90D2;">http://www.lydsy.com/JudgeOnline/problem.php?id=3098</span></a></span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">BZOJ3099</span><span style="color:#333333;">：</span><span style="color:#333333;"><a target="_blank" href="http://www.lydsy.com/JudgeOnline/problem.php?id=3099"><span style="color:#0E90D2;">http://www.lydsy.com/JudgeOnline/problem.php?id=3099</span></a></span></span>
+</p>
+<p align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:#333333;">如果你仔细研究过了（或者至少仔细看过</span><span style="color:#333333;">AC</span><span style="color:#333333;">人数的话），我想你一定会明白字符串哈希的正确姿势的</span><span style="color:#333333;">^_^</span></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define LL unsigned long long 
+using namespace std;
+const LL mod=212370440130137957,base=131,maxn=10010;
+LL a[maxn],n,cnt=1;
+char s[maxn];
+
+LL hash(char s[])
+{
+	int len=strlen(s);
+	LL ans=0;
+	rep(i,0,len-1)ans=(ans*base+(LL)s[i])%mod;
+    return ans;
+}
+
+int main()
+{
+	scanf(&quot;%d&quot;,&amp;n);
+	rep(i,1,n){scanf(&quot;%s&quot;,s);a[i]=hash(s);}
+	sort(a+1,a+n+1);
+	//rep(i,1,n)cout&lt;&lt;a[i]&lt;&lt;endl; 
+	rep(i,2,n)
+	    if(a[i]!=a[i-1])cnt++;
+	printf(&quot;%d\n&quot;,cnt);
+	return 0;
+}
+</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

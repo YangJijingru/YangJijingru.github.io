@@ -1,0 +1,76 @@
+---
+tags: 
+ - 知识学习
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P15.jpg"
+preview-img: "/img/preview/P55.jpg"
+---
+<h1>
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">定义</span></strong>
+</h1>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">笛卡尔树是一种二叉搜索树的数据结构。树的每个节点有两个值，分别为key 和 value。</span>
+</p>
+<p>
+	<u><span style="font-family:Microsoft YaHei;font-size:16px;">Key类似于二叉搜索树，每个节点的左子树key值都要小于其本身，右子树的key值都比它大</span></u>
+</p>
+<p>
+	<u><span style="font-family:Microsoft YaHei;font-size:16px;">value类似堆，根节点的value是最小（或者最大）的，每个节点的value都比它的子树要小（或者大）。</span></u>
+</p>
+<h1>
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">性质</span></strong>
+</h1>
+<p>
+	<u><span style="font-family:Microsoft YaHei;font-size:16px;">树中的元素满足二叉搜索树性质，要求按照中序遍历得到的序列为原数组序列</span></u>
+</p>
+<p>
+	<u><span style="font-family:Microsoft YaHei;font-size:16px;">树中节点满足堆性质，节点的key值要大于其左右子节点的key值</span></u>
+</p>
+<h1>
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">构造</span></strong>
+</h1>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">当按照key从1到n的顺序将数组中的每个元素插入到笛卡尔树中时，当前要被插入的元素的key值最大，因此根据二叉搜索的性质需要沿着当前已经完成的笛卡尔树的根的右子树链搜索。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;&nbsp;&nbsp;&nbsp;由于笛卡尔树要满足堆的性质（以最大堆为例），父节点的value值要大于子节点的value值，所以沿着树根的右子树链往下走，直到搜索到的节点的value值小于等于当前要插入节点的value值。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">此时，便找到了当前结点需要插入的位置，记为Pos。此时Pos下方的节点的value值肯定小于当前被插入节点的value，但是key也小于当前插入节点的key（即需要在二叉搜索树中当前结点之前的位置），所以将当前节点插入到Pos的位置，同时将以Pos为根的子树挂载到新插入的节点的左子树（为了保证Pos及其子树在新插入节点之前被二叉搜索）。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<u><span style="font-family:Microsoft YaHei;font-size:16px;">整个过程中可以用栈维护。栈中保存当前树中的从树根开始的右子节点链，根在栈底部。</span></u>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">插入新元素的时候，从树的右子链的最末尾从下往上查找，直到找到第一个满足堆性质的节点（即找到的节点的value值大于当前需要插入的节点）。用栈来实现就是从栈顶不断弹出元素，直到栈顶的元素的value大于当前结点的value，然后将该节点入栈，同时将最后被弹出的节点的父亲指向该节点，以及该节点的左子节点指向最后被弹出的节点。</span>
+</p>
+<p>
+	<u><span style="font-family:Microsoft YaHei;font-size:16px;">时间复杂度：因为每个元素只入栈一次，出栈一次，所以复杂度为O(n)</span></u>
+</p>
+<h1>
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">Code</span></strong>
+</h1>
+<div>
+	<pre name="code" class="cpp">void Tree(int A[MAXN], int N, int T[MAXN])
+{
+int st[MAXN], i, k, top = -1;
+for (i = 0; i &lt; N; i++)
+{
+k = top;
+while (k &gt;= 0 &amp;&amp; A[st[k]] &gt; A[i]) k--;
+if (k != -1) T[i] = st[k];
+if (k &lt; top) T[st[k + 1]] = i;
+st[++k] = i;
+top = k;
+}
+T[st[0]] = -1;
+}</pre>
+	<br />
+	<br />
+	
+</div>

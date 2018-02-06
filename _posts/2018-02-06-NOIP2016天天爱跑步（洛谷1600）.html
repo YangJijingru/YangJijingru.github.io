@@ -1,0 +1,210 @@
+---
+tags: 
+ - 树-LCA
+ - 树-树上差分 
+ - 数据结构-LCT
+ - 数据结构-树链剖分
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P6.jpg"
+preview-img: "/img/preview/P46.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">标签：树上差分，LCA，树链剖分，LCT</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">【题目描述】 <br />
+	小c同学认为跑步非常有趣,于是决定制作一款叫做《天天爱跑步》的游戏。«天天爱跑步»是一个养成类游戏,需要玩家每天按时上线,完成打卡任务。 <br />
+	这个游戏的地图可以看作一一棵包含n个结点和n-1条边的树, 每条边连接两个结点,且任意两个结点存在一条路径互相可达。树上结点编号为从1到n的连续正整数。 <br />
+	现在有个玩家,第i个玩家的起点为Si,终点为Ti 。每天打卡任务开始时,所有玩家在第0秒同时从自己的起点出发, 以每秒跑一条边的速度, 不间断地沿着最短路径向着自己的终点跑去, 跑到终点后该玩家就算完成了打卡任务。 (由于地图是一棵树, 所以每个人的路径是唯一的)。<br />
+	小C想知道游戏的活跃度, 所以在每个结点上都放置了一个观察员。在结点的观察员会选择在第Wj秒观察玩家, 一个玩家能被这个观察员观察到当且仅当该玩家在第Wj秒也理到达了结点j 。 小C想知道每个观察员会观察到多少人?<br />
+	注意: 我们认为一个玩家到达自己的终点后该玩家就会结束游戏, 他不能等待一段时间后再被观察员观察到。 即对于把结点j作为终点的玩家: 若他在第Wj秒前到达终点,则在结点j的观察员不能观察到该玩家;若他正好在第Wj秒到达终点,则在结点j的观察员可以观察到这个玩家。<br />
+	【样例输入】 <br />
+	6 3 <br />
+	2 3 <br />
+	1 2 <br />
+	1 4 <br />
+	4 5 <br />
+	4 6 <br />
+	0 2 5 1 2 3 <br />
+	1 5 <br />
+	1 3 <br />
+	2 6 <br />
+	【样例输出】 <br />
+	2 0 0 1 1 1 <br />
+	<br />
+	</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">25分 暴力模拟，经过某点时判断当前时刻，是否和w相等，如果相等，ans++</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">45分 树链剖分+线段树模板题</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">60分 打标记做法，树上差分</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对于s-&gt;t的之间的点i，如果产生贡献，i-s=w[i]，即s=i-w[i]</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设k[i]=i-w[i]，所以题目转化为查询s到t之间k[i]=s的i的数量</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用差分，对于s打上+1标记，t打上-1标记</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;定义数组a[k]表示处理当前节点时，从k出发的路径条数，对于每个点i，查询下所对应的a[k[i]]即可，需要把以i为起点的路径加入数组a,再计算这个节点所产生的贡献，最后把以这个节点为终点的路径消除</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">100分 </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">将s-&gt;t的路径拆分为s-&gt;lca(s,t)-&gt;t，这两条路径一条向上，一条向下，可以对应链的处理方式，先预处理每条路径的长度（通过LCA求）</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">因为只有s到lca路径之间的点会产生贡献，而这个点位于路径之间时，子树和会产生1的贡献，处于s的子树或者lca上方（父节点以上）的点都不会对答案产生影响</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">对于一个点i，如果deep[s]-deep[i]=w[i]，当dfs查询到a[k[i]]的值即为贡献</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">对于lca(s,t)-&gt;t这条路径上的点也同样，但等式变为deep[t]-deep[i]=len-w[i]，这样做很有可能会出现负数，那我们把统计数组num向右整体平移300000位就可以了</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">如果用倍增求lca的话，复杂度为O（n log n），tarjan离线求lca，O（n+m）</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Node <br />
+	</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=300005,maxm=600010;
+int n,m,ecnt,fir[maxn],next[maxm],to[maxm],f[maxn][20];
+int deep[maxn],ans[maxn],val[maxn],tong[maxn],maxdeep,w[maxn],num[1000005];
+vector&lt;int&gt;a[maxn],b[maxn],c[maxn];
+struct node
+{
+	int s,t,lca,len;
+}edge[maxn];
+inline int read()
+{
+	int x=0,f=1;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+inline void addedge(int x,int y)
+{
+	next[++ecnt]=fir[x];
+	fir[x]=ecnt;
+	to[ecnt]=y;
+}
+inline void init(int x,int fa)
+{
+    for(int i=fir[x];i;i=next[i])
+    {
+        int v=to[i];
+        if(v==fa)continue;
+        deep[v]=deep[x]+1;
+        init(v,x);
+        f[v][0]=x;
+    }
+}//遍历求深度deep 
+inline int lca(int x,int y)
+{
+	if(deep[x]&lt;deep[y])swap(x,y);
+	int t=0;
+	while((1&lt;&lt;t)&lt;=deep[x])t++;
+	t--;
+	for(int i=t;i&gt;=0;i--)
+	    if(deep[x]-(1&lt;&lt;i)&gt;=deep[y])x=f[x][i];
+	if(x==y)return y;
+	for(int i=t;i&gt;=0;i--)
+	    if(f[x][i]!=f[y][i])x=f[x][i],y=f[y][i];
+	return f[x][0];
+}//倍增求lca 
+void dfs(int x,int fa)
+{
+	int now=w[x]+deep[x],cun;
+	if(now&lt;=maxdeep)cun=tong[now];
+	for(int i=fir[x];i;i=next[i])
+	{
+		int v=to[i];
+		if(v==fa)continue;
+		dfs(v,x);
+	}
+	tong[deep[x]]+=val[x];
+	if(now&lt;=maxdeep)ans[x]=tong[now]-cun;
+	for(int i=0,ss=a[x].size();i&lt;ss;i++)tong[deep[a[x][i]]]--;
+}
+void DFS(int x,int fa)
+{
+	int now=deep[x]-w[x],cun;now+=300000;cun=num[now];
+	for(int i=fir[x];i;i=next[i])
+	{
+		int v=to[i];
+		if(v==fa)continue;
+		DFS(v,x);
+	}
+	for(int i=0,ss=b[x].size();i&lt;ss;i++)num[300000+b[x][i]]++;
+	ans[x]+=num[now]-cun;
+	for(int i=0,ss=c[x].size();i&lt;ss;i++)num[300000+c[x][i]]--;
+}//右路径向右平移300000 
+int main()
+{
+	n=read(),m=read();
+	int x,y;
+	for(int i=1;i&lt;n;i++)
+	{
+		x=read(),y=read();
+		addedge(x,y);
+		addedge(y,x);//建边 
+	}
+	for(int i=1;i&lt;=n;i++)w[i]=read();
+	deep[1]=1;
+	init(1,0);//递归求深度 
+	for(int i=1;i&lt;=n;i++)maxdeep=max(maxdeep,deep[i]);//求最大深度 
+	for(int i=1;i&lt;=19;i++)
+	    for(int j=1;j&lt;=n;j++)
+	        f[j][i]=f[f[j][i-1]][i-1];
+	for(int i=1;i&lt;=m;i++)
+	{
+		edge[i].s=read(),edge[i].t=read(),val[edge[i].s]++;
+		edge[i].lca=lca(edge[i].s,edge[i].t);
+		edge[i].len=deep[edge[i].s]+deep[edge[i].t]-deep[edge[i].lca]*2;//求两点的路径长度 
+		a[edge[i].lca].push_back(edge[i].s);
+	}
+	dfs(1,0);
+	for(int i=1;i&lt;=m;i++)
+	{
+		b[edge[i].t].push_back(deep[edge[i].t]-edge[i].len);
+		c[edge[i].lca].push_back(deep[edge[i].t]-edge[i].len);
+	}
+	DFS(1,0);
+	for(int i=1;i&lt;=m;i++)if(deep[edge[i].s]-deep[edge[i].lca]==w[edge[i].lca])ans[edge[i].lca]--;
+	for(int i=1;i&lt;=n;i++)cout&lt;&lt;ans[i]&lt;&lt;&quot; &quot;;
+    return 0;
+}
+ </pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

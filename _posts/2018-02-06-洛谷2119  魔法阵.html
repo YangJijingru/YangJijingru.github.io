@@ -1,0 +1,304 @@
+---
+tags: 
+ - 基础算法-递推
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P26.jpg"
+preview-img: "/img/preview/P66.jpg"
+---
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">标签：数学，递推，模拟</span></strong>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">题目描述</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">六十年一次的魔法战争就要开始了，大魔法师准备从附近的魔法场中汲取魔法能量。</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">大魔法师有m个魔法物品，编号分别为1,2,...,m。每个物品具有一个魔法值，我们用Xi表示编号为i的物品的魔法值。每个魔法值Xi是不超过n的正整数，可能有多个物品的魔法值相同。</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">大魔法师认为，当且仅当四个编号为a,b,c,d的魔法物品满足xa&lt;xb&lt;xc&lt;xd，Xb-Xa=2(Xd-Xc)，并且xb-xa&lt;(xc-xb)/3时，这四个魔法物品形成了一个魔法阵，他称这四个魔法物品分别为这个魔法阵的A物品，B物品，C物品，D物品。</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">现在，大魔法师想要知道，对于每个魔法物品，作为某个魔法阵的A物品出现的次数，作为B物品的次数，作为C物品的次数，和作为D物品的次数。</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">输入输出格式</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;"><strong>输入格式：</strong><br style="line-break:" />
+	<br />
+	</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">输入文件的第一行包含两个空格隔开的正整数n和m。</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">接下来m行，每行一个正整数，第i+1行的正整数表示Xi，即编号为i的物品的魔法值。</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">保证1≤n≤150001 \le n \le 150001≤<em>n</em>≤15000,1≤m≤400001\le m \le 400001≤<em>m</em>≤40000,1≤Xi≤n1 \le Xi \le n1≤<em>Xi</em>≤<em>n</em>。每个Xi是分别在合法范围内等概率随机生成的。</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;"><strong>输出格式：</strong><br style="line-break:" />
+	<br />
+	</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">共输出m行，每行四个整数。第i行的四个整数依次表示编号为i的物品作 为A,B,C,D物品分别出现的次数。</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">保证标准输出中的每个数都不会超过10^9。</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">每行相邻的两个数之间用恰好一个空格隔开。</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">输入输出样例</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;"><strong>输入样例#1：</strong> 复制 </span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">30 8</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">1</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">24</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">7</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">28</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">5</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">29</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">26</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">24</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;"><strong>输出样例#1：</strong> 复制 </span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">4 0 0 0</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">0 0 1 0</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">0 2 0 0</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">0 0 1 1</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">1 3 0 0</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">0 0 0 2</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">0 0 2 2</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">0 0 1 0</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;"><strong>输入样例#2：</strong> 复制 </span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">15 15</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">1 </span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">2 </span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">3 </span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">4 </span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">5</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">6 </span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">7 </span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">8 </span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">9</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">10</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">11</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">12</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">13</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">14</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">15</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;"><strong>输出样例#2：</strong> 复制 </span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">5 0 0 0</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">4 0 0 0</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">3 5 0 0</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">2 4 0 0</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">1 3 0 0</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">0 2 0 0</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">0 1 0 0</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">0 0 0 0</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">0 0 0 0</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">0 0 1 0</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">0 0 2 1</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">0 0 3 2</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">0 0 4 3</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">0 0 5 4</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">0 0 0 5</span>
+</p>
+<p>
+	<strong><span style="font-family:等线;font-size:16px;">说明</span></strong>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">【样例解释1】</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">共有5个魔法阵，分别为：</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">物品1,3,7,6，其魔法值分别为1,7,26,29;</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">物品1,5,2,7，其魔法值分别为1,5,24,26;</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">物品1,5,7,4，其魔法值分别为1,5,26,28;</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">物品1,5,8,7，其魔法值分别为1,5,24,26;</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">物品5,3,4,6，其魔法值分别为5,7,28,29。</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">以物品5为例，它作为A物品出现了1次，作为B物品出现了3次，没有作为C物品或者D物品出现，所以这一行输出的四个数依次为1,3,0,0。</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">此外，如果我们将输出看作一个m行4列的矩阵，那么每一列上的m个数之和都应等于魔法阵的总数。所以，如果你的输出不满足这个性质，那么这个输出一定不正确。你可以通过这个性质在一定程度上检查你的输出的正确性。</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">【数据规模】</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">&nbsp;<img src="http://xheditor.com/js/xheditor_skin/default/img/waiting.gif" remoteimg="0" alt="" /></span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">普及组的题果然是推出来一堆乱式子模拟</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">神烦的题</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">外层循环枚举L的长度，内层循环分别计算（a,b）（c,d）两种情况</span>
+</p>
+<p>
+	<span style="font-family:等线;font-size:16px;">Code</span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cstring&gt;
+using namespace std;
+int n,m,val[40006],num[15006];
+int a[15006],b[15006],c[15006],d[15006];
+
+int main()
+{
+	cin&gt;&gt;n&gt;&gt;m;
+	for(int i=1;i&lt;=m;i++){
+		cin&gt;&gt;val[i];
+		num[val[i]]++;
+	}
+	for(int i=1;i*9+1&lt;=n;i++){
+		int sum=0;
+		for(int j=i*9+2;j&lt;=n;j++){//累加合格的C，D两点 
+			sum+=num[j-7*i-1]*num[j-9*i-1];
+			c[j-i]+=num[j]*sum;
+			d[j]+=num[j-i]*sum;
+		}
+		sum=0;
+		for(int j=n-i*9-1;j&gt;=1;j--){//累计合格的A，B两点 
+			sum+=num[j+i*9+1]*num[j+i*8+1];
+			a[j]+=num[j+2*i]*sum;
+			b[j+2*i]+=num[j]*sum;
+		}
+	}
+	for(int i=1;i&lt;=m;i++)
+		cout&lt;&lt;a[val[i]]&lt;&lt;' '&lt;&lt;b[val[i]]&lt;&lt;' '&lt;&lt;c[val[i]]&lt;&lt;' '&lt;&lt;d[val[i]]&lt;&lt;endl;
+	return 0;
+}</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>
