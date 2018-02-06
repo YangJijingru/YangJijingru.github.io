@@ -1,0 +1,160 @@
+---
+tags: 
+ - 数论-杂题
+ - 特殊-高精度
+ - 树-prufer序列
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P12.jpg"
+preview-img: "/img/preview/P12.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>标签：数学，高精度</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>Description</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　自从明明学了树的结构,就对奇怪的树产生了兴趣......给出标号为1到N的点,以及某些点最终的度数,允许在<br />
+	任意两点间连线,可产生多少棵度数满足要求的树?</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>Input</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　第一行为N(0 &lt; N &lt; = 1000),<br />
+	接下来N行,第i+1行给出第i个节点的度数Di,如果对度数不要求,则输入-1</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>Output</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　一个整数,表示不同的满足要求的树的个数,无解输出0</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>Sample Input</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3<br />
+	1<br />
+	-1<br />
+	-1</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>Sample Output</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>HINT</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">两棵树分别为1-2-3;1-3-2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：针对N==1和存在Di==0的情况可以先进行特判</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">正解关于树的prufer编码，可以参考这篇<a target="_blank" href="http://blog.csdn.net/morejarphone/article/details/50677172">博客</a></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">这样就可以用prufer编码存储树了</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">对于M个无限制的节点，存储方案为M^(n-2-tot)</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">其余限制的节点，有C（tot,n-2）种方案</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">之后就转化为高精度除法的问题（今年初赛的坑高精度除法…）</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">其实可以将除法转化为乘法的问题，质因数分解，累程求ans，高精度过程中使用了压位技巧</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define LL long long
+#define mem(x,num) memset(x,num,sizeof x)
+using namespace std;
+inline LL read()
+{
+    LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const int maxn=1006,mod=1e4;
+int d[maxn],num[maxn],pri[maxn],ans[maxn],l=1,n,m,tot,x,cnt;
+inline bool jud(int x){
+	rep(i,2,sqrt(x))if(x%i==0)return 0;
+	return 1;
+}
+inline void mul(int x){
+	rep(i,1,l)ans[i]*=x;
+	rep(i,1,l){
+		ans[i+1]+=ans[i]/mod;
+		ans[i]%=mod;
+	}
+	while(ans[l+1]&gt;0){
+		l++;
+		ans[l+1]=ans[l]/mod;
+		ans[l]%=mod;
+	}
+}//高精度压位 
+void solve(int a,int f){
+	rep(k,1,a){
+	    int x=k;
+		rep(i,1,cnt){
+		    if(x&lt;=1)break;
+			while(x%pri[i]==0){num[i]+=f;x/=pri[i];}
+		}
+	}
+}//num[i]打上标记，等最后一起累乘 
+
+int main()
+{
+    rep(i,2,1000)
+        if(jud(i))pri[++cnt]=i;//统计质数的个数 
+    ans[1]=1;
+    n=read();
+    if(n==1){
+    	x=read();
+    	if(!x)printf(&quot;1&quot;);
+    	else printf(&quot;0&quot;);
+    	return 0;
+    }//特判N==1的情况 
+    rep(i,1,n){
+    	d[i]=read();
+    	if(!d[i]){printf(&quot;0&quot;);return 0;}
+    	if(d[i]==-1)m++;
+    	else{d[i]--;tot+=d[i];}
+    }
+    if(tot&gt;n-2){printf(&quot;0&quot;);return 0;}
+    solve(n-2,1);
+	solve(n-2-tot,-1);
+	rep(i,1,n)
+	    if(d[i])solve(d[i],-1);
+	rep(i,1,cnt)
+	    while(num[i]--)mul(pri[i]);
+	rep(i,1,n-2-tot)mul(m);
+	dep(i,l,1)if(i==l)printf(&quot;%d&quot;,ans[i]);else printf(&quot;%04d&quot;,ans[i]);
+    return 0;
+}
+    </pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

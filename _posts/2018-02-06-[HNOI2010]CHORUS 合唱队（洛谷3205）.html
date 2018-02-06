@@ -1,0 +1,137 @@
+---
+tags: 
+ - DP-区间
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P2.jpg"
+preview-img: "/img/preview/P2.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>标签：区间DP</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>题目描述</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">为了在即将到来的晚会上有吏好的演出效果，作为AAA合唱队负责人的小A需要将合唱队的人根据他们的身高排出一个队形。假定合唱队一共N个人，第i个人的身髙为Hi米(1000&lt;=Hi&lt;=2000),并已知任何两个人的身高都不同。假定最终排出的队形是A 个人站成一排，为了简化问题，小A想出了如下排队的方式：他让所有的人先按任意顺序站成一个初始队形，然后从左到右按以下原则依次将每个人插入最终棑出的队形中：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">-第一个人直接插入空的当前队形中。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">-对从第二个人开始的每个人，如果他比前面那个人髙(H较大)，那么将他插入当前队形的最石边。如果他比前面那个人矮(H较小)，那么将他插入当前队形的最左边。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">当N个人全部插入当前队形后便获得最终排出的队形。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">例如，有6个人站成一个初始队形，身卨依次为1850、1900、1700、1650、1800和1750,</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">那么小A会按以下步骤获得最终排出的队形：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1850</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">- 1850 , 1900 因为1900 &gt; 1850</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">- 1700, 1850, 1900 因为 1700 &lt; 1900</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">- 1650 . 1700, 1850, 1900 因为 1650 &lt; 1700</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">- 1650 , 1700, 1850, 1900, 1800 因为 1800 &gt; 1650</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">- 1750， 1650, 1700，1850, 1900, 1800 因为 1750 &lt; 1800</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">因此，最终排出的队形是 1750，1650，1700，1850, 1900，1800小A心中有一个理想队形，他想知道多少种初始队形可以获得理想的队形</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入输出格式</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入格式：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输出格式：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入输出样例</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入样例#1：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">4</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1701 1702 1703 1704</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输出样例#1：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">8</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">说明：注意答案对19650827取模！！！</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">经典的区间DP状态和转移方程</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">F[l][r]表示当前最后一个添加的人是l的方案数</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">G[l][r]表示当前最后一个添加的人是r的方案数</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">f[l][r]=f[l+1][r]&nbsp;&nbsp; (a[l]&lt;a[l+1])&nbsp; +g[l+1][r]&nbsp;(a[l]&lt;a[r])</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">g[l][r]=f[l][r-1]&nbsp; (a[l]&lt;a[r])&nbsp; +g[l][r-1]&nbsp;(a[r-1]&lt;a[r])</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+#define LL long long
+using namespace std;
+const int mod=19650827,maxn=1006;
+LL a[maxn],f[maxn][maxn],g[maxn][maxn],l,r,n;
+
+inline LL w(LL x,LL y){ return x&lt;y ? 1 : 0;} 
+int main()
+{
+    cin&gt;&gt;n;
+    rep(i,1,n)cin&gt;&gt;a[i];
+    rep(i,1,n)f[i][i]=1;
+    rep(i,1,n-1)
+        rep(j,1,n){
+            if(i+j&gt;n)continue;
+            int l=j,r=j+i;
+            f[l][r]=(f[l+1][r]*w(a[l],a[l+1])+g[l+1][r]*w(a[l],a[r]))%mod;
+            g[l][r]=(f[l][r-1]*w(a[l],a[r])+g[l][r-1]*w(a[r-1],a[r]))%mod;
+        }
+    cout&lt;&lt;(f[1][n]+g[1][n])%mod&lt;&lt;endl;
+    return 0;
+}</pre>
+<br />
+<br />
+
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+	</span>
+</p>

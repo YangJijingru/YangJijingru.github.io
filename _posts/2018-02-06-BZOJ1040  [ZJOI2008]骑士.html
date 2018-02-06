@@ -1,0 +1,164 @@
+---
+tags: 
+ - DP-树形
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P19.jpg"
+preview-img: "/img/preview/P19.jpg"
+---
+<p style="margin:0px">
+	<strong><span style="font-family:Microsoft YaHei;font-size:16px;">标签：树形<span style="margin:0px" lang="EN-US">DP</span>，环套树</span></strong>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Description</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　<span style="margin:0px" lang="EN-US">Z</span>国的骑士团是一个很有势力的组织，帮会中汇聚了来自各地的精英。他们劫富济贫，惩恶扬善，受到社会各<span style="margin:0px" lang="EN-US"><br />
+	</span>界的赞扬。最近发生了一件可怕的事情，邪恶的<span style="margin:0px" lang="EN-US">Y</span>国发动了一场针对<span style="margin:0px" lang="EN-US">Z</span>国的侵略战争。战火绵延五百里，在和平环境<span style="margin:0px" lang="EN-US"><br />
+	</span>中安逸了数百年的<span style="margin:0px" lang="EN-US">Z</span>国又怎能抵挡的住<span style="margin:0px" lang="EN-US">Y</span>国的军队。于是人们把所有的希望都寄托在了骑士团的身上，就像期待有一<span style="margin:0px" lang="EN-US"><br />
+	</span>个真龙天子的降生，带领正义打败邪恶。骑士团是肯定具有打败邪恶势力的能力的，但是骑士们互相之间往往有一<span style="margin:0px" lang="EN-US"><br />
+	</span>些矛盾。每个骑士都有且仅有一个自己最厌恶的骑士（当然不是他自己），他是绝对不会与自己最厌恶的人一同出<span style="margin:0px" lang="EN-US"><br />
+	</span>征的。战火绵延，人民生灵涂炭，组织起一个骑士军团加入战斗刻不容缓！国王交给了你一个艰巨的任务，从所有<span style="margin:0px" lang="EN-US"><br />
+	</span>的骑士中选出一个骑士军团，使得军团内没有矛盾的两人（不存在一个骑士与他最痛恨的人一同被选入骑士军团的<span style="margin:0px" lang="EN-US"><br />
+	</span>情况），并且，使得这支骑士军团最具有战斗力。为了描述战斗力，我们将骑士按照<span style="margin:0px" lang="EN-US">1</span>至<span style="margin:0px" lang="EN-US">N</span>编号，给每名骑士一个战<span style="margin:0px" lang="EN-US"><br />
+	</span>斗力的估计，一个军团的战斗力为所有骑士的战斗力总和。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　第一行包含一个正整数<span style="margin:0px" lang="EN-US">N</span>，描述骑士团的人数。接下来<span style="margin:0px" lang="EN-US">N</span>行，每行两个正整数，按顺序描述每一名骑士的战斗力<span style="margin:0px" lang="EN-US"><br />
+	</span>和他最痛恨的骑士。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　应包含一行，包含一个整数，表示你所选出的骑士军团的战斗力。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">3</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">10 2</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">20 3</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">30 1</span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">30</span></span>
+</p>
+<p style="margin:0px">
+	<strong><span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">HINT</span></span></strong>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;"><span style="font-size:16px;"><span style="margin:0px" lang="EN-US">N ≤ 1 000 000</span>，每名骑士的战斗力都是不大于<span style="margin:0px" lang="EN-US"> 1 000 000</span>的正整数。</span></span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">题意：许多点构成的点集，选取权值总和最大的一个点集，保证其中任意两点没有直接连边。</span><span style="margin:0px" lang="EN-US"></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">本题实质上是许多无向边构成的环，整个图就是无向环套树森林，先<span style="margin:0px" lang="EN-US">dfs</span>找环然后破环为链，选取根节点做树形<span style="margin:0px" lang="EN-US">DP</span>，取结果最大值就可以了</span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"><span style="font-family:Microsoft YaHei;font-size:16px;">Code</span></span>
+</p>
+<p style="margin:0px">
+	<span style="margin:0px" lang="EN-US"></span>
+</p>
+<pre class="cpp" name="code">#include&lt;iostream&gt;
+#include&lt;iomanip&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstring&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+#define reg(x) for(int i=head[x];i;i=e[i].next)
+#define LL long long
+using namespace std;
+inline LL read()
+{
+	LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const int maxn=1e6+6;
+int head[maxn],cnt=1,b,a[maxn],visit[maxn],r,u,v;
+LL f[maxn],g[maxn],ans,n,x;
+struct edge{int to,next;}e[maxn&lt;&lt;1];
+
+inline void dfs(int x,int from)
+{
+	visit[x]=1;
+	reg(x){
+		if((i^1)==from)continue;
+		if(visit[e[i].to]){
+			u=x;
+			v=e[i].to;
+			r=i;
+			continue;
+		}
+		dfs(e[i].to,i);
+	}
+}
+
+void dp(int x,int from,int ban)
+{
+	f[x]=a[x];g[x]=0;
+	reg(x){
+		if(i==ban||(i^1)==ban)continue;
+		if((i^1)==from)continue;
+		dp(e[i].to,i,ban);
+		f[x]+=g[e[i].to];
+		g[x]+=max(f[e[i].to],g[e[i].to]);
+	}
+}
+
+int main()
+{
+	n=read();
+	rep(i,1,n){
+		a[i]=read(),x=read();
+		e[++cnt]=(edge){i,head[x]};head[x]=cnt;
+		e[++cnt]=(edge){x,head[i]};head[i]=cnt;
+	}
+	rep(i,1,n)
+	    if(!visit[i]){
+			dfs(i,0);
+			dp(u,0,r);
+			LL temp=g[u];
+			dp(v,0,r);
+			temp=max(temp,g[v]);
+			ans+=temp;
+		}
+	printf(&quot;%lld\n&quot;,ans);
+	return 0;
+}</pre>
+<br />
+
+<p>
+	<br />
+	
+</p>

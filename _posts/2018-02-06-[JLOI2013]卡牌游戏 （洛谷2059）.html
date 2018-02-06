@@ -1,0 +1,154 @@
+---
+tags: 
+ - DP-区间
+ - DP-记忆化搜索
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P3.jpg"
+preview-img: "/img/preview/P3.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>标签：区间DP，记忆化搜索</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>题目描述</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">N个人坐成一圈玩游戏。一开始我们把所有玩家按顺时针从1到N编号。首先第一回合是玩家1作为庄家。每个回合庄家都会随机（即按相等的概率）从卡牌堆里选择一张卡片，假设卡片上的数字为X，则庄家首先把卡片上的数字向所有玩家展示，然后按顺时针从庄家位置数第X个人将被处决即退出游戏。然后卡片将会被放回卡牌堆里并重新洗牌。被处决的人按顺时针的下一个人将会作为下一轮的庄家。那么经过N-1轮后最后只会剩下一个人，即为本次游戏的胜者。现在你预先知道了总共有M张卡片，也知道每张卡片上的数字。现在你需要确定每个玩家胜出的概率。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">这里有一个简单的例子：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">例如一共有4个玩家，有四张卡片分别写着3,4,5,6.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">第一回合，庄家是玩家1，假设他选择了一张写着数字5的卡片。那么按顺时针数1,2,3,4,1，最后玩家1被踢出游戏。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">第二回合，庄家就是玩家1的下一个人，即玩家2.假设玩家2这次选择了一张数字6，那么2,3,4,2,3,4，玩家4被踢出游戏。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">第三回合，玩家2再一次成为庄家。如果这一次玩家2再次选了6，则玩家3被踢出游戏，最后的胜者就是玩家2.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入输出格式</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入格式：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">第一行包括两个整数N,M分别表示玩家个数和卡牌总数。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">接下来一行是包含M个整数，分别给出每张卡片上写的数字。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输出格式：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输出一行包含N个百分比形式给出的实数，四舍五入到两位小数。分别给出从玩家1到玩家N的胜出概率，每个概率之间用空格隔开，最后不要有空格。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入输出样例</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入样例#1：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输入样例1：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">5 5</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2 3 5 7 11</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输入样例2：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">4 4</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3 4 5 6</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输出样例#1：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输出样例1：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">22.72%&nbsp;17.12%&nbsp; 15.36%&nbsp; 25.44%&nbsp;19.36%</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输出样例2：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">25.00%&nbsp;25.00%&nbsp; 25.00%&nbsp; 25.00%</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>说明</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">对于30%的数据，有1&lt;=N&lt;=10</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">对于50%的数据，有1&lt;=N&lt;=30</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">对于100%的数据，有1&lt;=N&lt;=501&lt;=M&lt;=50 1&lt;=每张卡片上的数字&lt;=50</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">f(i,j)表示共有i个人时第j个赢的概率</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define LL long long
+#define mem(x,num) memset(x,num,sizeof x)
+using namespace std;
+const int maxn=56;
+double f[maxn][maxn];
+int a[maxn],n,m;
+bool vis[maxn][maxn];
+
+double dp(int i,int j){
+    if(i==1)return 1;
+    if(vis[i][j])return f[i][j];
+    vis[i][j]=1;
+    rep(k,1,m){
+        if(a[k]%i==j%i)continue;
+        int t=a[k]%i,ret=(j+i-t)%i;
+        f[i][j]+=dp(i-1,ret)/(double)m;
+    }
+    return f[i][j];
+}
+int main()
+{
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+    rep(i,1,m)scanf(&quot;%d&quot;,&amp;a[i]);
+    rep(i,1,n)
+        printf(&quot;%.2lf%% &quot;,dp(n,i)*100);
+    return 0;
+}
+</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>
+<br />

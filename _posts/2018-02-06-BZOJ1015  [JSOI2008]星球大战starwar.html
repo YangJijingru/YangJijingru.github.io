@@ -1,0 +1,161 @@
+---
+tags: 
+ - 数据结构-并查集
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P17.jpg"
+preview-img: "/img/preview/P17.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>标签：并查集</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>Description</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　很久以前，在一个遥远的星系，一个黑暗的帝国靠着它的超级武器统治者整个星系。某一天，凭着一个偶然的<br />
+	机遇，一支反抗军摧毁了帝国的超级武器，并攻下了星系中几乎所有的星球。这些星球通过特殊的以太隧道互相直<br />
+	接或间接地连接。 但好景不长，很快帝国又重新造出了他的超级武器。凭借这超级武器的力量，帝国开始有计划<br />
+	地摧毁反抗军占领的星球。由于星球的不断被摧毁，两个星球之间的通讯通道也开始不可靠起来。现在，反抗军首<br />
+	领交给你一个任务：给出原来两个星球之间的以太隧道连通情况以及帝国打击的星球顺序，以尽量快的速度求出每<br />
+	一次打击之后反抗军占据的星球的连通快的个数。（如果两个星球可以通过现存的以太通道直接或间接地连通，则<br />
+	这两个星球在同一个连通块中）。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>Input</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　输入文件第一行包含两个整数，N (1&nbsp; &lt; =&nbsp;N&nbsp; &lt; =&nbsp; 2M) 和M (1&nbsp; &lt; =&nbsp;M&nbsp; &lt; =&nbsp; 200,000)，分别表示星球的<br />
+	数目和以太隧道的数目。星球用 0 ~ N-1的整数编号。接下来的M行，每行包括两个整数X, Y，其中（0&lt; = X &lt;&gt; <br />
+	Y 表示星球x和星球y之间有“以太”隧道，可以直接通讯。接下来的一行为一个整数k，表示将遭受攻击的星球的<br />
+	数目。接下来的k行，每行有一个整数，按照顺序列出了帝国军的攻击目标。这k个数互不相同，且都在0到n-1的范<br />
+	围内。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>Output</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">第一行是开始时星球的连通块个数。接下来的K行，每行一个整数，表示经过该次打击后现存星球<br />
+	的连通块个数。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>Sample Input</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">8 13<br />
+	0 1<br />
+	1 6<br />
+	6 5<br />
+	5 0<br />
+	0 6<br />
+	1 2<br />
+	2 3<br />
+	3 4<br />
+	4 5<br />
+	7 1<br />
+	7 2<br />
+	7 6<br />
+	3 6<br />
+	5<br />
+	1<br />
+	6<br />
+	3<br />
+	5<br />
+	7</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>Sample Output</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1<br />
+	1<br />
+	1<br />
+	2<br />
+	3<br />
+	3</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">题意：给定一张无向图，支持删点操作和询问连通子块个数</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：这题可以倒序处理，先读入数据，离线做法，将所有非删除的节点用并查集维护，之后倒序加入删去的节点，用并查集维护</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+#define LL long long
+using namespace std;
+inline LL read()
+{
+	LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+
+const int maxn=4e5+6;
+LL tot,n,m,k,fa[maxn],head[maxn],q[maxn],ans[maxn],cnt=1;
+bool used[maxn],des[maxn];
+struct edge{LL to,next;}e[maxn];
+inline LL find(LL x){return x==fa[x]?x:fa[x]=find(fa[x]);}
+void ins(int u,int v){
+	e[++cnt]=(edge){v,head[u]};head[u]=cnt;
+	e[++cnt]=(edge){u,head[v]};head[v]=cnt;
+}
+void add(int x){
+	int i=head[x],r1=find(x),r2;
+	while(i){
+	    if(used[e[i].to]){
+		    r2=find(e[i].to);
+			if(r1!=r2){fa[r2]=r1;tot--;}
+		}
+		i=e[i].next;
+	}
+}
+
+
+int main()
+{
+    n=read(),m=read();
+    rep(i,0,n-1)fa[i]=i;
+    rep(i,1,m){
+    	int x=read(),y=read();
+    	ins(x,y);
+    }
+    k=read();
+    rep(i,1,k){
+    	q[i]=read();
+    	des[q[i]]=1;
+    }
+    rep(i,0,n-1)
+    	if(!des[i]){
+    		tot++;
+    		add(i);
+    		used[i]=1;
+    	}
+    ans[k+1]=tot;
+    dep(i,k,1){
+    	tot++;
+    	add(q[i]);
+    	used[q[i]]=1;
+    	ans[i]=tot;
+    }
+    rep(i,1,k+1)printf(&quot;%d\n&quot;,ans[i]);
+    return 0;
+}
+</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

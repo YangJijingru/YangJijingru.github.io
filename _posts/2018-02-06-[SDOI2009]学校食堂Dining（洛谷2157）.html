@@ -1,0 +1,190 @@
+---
+tags: 
+ - DP-状压
+ - 特殊-bitset
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P7.jpg"
+preview-img: "/img/preview/P7.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>标签：状压DP，bitset位运算</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>题目描述</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">小F 的学校在城市的一个偏僻角落，所有学生都只好在学校吃饭。学校有一个食堂，虽然简陋，但食堂大厨总能做出让同学们满意的菜肴。当然，不同的人口味也不一定相同，但每个人的口味都可以用一个非负整数表示。由于人手不够，食堂每次只能为一个人做菜。做每道菜所需的时间是和前一道菜有关的，若前一道菜的对应的口味是a，这一道为b，则做这道菜所需的时间为（a or b）-（a and b），而做第一道菜是不需要计算时间的。其中，or 和and 表示整数逐位或运算及逐位与运算，C语言中对应的运算符为“|”和“&amp;”。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">学生数目相对于这个学校还是比较多的，吃饭做菜往往就会花去不少时间。因此，学校食堂偶尔会不按照大家的排队顺序做菜，以缩短总的进餐时间。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">虽然同学们能够理解学校食堂的这种做法，不过每个同学还是有一定容忍度的。也就是说，队伍中的第i 个同学，最多允许紧跟他身后的Bi 个人先拿到饭菜。一旦在此之后的任意同学比当前同学先拿到饭，当前同学将会十分愤怒。因此，食堂做菜还得照顾到同学们的情绪。现在，小F 想知道在满足所有人的容忍度这一前提下，自己的学校食堂做完这些菜最少需要多少时间。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入输出格式</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入格式：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">第一行包含一个正整数C，表示测试点的数据组数。 每组数据的第一行包含一个正整数N，表示同学数。 每组数据的第二行起共N行，每行包含两个用空格分隔的非负整数Ti和Bi，表示按队伍顺序从前往后的每个同学所需的菜的口味和这个同学的忍受度。每组数据之间没有多余空行。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输出格式：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">包含C行，每行一个整数，表示对应数据中食堂完成所有菜所需的最少时间。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入输出样例</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入样例#1：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">5</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">5 2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">4 1</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">12 0</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3 3</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2 2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">5 0</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">4 0</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输出样例#1：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">16</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>说明</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">对于第一组数据：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">同学1允许同学2或同学3在他之前拿到菜；同学2允许同学3在他之前拿到菜；同学3比较小气，他必须比他后面的同学先拿菜……</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">一种最优的方案是按同学3、同学2、同学1、同学4、同学5做菜，每道菜所需的时间分别是0、8、1、6及1。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">【数据规模和约定】</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">对于30%的数据，满足1 ≤ N ≤20。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">对于100%的数据，满足1 ≤ N ≤1,000，0 ≤ Ti ≤ 1,000，0 ≤ Bi ≤ 7，1 ≤ C ≤ 5。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">存在30%的数据，满足0 ≤ Bi ≤1。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">存在65%的数据，满足0 ≤ Bi ≤5。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">存在45%的数据，满足0 ≤ Ti ≤130。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：看来从很久以前，oi的毒瘤出题人就专注于&amp;|^各种位运算了</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">这题应该算是状压DP</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">设f[i][j][k]表示前i-1个人已经打完饭，第i个人以及后面7个人是否打饭的状态为j，当前最后一个打饭的人的编号为i+k（k的范围为−8到7，所以用数组存时要加上8）</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">J可以用二进制来表示，0表示没吃，1表示吃过了</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define LL long long
+#define mem(x,num) memset(x,num,sizeof x)
+#define f(a,b,c) g[a][b][c+8]
+using namespace std;
+
+const int maxn=1006,inf=0x3f3f3f;
+int g[maxn][1&lt;&lt;8][16];
+int a[maxn],b[maxn],bin[20],T,n;
+
+inline int calc(int x,int y){
+    if(!x)return 0;
+    else return (a[x]|a[y])-(a[x]&amp;a[y]);
+}
+int main()
+{
+    bin[0]=1;
+    rep(i,1,10)bin[i]=bin[i-1]&lt;&lt;1;
+    scanf(&quot;%d&quot;,&amp;T);
+    while(T--){
+        scanf(&quot;%d&quot;,&amp;n);
+        rep(i,1,n)scanf(&quot;%d%d&quot;,&amp;a[i],&amp;b[i]);
+        rep(i,1,n+1)rep(j,0,bin[8]-1)rep(k,-8,7)f(i,j,k)=inf;
+        f(1,0,-1)=0;
+        rep(i,1,n)
+            rep(j,0,bin[8]-1)
+                rep(k,-8,7)
+                    if(f(i,j,k)&lt;inf){
+                        if(j&amp;1)f(i+1,j&gt;&gt;1,k-1)=min(f(i+1,j&gt;&gt;1,k-1),f(i,j,k));
+                        else{
+                            int r=inf;
+                            rep(l,0,7)
+                                if((j&amp;bin[l])==0){
+                                    if(i+l&gt;r)break;
+                                    r=min(r,i+l+b[i+l]);
+                                    f(i,j^bin[l],l)=min(f(i,j^bin[l],l),f(i,j,k)+calc(i+k,i+l));
+                                }
+                            }
+                        }
+        int ans=inf;
+        rep(k,-8,-1)ans=min(ans,f(n+1,0,k));
+        printf(&quot;%d\n&quot;,ans);
+    }
+    return 0;
+}</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

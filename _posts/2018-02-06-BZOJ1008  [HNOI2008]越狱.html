@@ -1,0 +1,106 @@
+---
+tags: 
+ - 数论-杂题
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P14.jpg"
+preview-img: "/img/preview/P14.jpg"
+---
+<p style="text-align:left" align="center">
+	<span style="color:blue;font-weight:bold"><span style="font-family:Microsoft YaHei;font-size:16px;">标签：数学</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Description</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　监狱有连续编号为1...N的N个房间，每个房间关押一个犯人，有M种宗教，每个犯人可能信仰其中一种。如果<br />
+	相邻房间的犯人的宗教相同，就可能发生越狱，求有多少种状态可能发生越狱</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　输入两个整数M，N.1&lt;=M&lt;=10^8,1&lt;=N&lt;=10^12</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　可能越狱的状态数，模100003取余</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2 3</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">6</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">HINT</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　6种状态为(000)(001)(011)(100)(110)(111)</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：考虑转换，可以求出有多少种情况不会发生越狱</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">不会发生越狱的情况个数为m*((m-1)^n)</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">情况总个数为m^n</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">组合数学用快速幂求下就好了</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+#define LL long long
+using namespace std;
+inline LL read()
+{
+	LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const int mod=1e5+3;
+LL n,m,ans;
+LL qpow(LL x,LL y){
+    LL base=x%mod,r=1;
+	while(y){
+		if(y&amp;1)r=r*base%mod;
+		base=base*base%mod;
+		y&gt;&gt;=1;
+	}
+	return r;
+}
+
+		
+int main()
+{
+	m=read(),n=read();
+	ans=qpow(m,n)-(m*qpow(m-1,n-1))%mod;
+	if(ans&lt;0)ans+=mod;	
+	cout&lt;&lt;ans&lt;&lt;endl;
+	return 0;
+}</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>
+<br />

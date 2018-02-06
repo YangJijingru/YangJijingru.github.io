@@ -1,0 +1,177 @@
+---
+tags: 
+ - DP-记忆化搜索
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P6.jpg"
+preview-img: "/img/preview/P6.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">标签：记忆化搜索,DP</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>题目描述</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">给一个由小写字母组成的字符串，我们可以用一种简单的方法来压缩其中的重复信息。压缩后的字符串除了小写字母外还可以（但不必）包含大写字母R与M，其中M标记重复串的开始，R重复从上一个M（如果当前位置左边没有M，则从串的开始算起）开始的解压结果（称为缓冲串）。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">bcdcdcdcd可以压缩为bMcdRR，下面是解压缩的过程：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">已经解压的部分&nbsp;&nbsp;&nbsp;解压结果&nbsp;&nbsp;&nbsp; 缓冲串</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">b&nbsp;&nbsp;&nbsp;b&nbsp;&nbsp;&nbsp; b</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">bM&nbsp;&nbsp;&nbsp;b&nbsp;&nbsp;&nbsp; </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">bMc&nbsp;&nbsp;&nbsp;bc&nbsp;&nbsp;&nbsp; c</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">bMcd&nbsp;&nbsp;&nbsp;bcd&nbsp;&nbsp;&nbsp; cd</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">bMcdR&nbsp;&nbsp;&nbsp;bcdcd&nbsp; &nbsp;&nbsp;cdcd</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">bMcdRR&nbsp;&nbsp;&nbsp;bcdcdcdcd&nbsp;&nbsp;&nbsp; cdcdcdcd</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">另一个例子是abcabcdabcabcdxyxyz可以被压缩为abcRdRMxyRz。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入输出格式</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入格式：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输入仅一行，包含待压缩字符串，仅包含小写字母，长度为n。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输出格式：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输出仅一行，即压缩后字符串的最短长度。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入输出样例</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入样例#1：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">aaaaaaa</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输出样例#1：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">5</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入样例#2：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">bcdcdcdcdxcdcdcdcd</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输出样例#2：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">12</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>说明</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">在第一个例子中，解为aaaRa，在第二个例子中，解为bMcdRRxMcdRR。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">【限制】</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">50%的数据满足：1&lt;=n&lt;=20</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">100%的数据满足：1&lt;=n&lt;=50</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Mark数组用来记忆化存储</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">每次DP传递的第三个参数t从来记录这段区间内是否存在M</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">如果t=1，可以分成两段进行压缩，且两段t=1，两段的中间要加一个M，否则前一段会对后一段造成影响</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">当然也可以只压缩前一段</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">如果分成等长的两段完全相等且每一段都没放M，可以把后一段换成R</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define LL long long
+#define mem(x,num) memset(x,num,sizeof x)
+using namespace std;
+const int maxn=106;
+int f[maxn][maxn][2];
+bool mark[maxn][maxn][2];
+char s[maxn];
+
+inline bool same(int a,int b){
+    int temp=b-a+1;
+    if(temp&amp;1)return 0;
+    rep(i,a,(a+b)&gt;&gt;1)
+        if(s[i]!=s[i+(temp&gt;&gt;1)])return 0;
+    return 1;
+}
+
+int dp(int a,int b,bool t)
+{
+    int temp=b-a+1;
+    if(temp==1)return 1;
+    if(mark[a][b][t])return f[a][b][t];
+    mark[a][b][t]=1;
+    if(t)
+        rep(i,a,b-1)temp=min(temp,dp(a,i,1)+dp(i+1,b,1)+1);
+    rep(i,a,b-1)temp=min(temp,dp(a,i,t)+b-i);
+    if(same(a,b))temp=min(temp,dp(a,(a+b)&gt;&gt;1,0)+1);
+    return f[a][b][t]=temp;
+}
+
+int main()
+{
+    cin&gt;&gt;s;
+    int len=strlen(s);
+    cout&lt;&lt;dp(0,len-1,1)&lt;&lt;endl;
+    return 0;
+}
+
+</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

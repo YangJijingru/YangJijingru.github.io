@@ -1,0 +1,177 @@
+---
+tags: 
+ - DP-杂题
+ - 图论-floyd
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P4.jpg"
+preview-img: "/img/preview/P4.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>标签：DP，最短路</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>题目描述</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">参加jsoi冬令营的同学最近发现，由于南航校内修路截断了原来通向计算中心的路，导致去的路程比原先增加了近一公里。而食堂门前施工虽然也截断了原来通向计算中心的路，却没有使路程增加，因为可以找到同样长度的路作替代。其实，问题的关键在于，路截断的地方是交通要点。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">同样的情况也出现在城市间的交通中。某些城市如果出了问题，可能会引起其他很多城市的交通不便。另一些城市则影响不到别的城市的交通。jsoi冬令营的同学发现这是一个有趣的问题，于是决定研究这个问题。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">他们认为这样的城市是重要的：如果一个城市c被破坏后，存在两个不同的城市a和b（a, b均不等于c），a到b的最短距离增长了（或不通），则城市c是重要的。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">jsoi冬令营的同学面对着一张教练组交给他们的城市间交通图，他们希望能找出所有重要的城市。现在就请你来解决这个问题。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入输出格式</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入格式：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">第一行两个整数N,M,N为城市数，M为道路数</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">接下来M行，每行三个整数，表示两个城市之间的无向边，以及之间的路的长度</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输出格式：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">一行，按递增次序输出若干的数，表示重要的城市。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入输出样例</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入样例#1：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">4 4</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 2 1</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2 3 1</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">4 1 2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">4 3 2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输出样例#1：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>说明</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">30%的数据：N≤20</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">60%的数据：N≤100</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">100%的数据：N≤200,M≤N×(N−1)/2,0&lt;c≤10000&nbsp; c即路的长度。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">保证不出现重边和自环</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">感谢@赵昕鹏 和@qq2477259579提供程序</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">如果没有点的话需要输出一行</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">“No important cities.”</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">去掉引号</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">给定一张连通图，那么任意两点之间的最短路就可以确定</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">求哪些点会影响其余任意两点之间的最短路</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">满足图中不出现重边和自环</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">直接用Floyd跑最短路，如果通过该点中转减少了其余两点的最短路径，那么这点即为所求，实质上运用了DP和贪心的思想</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define LL long long
+#define mem(x,num) memset(x,num,sizeof x)
+using namespace std;
+
+inline int read()
+{
+    int f=1,x=0;char ch=getchar();
+    while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+    while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+    return x*f;
+}
+const int maxn=206,maxm=20006,inf=0x3f3f3f;
+int n,m,b[maxn][maxn],c[maxn][maxn],flag[maxn],Map[maxn][maxn];
+int ans[maxn],cnt=0;
+int main()
+{
+    mem(Map,inf);mem(b,0);mem(c,0);
+    n=read(),m=read();
+    rep(i,1,m){
+        int u=read(),v=read(),w=read();
+        Map[u][v]=Map[v][u]=w;
+    }
+    rep(i,1,n)Map[i][i]=0;
+    rep(k,1,n)
+        rep(i,1,n) 
+            rep(j,1,n)
+                if(i!=k&amp;&amp;i!=j&amp;&amp;j!=k){
+                    if(Map[i][k]+Map[k][j]&lt;Map[i][j]){
+                        Map[i][j]=Map[i][k]+Map[k][j];
+                        b[i][j]=1,c[i][j]=k;
+                    }else if(Map[i][k]+Map[k][j]==Map[i][j])b[i][j]=0;}
+    rep(i,1,n)
+        rep(j,1,n)
+            if(i!=j)
+                if(b[i][j]&amp;&amp;c[i][j]!=0&amp;&amp;flag[c[i][j]]==0){
+                    ans[++cnt]=c[i][j];
+                    flag[c[i][j]]=1;
+                }
+    if(cnt==0){printf(&quot;No important cities.\n&quot;);return 0;}
+    sort(ans+1,ans+1+cnt);
+    rep(i,1,cnt)printf(&quot;%d &quot;,ans[i]);
+    return 0;
+}
+
+</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>
+<br />

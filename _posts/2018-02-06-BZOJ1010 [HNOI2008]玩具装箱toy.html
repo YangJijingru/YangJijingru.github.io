@@ -1,0 +1,140 @@
+---
+tags: 
+ - DP-斜率优化
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P15.jpg"
+preview-img: "/img/preview/P15.jpg"
+---
+<p style="text-align:left" align="center">
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><span style="color:blue;"><strong>标签</strong></span><span style="color:blue;"><strong>:</strong></span><span style="color:blue;"><strong>斜率优化</strong></span></span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Description</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　P教授要去看奥运，但是他舍不下他的玩具，于是他决定把所有的玩具运到北京。他使用自己的压缩器进行压<br />
+	缩，其可以将任意物品变成一堆，再放到一种特殊的一维容器中。P教授有编号为1...N的N件玩具，第i件玩具经过<br />
+	压缩后变成一维长度为Ci.为了方便整理，P教授要求在一个一维容器中的玩具编号是连续的。同时如果一个一维容<br />
+	器中有多个玩具，那么两件玩具之间要加入一个单位长度的填充物，形式地说如果将第i件玩具到第j个玩具放到一<br />
+	个容器中，那么容器的长度将为 x=j-i+Sigma(Ck) i&lt;=K&lt;=j 制作容器的费用与容器的长度有关，根据教授研究，<br />
+	如果容器长度为x,其制作费用为(X-L)^2.其中L是一个常量。P教授不关心容器的数目，他可以制作出任意长度的容<br />
+	器，甚至超过L。但他希望费用最小.</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　第一行输入两个整数N，L.接下来N行输入Ci.1&lt;=N&lt;=50000,1&lt;=L,Ci&lt;=10^7</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　输出最小费用</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">5 4<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">4<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">4</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">第一次接触斜率优化呐</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">很简单的DP状态和转移</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">F[i]=min{f[j]+(sum[i]-sum[j]+i-j-1-L)^2}&nbsp; j&lt;i</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">可以看这篇论文，对于斜率优化解释的很详细</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><a target="_blank" href="https://wenku.baidu.com/view/eeb6d3ea19e8b8f67c1cb937.html">https://wenku.baidu.com/view/eeb6d3ea19e8b8f67c1cb937.html</a></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define LL long long
+#define mem(x,num) memset(x,num,sizeof x)
+using namespace std;
+ 
+inline LL read()
+{
+    LL f=1,x=0;char ch=getchar();
+    while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+    while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+    return x*f;
+}
+const int maxn=5e4+6;
+LL n,l,head,tail;
+LL c[maxn],f[maxn],s[maxn],q[maxn];
+ 
+double slop(int j,int k){
+    return (f[k]-f[j]+(s[k]+l)*(s[k]+l)-(s[j]+l)*(s[j]+l))/(2.0*(s[k]-s[j]));
+}
+ 
+int main()
+{ 
+    n=read(),l=read(),l++;
+    rep(i,1,n)c[i]=read();
+    rep(i,1,n)s[i]=s[i-1]+c[i];
+    rep(i,1,n)s[i]+=i;
+    head=1,tail=0;q[++tail]=0;
+    rep(i,1,n){
+        while(head&lt;tail&amp;&amp;slop(q[head],q[head+1])&lt;=s[i])head++;
+        int t=q[head];
+        f[i]=f[t]+(s[i]-s[t]-l)*(s[i]-s[t]-l);
+        while(head&lt;tail&amp;&amp;slop(q[tail],i)&lt;slop(q[tail-1],q[tail]))tail--;
+        q[++tail]=i;
+    }
+    cout&lt;&lt;f[n]&lt;&lt;endl;
+    return 0; 
+}</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

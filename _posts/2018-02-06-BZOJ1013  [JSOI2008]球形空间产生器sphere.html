@@ -1,0 +1,123 @@
+---
+tags: 
+ - 数论-高斯消元
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P16.jpg"
+preview-img: "/img/preview/P16.jpg"
+---
+<p style="text-align:left" align="center">
+	<span style="color:blue;font-weight:bold"><span style="font-family:Microsoft YaHei;font-size:16px;">标签：高斯消元，数学</span></span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Description</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　有一个球形空间产生器能够在n维空间中产生一个坚硬的球体。现在，你被困在了这个n维球体中，你只知道球<br />
+	面上n+1个点的坐标，你需要以最快的速度确定这个n维球体的球心坐标，以便于摧毁这个球形空间产生器。</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Input</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　第一行是一个整数n(1&lt;=N=10)。接下来的n+1行，每行有n个实数，表示球面上一点的n维坐标。每一个实数精确到小数点<br />
+	后6位，且其绝对值都不超过20000。</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Output</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　有且只有一行，依次给出球心的n维坐标（n个实数），两个实数之间用一个空格隔开。每个实数精确到小数点<br />
+	后3位。数据保证有解。你的答案必须和标准输出一模一样才能够得分。</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Input</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0.0 0.0<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">-1.0 1.0<span style="background:rgb(141,184,255)"><br />
+	<br />
+	</span></span>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1.0 0.0</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">Sample Output</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0.500 1.500</span>
+</p>
+<p align="left">
+	<strong><span style="color:blue;"><span style="font-family:Microsoft YaHei;font-size:16px;">HINT</span></span></strong>
+</p>
+<p style="background:rgb(228,240,248)" align="left">
+	<span style="font-family:Microsoft YaHei;font-size:16px;">　　提示：给出两个定义：1、 球心：到球面上任意一点距离都相等的点。2、 距离：设两个n为空间上的点A, B<br />
+	<br />
+	的坐标为(a1, a2, …, an), (b1, b2, …, bn)，则AB的距离定义为：dist = sqrt( (a1-b1)^2 +(a2-b2)^2 +&nbsp;<br />
+	<br />
+	… + (an-bn)^2 )</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define LL long long
+#define mem(x,num) memset(x,num,sizeof x)
+#define eps 1e-8
+using namespace std;
+const int maxn=26;
+double f[maxn],a[maxn][maxn],t;
+double sqr(double x){return x*x;}
+int n,now=1,Next;
+int main()
+{
+	scanf(&quot;%d&quot;,&amp;n);
+	rep(i,1,n)scanf(&quot;%lf&quot;,&amp;f[i]);
+	rep(i,1,n)
+	    rep(j,1,n){
+	    	scanf(&quot;%lf&quot;,&amp;t);
+	    	a[i][j]=2*(t-f[j]);
+	    	a[i][n+1]+=sqr(t)-sqr(f[j]);
+	    }
+	rep(i,1,n){
+		for(Next=now;Next&lt;=n;Next++)if(fabs(a[Next][i])&gt;eps)break;
+	    if(Next&gt;n)continue;
+	    if(Next!=now)
+	        rep(j,1,n+1)swap(a[Next][j],a[now][j]);
+	    t=a[now][i];
+	    rep(j,1,n+1)a[now][j]/=t;
+	    rep(j,1,n)
+	        if(j!=now){
+	        	t=a[j][i];
+	        	rep(k,1,n+1)
+	        	    a[j][k]-=t*a[now][k];
+	        	}
+	    now++;
+	}
+	rep(i,now,n)
+	    if(fabs(a[i][n+1])&gt;eps)return 0;
+	rep(i,1,n-1)
+	    printf(&quot;%.3lf &quot;,a[i][n+1]);
+	printf(&quot;%.3lf\n&quot;,a[n][n+1]);
+	return 0;
+}</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

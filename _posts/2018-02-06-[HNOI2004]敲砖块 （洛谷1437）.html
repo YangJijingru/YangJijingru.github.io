@@ -1,0 +1,152 @@
+---
+tags: 
+ - DP-杂题
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P1.jpg"
+preview-img: "/img/preview/P1.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>标签：DP</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>题目描述</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">在一个凹槽中放置了 n 层砖块、最上面的一层有n 块砖，从上到下每层依次减少一块砖。每块砖</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">都有一个分值，敲掉这块砖就能得到相应的分值，如下图所示。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">14 15&nbsp;4&nbsp; 3&nbsp; 23</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;33&nbsp; 33 76&nbsp; 2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;&nbsp;2&nbsp;&nbsp; 13 11</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;&nbsp;&nbsp;&nbsp;22 23</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;31</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">如果你想敲掉第 i 层的第j 块砖的话，若i=1，你可以直接敲掉它；若i&gt;1，则你必须先敲掉第</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">i-1 层的第j 和第j+1 块砖。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">你现在可以敲掉最多 m 块砖，求得分最多能有多少。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入输出格式</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入格式：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输入文件的第一行为两个正整数 n 和m；接下来n 行，描述这n 层砖块上的分值a[i][j],满足</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0≤a[i][j]≤100。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">对于 100%的数据，满足1≤n≤50，1≤m≤n*(n+1)/2；</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输出格式：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输出文件仅一行为一个正整数，表示被敲掉砖块的最大价值总和。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入输出样例</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入样例#1：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">4 5</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2 2 3 4</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">8 2 7</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2 3</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">49</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输出样例#1：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">19</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">设f[i][j][k]表示前i行打到第j列，共打了k次所能得到的最大分数</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">注意要从右向左处理，不然很容易WA</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Code</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define rep(i,a,b) for(int i=a;i&lt;=b;i++)
+#define dep(i,a,b) for(int i=a;i&gt;=b;i--)
+#define mem(x,num) memset(x,num,sizeof x)
+#define LL long long
+using namespace std;
+const int maxn=60;
+int s[maxn][maxn],f[maxn][maxn][maxn*(maxn+1)/2],a[maxn][maxn];
+int n,m,ans=0,x;
+
+int main()
+{
+    mem(s,0);mem(f,-1);
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+    f[n+1][0][0]=0;
+    rep(i,1,n)
+        rep(j,1,n-i+1)scanf(&quot;%d&quot;,&amp;a[i][j]);
+    rep(j,1,n)
+        rep(i,1,n-j+1)s[i][j]=s[i][j-1]+a[j][i];
+    dep(i,n,1)
+        rep(j,0,n-i+1)
+            rep(k,j,m)
+                rep(r,j?j-1:0,n-i)
+                if(f[i+1][r][k-j]!=-1)
+                    f[i][j][k]=max(f[i][j][k],f[i+1][r][k-j]+s[i][j]);
+    rep(i,1,n)
+        rep(j,0,n-i+1)
+            ans=max(ans,f[i][j][m]);
+ /*   rep(i,1,n){
+        rep(j,0,i)
+           printf(&quot;%d &quot;,f[i][j][m]);
+       printf(&quot;\n&quot;);
+   }*/
+    printf(&quot;%d\n&quot;,ans);
+    return 0;
+}</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>
+<br />
