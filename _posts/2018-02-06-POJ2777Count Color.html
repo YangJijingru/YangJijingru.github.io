@@ -1,0 +1,229 @@
+---
+tags: 
+ - 数据结构-线段树
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P33.jpg"
+preview-img: "/img/preview/P73.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">POJ2777Count Color</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">标签：线段树</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">http://www.sakurasake.icoc.me/nd.jsp?id=8#_np=2_327<br />
+	</span>
+</p>
+<div align="center">
+	<table class=" " cellspacing="3" cellpadding="0" border="0">
+		<tbody>
+			<tr>
+				<td>
+					<p>
+						<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>Time Limit:</strong> 1000MS</span>
+					</p>
+				</td>
+				<td>
+					<span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+					</span>
+				</td>
+				<td>
+					<p>
+						<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>Memory Limit:</strong> 65536K</span>
+					</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Description</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Chosen Problem Solving and Program designas an optional course, you are required to solve all kinds of problems. Here,we get a new problem.<br />
+	<br />
+	There is a very long board with length L centimeter, L is a positive integer,so we can evenly divide the board into L segments, and they are labeled by 1,2, ... L from left to right, each is 1 centimeter long. Now we have to colorthe board - one segment with only one color. We can do following two operationson the board: <br />
+	<br />
+	1. &quot;C A B C&quot; Color the board from segment A to segment B with colorC. <br />
+	2. &quot;P A B&quot; Output the number of different colors painted betweensegment A and segment B (including).<br />
+	<br />
+	In our daily life, we have very few words to describe a color (red, green,blue, yellow…), so you may assume that the total number of different colors Tis very small. To make it simple, we express the names of colors as color 1,color 2, ... color T. At the beginning, the board was painted in color 1. Nowthe rest of problem is left to your. </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">First line of input contains L (1 &lt;= L&lt;= 100000), T (1 &lt;= T &lt;= 30) and O (1 &lt;= O &lt;= 100000). Here Odenotes the number of operations. Following O lines, each contains &quot;C A BC&quot; or &quot;P A B&quot; (here A, B, C are integers, and A may be largerthan B) as an operation defined previously.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Ouput results of the output operation inorder, each line contains a number.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Sample Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2 2 4</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">C 1 1 2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">P 1 2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">C 2 2 2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">P 1 2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Sample Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Source</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><a target="_blank" href="http://poj.org/searchproblem?field=source&amp;key=POJ+Monthly--2006.03.26">POJMonthly--2006.03.26</a>,dodo</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：颜色数T不多，只有30种，用二进制位运算表示当前区间的颜色情况，如果左子树颜色为101，右子树为011，那么父亲节点为两者的异或Xor运算，这样可以避免重复的情况</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">在每条命令更新时，我们需要考虑保证所有的节点都能够正确得代表段内颜色集合，那么每一次更新都需要涉及所有的父亲和孩子节点，复杂度过高</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">所以在这时我们引入lazy思想，当更新的区间与当前区间完全匹配时，直接在当前节点打上lazy标记，下次如果遇到lazy标记，直接push_down传递给左右两个儿子，自己标记清空，不需要做任何判断</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">所以，本题使用了成段更新，lazy标记，位运算加速</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">好厉害的样子2333</span>
+</p>
+<pre name="code" class="cpp"><span style="font-family:Microsoft YaHei;font-size:16px;">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#define maxn 100005
+struct data
+{
+   int a,b;
+   int color,lazy;
+}tree[maxn*4];
+
+int code(int x)
+{
+	return 1&lt;&lt;(x-1);
+}
+int uncode(int x)
+{
+	int t=0;
+	while(x&gt;0)
+	{
+		if((x%2)==1)t++;
+		x=x/2;
+	}
+	return t;
+}
+void build(int p,int l,int r)
+{
+	tree[p].a=l;tree[p].b=r;
+	tree[p].color=1;tree[p].lazy=0;
+	if(l==r)return;
+	build(p*2,l,(l+r)/2); 
+	build(p*2+1,(l+r)/2+1,r);
+}
+
+void change(int p,int l,int r,int w)
+{
+	if(tree[p].a==l&amp;&amp;tree[p].b==r)
+	{
+		tree[p].color=w;
+		if(l!=r)tree[p].lazy=1;
+		return;
+	}
+	else
+	{ 
+	    if(tree[p].lazy==1)
+	    {
+		    tree[p*2].lazy=tree[p*2+1].lazy=1;
+		    tree[p*2].color=tree[p*2+1].color=tree[p].color;
+		    tree[p].lazy=0;
+	    }
+	    int mid=(tree[p].a+tree[p].b)/2;
+	    if(r&lt;=mid)change(p*2,l,r,w);
+	    else if(l&gt;mid)change(p*2+1,l,r,w);
+	    else {change(p*2,l,mid,w);change(p*2+1,mid+1,r,w);}
+	}
+	tree[p].color=tree[p*2].color|tree[p*2+1].color;
+}
+
+int query(int p,int l,int r)
+{
+	if((tree[p].a==l&amp;&amp;tree[p].b==r)||tree[p].lazy==1)return tree[p].color;
+	else
+	{
+		int mid=(tree[p].a+tree[p].b)/2;
+		if(r&lt;=mid)query(p*2,l,r);
+		else if(l&gt;mid)query(p*2+1,l,r);
+		else return query(p*2,l,mid)|query(p*2+1,mid+1,r);
+	}
+}
+void swap(int x,int y)
+{
+	int t=x;
+	x=y;
+	y=t;
+}
+int main()
+{
+	int i,L,m,t,ans;
+	char ch;
+	while(scanf(&quot;%d%d%d&quot;,&amp;L,&amp;t,&amp;m)!=EOF)
+	{
+		build(1,1,L);
+		for(i=1;i&lt;=m;i++)
+		{
+			scanf(&quot; %c&quot;,&amp;ch);
+			if(ch=='C')
+			{
+			    int a,b,c;
+				scanf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);
+				c=code(c);
+				if(a&gt;b)swap(a,b);
+				change(1,a,b,c); 
+			}
+			else 
+			{
+				int st,en;
+				scanf(&quot;%d%d&quot;,&amp;st,&amp;en);
+				if(st&gt;en)swap(st,en);
+				ans=uncode(query(1,st,en));
+				printf(&quot;%d\n&quot;,ans);
+			}
+		}
+	}
+	return 0;
+}
+</span>
+</pre>
+<br />
+<br />
+
+<p>
+	<em>&nbsp;</em>
+</p>

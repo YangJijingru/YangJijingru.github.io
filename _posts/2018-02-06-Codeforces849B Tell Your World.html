@@ -1,0 +1,179 @@
+---
+tags: 
+ - 基础算法-模拟
+ - 计算几何-直线
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P22.jpg"
+preview-img: "/img/preview/P62.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">标签：模拟，计算几何</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Connect the countless points with lines,till we reach the faraway yonder.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">There are <em>n</em> points on a coordinateplane, the<em>i</em>-th of which being (<em>i</em>, <em>y<sub>i</sub></em>).</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Determine whether it's possible to draw twoparallel and non-overlapping lines, such that every point in the set lies on exactlyone of them, and each of them passes through at least one point in the set.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The first line of input contains a positiveinteger<em>n</em> (3 ≤ <em>n</em> ≤ 1 000) — the number of points.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The second line contains<em>n</em>space-separated integers<em>y</em><sub>1</sub>, <em>y</em><sub>2</sub>, ..., <em>y<sub>n</sub></em> ( - 10<sup>9</sup> ≤ <em>y<sub>i</sub></em> ≤ 10<sup>9</sup>) —the vertical coordinates of each point.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output &quot;Yes&quot; (without quotes) ifit's possible to fulfill the requirements, and &quot;No&quot; otherwise.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">You can print each letter in any case(upper or lower).</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Example</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">5<br />
+	7 5 8 6 9</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Yes</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">5<br />
+	-1 -2 0 0 -5</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">No</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">5<br />
+	5 4 3 2 1</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">No</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">5<br />
+	1000000000 0 0 0 0</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Yes</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Note</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In the first example, there are fivepoints: (1, 7), (2, 5), (3, 8), (4, 6) and (5, 9). It'spossible to draw a line that passes through points 1, 3, 5, and another one that passes throughpoints 2, 4 and is parallel to the first one.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In the second example, while it's possibleto draw two lines that cover all points, they cannot be made parallel.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In the third example, it's impossible tosatisfy both requirements at the same time.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">题意：给你一些点的坐标，问能否用两条平行且不重叠的直线完全覆盖这些点</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：这个B题在比赛的时候貌似卡了不少人，竟然会出计算几何的题目，比赛当时只有暴力的思路，但是O（n^3）肯定会TLE的啊，简直药丸，连B题都搞不了了</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">第二天早上补题的时候才知道正解思路只用枚举（1,3）（1,2）（2,3）这三种情况，分别算出各情况的斜率和截距，然后带入其他点验证即可。如果不在当前直线的点，再次计算斜率，判断是否完全覆盖和平行就好了</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">当时的自己那么菜，too young too naïve!</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">参考代码</span>
+</p>
+<pre name="code" class="cpp"><span style="font-family:Microsoft YaHei;font-size:16px;">#include&lt;bits/stdc++.h&gt;
+#define eps 1e-7
+using namespace std;
+inline int read()
+{
+	int f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+
+int y[1005],n;
+bool v[1005];
+bool check(double k,int b)
+{
+	memset(v,0,sizeof(v));
+	int cnt=0,pos=0;
+	for(int i=1;i&lt;=n;i++)
+		if(y[i]-b==k*(i-1))
+		{
+			v[i]=true;
+			cnt++;
+		}
+		else if(pos==0)pos=i;
+//	cout&lt;&lt;pos&lt;&lt;' '&lt;&lt;cnt&lt;&lt;endl;
+	if(cnt==n)return false;
+	if(cnt==n-1)return true;
+	for(int i=pos+1;i&lt;=n;i++)
+	    if(!v[i]&amp;&amp;fabs((double)(y[i]-y[pos])/(i-pos)-k)&gt;eps)return false;
+	return true;
+}
+
+	
+int main()
+{
+	n=read();
+	for(int i=1;i&lt;=n;i++)y[i]=read();
+    if(check(1.0*(y[2]-y[1]),y[1])|check(0.5*(y[3]-y[1]),y[1])|check(1.0*(y[3]-y[2]),y[2]-(y[3]-y[2])))
+        printf(&quot;Yes\n&quot;);
+    else printf(&quot;No\n&quot;);
+    return 0;
+}
+</span>
+</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

@@ -1,0 +1,145 @@
+---
+tags: 
+ - 基础算法-模拟
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P23.jpg"
+preview-img: "/img/preview/P63.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>标签：模拟</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">From beginning till end, this message hasbeen waiting to be conveyed.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">For a given unordered multiset of<em>n</em>lowercase English letters (&quot;multi&quot; means that a letter may appearmore than once), we treat all letters as strings of length 1, and repeat thefollowing operation<em>n</em> - 1 times:</span>
+</p>
+<ul type="disc">
+	<li>
+		<span style="font-family:Microsoft YaHei;font-size:16px;">Remove any two elements<em>s</em> and <em>t</em> from the set, and add their concatenation <em>s</em> + <em>t</em> to the set.</span>
+	</li>
+</ul>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The cost of such operation is defined to be, where<em>f</em>(<em>s</em>, <em>c</em>) denotes the number of times character<em>c</em> appears in string<em>s</em>.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Given a non-negative integer<em>k</em>,construct any valid non-empty set of no more than 100 000 letters, such that the minimum accumulative cost of the wholeprocess is exactly<em>k</em>. It can be shown that a solution always exists.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The first and only line of input contains anon-negative integer<em>k</em> (0 ≤ <em>k</em> ≤ 100 000) — the required minimum cost.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output a non-empty string of no more than 100 000 lowercase English letters — any multiset satisfying therequirements, concatenated to be a string.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Note that the printed string doesn't needto be the final concatenated string. It only needs to represent an unorderedmultiset of letters.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Example</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">12</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">abababab</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">codeforces</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Note</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">For the multiset {'a', 'b', 'a', 'b', 'a', 'b','a', 'b'}, one of the ways to complete the process is as follows:</span>
+</p>
+<ul type="disc">
+	<li>
+		<span style="font-family:Microsoft YaHei;font-size:16px;">{&quot;ab&quot;, &quot;a&quot;, &quot;b&quot;, &quot;a&quot;, &quot;b&quot;, &quot;a&quot;, &quot;b&quot;}, with a cost of 0;</span>
+	</li>
+	<li>
+		<span style="font-family:Microsoft YaHei;font-size:16px;">{&quot;aba&quot;, &quot;b&quot;, &quot;a&quot;, &quot;b&quot;, &quot;a&quot;, &quot;b&quot;}, with a cost of 1;</span>
+	</li>
+	<li>
+		<span style="font-family:Microsoft YaHei;font-size:16px;">{&quot;abab&quot;, &quot;a&quot;, &quot;b&quot;, &quot;a&quot;, &quot;b&quot;}, with a cost of 1;</span>
+	</li>
+	<li>
+		<span style="font-family:Microsoft YaHei;font-size:16px;">{&quot;abab&quot;, &quot;ab&quot;, &quot;a&quot;, &quot;b&quot;}, with a cost of 0;</span>
+	</li>
+	<li>
+		<span style="font-family:Microsoft YaHei;font-size:16px;">{&quot;abab&quot;, &quot;aba&quot;, &quot;b&quot;}, with a cost of 1;</span>
+	</li>
+	<li>
+		<span style="font-family:Microsoft YaHei;font-size:16px;">{&quot;abab&quot;, &quot;abab&quot;}, with a cost of 1;</span>
+	</li>
+	<li>
+		<span style="font-family:Microsoft YaHei;font-size:16px;">{&quot;abababab&quot;}, with a cost of 8.</span>
+	</li>
+</ul>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The total cost is 12, and it can be provedto be the minimum cost of the process.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">题意：给你一个字符串序列的最小价值，求该字符串本身，反正题意十分不明确</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">最小价值：定义每个小写字母在字符串中出现x次，那么cost=sum(x*(x+1)/2)</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">题目中那些玄学的价值计算方法都是浮云，实际上就是反着倒退模拟，</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">参考代码</span>
+</p>
+<pre name="code" class="cpp"><span style="font-family:Microsoft YaHei;font-size:16px;">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+
+int n,k;
+int main()
+{
+	cin&gt;&gt;n;
+	for(int i=1;i&lt;=26;i++)
+	{
+		k=1;
+		while(k*(k+1)/2&lt;=n)k++;
+		n-=k*(k-1)/2;
+		for(int j=1;j&lt;=k;j++)printf(&quot;%c&quot;,'a'+i-1);
+	}
+	return 0;
+}
+</span></pre>
+<span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+</span><br />
+
+<p>
+	<br />
+	
+</p>

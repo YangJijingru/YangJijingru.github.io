@@ -1,0 +1,102 @@
+---
+tags: 
+ - 数据结构-线段树
+ - 知识学习
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P35.jpg"
+preview-img: "/img/preview/P75.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">线段树模板</span>
+</p>
+<pre name="code" class="cpp">#include&lt;bits/stdc++.h&gt;
+#define maxn 100000
+using namespace std;
+inline int read()
+{
+	int f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+struct node
+{
+	int a,b;//表示区间起始结束点
+	int Max,Min,Sum;
+}tree[maxn&lt;&lt;1];
+int v,k;
+
+void change(int p,int k,int v)
+{
+	if(tree[p].a==tree[p].b&amp;&amp;tree[p].a==k)
+	{
+		tree[p].Max=v; tree[p].Min=v; tree[p].Sum=v; return;
+	}
+	else 
+	{
+		int mid=(tree[p].a+tree[p].b)&gt;&gt;1;
+		if(k&lt;=mid)change(p*2,k,v);
+		else change(p*2+1,k,v);
+		tree[p].Min=min(tree[p*2].Min,tree[p*2+1].Min);
+		tree[p].Max=max(tree[p*2].Max,tree[p*2+1].Max);
+		tree[p].Sum=tree[p*2].Sum+tree[p*2+1].Sum;
+	}
+}
+void build(int p,int l,int r)
+{
+	tree[p].a=l;tree[p].b=r;
+	if(l==r)return;
+	else
+	{
+		build(p*2,l,(l+r)/2);
+		build(p*2+1,(l+r)/2+1,r);
+	}
+}//建立标记，并无实际操作
+
+int queryMax(int p,int l,int r)
+{
+	if(tree[p].a==l&amp;&amp;tree[p].b==r)return tree[p].Max;
+	int mid=(tree[p].a+tree[p].b)/2;
+	if(mid&gt;=r)return queryMax(p*2,l,r);
+	if(mid&lt;l)return queryMax(p*2+1,l,r);
+	return max(queryMax(p*2,l,mid),queryMax(p*2+1,mid+1,r));
+}
+int queryMin(int p,int l,int r)
+{
+	if(tree[p].a==l&amp;&amp;tree[p].b==r)return tree[p].Min;
+	int mid=(tree[p].a+tree[p].b)/2;
+	if(mid&gt;=r)return queryMin(p*2,l,r);
+	if(mid&lt;l)return queryMin(p*2+1,l,r);
+	return min(queryMin(p*2,l,mid),queryMin(p*2+1,mid+1,r));
+}
+int querySum(int p,int l,int r)
+{
+	if(tree[p].a==l&amp;&amp;tree[p].b==r)return tree[p].Sum;
+	int mid=(tree[p].a+tree[p].b)/2;
+	if(mid&gt;=r) return querySum(p*2,l,r);
+	if(mid&lt;l) return querySum(p*2+1,l,r);
+	return (querySum(p*2,l,mid)+querySum(p*2+1,mid+1,r)); 
+}
+int main()
+{
+	int n=read(),m=read();
+	build(1,1,n);
+	for(int i=1;i&lt;=n;i++)
+	{
+		int x=read();
+		change(1,i,x);
+	}
+	for(int i=1;i&lt;=m;i++)
+	{
+		int x=read(),y=read();
+		cout&lt;&lt;queryMax(1,x,y)&lt;&lt;&quot; &quot;&lt;&lt;queryMin(1,x,y)&lt;&lt;&quot; &quot;&lt;&lt;querySum(1,x,y)&lt;&lt;endl;
+	}
+	return 0;
+}
+</pre>
+<br />
+<br />
+<br />
+<br />

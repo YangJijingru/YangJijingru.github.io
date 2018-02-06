@@ -1,0 +1,252 @@
+---
+tags: 
+ - 数据结构-树状数组
+ - 数据结构-线段树
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P26.jpg"
+preview-img: "/img/preview/P66.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>HDU1394 Minimum Inversion Number</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>标签：线段树，树状数组</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>http://www.sakurasake.icoc.me/nd.jsp?id=7#_np=2_327<br />
+	</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>Time Limit: 2000/1000 MS(Java/Others)&nbsp;&nbsp;&nbsp;&nbsp;Memory Limit: 65536/32768 K (Java/Others)<br />
+	<br />
+	</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Problem Description</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The inversion number of a given numbersequence a1, a2, ..., an is the number of pairs (ai, aj) that satisfy i &lt; jand ai &gt; aj.<br />
+	<br />
+	For a given sequence of numbers a1, a2, ..., an, if we move the first m &gt;= 0numbers to the end of the seqence, we will obtain another sequence. There aretotally n such sequences as the following:<br />
+	<br />
+	a1, a2, ..., an-1, an (where m = 0 - the initial seqence)<br />
+	a2, a3, ..., an, a1 (where m = 1)<br />
+	a3, a4, ..., an, a1, a2 (where m = 2)<br />
+	...<br />
+	an, a1, a2, ..., an-1 (where m = n-1)<br />
+	<br />
+	You are asked to write a program to find the minimum inversion number out ofthe above sequences.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The input consists of a number of testcases. Each case consists of two lines: the first line contains a positiveinteger n (n &lt;= 5000); the next line contains a permutation of the nintegers from 0 to n-1.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">For each case, output the minimum inversionnumber on a single line.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Sample Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">10</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 3 6 9 0 8 5 7 4 2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Sample Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">16</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Author</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">CHEN, Gaoli</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Source</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><a target="_blank" href="http://acm.hdu.edu.cn/search.php?field=problem&amp;key=ZOJ+Monthly%2C+January+2003&amp;source=1&amp;searchmode=source">ZOJMonthly, January 2003</a></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：快速求逆序数，暴力算法主要分为两步：穷举逆序数，通过公式推出结果</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">公式为sum=sum-a[i]+(n-a[i]-1)</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">第二步几乎不可能优化，所以可以使用线段树优化第一步，时间复杂度为O(n log n)</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">当然通过树状数组应该也可以<del>，就没有写代码了2333</del></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">举个栗子</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">序列3,2,5,4,0,1</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3之前没有数大于它本身，val[1]=0</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2之前有3大于它，val[2]=1</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">5之前没有数大于它本身，val[3]=0</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">4之前有5大于它，val[4]=1</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0之前有3,2,5,4，大于它，val[5]=4</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1之前有3,2,5,4大于它，val[6]=5</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">所以实际上，每插入val[i]，就查询在[val[i],n-1]之间的数的个数，依次累加即可</span>
+</p>
+<pre name="code" class="cpp"><span style="font-family:Microsoft YaHei;font-size:16px;">#include&lt;iostream&gt;
+#include&lt;iomanip&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;ctime&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;algorithm&gt;
+#include&lt;vector&gt;
+#include&lt;queue&gt;
+#include&lt;stack&gt;
+#define LL(x) ((x)&lt;&lt;1)
+#define RR(x) ((x)&lt;&lt;1|1)
+inline int read()
+{
+    int f=1,x=0;char ch=getchar();
+    while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+    while(ch&gt;='0'&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+    return x*f;
+}
+using namespace std;
+
+struct Seg_Tree
+{
+    int left,right,val;
+    int calmid()
+    {
+        return (left+right)/2;
+    }
+}tt[15000];
+
+int val[5001];
+
+void make(int left,int right,int idx)
+{
+    tt[idx].left=left;
+    tt[idx].right=right;
+    tt[idx].val=0;
+    if(left==right)return;
+    int mid=tt[idx].calmid();
+    make(left,mid,LL(idx));
+    make(mid+1,right,RR(idx));
+}
+
+int query(int left,int right,int idx)
+{
+    if(left==tt[idx].left&amp;&amp;right==tt[idx].right) return tt[idx].val;
+    int mid=tt[idx].calmid();
+    if(right&lt;=mid)return query(left,right,LL(idx));
+    else if(mid&lt;left)return query(left,right,RR(idx));
+    else return query(left,mid,LL(idx))+query(mid+1,right,RR(idx));
+}
+
+void change(int id,int idx)
+{
+    tt[idx].val++;
+    if(tt[idx].left==tt[idx].right)return;
+    int mid=tt[idx].calmid();
+    if(id&lt;=mid)
+        change(id,LL(idx));
+    else change(id,RR(idx));
+}
+int main()
+{
+    int i,n,sum;
+    while(scanf(&quot;%d&quot;,&amp;n)==1)
+    {
+        make(0,n-1,1);
+        for(i=0;i&lt;n;i++)sum=0;
+        for(i=0;i&lt;n;i++)
+        {
+            scanf(&quot;%d&quot;,&amp;val[i]);
+            sum+=query(val[i],n-1,1);
+            change(val[i],1);
+        }
+        int ret=sum;
+        for(i=0;i&lt;n;i++)
+        {
+            sum=sum-val[i]+(n-val[i]-1);
+            ret=min(ret,sum);
+        }
+        printf(&quot;%d\n&quot;,ret);
+    }
+    return 0;
+}
+</span>
+</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

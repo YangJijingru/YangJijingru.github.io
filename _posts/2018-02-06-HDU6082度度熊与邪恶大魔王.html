@@ -1,0 +1,394 @@
+---
+tags: 
+ - DP-背包
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P29.jpg"
+preview-img: "/img/preview/P69.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>HDU6082度度熊与邪恶大魔王</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>标签：DP，背包问题</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong><a target="_blank" href="http://www.sakurasake.icoc.me/nd.jsp?id=10">http://www.sakurasake.icoc.me/nd.jsp?id=10</a></strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>Time Limit: 2000/1000 MS(Java/Others)&nbsp;&nbsp;&nbsp;&nbsp;Memory Limit: 32768/32768 K (Java/Others)<br />
+	<br />
+	</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Problem Description</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">度度熊为了拯救可爱的公主，于是与邪恶大魔王战斗起来。<br />
+	<br />
+	邪恶大魔王的麾下有n个怪兽，每个怪兽有a[i]的生命值，以及b[i]的防御力。<br />
+	<br />
+	度度熊一共拥有m种攻击方式，第i种攻击方式，需要消耗k[i]的晶石，造成p[i]点伤害。<br />
+	<br />
+	当然，如果度度熊使用第i个技能打在第j个怪兽上面的话，会使得第j个怪兽的生命值减少p[i]-b[j]，当然如果伤害小于防御，那么攻击就不会奏效。<br />
+	<br />
+	如果怪兽的生命值降为0或以下，那么怪兽就会被消灭。<br />
+	<br />
+	当然每个技能都可以使用无限次。<br />
+	<br />
+	请问度度熊最少携带多少晶石，就可以消灭所有的怪兽。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">本题包含若干组测试数据。<br />
+	<br />
+	第一行两个整数n，m,表示有n个怪兽，m种技能。<br />
+	<br />
+	接下来n行，每行两个整数，a[i],b[i]，分别表示怪兽的生命值和防御力。<br />
+	<br />
+	再接下来m行，每行两个整数k[i]和p[i]，分别表示技能的消耗晶石数目和技能的伤害值。<br />
+	<br />
+	数据范围:<br />
+	<br />
+	1&lt;=n&lt;=100000<br />
+	<br />
+	1&lt;=m&lt;=1000<br />
+	<br />
+	1&lt;=a[i]&lt;=1000<br />
+	<br />
+	0&lt;=b[i]&lt;=10<br />
+	<br />
+	0&lt;=k[i]&lt;=100000<br />
+	<br />
+	0&lt;=p[i]&lt;=1000</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">对于每组测试数据，输出最小的晶石消耗数量，如果不能击败所有的怪兽，输出-1</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Sample Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3 5</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">7 10</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">6 8</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3 5</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">10 7</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">8 6</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Sample Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">6</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">18</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Source</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><a target="_blank" href="http://acm.hdu.edu.cn/search.php?field=problem&amp;key=2017%26quot%3B%B0%D9%B6%C8%D6%AE%D0%C7%26quot%3B%B3%CC%D0%F2%C9%E8%BC%C6%B4%F3%C8%FC+-+%D7%CA%B8%F1%C8%FC&amp;source=1&amp;searchmode=source">2017&quot;百度之星&quot;程序设计大赛 - 资格赛 </a></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">这题明显是个背包问题，但是仔细观察，发现用完全背包最正常的写法时间复杂度为O（n*m），肯定TLE，所以优化。看题目给出的数据大小，可以在计算时计算生命值从1-1000，防御值0-10的所有情况，然后将所有符合对应的情况的怪兽加起来，计算出消耗最小的晶石数量</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">具体一点说：把怪兽的生命值当成背包的体积，每个技能的伤害值当成每个物品的大小，每个技能的晶石数当成这个物品的花费，目的是把每个背包填满或更多，求每个背包的最小花费就可以了</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">对于第u个技能来说，如果p[u]&lt;=j，说明根本打不出伤害，不用管。<br />
+	反之，伤害则temp<strong>=p[u]-j</strong>这时候 又有两种情况： <br />
+	如果temp&gt;=j，说明靠这一个技能就够打出足够伤害了，那么肯定是用消耗晶石最少的那个技能</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">F[i][j]表示消灭生命力为i，防御值为j的怪物需要最小的晶石数</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">状态转移方程为：F[i][j]=min(f[i-(p[num]-j)][j]+k[num];</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">参考代码如下：</span>
+</p>
+<pre name="code" class="cpp"><span style="font-family:Microsoft YaHei;font-size:16px;">#include&lt;bits/stdc++.h&gt;
+#define LL long long
+using namespace std;
+inline LL read()
+{
+	LL f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+const int maxn=100005;
+const int maxm=1005;
+
+LL a[maxn],b[maxn],k[maxm],p[maxm];
+LL f[maxm][15];
+inline LL max(LL a,LL b)
+{
+	return a&gt;b?a:b;
+}
+inline LL min(LL a,LL b)
+{
+	return a&lt;b?a:b;
+}
+int main()
+{
+	LL n,m;
+	while(scanf(&quot;%lld%lld&quot;,&amp;n,&amp;m)!=EOF)
+	{
+		LL up1=0,up2=0,hp=0;
+		for(int i=1;i&lt;=n;i++)
+		{
+			a[i]=read(),b[i]=read();
+			up1=max(up1,b[i]);
+			hp=max(hp,a[i]);
+		}
+		for(int i=1;i&lt;=m;i++)
+		{
+			k[i]=read(),p[i]=read();
+			up2=max(up2,p[i]);
+		}
+		if(up1&gt;=up2)
+		{
+			cout&lt;&lt;&quot;-1\n&quot;;
+			continue;
+		}
+		memset(f,0,sizeof(f));
+        for(int i=1;i&lt;=hp;i++)//穷举每个幽灵生命值--相当于背包中的总重量
+            for(int j=0;j&lt;=10;j++)//穷举每个幽灵防御值
+            {
+                f[i][j]=1e18;
+                for(int num=1;num&lt;=m;num++)//num魔法的序号，使用第num 个魔法:1.2..m
+            	{
+                    LL temp=p[num]-j;//算：伤害值-防御值
+                    if(temp&lt;=0)continue;//魔法不管用，继续使用下一个魔法
+                    if(temp&gt;=i)f[i][j]=min(f[i][j],k[num]);//如果第num魔法》=生命值i，那一招打死，最小能量为
+                                       //自己和k[num],第num
+                    else f[i][j]=min(f[i][j],f[i-temp][j]+k[num]);//否则看本身的小还是使用生命值减少+消耗能量
+	            }
+            }
+        LL ans=0;//把n个幽灵全部打死：第一个幽灵f[a[1][b[1]]);第2个幽灵f[a[2][b[2]]);
+	    for(int i=1;i&lt;=n;i++)ans+=f[a[i]][b[i]];
+       	cout&lt;&lt;ans&lt;&lt;endl;
+	}
+	return 0;
+}
+
+</span></pre>
+<span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+</span>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">And else 在别处看到了这个题的另一个包装</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">实质上都是同一个问题，无区别</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">-------------------------------------------------------------------------------</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">恶魔城是一款风靡全亚洲的rpg游戏，游戏的设定是这样的：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">你控制的主角叫贝尔蒙特，你需要打败恶魔城中的 n个幽灵才能获得最终的胜利，每个幽灵有生命值a[i]和魔法护盾防御值b[i]。贝尔蒙特一共有m种魔法攻击，第i种魔法需要消耗能量k[i]，造成p[i]点伤害。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">如果贝尔蒙特使用第i种魔法打在第j个幽灵身上，会使得第j个幽灵的生命值减少p[i]-b[j], 当然如果伤害小于魔法护盾，那么攻击就不会奏效。如果幽灵的生命值降为0或以下，那么就会被消灭。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">每个魔法可以无限次使用，请问贝尔蒙特最少消耗多少能量，就可以消灭所有幽灵。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输入描述 Input Description</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">多组测试数据</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">每组数据第一行两个整数n，m（表示n个幽灵，m种魔法）。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">接下来n行，每行两个整数a[i]，b[i]，分别表示幽灵的生命值和魔法护盾值。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">接下来m行，每行两个整数k[i]，p[i]，分别表示第i种魔法消耗的能量值和造成的伤害值。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输出描述 Output Description</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">对于每组测试数据，输出最小的能量消耗，如果不能击败所有的幽灵，输出-1。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">样例输入 Sample Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3 5</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">7 10</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">6 8</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3 5</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">10 7</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">8 6</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">样例输出 Sample Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">6</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">18</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">数据范围及提示 Data Size &amp; Hint</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">40%数据：</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1&lt;=n&lt;=100</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1&lt;=m&lt;=100</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1&lt;=a[i]&lt;=100</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0&lt;=b[i]&lt;=10</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0&lt;=k[i]&lt;=1000</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0&lt;=p[i]&lt;=100</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">100%数据</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1&lt;=n&lt;=100000</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1&lt;=m&lt;=1000</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1&lt;=a[i]&lt;=1000</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0&lt;=b[i]&lt;=10</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0&lt;=k[i]&lt;=100000</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0&lt;=p[i]&lt;=1000</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">数据来源 Source</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">2017年暑假包河区初中组测试</span>
+</p>
+<br />

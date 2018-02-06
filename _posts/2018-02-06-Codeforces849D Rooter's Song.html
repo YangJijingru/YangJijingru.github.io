@@ -1,0 +1,198 @@
+---
+tags: 
+ - 基础算法-模拟
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P24.jpg"
+preview-img: "/img/preview/P64.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">标签：模拟</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Wherever the destination is, whoever wemeet, let's render this song together.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">On a Cartesian coordinate plane lies arectangular stage of size<em>w</em> × <em>h</em>, represented by a rectangle withcorners (0, 0), (<em>w</em>, 0), (<em>w</em>, <em>h</em>) and (0, <em>h</em>).</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">On the sides of the stage stand<em>n</em>dancers. The <em>i</em>-th of them falls into one of the following groups:</span>
+</p>
+<ul type="disc">
+	<li>
+		<span style="font-family:Microsoft YaHei;font-size:16px;">Vertical: stands at (<em>x<sub>i</sub></em>, 0), moves in positive<em>y</em> direction (upwards); </span>
+	</li>
+	<li>
+		<span style="font-family:Microsoft YaHei;font-size:16px;">Horizontal: stands at (0, <em>y<sub>i</sub></em>), moves in positive<em>x</em> direction (rightwards). </span>
+	</li>
+</ul>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">According to choreography, the<em>i</em>-thdancer should stand still for the first <em>t<sub>i</sub></em> milliseconds, andthen start moving in the specified direction at 1 unit per millisecond, untilanother border is reached. It is guaranteed that no two dancers have the samegroup, position and waiting time at the same time.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">When two dancers collide (i.e. are on thesame point at some time when both of them are moving), they immediatelyexchange their moving directions and go on.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Dancers stop when a border of the stage isreached. Find out every dancer's stopping position.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The first line of input contains threespace-separated positive integers<em>n</em>, <em>w</em> and <em>h</em> (1 ≤ <em>n</em> ≤ 100 000, 2 ≤ <em>w</em>, <em>h</em> ≤ 100 000) — the number of dancers and the width and height of the stage,respectively.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The following <em>n</em> lines each describesa dancer: the<em>i</em>-th among them contains three space-separated integers <em>g<sub>i</sub></em>,<em>p<sub>i</sub></em>, and<em>t<sub>i</sub></em> (1 ≤ <em>g<sub>i</sub></em> ≤ 2, 1 ≤ <em>p<sub>i</sub></em> ≤ 99 999, 0 ≤ <em>t<sub>i</sub></em> ≤ 100 000), describing a dancer's group<em>g<sub>i</sub></em>(<em>g<sub>i</sub></em> = 1 — vertical, <em>g<sub>i</sub></em> = 2 — horizontal), position, and waitingtime. If<em>g<sub>i</sub></em> = 1 then <em>p<sub>i</sub></em> = <em>x<sub>i</sub></em>; otherwise<em>p<sub>i</sub></em> = <em>y<sub>i</sub></em>. It's guaranteed that 1 ≤ <em>x<sub>i</sub></em> ≤ <em>w</em> - 1 and 1 ≤ <em>y<sub>i</sub></em> ≤ <em>h</em> - 1. It is guaranteed that no two dancershave the same group, position and waiting time at the same time.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output <em>n</em> lines, the<em>i</em>-th ofwhich contains two space-separated integers (<em>x<sub>i</sub></em>, <em>y<sub>i</sub></em>) — the stopping positionof the<em>i</em>-th dancer in the input.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Example</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">8 10 8<br />
+	1 1 10<br />
+	1 4 13<br />
+	1 7 1<br />
+	1 8 2<br />
+	2 2 0<br />
+	2 5 14<br />
+	2 6 0<br />
+	2 6 1</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">4 8<br />
+	10 5<br />
+	8 8<br />
+	10 6<br />
+	10 2<br />
+	1 8<br />
+	7 8<br />
+	10 6</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">3 2 3<br />
+	1 1 2<br />
+	2 1 1<br />
+	1 1 5</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 3<br />
+	2 1<br />
+	1 3</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Note</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">The first example corresponds to theinitial setup in the legend, and the tracks of dancers are marked withdifferent colours in the following figure.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">In the second example, no dancers collide.</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">题意：有许多舞者位于舞台边界，她们会在指定的等待时间过后上场，初始朝着固定的方向走向终点，行进速度相同，在舞台上若两人发生碰撞（即同一时间点重合），那么两人各自交换方向，问最终各个舞者的终点</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">分析：两人相撞的过程实际上就是互相交换，总体来说对她们的终点位置不发生影响，影响的是两人的终点对应关系，和一道入门题（蚂蚁过独木桥）蛮像的</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">两人相撞的条件是：（初始位置-等待时间）相等</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">相撞后的对应终点匹配关系可以通过排序来解决，具体有严谨的数学证明，然而本蒟蒻不会证，官方的题解也是看得一知半解，总觉得怪怪的，但还好AC了</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">参考代码</span>
+</p>
+<pre name="code" class="cpp"><span style="font-family:Microsoft YaHei;font-size:16px;">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+inline int read()
+{
+	int f=1,x=0;char ch=getchar();
+	while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+	return x*f;
+}
+int n,w,h;
+const int maxt=100005,maxn=250000,maxw=200005;
+int g[maxn],p[maxn],t[maxn],x[maxn];
+pair&lt;int,int&gt;ans[maxn];
+vector&lt;int&gt;vx[maxn],vy[maxn];
+
+bool cmp(int x,int y)
+{
+    return p[x]&lt;p[y];
+}
+
+int main()
+{
+	n=read(),w=read(),h=read();
+	for(int i=1;i&lt;=n;i++)
+	{
+		g[i]=read(),p[i]=read(),t[i]=read();
+		x[i]=p[i]-t[i]+1e5;
+		if(g[i]==1)vx[x[i]].push_back(i);
+		else vy[x[i]].push_back(i);
+	}
+	for(int i=1;i&lt;=2e5;i++)
+	{
+		int lx=vx[i].size();
+		int ly=vy[i].size();
+		sort(vx[i].begin(),vx[i].end(),cmp);
+		sort(vy[i].begin(),vy[i].end(),cmp);
+		for(int j=0;j&lt;lx;j++)
+		{
+			int id=vx[i][j];
+			int right=lx-j;
+			if(right&gt;ly)ans[id]=make_pair(p[vx[i][j+ly]],h);
+			else ans[id]=make_pair(w,p[vy[i][right-1]]);
+		}
+		for(int j=0;j&lt;ly;j++)
+		{
+			int id=vy[i][j];
+			int up=ly-j;
+			if(up&gt;lx)ans[id]=make_pair(w,p[vy[i][j+lx]]);
+			else ans[id]=make_pair(p[vx[i][up-1]],h);
+		}
+	}
+	for(int i=1;i&lt;=n;i++)printf(&quot;%d %d\n&quot;,ans[i].first,ans[i].second);
+	return 0;
+}
+</span></pre>
+<span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+</span><br />
+
+<p>
+	<br />
+	
+</p>

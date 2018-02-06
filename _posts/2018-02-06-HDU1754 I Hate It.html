@@ -1,0 +1,235 @@
+---
+tags: 
+ - 数据结构-线段树
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P28.jpg"
+preview-img: "/img/preview/P68.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>HDU1754&nbsp;I Hate It</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>标签：线段树</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>http://www.sakurasake.icoc.me/nd.jsp?id=5#_np=2_327<br />
+	</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>Time Limit: 9000/3000 MS(Java/Others)&nbsp;&nbsp;&nbsp;&nbsp;Memory Limit: 32768/32768 K (Java/Others)<br />
+	<br />
+	</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Problem Description</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">很多学校流行一种比较的习惯。老师们很喜欢询问，从某某到某某当中，分数最高的是多少。<br />
+	这让很多学生很反感。<br />
+	<br />
+	不管你喜不喜欢，现在需要你做的是，就是按照老师的要求，写一个程序，模拟老师的询问。当然，老师有时候需要更新某位同学的成绩。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">本题目包含多组测试，请处理到文件结束。<br />
+	在每个测试的第一行，有两个正整数 N 和 M (0&lt;N&lt;=200000,0&lt;M&lt;5000 )，分别代表学生的数目和操作的数目。<br />
+	学生ID编号分别从1编到N。<br />
+	第二行包含N个整数，代表这N个学生的初始成绩，其中第i个数代表ID为i的学生的成绩。<br />
+	接下来有M行。每一行有一个字符 C (只取'Q'或'U') ，和两个正整数A，B。<br />
+	当C为'Q'的时候，表示这是一条询问操作，它询问ID从A到B(包括A,B)的学生当中，成绩最高的是多少。<br />
+	当C为'U'的时候，表示这是一条更新操作，要求把ID为A的学生的成绩更改为B。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">对于每一次询问操作，在一行里面输出最高成绩。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Sample Input</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">5 6</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 2 3 4 5</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Q 1 5</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">U 3 6</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Q 3 4</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Q 4 5</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">U 2 9</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Q 1 5</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Sample Output</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">5</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">6</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">5</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">9</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong><em>Hint</em></strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Huge input,the C function scanf() will workbetter than cin</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><em>&nbsp;</em></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">Source</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><a target="_blank" href="http://acm.hdu.edu.cn/search.php?field=problem&amp;key=2007%CA%A1%C8%FC%BC%AF%D1%B5%B6%D3%C1%B7%CF%B0%C8%FC%A3%A86%A3%A9_linle%D7%A8%B3%A1&amp;source=1&amp;searchmode=source">2007省赛集训队练习赛（6）_linle专场</a></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">建立一个静态线段树，直接维护区间最值即可</span>
+</p>
+<pre name="code" class="cpp"><span style="font-family:Microsoft YaHei;font-size:16px;">#include&lt;iostream&gt;
+#include&lt;iomanip&gt;
+#include&lt;cmath&gt;
+#include&lt;ctime&gt;
+#include&lt;cstring&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;algorithm&gt;
+#include&lt;vector&gt;
+#include&lt;queue&gt;
+#include&lt;stack&gt;
+#include&lt;bitset&gt;
+#define INF 200001
+inline int read()
+{
+    int f=1,x=0;char ch=getchar();
+    while(ch&lt;'0'||ch&gt;'9'){if(ch=='-')f=-1;ch=getchar();}
+    while(ch&gt;='0'&amp;&amp;ch&lt;='9'){x=x*10+ch-'0';ch=getchar();}
+    return x*f;
+}
+struct data
+{
+    int l,r,max;
+}t[3*INF];
+
+int score[INF];
+
+int Max(int a,int b)
+{
+    return a&gt;b?a:b;
+}
+
+void make(int i,int j,int num)
+{
+    t[num].l=i;
+    t[num].r=j;
+    if(i==j)t[num].max=score[i];
+    else
+    {
+        make(i,(i+j)/2,2*num);
+        make(((i+j)/2)+1,j,2*num+1);
+        t[num].max=Max(t[num*2].max,t[num*2+1].max);
+    }
+}
+    
+void change(int pos,int val,int num)
+{
+    t[num].max=Max(val,t[num].max);
+    if(t[num].l==t[num].r)return;
+    if(pos&lt;=t[num*2].r) change(pos,val,num*2);
+    else change(pos,val,num*2+1);
+}
+
+int query(int i,int j,int num)
+{
+    if(i==t[num].l&amp;&amp;j==t[num].r) return t[num].max;
+    if(j&lt;=t[num*2].r) return query(i,j,num*2);
+    if(i&gt;=t[num*2+1].l) return query(i,j,num*2+1);
+    int mid=(t[num].l+t[num].r)/2;
+    return Max(query(i,mid,2*num),query(mid+1,j,2*num+1));
+}
+
+int main()
+{
+    int n,m;
+    while(scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF)
+    {
+        int i;
+        for(i=1;i&lt;=n;i++)score[i]=read();
+        //for(i=1;i&lt;=n;i++)scanf(&quot;%d&quot;,&amp;score[i]);
+        //getchar();
+        char c;
+        int s,e;
+        make(1,n,1);
+        for(i=1;i&lt;=m;i++)
+        {
+            scanf(&quot;%c&quot;,&amp;c);
+            s=read();e=read();
+            //getchar();
+            if(c=='U')change(s,e,1);
+            if(c=='Q')printf(&quot;%d\n&quot;,query(s,e,1));
+        }
+    }
+    return 0;
+}
+
+</span></pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>

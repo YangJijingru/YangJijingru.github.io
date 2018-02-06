@@ -1,0 +1,284 @@
+---
+tags: 
+ - 基础算法-模拟
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P30.jpg"
+preview-img: "/img/preview/P70.jpg"
+---
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>标签：模拟</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong><a target="_blank" href="http://www.sakurasake.icoc.me/nd.jsp?id=11#_np=103_318">http://www.sakurasake.icoc.me/nd.jsp?id=11#_np=103_318</a></strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>题目描述</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">小南有一套可爱的玩具小人, 它们各有不同的职业。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">有一天, 这些玩具小人把小南的眼镜藏了起来。 小南发现玩具小人们围成了一个圈,它们有的面朝圈内,有的面朝圈外。如下图:</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">这时singer告诉小南一个谜題: “眼镜藏在我左数第3个玩具小人的右数第1个玩具小人的左数第2个玩具小人那里。 ”</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">小南发现, 这个谜题中玩具小人的朝向非常关键, 因为朝内和朝外的玩具小人的左右方向是相反的: 面朝圈内的玩具小人, 它的左边是顺时针方向, 右边是逆时针方向; 而面向圈外的玩具小人, 它的左边是逆时针方向, 右边是顺时针方向。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">小南一边艰难地辨认着玩具小人, 一边数着:</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">singer朝内, 左数第3个是archer。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">archer朝外,右数第1个是thinker。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">thinker朝外, 左数第2个是writer。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">所以眼镜藏在writer这里!</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">虽然成功找回了眼镜, 但小南并没有放心。 如果下次有更多的玩具小人藏他的眼镜, 或是谜題的长度更长, 他可能就无法找到眼镜了 。 所以小南希望你写程序帮他解决类似的谜題。这样的谜題具体可以描述为:</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">有 n个玩具小人围成一圈, 已知它们的职业和朝向。现在第1个玩具小人告诉小南一个包含 m条指令的谜題, 其中第 z条指令形如“左数/右数第 s,个玩具小人”。你需要输出依次数完这些指令后,到达的玩具小人的职业。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入输出格式</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入格式：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输入的第一行包含西个正整数 n,m, 表示玩具小人的个数和指令的条数。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">接下来 n行, 每行包含一个整数和一个字符串, 以逆时针为顺序给出每个玩具小人的朝向和职业。其中0表示朝向圈内, 1表示朝向圈外。保证不会出现其他的数。字符串长度不超过10且仅由小写字母构成, 字符串不为空, 并且字符串两两不同。 整数和字符串之问用一个空格隔开。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">接下来 m行,其中第 z行包含两个整数 a,,s,,表示第z条指令。若 a,= 0,表示向左数 s,个人;若a,= 1 ,表示向右数 s,个人。保证a,不会出现其他的数, 1≤ s,&lt;n 。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输出格式：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">输出一个字符串, 表示从第一个读入的小人开始, 依次数完 m条指令后到达的小人的职业。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入输出样例</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入样例#1：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">7 3</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0 singer</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0 reader</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0 mengbier </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 thinker</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 archer</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0 writer</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 mogician </span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0 3</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 1</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0 2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输出样例#1：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">writer</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输入样例#2：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">10 10</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 C</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0 r</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0 P</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 d</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 e</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 m</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 t</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 y</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 u</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0 V</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 7</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 1</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 4</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0 5</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0 3</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0 1</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 6</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1 2</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0 8</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">0 4</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>输出样例#2：</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">y</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><strong>说明</strong></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">【样例1说明】</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">这组数据就是【题目描述】 中提到的例子。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">【子任务】</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">子任务会给出部分测试数据的特点。 如果你在解决题目中遇到了困难, 可以尝试只解决一部分测试数据。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">每个测试点的数据规模及特点如下表:</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">其中一些简写的列意义如下:</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">• 全朝内: 若为“√”, 表示该测试点保证所有的玩具小人都朝向圈内;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">全左数:若为“√”,表示该测试点保证所有的指令都向左数,即对任意的</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1≤z≤m, ai=0;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">s,= 1:若为“√”,表示该测试点保证所有的指令都只数1个,即对任意的</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">1≤z≤m, si=1;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">职业长度为1 :若为“√”,表示该测试点保证所有玩具小人的职业一定是一个</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">长度为1的字符串。</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">&nbsp;</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;"><br />
+	</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">这题考试的时候竟然第一遍代码把顺时针逆时针写反了2333，自己真的好菜啊，虽然还是拿到满分<del>（如果这种送分题不拿满分，还考什么提高组）</del></span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">在洛谷上交的时候，竟然把读入写错了，啊，这题简直有毒</span>
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:16px;">直接贴代码</span>
+</p>
+<pre name="code" class="cpp"><span style="font-family:Microsoft YaHei;font-size:16px;">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+
+struct node 
+{
+	int head;
+	string name;
+}a[100005];
+
+int n,m,x,y;
+int main()
+{
+	cin&gt;&gt;n&gt;&gt;m;
+	for(int i=0;i&lt;n;i++)
+	{
+		cin&gt;&gt;a[i].head&gt;&gt;a[i].name;
+	}
+	int now=0;
+	for(int i=1;i&lt;=m;i++)
+	{
+		cin&gt;&gt;x&gt;&gt;y;
+		if(a[now].head==0&amp;&amp;x==0)now=(now+n-y)%n;
+		else if(a[now].head==0&amp;&amp;x==1)now=(now+y)%n;
+		else if(a[now].head==1&amp;&amp;x==0)now=(now+y)%n;
+		else if(a[now].head==1&amp;&amp;x==1)now=(now+n-y)%n;
+	}
+	cout&lt;&lt;a[now].name&lt;&lt;endl;
+	return 0;
+}</span>
+</pre>
+<br />
+<br />
+
+<p>
+	<br />
+	
+</p>
