@@ -1,9 +1,13 @@
 ---
 layout: page
 title: "Player"
-description: "无论何时我们的恋情都是10厘米"
+description: "一如既往，万事胜意"
 header-img: "img/orange new.png"
 ---
+
+<script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=135215938&sid=1769059251&mode=js"></script>
+
+# 无论何时我们的恋情都是10厘米
 
 >春天 初恋 樱花的颜色
 >
