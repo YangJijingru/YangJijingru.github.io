@@ -5,35 +5,25 @@ description: "OIER,AFSer,伪文青,五迷,航迷"
 header-img: "img/orange.jpg"
 ---
 
+<script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=135215938&sid=1770692726&mode=js"></script>
+
 # 正文
 
 一个来自安徽省弱校的OIER **yjjr**，现就读于**Hefei NO.6**
 
+[洛谷](https://www.luogu.org/)常任题库管理员，负责题目管理、题解审核、翻译审核
+
 准出国党，参加2018-2019年度AFS去瑞士交流一年
 
-喜欢民谣&&文学（话说从这个背景音乐就能看出来吧），但是有着理工男的思维，追逐梦想的OIer
+喜欢民谣和文学（话说从这个背景音乐就能看出来吧），但是有着理工男的思维，追逐梦想的OIer
 
 关于**qwerty**这个id，是英文键盘第一行的前六个字母。
 
 **本人QQ：184438748**  欢迎与我联系，同时也欢迎互换友链。      
-
-# 外链
-                      
+                
 - [我的CSDN博客](http://blog.csdn.net/qwerty1125)
 
 - [我的洛谷博客](https://www.luogu.org/blog/yjjr/#)
-
-- [zmd](http://blog.csdn.net/dadatu_zhao)
-
-- [creatorlxd](https://creatorlxd.github.io)
-
-- [jrx](http://www.jrxblog.top)
-
-- [acheing](https://www.cnblogs.com/acheing)
-
-- [hzwer](http://hzwer.com)
-
-- [menci](https://oi.men.ci/)
 
 # 博客事迹
 
