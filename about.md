@@ -63,6 +63,8 @@ header-img: "img/orange.jpg"
 
 - 2017-11-20 在GitHub pages上搭建完毕
 
+<script type="text/javascript" src="http://www.xiami.com/widget/player-wall?uid=135215938&direction=H&size=M&type=artist&mode=js"></script>
+
 <!-- //分享 -->
 <div class="bdsharebuttonbox">
   <br>
