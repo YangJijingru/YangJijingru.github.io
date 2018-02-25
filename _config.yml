@@ -62,7 +62,7 @@ sidebar-avatar: /img/aboutme.jpg      # use absolute URL, seeing it's used in bo
 
 # Featured Tags
 featured-tags: true                     # whether or not using Feature-Tags
-featured-condition-size: 6              # A tag will be featured if the size of it is more than this condition value
+featured-condition-size: 10              # A tag will be featured if the size of it is more than this condition value
 
 # Google Analytics
 ga_track_id: 'UA-113461844-1'            
