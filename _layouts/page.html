@@ -57,7 +57,6 @@ layout: default
                         <li><a href="{{friend.href}}">{{friend.title}}</a></li>
                     {% endfor %}
                 </ul>
-                <embed src="http://www.xiami.com/widget/135215938_135215938_235_346_5695c1_457cb4_1/shufflePlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque"></embed>
                 {% endif %}
             </div>
 
@@ -99,8 +98,8 @@ layout: default
                 </section>
                 {% endif %}
                 <!-- yiyan -->
-
-<h5><a href="{{'/tags/' | prepend: site.baseurl }}">『 一言 』</a></h5>
+                <hr>
+                <h5>『 一言 』</h5>
 <script type="text/javascript" src="https://api.lwl12.com/hitokoto/main/get?encode=js&charset=utf-8"></script><div id="lwlhitokoto"><script>lwlhitokoto()</script></div>
                 <!-- Short About -->
                 <section class="visible-md visible-lg">
@@ -209,6 +208,9 @@ layout: default
                     s.parentNode.insertBefore(gcse, s);
                   })();
                 </script>
+                <!-- MUSIC -->
+                <hr>
+                <h5>MUSIC PLAYER</h5>
                 <script type="text/javascript" src="http://www.xiami.com/widget/player-multi?uid=135215938&sid=1775037466,143408,1776054010,130762,1772446368,2067234,1775449134,1774086926,1771115364,1769167647,&width=235&height=346&mainColor=5695c1&backColor=457cb4&autoplay=1&mode=js"></script>
                 <!-- Friends Blog -->
                 {% if site.friends %}
