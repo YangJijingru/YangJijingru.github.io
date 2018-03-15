@@ -7,6 +7,8 @@ header-img: "img/orange.jpg"
 
 <script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=135215938&sid=1770692726&mode=js"></script>
 
+![](https://s1.ax1x.com/2018/03/15/94x3cj.jpg)
+
 # 正文
 
 一个来自安徽省弱校的OIER **yjjr**，现就读于**Hefei NO.6**

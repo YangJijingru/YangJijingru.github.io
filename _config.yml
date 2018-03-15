@@ -3,9 +3,9 @@ title: yjjr's blog
 SEOTitle: yjjr's blog
 header-img: img/cnfeat.jpg
 email: 18056072060@163.com
-description: "yjjr的个人博客"
-keyword: "OIER,AFSer,伪文青,五迷,航迷"
-url: "https://www.yangjijingru.com"              # your host, for absolute URL
+description: "杨季敬汝的博客"
+keyword: "杨季敬汝,yjjr,yangjijingru,luogu,洛谷,OIER yjjr"
+url: "https://yangjijingru.com"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
 
@@ -17,7 +17,7 @@ zhihu_username:     yang-ji-jing-ru
 github_username:    YangJijingru
 #jianshu_username:   016a5ba708a0
 #twitter_username:  huxpro
-facebook_username:  jijingru.yang
+#facebook_username:  jijingru.yang
 # linkedin_username:  firstname-lastname-idxxxx
 
 
