@@ -41,16 +41,16 @@ layout: default
                     <h2 class="subheading">{{ page.subtitle }}</h2>
                     {% comment %} endif {% endcomment %}
                     <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }}</span>
+
                     {% assign count = 0 %}
 {% for post in site.posts %}
     {% assign single_count = post.content | strip_html | strip_newlines | remove: " " | size %}
     {% assign count = count | plus: single_count %}
+    {% assign costtime =  page.content | strip_html | strip_newlines | remove: " " | size | divided_by: 350 | plus: 1 %} 
 {% endfor %}
 
-{% if count > 10000 %}
-    {{ count | divided_by: 10000 }} 万 {{ count | modulo: 10000 }}
-{% else %}
-    {{ count }}
+<h3>本文共{{ count }}字,阅读全文大概需要{{ costtime }}分钟</h3>
+
 {% endif %} 
                     </span>
                 </div>
