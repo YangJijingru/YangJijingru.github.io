@@ -21,11 +21,14 @@ description: "时光是一支开弓后的箭，只向前，不后退"
 {% endfor %}
 
 {% for post in site.posts %}
-    {% assign year = post.date | date: '%Y' %}
-    {% assign nyear = post.next.date | date: '%Y' %}
+    {% assign year = post.date | date: '%m' %}
+    {% assign nyear = post.next.date | date: '%m' %}
     {% if year != nyear %}
-## {{ post.date | date: '%Y' }}
+## {{ post.date | date: '%m' }}
 {:.archive-title}
     {% endif %}
-* {{ post.date | date: '%m-%d' }} &raquo; [{{ post.title }}]({{ post.url }} "{{ post.title }}"){:.archive-item-link}
+  <font color="#4078c0">{{ post.date | date: "%B %-d, %Y" }} -> &nbsp;&nbsp;
+  <a color="#4078c0" target="_blank" href="{{ post.url | prepend: site.baseurl }}">  {{ post.title }}
+  </a>
+  </font>
 {% endfor %}
