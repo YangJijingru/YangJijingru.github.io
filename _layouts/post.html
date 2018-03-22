@@ -49,7 +49,7 @@ layout: default
     {% assign count = count | plus: single_count %}
 {% endfor %}
     {% assign costtime =  count | strip_html | strip_newlines | remove: " " | size | divided_by: 350 | plus: 1 %} 
-<h3>本文共{{ count }}字,阅读全文大概需要{{ costtime }}分钟</h3>
+<h3 class="meta">阅读全文大概需要{{ costtime }}分钟</h3>
 
                     </span>
                 </div>
