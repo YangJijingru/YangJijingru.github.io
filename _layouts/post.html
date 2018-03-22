@@ -47,9 +47,10 @@ layout: default
 {% for post in site.posts %}
     {% assign single_count = post.content | strip_html | strip_newlines | remove: " " | size %}
     {% assign count = count | plus: single_count %}
+    {% assign costtime =  count | strip_html | strip_newlines | remove: " " | size | divided_by: 60000 | plus: 1 %} 
 {% endfor %}
-    {% assign costtime =  count | strip_html | strip_newlines | remove: " " | size | divided_by: 350 | plus: 1 %} 
-<h3 class="meta">阅读全文大概需要{{ costtime }}分钟</h3>
+
+<span class="meta">阅读全文大概需要{{ costtime }}分钟</span>
 
                     </span>
                 </div>
