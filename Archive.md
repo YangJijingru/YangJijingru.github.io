@@ -7,27 +7,6 @@ description: "时光是一支开弓后的箭，只向前，不后退"
 
 ## Blogs
 
-<hr>
-
-{% for post in site.posts %}
-    {% assign year = post.date | date: '%m' %}
-    {% assign nyear = post.next.date | date: '%m' %}
-    {% if year != nyear %}
-## {{ post.date | date: '%B , %Y' }}
-<hr>
-{:.archive-title}
-    {% endif %}
-<div class="post-preview">
-
-  <font color="#4078c0">{{ post.date | date: "%B %-d, %Y" }} -> &nbsp;&nbsp;
-  <a color="#4078c0" target="_blank" href="{{ post.url | prepend: site.baseurl }}">  {{ post.title }}
-  </a>
-  </font>
-
-</div>
-<hr>
-{% endfor %}
-
 {% assign count = 1 %}
 {% for post in site.posts reversed %}
     {% assign year = post.date | date: '%m' %}
@@ -49,6 +28,7 @@ description: "时光是一支开弓后的箭，只向前，不后退"
     {% assign nyear = post.next.date | date: '%m' %}
     {% if year != nyear %}
 ## {{ post.date | date: '%B , %Y' }} ({{ counts[i] }})
+<hr>
 {:.archive-title}
         {% assign i = i | plus: 1 %}
     {% endif %}
