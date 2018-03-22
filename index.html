@@ -50,6 +50,6 @@ header-img: "img/orange new.png"
 </ul>
 {% endif %}
 
-<li><a href="{{ paginator.total_pages | prepend: site.baseurl }}">Last Page &rarr;</a></li>
-<li><a href="/page{{paginator.total_pages}}/">末页</a></li>
-<li><a href="#">第{{paginator.page}}页 / 共{{paginator.total_pages}}页</a></li>
+<h3><a href="/page{{paginator.total_pages}}/">To Last Page</a></h3>
+<hr>
+<h3><a href="#">Page {{paginator.page}} / Total {{paginator.total_pages}}</a></h3>
