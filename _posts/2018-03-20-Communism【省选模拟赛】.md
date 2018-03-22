@@ -1,4 +1,4 @@
-﻿---
+---
 subtitle: "用莫队和稀疏表乱搞"
 tags: 
  - 数据结构-线段树
@@ -16,7 +16,7 @@ preview-img: "/img/preview/P45.jpg"
 
 # 题目
 
-![这里写图片描述](//img-blog.csdn.net/20180320214359821?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L3F3ZXJ0eTExMjU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+![](https://img-blog.csdn.net/20180320214359821?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L3F3ZXJ0eTExMjU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
 # 分析
 
