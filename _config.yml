@@ -72,7 +72,10 @@ ga_domain: auto
 chrome-tab-theme-color: "#000000"
 service-worker: true
 
-
+# leancloud:
+enable: true
+app_id: OojNMXHus5CGWbOzejok17o8-9Nh9j0Va
+app_key: l7RNTYaJR4Cw5DrdiYphHWMt
 
 #Friends
 friends: [
