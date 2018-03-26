@@ -5,7 +5,7 @@ description: "OIER,AFSer,伪文青,五迷,航迷"
 header-img: "img/orange.jpg"
 ---
 
-<script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=135215938&sid=1770692726&mode=js"></script>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=459168788&auto=1&height=66"></iframe>
 
 ![](https://s1.ax1x.com/2018/03/15/94x3cj.jpg)
 
@@ -19,7 +19,15 @@ header-img: "img/orange.jpg"
 
 喜欢民谣和文学（话说从这个背景音乐就能看出来吧），但是有着理工男的思维，追逐梦想的OIer
 
-关于**qwerty**这个id，是英文键盘第一行的前六个字母。
+常用id:
+
+**yjjr**
+
+**yj1125**
+
+**qwerty**
+
+**YangJijingru**
 
 **本人QQ：184438748**  欢迎与我联系，同时也欢迎互换友链。      
                 
@@ -28,6 +36,8 @@ header-img: "img/orange.jpg"
 - [我的洛谷博客](https://www.luogu.org/blog/yjjr/#)
 
 # 博客事迹
+
+- 2018-03-26 博客图库更新完毕
 
 - 2018-03-22 重构归档页面，加入文章单独浏览量
 
