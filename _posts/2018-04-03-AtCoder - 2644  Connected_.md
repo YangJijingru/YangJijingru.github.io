@@ -14,7 +14,7 @@ preview-img: "/img/preview/P94.jpg"
 
 [题目传送门](https://cn.vjudge.net/problem/AtCoder-2644)
 
-在r*c的矩形中有n对点，问是否存在一种方案连接每一对点，同时连线不能相交。
+在$$r\times c$$的矩形中有n对点，问是否存在一种方案连接每一对点，同时连线不能相交。
 
 n<=100000
 

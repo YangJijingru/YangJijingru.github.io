@@ -21,11 +21,11 @@ You are given a string s consisting of n lowercase English letters, and m querie
 For each query, print the maximum size of a consistent set of occurrences of t in s.
 
 ## Input
-The first line contains two space-separated integers n and m: the length of string s and the number of queries (1 ≤ n ≤ 105, 1 ≤ m ≤ 105).
+The first line contains two space-separated integers n and m: the length of string s and the number of queries (1 ≤ n ≤ $$10^5$$, 1 ≤ m ≤ $$10^5$$).
 
 The second line contains the string s consisting of n lowercase English letters.
 
-Each of the next m lines contains a single string ti consisting of lowercase English letters: the i-th query (1 ≤ |ti| ≤ n, where |ti| is the length of the string ti).
+Each of the next m lines contains a single string ti consisting of lowercase English letters: the i-th query (1 ≤ abs(ti) ≤ n, where abs(ti) is the length of the string ti).
 
 It is guaranteed that the total length of all ti does not exceed 105 characters.
 
@@ -51,11 +51,11 @@ aaaa
 ```
 # 分析
 
-显然，对于一个字符串S，考虑其中本质不同的长度只有$\sqrt m$个，所以我们对每个起点预处理出$\sqrt m$个hash值，然后将答案存入Map
+显然，对于一个字符串S，考虑其中本质不同的长度只有$$\sqrt m$$个，所以我们对每个起点预处理出$$\sqrt m$$个hash值，然后将答案存入Map
 
 之后对每个询问，排序后直接计算hash查询就好了
 
-时间复杂度$O(n \sqrt n)$
+时间复杂度$$O(n \sqrt n)$$
 
 # code
 ```
