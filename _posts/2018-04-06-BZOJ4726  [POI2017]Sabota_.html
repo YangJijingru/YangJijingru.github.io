@@ -1,0 +1,129 @@
+﻿---
+subtitle: "非套路题"
+tags: 
+ - DP-树形
+grammar_cjkRuby: true
+catalog: true
+layout:  post
+header-img: "img/header/P87.jpg"
+preview-img: "/img/preview/P87.jpg"
+---
+<p>标签：树形DP</p>
+
+
+
+<h1 id="题目">题目</h1>
+
+<p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4726">题目传送门</a></p>
+
+
+
+<h2 id="description">Description</h2>
+
+<p>某个公司有n个人, 上下级关系构成了一个有根树。其中有个人是叛徒(这个人不知道是谁)。对于一个人, 如果他下属(直接或者间接, 不包括他自己)中叛徒占的比例超过x，那么这个人也会变成叛徒，并且他的所有下属都会变成叛徒。你要求出一个最小的x，使得最坏情况下，叛徒的个数不会超过k。</p>
+
+
+
+<h2 id="input">Input</h2>
+
+<p>第一行包含两个正整数n,k(1&lt;=k&lt;=n&lt;=500000)。 <br>
+接下来n-1行，第i行包含一个正整数p[i+1]，表示i+1的父亲是p[i+1] (<span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-9-Frame" tabindex="0" style="position: relative;" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mn>1</mn><mo>&amp;#x2264;</mo><mi>p</mi><mo stretchy=&quot;false&quot;>[</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo stretchy=&quot;false&quot;>]</mo><mo>&amp;#x2264;</mo><mi>i</mi></math>" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-96" style="width: 7.659em; display: inline-block;"><span style="display: inline-block; position: relative; width: 6.357em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.305em, 1006.3em, 2.607em, -999.997em); top: -2.185em; left: 0em;"><span class="mrow" id="MathJax-Span-97"><span class="mn" id="MathJax-Span-98" style="font-family: MathJax_Main;">1</span><span class="mo" id="MathJax-Span-99" style="font-family: MathJax_Main; padding-left: 0.263em;">≤</span><span class="mi" id="MathJax-Span-100" style="font-family: MathJax_Math-italic; padding-left: 0.263em;">p</span><span class="mo" id="MathJax-Span-101" style="font-family: MathJax_Main;">[</span><span class="mi" id="MathJax-Span-102" style="font-family: MathJax_Math-italic;">i</span><span class="mo" id="MathJax-Span-103" style="font-family: MathJax_Main; padding-left: 0.211em;">+</span><span class="mn" id="MathJax-Span-104" style="font-family: MathJax_Main; padding-left: 0.211em;">1</span><span class="mo" id="MathJax-Span-105" style="font-family: MathJax_Main;">]</span><span class="mo" id="MathJax-Span-106" style="font-family: MathJax_Main; padding-left: 0.263em;">≤</span><span class="mi" id="MathJax-Span-107" style="font-family: MathJax_Math-italic; padding-left: 0.263em;">i</span></span><span style="display: inline-block; width: 0px; height: 2.19em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.372em; border-left: 0px solid; width: 0px; height: 1.316em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>1</mn><mo>≤</mo><mi>p</mi><mo stretchy="false">[</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo stretchy="false">]</mo><mo>≤</mo><mi>i</mi></math></span></span><script type="math/tex" id="MathJax-Element-9">1\leq p[i+1]\leq i</script>)。</p>
+
+<h2 id="output">Output</h2>
+
+<p>输出一行一个实数x，误差在10^-6以内都被认为是正确的。</p>
+
+
+
+<h2 id="sample-input">Sample Input</h2>
+
+
+
+<pre class="prettyprint"><code class=" hljs ">9 3
+1
+1
+2
+2
+2
+3
+7
+3</code></pre>
+
+
+
+<h2 id="sample-output">Sample Output</h2>
+
+
+
+<pre class="prettyprint"><code class=" hljs ">0.6666666667</code></pre>
+
+
+
+<h2 id="hint">HINT</h2>
+
+<p>答案中的x实际上是一个无限趋近于2/3但是小于2/3的数 <br>
+因为当x取2/3时，最坏情况下3，7，8，9都是叛徒，超过了k=3。</p>
+
+
+
+<h1 id="分析">分析</h1>
+
+<p>一眼看出个假的二分套路，然后没法在O(n)的时间内验证实数答案的正确性</p>
+
+<p>正解是个树形DP</p>
+
+<p>我们考虑取反的情况，设状态f[i]表示i不带头叛变的最小的实数x</p>
+
+<p><span class="MathJax_Preview" style="color: inherit; display: none;"></span><div class="MathJax_Display" style="text-align: center;"><span class="MathJax" id="MathJax-Element-37-Frame" tabindex="0" style="text-align: center; position: relative;" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot;><mi>f</mi><mo stretchy=&quot;false&quot;>[</mo><mi>i</mi><mo stretchy=&quot;false&quot;>]</mo><mo>=</mo><mo movablelimits=&quot;true&quot; form=&quot;prefix&quot;>max</mo><mo stretchy=&quot;false&quot;>(</mo><mo movablelimits=&quot;true&quot; form=&quot;prefix&quot;>min</mo><mo stretchy=&quot;false&quot;>(</mo><mi>f</mi><mo stretchy=&quot;false&quot;>[</mo><mi>s</mi><mi>o</mi><mi>n</mi><mo stretchy=&quot;false&quot;>]</mo><mo>,</mo><mfrac><mrow><mi>s</mi><mi>i</mi><mi>z</mi><mi>e</mi><mo stretchy=&quot;false&quot;>[</mo><mi>s</mi><mi>o</mi><mi>n</mi><mo stretchy=&quot;false&quot;>]</mo></mrow><mrow><mi>s</mi><mi>i</mi><mi>z</mi><mi>e</mi><mo stretchy=&quot;false&quot;>[</mo><mi>x</mi><mo stretchy=&quot;false&quot;>]</mo><mo>&amp;#x2212;</mo><mn>1</mn></mrow></mfrac><mo stretchy=&quot;false&quot;>)</mo><mo stretchy=&quot;false&quot;>)</mo></math>" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-523" style="width: 18.961em; display: inline-block;"><span style="display: inline-block; position: relative; width: 15.784em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(0.576em, 1015.68em, 3.336em, -999.997em); top: -2.185em; left: 0em;"><span class="mrow" id="MathJax-Span-524"><span class="mi" id="MathJax-Span-525" style="font-family: MathJax_Math-italic;">f<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.055em;"></span></span><span class="mo" id="MathJax-Span-526" style="font-family: MathJax_Main;">[</span><span class="mi" id="MathJax-Span-527" style="font-family: MathJax_Math-italic;">i</span><span class="mo" id="MathJax-Span-528" style="font-family: MathJax_Main;">]</span><span class="mo" id="MathJax-Span-529" style="font-family: MathJax_Main; padding-left: 0.263em;">=</span><span class="mo" id="MathJax-Span-530" style="font-family: MathJax_Main; padding-left: 0.263em;">max</span><span class="mo" id="MathJax-Span-531" style="font-family: MathJax_Main;">(</span><span class="mo" id="MathJax-Span-532" style="font-family: MathJax_Main;">min</span><span class="mo" id="MathJax-Span-533" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-534" style="font-family: MathJax_Math-italic;">f<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.055em;"></span></span><span class="mo" id="MathJax-Span-535" style="font-family: MathJax_Main;">[</span><span class="mi" id="MathJax-Span-536" style="font-family: MathJax_Math-italic;">s</span><span class="mi" id="MathJax-Span-537" style="font-family: MathJax_Math-italic;">o</span><span class="mi" id="MathJax-Span-538" style="font-family: MathJax_Math-italic;">n</span><span class="mo" id="MathJax-Span-539" style="font-family: MathJax_Main;">]</span><span class="mo" id="MathJax-Span-540" style="font-family: MathJax_Main;">,</span><span class="mfrac" id="MathJax-Span-541" style="padding-left: 0.159em;"><span style="display: inline-block; position: relative; width: 4.69em; height: 0px; margin-right: 0.107em; margin-left: 0.107em;"><span style="position: absolute; clip: rect(3.128em, 1003.75em, 4.43em, -999.997em); top: -4.737em; left: 50%; margin-left: -1.924em;"><span class="mrow" id="MathJax-Span-542"><span class="mi" id="MathJax-Span-543" style="font-family: MathJax_Math-italic;">s</span><span class="mi" id="MathJax-Span-544" style="font-family: MathJax_Math-italic;">i</span><span class="mi" id="MathJax-Span-545" style="font-family: MathJax_Math-italic;">z<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mi" id="MathJax-Span-546" style="font-family: MathJax_Math-italic;">e</span><span class="mo" id="MathJax-Span-547" style="font-family: MathJax_Main;">[</span><span class="mi" id="MathJax-Span-548" style="font-family: MathJax_Math-italic;">s</span><span class="mi" id="MathJax-Span-549" style="font-family: MathJax_Math-italic;">o</span><span class="mi" id="MathJax-Span-550" style="font-family: MathJax_Math-italic;">n</span><span class="mo" id="MathJax-Span-551" style="font-family: MathJax_Main;">]</span></span><span style="display: inline-block; width: 0px; height: 4.013em;"></span></span><span style="position: absolute; clip: rect(3.128em, 1004.48em, 4.43em, -999.997em); top: -3.279em; left: 50%; margin-left: -2.289em;"><span class="mrow" id="MathJax-Span-552"><span class="mi" id="MathJax-Span-553" style="font-family: MathJax_Math-italic;">s</span><span class="mi" id="MathJax-Span-554" style="font-family: MathJax_Math-italic;">i</span><span class="mi" id="MathJax-Span-555" style="font-family: MathJax_Math-italic;">z<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mi" id="MathJax-Span-556" style="font-family: MathJax_Math-italic;">e</span><span class="mo" id="MathJax-Span-557" style="font-family: MathJax_Main;">[</span><span class="mi" id="MathJax-Span-558" style="font-family: MathJax_Math-italic;">x</span><span class="mo" id="MathJax-Span-559" style="font-family: MathJax_Main;">]</span><span class="mo" id="MathJax-Span-560" style="font-family: MathJax_Main; padding-left: 0.211em;">−</span><span class="mn" id="MathJax-Span-561" style="font-family: MathJax_Main; padding-left: 0.211em;">1</span></span><span style="display: inline-block; width: 0px; height: 4.013em;"></span></span><span style="position: absolute; clip: rect(0.836em, 1004.69em, 1.201em, -999.997em); top: -1.247em; left: 0em;"><span style="display: inline-block; overflow: hidden; vertical-align: 0em; border-top: 1.3px solid; width: 4.69em; height: 0px;"></span><span style="display: inline-block; width: 0px; height: 1.044em;"></span></span></span></span><span class="mo" id="MathJax-Span-562" style="font-family: MathJax_Main;">)</span><span class="mo" id="MathJax-Span-563" style="font-family: MathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.19em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -1.247em; border-left: 0px solid; width: 0px; height: 3.066em;"></span></span></nobr><span class="MJX_Assistive_MathML MJX_Assistive_MathML_Block" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>f</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>=</mo><mo movablelimits="true" form="prefix">max</mo><mo stretchy="false">(</mo><mo movablelimits="true" form="prefix">min</mo><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">[</mo><mi>s</mi><mi>o</mi><mi>n</mi><mo stretchy="false">]</mo><mo>,</mo><mfrac><mrow><mi>s</mi><mi>i</mi><mi>z</mi><mi>e</mi><mo stretchy="false">[</mo><mi>s</mi><mi>o</mi><mi>n</mi><mo stretchy="false">]</mo></mrow><mrow><mi>s</mi><mi>i</mi><mi>z</mi><mi>e</mi><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo><mo>−</mo><mn>1</mn></mrow></mfrac><mo stretchy="false">)</mo><mo stretchy="false">)</mo></math></span></span></div><script type="math/tex; mode=display" id="MathJax-Element-37">f[i]=\max (\min (f[son],\frac {size[son]} {size[x]-1} ))</script></p>
+
+<p>那么我们对所有子树大小&gt;k的f值取max即是答案</p>
+
+<h1 id="code">code</h1>
+
+
+
+<pre class="prettyprint"><code class=" hljs cpp"><span class="hljs-preprocessor">#include&lt;iostream&gt;</span>
+<span class="hljs-preprocessor">#include&lt;cstdio&gt;</span>
+<span class="hljs-preprocessor">#include&lt;cstdlib&gt;</span>
+<span class="hljs-preprocessor">#include&lt;cmath&gt;</span>
+<span class="hljs-preprocessor">#include&lt;cstring&gt;</span>
+<span class="hljs-preprocessor">#include&lt;algorithm&gt;</span>
+<span class="hljs-preprocessor">#define rep(i,a,b) for(int i=a;i&lt;=b;i++)</span>
+<span class="hljs-preprocessor">#define dep(i,a,b) for(int i=a;i&gt;=b;i--)</span>
+<span class="hljs-preprocessor">#define ll long long</span>
+<span class="hljs-preprocessor">#define mem(x,num) memset(x,num,sizeof x)</span>
+<span class="hljs-preprocessor">#define reg(x) for(int i=last[x];i;i=e[i].next)</span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-keyword">inline</span> ll read(){
+    ll f=<span class="hljs-number">1</span>,x=<span class="hljs-number">0</span>;<span class="hljs-keyword">char</span> ch=getchar();
+    <span class="hljs-keyword">while</span>(ch&lt;<span class="hljs-string">'0'</span>||ch&gt;<span class="hljs-string">'9'</span>){<span class="hljs-keyword">if</span>(ch==<span class="hljs-string">'-'</span>)f=-<span class="hljs-number">1</span>;ch=getchar();}
+    <span class="hljs-keyword">while</span>(ch&gt;=<span class="hljs-string">'0'</span>&amp;&amp;ch&lt;=<span class="hljs-string">'9'</span>){x=x*<span class="hljs-number">10</span>+ch-<span class="hljs-string">'0'</span>;ch=getchar();}
+    <span class="hljs-keyword">return</span> x*f;
+}
+<span class="hljs-comment">//**********head by yjjr**********</span>
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> maxn=<span class="hljs-number">5e5</span>+<span class="hljs-number">6</span>;
+<span class="hljs-keyword">struct</span> edge{<span class="hljs-keyword">int</span> to,next;}e[maxn&lt;&lt;<span class="hljs-number">1</span>];
+<span class="hljs-keyword">int</span> last[maxn],cnt,n,k,size[maxn];<span class="hljs-keyword">double</span> f[maxn],ans=<span class="hljs-number">0</span>;
+<span class="hljs-keyword">void</span> insert(<span class="hljs-keyword">int</span> u,<span class="hljs-keyword">int</span> v){
+    e[++cnt]=(edge){v,last[u]};last[u]=cnt;
+}
+<span class="hljs-keyword">void</span> dfs(<span class="hljs-keyword">int</span> x){
+    size[x]++;
+    <span class="hljs-keyword">bool</span> flag=<span class="hljs-number">0</span>;
+    reg(x)dfs(e[i].to),size[x]+=size[e[i].to],flag=<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">if</span>(!flag){f[x]=<span class="hljs-number">1</span>;<span class="hljs-keyword">return</span>;}
+    reg(x)f[x]=max(f[x],min(f[e[i].to],(<span class="hljs-keyword">double</span>)size[e[i].to]/(<span class="hljs-keyword">double</span>)(size[x]-<span class="hljs-number">1</span>)));
+}   
+<span class="hljs-keyword">int</span> main()
+{
+    n=read(),k=read();
+    rep(i,<span class="hljs-number">2</span>,n){
+        <span class="hljs-keyword">int</span> x=read();
+        insert(x,i);
+    }
+    dfs(<span class="hljs-number">1</span>);
+    rep(i,<span class="hljs-number">1</span>,n)
+        <span class="hljs-keyword">if</span>(size[i]&gt;k)ans=max(ans,f[i]);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%.8lf"</span>,ans);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre>
