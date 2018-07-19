@@ -2,7 +2,7 @@
 title: yjjr's blog
 SEOTitle: yjjr's blog
 header-img: img/cnfeat.jpg
-email: 18056072060@163.com
+email: cn_yjjr@qq.com
 description: "杨季敬汝的博客"
 keyword: "杨季敬汝,yjjr,yangjijingru,luogu,洛谷,OIER yjjr"
 url: "https://yangjijingru.com"              # your host, for absolute URL
@@ -55,8 +55,8 @@ livere_comment: true
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "我们的征途是星辰大海"
-sidebar-avatar: /img/aboutme.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-about-description: "没有你的未来不是我想要的未来"
+sidebar-avatar: /img/me.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
