@@ -1,8 +1,7 @@
 ---
 layout: page
 title: "Player"
-description: "一如既往，万事胜意"
-header-img: "img/orange new.png"
+header-img: "img/player.jpg"
 ---
 
 <script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=135215938&sid=1769059251&mode=js"></script>

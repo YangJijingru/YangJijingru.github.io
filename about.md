@@ -2,7 +2,7 @@
 layout: page
 title: "About"
 description: "OIER,AFSer,伪文青,五迷,航迷"
-header-img: "img/orange.jpg"
+header-img: "img/about.png"
 ---
 
 # 正文

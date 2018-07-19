@@ -1,7 +1,7 @@
 ---
 layout: page
 title: archive
-header-img: "img/twitter.jpg"
+header-img: "img/arch.jpg"
 description: "时光是一支开弓后的箭，只向前，不后退"
 ---
 
