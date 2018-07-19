@@ -5,10 +5,6 @@ description: "OIER,AFSer,伪文青,五迷,航迷"
 header-img: "img/orange.jpg"
 ---
 
-<embed src="//music.163.com/style/swf/widget.swf?sid=459168788&type=2&auto=1&width=320&height=66" width="340" height="86"  allowNetworking="all">
-
-![](https://s1.ax1x.com/2018/03/15/94x3cj.jpg)
-
 # 正文
 
 一个来自安徽省弱校的OIER **yjjr**，现就读于**Hefei NO.6**
@@ -34,6 +30,14 @@ header-img: "img/orange.jpg"
 - [我的CSDN博客](http://blog.csdn.net/qwerty1125)
 
 - [我的洛谷博客](https://www.luogu.org/blog/yjjr/#)
+
+# CONTACT
+
+大家有问题可以私信我或者发邮件，尽量别使用QQ，回复较慢
+
+- email:cn_yjjr@qq.com
+
+- QQ:1844387848
 
 # 博客事迹
 
@@ -69,7 +73,11 @@ header-img: "img/orange.jpg"
 
 - 2017-11-20 在GitHub pages上搭建完毕
 
-<script type="text/javascript" src="http://www.xiami.com/widget/player-wall?uid=135215938&direction=H&size=M&type=artist&mode=js"></script>
+![](https://cdn.luogu.org/upload/pic/23956.png )
+
+![](https://cdn.luogu.org/upload/pic/23957.png)
+
+没有未来的未来不是我想要的未来
 
 <!-- //分享 -->
 <div class="bdsharebuttonbox">
