@@ -29,4 +29,4 @@ header-img: "img/dairy.jpg"
 
 未来一年还是先提升自己吧pwp，脱单什么的都是不存在的
 
-![我不高兴](img/dairy/A1.jpg)
+[![Pc43fU.md.jpg](https://s1.ax1x.com/2018/08/12/Pc43fU.md.jpg)](https://imgchr.com/i/Pc43fU)
