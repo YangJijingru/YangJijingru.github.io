@@ -5,7 +5,9 @@ description: "愿今日种种，是过去与未来的分界"
 header-img: "img/dairy.jpg"
 ---
 
-<embed src="//music.163.com/style/swf/widget.swf?sid=1297742798&type=2&auto=1&width=320&height=66" width="340" height="86"  allowNetworking="all">
+# 平成最后一夏！
+
+<embed src="//music.163.com/style/swf/widget.swf?sid=1294889836&type=2&auto=1&width=320&height=66" width="340" height="86"  allowNetworking="all">
 
 # 2018.08.12
 
