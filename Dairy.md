@@ -9,6 +9,82 @@ header-img: "img/dairy.jpg"
 
 <embed src="//music.163.com/style/swf/widget.swf?sid=1294889836&type=2&auto=1&width=320&height=66" width="340" height="86"  allowNetworking="all">
 
+# 2018.08.19
+
+七夕节一个人飞到了瑞士，一整天都在飞机上度过
+
+单单喵在飞机上竟然补番《徒然喜欢你》，狗粮真香
+
+PVG的航空配餐终于有了进步，感觉LX189的餐食很棒!
+
+尽管上海台风登陆，起飞延误，但依然准点到达Zurich, very swiss!
+
+在飞机上，和邻座的阿姨聊得火热，认识了新的朋友，有种社会人的感觉了
+
+[![PhtD3t.md.jpg](https://s1.ax1x.com/2018/08/20/PhtD3t.md.jpg)](https://imgchr.com/i/PhtD3t)
+
+[![PhtrgP.md.jpg](https://s1.ax1x.com/2018/08/20/PhtrgP.md.jpg)](https://imgchr.com/i/PhtrgP)
+
+[![PhtREQ.md.jpg](https://s1.ax1x.com/2018/08/20/PhtREQ.md.jpg)](https://imgchr.com/i/PhtREQ)
+
+[![PhtgHg.md.jpg](https://s1.ax1x.com/2018/08/20/PhtgHg.md.jpg)](https://imgchr.com/i/PhtgHg)
+
+[![PhtcDS.md.jpg](https://s1.ax1x.com/2018/08/20/PhtcDS.md.jpg)](https://imgchr.com/i/PhtcDS)
+
+在机场AFS Switzerland接机，感觉很隆重，见到了可爱的Family Lukas
+
+第一次自己收拾行李，整理房间，感觉收拾得海星啊（捂脸）
+
+[![Pht191.md.jpg](https://s1.ax1x.com/2018/08/20/Pht191.md.jpg)](https://imgchr.com/i/Pht191)
+
+[![PhtB9I.md.jpg](https://s1.ax1x.com/2018/08/20/PhtB9I.md.jpg)](https://imgchr.com/i/PhtB9I)
+
+[![Phtw4A.md.jpg](https://s1.ax1x.com/2018/08/20/Phtw4A.md.jpg)](https://imgchr.com/i/Phtw4A)
+
+[![PhtdNd.md.jpg](https://s1.ax1x.com/2018/08/20/PhtdNd.md.jpg)](https://imgchr.com/i/PhtdNd)
+
+[![Phtsjf.md.jpg](https://s1.ax1x.com/2018/08/20/Phtsjf.md.jpg)](https://imgchr.com/i/Phtsjf)
+
+尝试了海鲜披萨和Subway，感觉海星
+
+[![PhtYnO.md.jpg](https://s1.ax1x.com/2018/08/20/PhtYnO.md.jpg)](https://imgchr.com/i/PhtYnO)
+
+第三天去Bern老城区逛了圈，感觉很nice，非常适合居(yang)住(lao)，碰巧中午13:00遇上了联邦政府前广场的喷泉开放
+
+[![Pht6u8.md.jpg](https://s1.ax1x.com/2018/08/20/Pht6u8.md.jpg)](https://imgchr.com/i/Pht6u8)
+
+[![PhtNHe.md.jpg](https://s1.ax1x.com/2018/08/20/PhtNHe.md.jpg)](https://imgchr.com/i/PhtNHe)
+
+[![PhttBD.md.jpg](https://s1.ax1x.com/2018/08/20/PhttBD.md.jpg)](https://imgchr.com/i/PhttBD)
+
+[![PhtGjK.md.jpg](https://s1.ax1x.com/2018/08/20/PhtGjK.md.jpg)](https://imgchr.com/i/PhtGjK)
+
+[![PhtQhR.md.jpg](https://s1.ax1x.com/2018/08/20/PhtQhR.md.jpg)](https://imgchr.com/i/PhtQhR)
+
+[![PhtMN9.md.jpg](https://s1.ax1x.com/2018/08/20/PhtMN9.md.jpg)](https://imgchr.com/i/PhtMN9)
+
+[![Pht31x.md.jpg](https://s1.ax1x.com/2018/08/20/Pht31x.md.jpg)](https://imgchr.com/i/Pht31x)
+
+找到了Ittigen附近的一家Chinese food restruant ，和中国老板聊了几句
+
+[![PhtaAH.md.jpg](https://s1.ax1x.com/2018/08/20/PhtaAH.md.jpg)](https://imgchr.com/i/PhtaAH)
+
+[![Pht8c6.md.jpg](https://s1.ax1x.com/2018/08/20/Pht8c6.md.jpg)](https://imgchr.com/i/Pht8c6)
+
+据说我是Bern地区的唯一一个中国高中生，突然感觉很孤独，从来没有过的孤独
+
+看着QQ空间里一群人刷着各自的热闹生活，和自己形成鲜明对比了吧
+
+现在我是物质生活极为丰富，很资本主义，但内心孤独啊qwq
+
+不过在这里的生活也确实很无聊了，之前在国内就听说过“瑞士好山好水好无聊，中国好脏好乱好热闹”
+
+可是根本没想到会如此无聊，觉得天上的云都飘得很慢，怎么有种来瑞士养老的感觉qwq
+
+开始拿出从国内带来的必刷题，每天闲着无聊就刷题，我感觉这里的学习效果比自习课都强hhh
+
+晚上想家了就看书刷题，相信一切都会好起来的！
+
 # 2018.08.12
 
 深夜和周稳稳视频，生物钟成功被搅乱，感觉自己提前适应了瑞士时间hhh
