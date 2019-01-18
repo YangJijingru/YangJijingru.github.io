@@ -2,5 +2,6 @@
 {{ content | number_of_words | minus: 180 }}
 {% endcapture %}
 {% unless words contains '-' %}
-{{ append: '阅读全文大概需要' | words | plus: 150 | divided_by: 150 | append: '分钟' }}
+阅读全文大概需要
+{{ words | plus: 150 | divided_by: 150 | append: '分钟' }}
 {% endunless %}
