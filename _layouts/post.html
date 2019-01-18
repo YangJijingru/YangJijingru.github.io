@@ -42,7 +42,8 @@ layout: default
                     {% comment %} endif {% endcomment %}
                     <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }}</span>
                     {% include reading-time.html %}
-                    
+                    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                    本文总阅读量<span id="busuanzi_value_page_pv"></span>次<br/>
    {% if site.leancloud.enable %}
        <span id="{{ page.url }}" class="leancloud_visitors" data-flag-title="{{ page.title }}">
         <span class="post-meta-divider">|</span>
