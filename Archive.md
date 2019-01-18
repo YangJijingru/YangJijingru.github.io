@@ -42,7 +42,7 @@ description: "时光是一支开弓后的箭，只向前，不后退"
     {% assign year = post.date | date: '%m' %}
     {% assign nyear = post.next.date | date: '%m' %}
     {% if year != nyear %}
-## {{ post.date | date: '%B , %Y' }} ({{ counts[i] }})
+### {{ post.date | date: '%B , %Y' }} ({{ counts[i] }})
 <hr>
 {:.archive-title}
         {% assign i = i | plus: 1 %}
