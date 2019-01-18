@@ -55,8 +55,8 @@ livere_comment: true
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "每一个人都有属于自己的一片森林，迷失的人迷失了，相逢的人会再相逢"
-sidebar-avatar: /img/haha.png      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-about-description: "可一可再."
+sidebar-avatar: /img/me.png      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
