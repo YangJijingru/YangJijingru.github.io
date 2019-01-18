@@ -1,8 +1,8 @@
 # Site settings
 title: yjjr's blog
 SEOTitle: yjjr's blog
-header-img: img/cnfeat.jpg
-email: cn_yjjr@qq.com
+header-img: /img/me.png
+email: yjjr@yangjijingru.com
 description: "杨季敬汝的博客"
 keyword: "杨季敬汝,yjjr,yangjijingru,luogu,洛谷,OIER yjjr"
 url: "https://yangjijingru.com"              # your host, for absolute URL
@@ -62,7 +62,7 @@ sidebar-avatar: /img/me.png      # use absolute URL, seeing it's used in both `/
 
 # Featured Tags
 featured-tags: true                     # whether or not using Feature-Tags
-featured-condition-size: 10              # A tag will be featured if the size of it is more than this condition value
+featured-condition-size: 12              # A tag will be featured if the size of it is more than this condition value
 
 # Google Analytics
 ga_track_id: 'UA-113461844-1'            

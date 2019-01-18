@@ -38,7 +38,7 @@ layout: default
                 {% if site.featured-tags %}
                 <section>
                     <!-- no hr -->
-                    <h5><a href="{{'/tags/' | prepend: site.baseurl }}">FEATURED TAGS</a></h5>
+                    <h4><a href="{{'/tags/' | prepend: site.baseurl }}">FEATURED TAGS</a></h4>
                     <div class="tags">
         				{% for tag in site.tags %}
                             {% if tag[1].size > {{site.featured-condition-size}} %}
@@ -65,7 +65,7 @@ layout: default
                 <!-- Friends Blog -->
                 {% if site.friends %}
                 <hr>
-                <h5>FRIENDS</h5>
+                <h4>FRIENDS</h4>
                 <ul class="list-inline">
                     {% for friend in site.friends %}
                         <li><a href="{{friend.href}}">{{friend.title}}</a></li>
@@ -99,7 +99,7 @@ layout: default
                 {% if site.featured-tags %}
                 <section>
                     <hr class="hidden-sm hidden-xs">
-                    <h5><a href="{{'/tags/' | prepend: site.baseurl }}">FEATURED TAGS</a></h5>
+                    <h4><a href="{{'/tags/' | prepend: site.baseurl }}">FEATURED TAGS</a></h4>
                     <div class="tags">
                         {% for tag in site.tags %}
                             {% if tag[1].size > {{site.featured-condition-size}} %}
@@ -114,7 +114,7 @@ layout: default
                  <!-- Friends Blog -->
                 {% if site.friends %}
                 <hr>
-                <h5>FRIENDS</h5>
+                <h4>FRIENDS</h4>
                 <ul class="list-inline">
                     {% for friend in site.friends %}
                         <li><a href="{{friend.href}}">{{friend.title}}</a></li>
@@ -123,7 +123,7 @@ layout: default
                 {% endif %}
                 <!-- Short About -->
                 <section class="visible-md visible-lg">
-                    <hr><h5><a href="{{'/about/' | prepend: site.baseurl }}">ABOUT ME</a></h5>
+                    <hr><h4><a href="{{'/about/' | prepend: site.baseurl }}">ABOUT ME</a></h4>
                     <div class="short-about">
                         {% if site.sidebar-avatar %}
                             <img src="{{site.sidebar-avatar}}" />
@@ -219,6 +219,7 @@ layout: default
                 <!--contact-->
                 <hr>
                 <h4>CONTACT ME</h4>
+                <br/>
                 <h5>email: yjjr@yangjijingru.com</h5>
                 <h5>QQ: 1844387848</h5>
                 <!-- yiyan -->
@@ -230,7 +231,8 @@ layout: default
                 <hr>
                 <h4>MUSIC PLAYER</h4>
                 <p>http://yangjijingru.com/img/music.mp3</p>
-                <img src="http://yangjijingru.com/img/music.png">
+                <img src="http://yangjijingru.com/img/music.png"/>
+
                 <h5>"亦步亦趋，从遥遥到无期。"</h5>
 
                               ————《拥抱》 von 徐秉龙
