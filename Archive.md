@@ -1,9 +1,24 @@
 ---
 layout: page
-title: archive
+title: "Archive"
 header-img: "img/arch.png"
 description: "时光是一支开弓后的箭，只向前，不后退"
 ---
+
+## Search
+
+<script>
+  (function() {
+    var cx = '013752017740833085071:4zpbdlgpefk';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
 
 ## Blogs
 
