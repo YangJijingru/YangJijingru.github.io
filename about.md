@@ -1,33 +1,56 @@
 ---
 layout: page
 title: "About"
-description: "OIER,AFSer,伪文青,五迷,航迷"
-header-img: "img/about.png"
+description: "OIer,留学生,伪文青,理工男"
+header-img: "img/about1.jpg"
 ---
 
 # 正文
 
-一个来自安徽省弱校的OIER **yjjr**，现就读于**Hefei NO.6**
+一个有梦想的咸鱼OIer
 
-[洛谷](https://www.luogu.org/)常任题库管理员，负责题目管理、题解审核、翻译审核
+一个普普通通的留学生
 
-准出国党，参加2018-2019年度AFS去瑞士交流一年
+一个热爱生活的伪文青
 
-喜欢民谣和文学（话说从这个背景音乐就能看出来吧），但是有着理工男的思维，追逐梦想的OIer
+一个神经大条的理工男
 
-常用id:
+------
 
-**yjjr**
+苦逼的竞赛狗
 
-**本人QQ：184438748**  欢迎与我联系，同时也欢迎互换友链。      
-                
+辣鸡的德语萌新
+
+自2017年起担任[洛谷](http://www.luogu.org/)的题库管理员
+
+自2018年加入FRC Team 7628
+
+目前坐标Bern, Switzerland
+
+
+## Experience
+
+- 2008-2014 合肥市六安路小学
+
+- 2014 合肥市第四十五中
+
+- 2014-2017 合肥市五十中学
+
+- 2017-2020 合肥市第六中学
+
+- 2018-2019 Gymnasium Neufeld
+
+- 未完待续...
+
+## Blog
+
+- **[yjjr's blog](http://yangjijingru.com)**
+
 - [我的CSDN博客](http://blog.csdn.net/qwerty1125)
 
 - [我的洛谷博客](https://www.luogu.org/blog/yjjr/#)
 
-# CONTACT
-
-大家有问题可以私信我或者发邮件，尽量别使用QQ，回复较慢
+## CONTACT
 
 - email: yjjr@yangjijingru.com
 
@@ -50,12 +73,6 @@ header-img: "img/about.png"
 - 2018-01-14 更换域名（yjjr.me->yangjijingru.com）
 
 - 2017-11-20 在GitHub pages上搭建完毕
-
-![](https://cdn.luogu.org/upload/pic/23956.png )
-
-![](https://cdn.luogu.org/upload/pic/23957.png)
-
-没有未来的未来不是我想要的未来
 
 <!-- //分享 -->
 <div class="bdsharebuttonbox">
