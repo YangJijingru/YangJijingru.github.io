@@ -2,7 +2,7 @@
 layout: page
 title: "About"
 description: "OIer,留学生,伪文青,理工男"
-header-img: "img/about2.jpg"
+header-img: "img/about.jpg"
 ---
 
 # 正文

@@ -1,8 +1,8 @@
 ---
 layout: page
-title: "Dairy"
+title: "Live"
 description: "愿今日种种，是过去与未来的分界"
-header-img: "img/dairy.png"
+header-img: "img/live.png"
 ---
 
 # 平成最后一夏！
