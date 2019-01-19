@@ -5,6 +5,10 @@ description: "OIer,留学生,伪文青,理工男"
 header-img: "img/about.jpg"
 ---
 
+<p>http://yangjijingru.com/img/about.mp3</p>
+
+————《夢灯籠》 von RADWIMPS
+
 # 正文
 
 一个有梦想的咸鱼OIer
