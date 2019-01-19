@@ -74,10 +74,6 @@ header-img: "img/about2.jpg"
 
 - 2017-11-20 在GitHub pages上搭建完毕
 
-# Picture
-
-![](http://yangjijingru.com/img/dairy/A2.jpg)
-
 
 <!-- //分享 -->
 <div class="bdsharebuttonbox">
