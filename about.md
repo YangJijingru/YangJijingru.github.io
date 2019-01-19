@@ -2,7 +2,7 @@
 layout: page
 title: "About"
 description: "OIer,留学生,伪文青,理工男"
-header-img: "img/about1.jpg"
+header-img: "img/about2.jpg"
 ---
 
 # 正文
@@ -13,7 +13,7 @@ header-img: "img/about1.jpg"
 
 一个热爱生活的伪文青
 
-一个神经大条的理工男
+一个假装正经的理工男
 
 ------
 
@@ -23,12 +23,12 @@ header-img: "img/about1.jpg"
 
 自2017年起担任[洛谷](http://www.luogu.org/)的题库管理员
 
-自2018年加入FRC Team 7628
+自2018年加入[FRC](https://www.firstinspires.org/robotics/frc) Team 7628
 
 目前坐标Bern, Switzerland
 
 
-## Experience
+### Experience
 
 - 2008-2014 合肥市六安路小学
 
@@ -42,7 +42,7 @@ header-img: "img/about1.jpg"
 
 - 未完待续...
 
-## Blog
+### Blog
 
 - **[yjjr's blog](http://yangjijingru.com)**
 
@@ -50,7 +50,7 @@ header-img: "img/about1.jpg"
 
 - [我的洛谷博客](https://www.luogu.org/blog/yjjr/#)
 
-## CONTACT
+### CONTACT
 
 - email: yjjr@yangjijingru.com
 
@@ -73,6 +73,11 @@ header-img: "img/about1.jpg"
 - 2018-01-14 更换域名（yjjr.me->yangjijingru.com）
 
 - 2017-11-20 在GitHub pages上搭建完毕
+
+# Picture
+
+![](http://yangjijingru.com/img/dairy/A2.jpg)
+
 
 <!-- //分享 -->
 <div class="bdsharebuttonbox">
