@@ -1,8 +1,9 @@
 ---
-description: "USACO2019 JAN Silver Solution"
+title: "USACO2019 JAN Silver Solution"
 subtitle: "银组水题拼盘"
 tags: 
  - 解题报告
+ - USACO
 grammar_cjkRuby: true
 catalog: true
 layout:  post
