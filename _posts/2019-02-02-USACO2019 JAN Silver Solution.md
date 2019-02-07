@@ -1,5 +1,4 @@
 ---
-title: USACO2019 JAN Silver Solution
 subtitle: "银组水题拼盘"
 tags: 
  - 解题报告
