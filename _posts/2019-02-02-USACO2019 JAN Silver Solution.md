@@ -1,5 +1,5 @@
 ---
-title: "USACO2019 JAN Silver Solution"
+title: USACO2019 JAN Silver Solution
 subtitle: "银组水题拼盘"
 tags: 
  - 解题报告
@@ -9,6 +9,7 @@ catalog: true
 layout:  post
 header-img: "img/header/P50.jpg"
 preview-img: "/img/preview/P50.jpg"
+categories: OI
 ---
 # 洛谷5197 [USACO19JAN]Grass Planting
 
