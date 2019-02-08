@@ -14,7 +14,7 @@ preview-img: "/img/preview/P49.jpg"
 
 # 题目
 
-[题目传送门](http://codeforces.com/contest/1110/problem/C）
+[题目传送门](http://codeforces.com/contest/1110/problem/C)
 
 # 题意
 
