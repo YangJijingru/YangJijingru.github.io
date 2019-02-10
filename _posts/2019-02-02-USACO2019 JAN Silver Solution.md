@@ -8,7 +8,6 @@ catalog: true
 layout:  post
 header-img: "img/header/P50.jpg"
 preview-img: "/img/preview/P50.jpg"
-categories: OI
 ---
 # 洛谷5197 [USACO19JAN]Grass Planting
 
