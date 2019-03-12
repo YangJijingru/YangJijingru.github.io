@@ -5,8 +5,8 @@ tags:
 grammar_cjkRuby: true
 catalog: true
 layout:  post
-header-img: "img/header/P35.jpg"
-preview-img: "/img/preview/P35.jpg"
+header-img: "img/header/P34.jpg"
+preview-img: "/img/preview/P34.jpg"
 ---
 
 标签：KMP

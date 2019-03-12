@@ -5,8 +5,8 @@ tags:
 grammar_cjkRuby: true
 catalog: true
 layout:  post
-header-img: "img/header/P36.jpg"
-preview-img: "/img/preview/P36.jpg"
+header-img: "img/header/P35.jpg"
+preview-img: "/img/preview/P35.jpg"
 ---
 
 标签：离散化

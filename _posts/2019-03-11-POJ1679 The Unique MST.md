@@ -5,8 +5,8 @@ tags:
 grammar_cjkRuby: true
 catalog: true
 layout:  post
-header-img: "img/header/P37.jpg"
-preview-img: "/img/preview/P37.jpg"
+header-img: "img/header/P36.jpg"
+preview-img: "/img/preview/P36.jpg"
 ---
 
 标签：最小生成树
