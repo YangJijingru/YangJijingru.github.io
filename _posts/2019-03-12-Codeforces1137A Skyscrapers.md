@@ -2,6 +2,7 @@
 subtitle: "矩阵离散化"
 tags: 
  - 特殊-bitset
+ - Codeforces
 grammar_cjkRuby: true
 catalog: true
 layout:  post

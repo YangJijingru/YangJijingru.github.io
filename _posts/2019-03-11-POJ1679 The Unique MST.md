@@ -2,6 +2,7 @@
 subtitle: "判断最小生成树唯一性"
 tags: 
  - 图论-最小生成树
+ - POJ
 grammar_cjkRuby: true
 catalog: true
 layout:  post

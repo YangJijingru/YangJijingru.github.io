@@ -2,6 +2,7 @@
 subtitle: "利用KMP的Next数组贪心"
 tags: 
  - 字符串-KMP
+ - Codeforces
 grammar_cjkRuby: true
 catalog: true
 layout:  post
