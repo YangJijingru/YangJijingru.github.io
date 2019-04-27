@@ -222,4 +222,78 @@ int main(){
 ```
 
 
-## 剩下的待更
+# E. Neko and Flashback
+
+## 题意
+
+给出序列$b'$和$c'$，分别含义如下
+
+- $b_i=\min(a_i,a_{i+1})$
+- $c_i=\max(a_i,a_{i+1})$
+- $b'_i=b_{p_i}$
+- $c'_i=c_{p_i}$
+
+请你求出任意一个满足条件的原序列$a$
+
+## 分析
+
+实际上发现数列$p$并没有实际作用
+
+从每一个$b_i$向$c_i$连边，那么问题转化为是否存在一条长度为$n$的欧拉路径，可以直接$dfs$处理
+
+注意要判断许多$-1$的情况，细节较多
+
+## Code
+```cpp
+#include<bits/stdc++.h>
+#define rep(i,a,b) for(int i=a;i<=b;i++)
+#define dep(i,a,b) for(int i=a;i>=b;i--)
+#define ll long long
+#define mem(x,num) memset(x,num,sizeof x)
+#define reg(i,x) for(int i=last[x];i;i=e[i].next) 
+using namespace std;
+inline ll read(){
+    ll f=1,x=0;char ch=getchar();
+    while(ch<'0'||ch>'9'){if(ch=='-')f=-1;ch=getchar();}
+    while(ch>='0'&&ch<='9'){x=x*10+ch-'0';ch=getchar();}
+    return x*f;
+}
+//******head by yjjr****** 
+const int maxn=1e5+6;
+int n,m,tot;
+map<int,int> a;
+multiset<int> to[maxn<<1];
+int ans[maxn<<4],top,d[maxn<<1],cnt,p[maxn<<4],b[maxn],c[maxn],val[maxn<<1];
+void dfs(int x){
+    for(auto i=to[x].begin();i!=to[x].end();i=to[x].begin()) {
+        auto v=*i;
+        to[x].erase(i),to[v].erase(to[v].lower_bound(x));
+        dfs(v);
+    }
+    ans[++top]=x;
+}
+int main(){
+    n=read();
+    rep(i,1,n-1){
+        b[i]=read();
+        if(!a.count(b[i]))a[b[i]]=++tot,val[tot]=b[i];
+    }
+    rep(i,1,n-1){
+        c[i]=read();
+        if(b[i]>c[i]){puts("-1");return 0;}
+        if(!a.count(c[i]))a[c[i]]=++tot,val[tot]=c[i];
+        to[a[c[i]]].insert(a[b[i]]),to[a[b[i]]].insert(a[c[i]]);
+        d[a[c[i]]]++,d[a[b[i]]]++;
+    }
+    rep(i,1,tot)if(d[i]&1)p[++cnt]=i;
+    if(cnt!=0&&cnt!=2){puts("-1");return 0;}
+    else{
+        if(cnt==0)dfs(1);else dfs(p[1]);
+        if(top!=n){puts("-1");return 0;}
+        else{
+            while(top)printf("%d ",val[ans[top--]]);
+            return 0;
+        }
+    }
+}
+```
