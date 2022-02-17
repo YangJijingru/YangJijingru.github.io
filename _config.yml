@@ -51,7 +51,7 @@ kramdown:
 # Disqus settings
 #disqus_username: _your_disqus_short_name_
 #来必利评论
-livere_comment: true
+livere_comment: false
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
