@@ -5,8 +5,8 @@ tags:
 grammar_cjkRuby: true
 catalog: true
 layout:  post
-header-img: "img/header/P102.jpg"
-preview-img: "/img/preview/P102.jpg"
+header-img: "img/header/P50.jpg"
+preview-img: "/img/preview/P50.jpg"
 ---
 
 <p>https://yangjijingru.com/img/202201.mp3</p>
