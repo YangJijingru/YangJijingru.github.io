@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "About"
-description: "OIer,留学生,伪文青,理工男"
+description: "射手座的医学生,退役OIer,曾经的留学生,伪文青,理工男"
 header-img: "img/about.jpg"
 ---
 
@@ -9,7 +9,15 @@ header-img: "img/about.jpg"
 
 ————《夢灯籠》 von RADWIMPS
 
-# 正文
+# 现在的正文
+
+一个普普通通的医学生
+
+一个擅长外语的大学生
+
+一个有点社牛的INFP
+
+# 曾经的正文
 
 一个有梦想的咸鱼OIer
 
@@ -23,13 +31,11 @@ header-img: "img/about.jpg"
 
 苦逼的竞赛狗
 
-辣鸡的德语萌新
+辣鸡的德语法语萌新
 
-自2017年起担任[洛谷](http://www.luogu.org/)的题库管理员
+自2017年起担任[洛谷](http://www.luogu.org/)的题库管理员（已卸任）
 
-自2018年加入[FRC](https://www.firstinspires.org/robotics/frc) Team 7628
-
-目前坐标Bern, Switzerland
+自2018年加入[FRC](https://www.firstinspires.org/robotics/frc) Team 7628（已退出）
 
 
 ### Experience
@@ -44,7 +50,11 @@ header-img: "img/about.jpg"
 
 - 2018-2019 Gymnasium Neufeld
 
-- 未完待续...
+- 2019-2020 SAMD in Davos
+
+- 2020-2021 合肥滨湖寿春中学
+
+- 2021-2029 安徽医科大学
 
 ### Blog
 
